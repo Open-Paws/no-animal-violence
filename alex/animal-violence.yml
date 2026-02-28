@@ -1,0 +1,347 @@
+# AUTO-GENERATED from project-compassionate-code. Do not edit directly.
+# Animal violence language patterns for retext-equality / alex
+# Source: https://doi.org/10.1007/s43681-023-00380-w
+
+- type: basic
+  note: Violent animal idiom with universally clearer alternatives
+  considerate:
+    accomplish two things at once: a
+    solve two problems with one action: a
+    hit two targets with one shot: a
+  inconsiderate:
+    kill two birds with one stone: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Violent animal idiom — alternatives are more direct
+  considerate:
+    belabor the point: a
+    go over old ground: a
+    repeat unnecessarily: a
+  inconsiderate:
+    beat a dead horse: animal-violence
+    beating a dead horse: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Violent animal idiom — alternatives are shorter and clearer
+  considerate:
+    more than one way to solve this: a
+    multiple approaches available: a
+    several ways to accomplish this: a
+  inconsiderate:
+    more than one way to skin a cat: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Animal idiom — alternatives are more precise
+  considerate:
+    reveal the secret: a
+    disclose prematurely: a
+    let it slip: a
+  inconsiderate:
+    let the cat out of the bag: animal-violence
+- type: basic
+  note: Animal idiom — alternatives communicate the idea more directly
+  considerate:
+    create a complicated situation: a
+    uncover hidden problems: a
+    open Pandora's box: a
+  inconsiderate:
+    open a can of worms: animal-violence
+- type: basic
+  note: Animal idiom — alternatives are more universally understood
+  considerate:
+    futile search: a
+    pointless pursuit: a
+    fool's errand: a
+  inconsiderate:
+    wild goose chase: animal-violence
+- type: basic
+  note: Violent animal idiom with shorter alternatives
+  considerate:
+    trivially easy: a
+    like taking candy from a baby: a
+    effortless: a
+  inconsiderate:
+    like shooting fish in a barrel: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Violent animal idiom — same as 'beat a dead horse'
+  considerate:
+    belabor the point: a
+    waste effort on a settled matter: a
+    repeat unnecessarily: a
+  inconsiderate:
+    flog a dead horse: animal-violence
+    flogging a dead horse: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Animal idiom — alternatives are more professional
+  considerate:
+    more important matters to address: a
+    higher priorities: a
+    bigger issues at hand: a
+  inconsiderate:
+    there are bigger fish to fry: animal-violence
+- type: basic
+  note: Animal-as-experiment metaphor — alternatives are more precise in technical contexts
+  considerate:
+    test subject: a
+    first to try: a
+    early adopter: a
+  inconsiderate:
+    guinea pig: animal-violence
+- type: basic
+  note: Animal idiom — alternatives are more direct
+  considerate:
+    wait a moment: a
+    slow down: a
+    be patient: a
+  inconsiderate:
+    hold your horses: animal-violence
+- type: basic
+  note: Well-understood idiom — flag for awareness only
+  considerate:
+    the obvious issue: a
+    the unaddressed problem: a
+  inconsiderate:
+    the elephant in the room: animal-violence
+- type: basic
+  note: Animal idiom — alternatives are clearer for international audiences
+  considerate:
+    directly from the source: a
+    firsthand: a
+    from the authority: a
+  inconsiderate:
+    straight from the horse's mouth: animal-violence
+- type: basic
+  note: Animal slaughter idiom — alternatives are equally expressive
+  considerate:
+    bring home the results: a
+    earn a living: a
+    win the prize: a
+  inconsiderate:
+    bring home the bacon: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Bullfighting idiom — alternatives convey the same assertiveness
+  considerate:
+    face the challenge head-on: a
+    tackle the problem directly: a
+    seize the opportunity: a
+  inconsiderate:
+    take the bull by the horns: animal-violence
+- type: basic
+  note: Violent animal idiom referencing slaughter — alternatives are more descriptive
+  considerate:
+    without resistance: a
+    blindly following: a
+    unknowingly walking into danger: a
+  inconsiderate:
+    like lambs to the slaughter: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Violent animal idiom — alternatives are shorter and clearer
+  considerate:
+    very cramped: a
+    extremely tight space: a
+    barely any room: a
+  inconsiderate:
+    no room to swing a cat: animal-violence
+- type: basic
+  note: Animal-origin idiom — flag for awareness only
+  considerate:
+    distraction: a
+    false lead: a
+    misleading clue: a
+  inconsiderate:
+    red herring: animal-violence
+- type: basic
+  note: Animal-as-coward insult in comments
+  considerate:
+    don't hesitate: a
+    be brave: a
+    go for it: a
+  inconsiderate:
+    don't be a chicken: animal-violence
+- type: basic
+  note: Animal-as-insult for resource consumption
+  considerate:
+    resource-intensive: a
+    bloated: a
+    heavy consumer: a
+  inconsiderate:
+    pig: animal-violence
+- type: basic
+  note: Not directly animal-related but reinforces animal industry terminology
+  considerate:
+    undisciplined coding: a
+    ad-hoc development: a
+    code without process: a
+  inconsiderate:
+    cowboy coding: animal-violence
+- type: basic
+  note: Animal-as-insult for programmers — dehumanizing and unprofessional
+  considerate:
+    developer: a
+    programmer: a
+    engineer: a
+  inconsiderate:
+    code monkey: animal-violence
+- type: basic
+  note: Infrastructure metaphor — alternatives are technically more precise
+  considerate:
+    ephemeral vs. persistent: a
+    disposable vs. unique: a
+    numbered vs. named: a
+  inconsiderate:
+    cattle vs. pets: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Common idiom — flag for awareness only
+  considerate:
+    side project: a
+    passion project: a
+  inconsiderate:
+    pet project: animal-violence
+- type: basic
+  note: Animal metaphor — alternatives are more technical
+  considerate:
+    early warning signal: a
+    leading indicator: a
+    sentinel: a
+  inconsiderate:
+    canary in a coal mine: animal-violence
+- type: basic
+  note: Common tech term — flag for awareness only
+  considerate:
+    self-hosting: a
+    eating your own cooking: a
+    using internally: a
+  inconsiderate:
+    dogfooding: animal-violence
+- type: basic
+  note: Animal metaphor — alternatives are more descriptive
+  considerate:
+    coordinating independent contributors: a
+    managing a distributed effort: a
+    organizing chaos: a
+  inconsiderate:
+    herding cats: animal-violence
+- type: basic
+  note: Animal metaphor — alternatives are more precise
+  considerate:
+    exploratory investigation: a
+    unfocused search: a
+    speculative inquiry: a
+  inconsiderate:
+    go on a fishing expedition: animal-violence
+- type: basic
+  note: Both speciesist and culturally insensitive — trivializes Hindu beliefs while objectifying cattle
+  considerate:
+    unquestioned belief: a
+    untouchable topic: a
+    protected assumption: a
+  inconsiderate:
+    sacred cow: animal-violence
+    sacred cows: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Originates from ritual sacrifice of goats — alternatives are more precise
+  considerate:
+    blame target: a
+    fall person: a
+    wrongly blamed: a
+  inconsiderate:
+    scapegoat: animal-violence
+    scapegoated: animal-violence
+    scapegoating: animal-violence
+- type: basic
+  note: Derogatory animal metaphor for futility — alternatives are more descriptive
+  considerate:
+    daily grind: a
+    competitive treadmill: a
+    endless hustle: a
+  inconsiderate:
+    rat race: animal-violence
+- type: basic
+  note: Financial/tech term depicting animal death — alternatives are more professional
+  considerate:
+    temporary rebound: a
+    false recovery: a
+    brief uptick: a
+  inconsiderate:
+    dead cat bounce: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Characterizes animals as violent — alternatives convey meaning more precisely
+  considerate:
+    ruthlessly competitive: a
+    cutthroat: a
+    fiercely competitive: a
+  inconsiderate:
+    dog-eat-dog: animal-violence
+- type: basic
+  note: References a game based on hitting animals — alternatives describe the pattern more precisely
+  considerate:
+    recurring problem: a
+    endless loop: a
+    unwinnable game: a
+  inconsiderate:
+    whack-a-mole: animal-violence
+- type: basic
+  note: Process language — in POSIX context this is standard, in docs alternatives may be clearer
+  considerate:
+    terminate the process: a
+    stop the process: a
+    end the process: a
+  inconsiderate:
+    kill process: animal-violence
+- type: basic
+  note: Process language — alternatives are equally clear
+  considerate:
+    stop the server: a
+    shut down the server: a
+    terminate the server: a
+  inconsiderate:
+    kill the server: animal-violence
+- type: basic
+  note: Violent metaphor in technical context — alternatives are more professional
+  considerate:
+    delete completely: a
+    wipe clean: a
+    remove entirely: a
+  inconsiderate:
+    nuke: animal-violence
+- type: basic
+  note: Standard technical term — flag for awareness only in non-technical contexts
+  considerate:
+    cancel: a
+    stop: a
+    halt: a
+  inconsiderate:
+    abort: animal-violence
+- type: basic
+  note: Actively being replaced across the industry — follows existing inclusive naming initiatives
+  considerate:
+    primary/replica: a
+    leader/follower: a
+    controller/worker: a
+  inconsiderate:
+    master/slave: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Actively being replaced — Google, Twitter, IETF have adopted alternatives
+  considerate:
+    allowlist/denylist: a
+    permit list/block list: a
+    inclusion list/exclusion list: a
+  inconsiderate:
+    whitelist/blacklist: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Historically exclusionary origin — alternatives are equally clear
+  considerate:
+    legacy: a
+    exempt: a
+    pre-existing: a
+  inconsiderate:
+    grandfathered: animal-violence

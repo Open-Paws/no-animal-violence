@@ -1,4 +1,4 @@
-# Speciesist Language Scanner
+# No Animal Violence
 
 Rule files for detecting speciesist language in code, documentation, and prose. Compatible with multiple popular inclusive language scanning tools.
 
