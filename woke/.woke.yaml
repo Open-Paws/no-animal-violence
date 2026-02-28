@@ -247,6 +247,170 @@ rules:
     word_boundary: true
     categories:
     - animal-violence
+- name: curiosity-killed-the-cat
+  terms:
+  - curiosity killed the cat
+  alternatives:
+  - curiosity backfired
+  - being nosy caused trouble
+  - curiosity led to trouble
+  severity: error
+  note: Directly references killing a cat
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+- name: like-a-chicken-with-its-head-cut-off
+  terms:
+  - like a chicken with its head cut off
+  alternatives:
+  - in a panic
+  - running around chaotically
+  - in complete disarray
+  severity: error
+  note: Graphic slaughter imagery — decapitating a chicken
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+- name: your-goose-is-cooked
+  terms:
+  - your goose is cooked
+  alternatives:
+  - you're in trouble
+  - your fate is sealed
+  - it's over for you
+  severity: error
+  note: References killing and cooking a goose
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+- name: throw-someone-to-the-wolves
+  terms:
+  - throw someone to the wolves
+  - throwing someone to the wolves
+  - threw someone to the wolves
+  alternatives:
+  - abandon to criticism
+  - leave to face hostility alone
+  - sacrifice someone
+  severity: error
+  note: References feeding a person to wolves
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+- name: hook,-line,-and-sinker
+  terms:
+  - hook, line, and sinker
+  alternatives:
+  - completely
+  - without question
+  - fell for it entirely
+  severity: warning
+  note: References hooking fish — fishing kills fish
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+- name: clip-someones-wings
+  terms:
+  - clip someone's wings
+  - clipping someone's wings
+  - clipped someone's wings
+  alternatives:
+  - restrict someone's freedom
+  - limit someone's options
+  - hold someone back
+  severity: warning
+  note: References wing-clipping — physical mutilation done to farmed birds
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+- name: the-straw-that-broke-the-camels-back
+  terms:
+  - the straw that broke the camel's back
+  alternatives:
+  - the tipping point
+  - the breaking point
+  - the final provocation
+  severity: warning
+  note: References overloading a pack animal until injury
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+- name: a-bird-in-the-hand-is-worth-two-in-the-bush
+  terms:
+  - a bird in the hand is worth two in the bush
+  alternatives:
+  - a sure thing beats a possibility
+  - certainty over speculation
+  severity: info
+  note: References trapping and catching wild birds
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+- name: eat-crow
+  terms:
+  - eat crow
+  - eating crow
+  alternatives:
+  - admit being wrong
+  - swallow one's pride
+  - accept humiliation
+  severity: warning
+  note: References eating a killed bird as punishment
+  options:
+    word_boundary: true
+    categories:
+    - animal-violence
+- name: fight-like-cats-and-dogs
+  terms:
+  - fight like cats and dogs
+  - fighting like cats and dogs
+  - fought like cats and dogs
+  alternatives:
+  - constantly argue
+  - clash frequently
+  - have constant conflict
+  severity: warning
+  note: References animal fighting
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+- name: take-the-bait
+  terms:
+  - take the bait
+  - taking the bait
+  - took the bait
+  alternatives:
+  - fall for it
+  - be lured in
+  - be deceived
+  severity: info
+  note: References baiting hooks to catch and kill fish
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+- name: dont-count-your-chickens-before-they-hatch
+  terms:
+  - don't count your chickens before they hatch
+  alternatives:
+  - don't assume success prematurely
+  - wait for confirmed results
+  - don't get ahead of yourself
+  severity: info
+  note: References farming chickens as commodity and property
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
 - name: dont-be-a-chicken
   terms:
   - don't be a chicken
@@ -295,6 +459,32 @@ rules:
   - engineer
   severity: warning
   note: Animal-as-insult for programmers — dehumanizing and unprofessional
+  options:
+    word_boundary: true
+    categories:
+    - animal-violence
+- name: badger-someone
+  terms:
+  - badger someone
+  alternatives:
+  - pester
+  - pressure
+  - harass
+  severity: info
+  note: From badger-baiting — a blood sport where dogs attack captive badgers
+  options:
+    word_boundary: true
+    categories:
+    - animal-violence
+- name: ferret-out
+  terms:
+  - ferret out
+  alternatives:
+  - uncover
+  - discover
+  - dig up
+  severity: info
+  note: From using ferrets to hunt rabbits out of burrows
   options:
     word_boundary: true
     categories:
@@ -462,6 +652,90 @@ rules:
     word_boundary: true
     categories:
     - animal-violence
+- name: cash-cow
+  terms:
+  - cash cow
+  - cash cows
+  alternatives:
+  - profit center
+  - reliable revenue source
+  - money maker
+  severity: warning
+  note: Commodifies cows — treats living beings as profit generators
+  options:
+    word_boundary: true
+    categories:
+    - animal-violence
+- name: sacrificial-lamb
+  terms:
+  - sacrificial lamb
+  - sacrificial lambs
+  alternatives:
+  - expendable person
+  - person set up to fail
+  - someone sacrificed for others
+  severity: warning
+  note: References ritual slaughter of lambs
+  options:
+    word_boundary: true
+    categories:
+    - animal-violence
+- name: sitting-duck
+  terms:
+  - sitting duck
+  - sitting ducks
+  alternatives:
+  - easy target
+  - vulnerable target
+  - exposed
+  severity: warning
+  note: References a duck in the open, easy to shoot — hunting imagery
+  options:
+    word_boundary: true
+    categories:
+    - animal-violence
+- name: open-season
+  terms:
+  - open season
+  - opening season
+  - opened season
+  alternatives:
+  - free-for-all
+  - unrestricted criticism
+  - no holds barred
+  severity: warning
+  note: References hunting season — the legal period for killing animals
+  options:
+    word_boundary: true
+    categories:
+    - animal-violence
+- name: put-out-to-pasture
+  terms:
+  - put out to pasture
+  alternatives:
+  - retire
+  - phase out
+  - sunset
+  severity: warning
+  note: References disposing of farm animals when no longer productive
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+- name: dead-duck
+  terms:
+  - dead duck
+  - dead ducks
+  alternatives:
+  - lost cause
+  - doomed effort
+  - foregone conclusion
+  severity: info
+  note: References a duck that has been shot and killed — hunting
+  options:
+    word_boundary: true
+    categories:
+    - animal-violence
 - name: kill-process
   terms:
   - kill process
@@ -514,6 +788,20 @@ rules:
   - halt
   severity: info
   note: Standard technical term — flag for awareness only in non-technical contexts
+  options:
+    word_boundary: true
+    categories:
+    - animal-violence
+- name: cull
+  terms:
+  - cull
+  alternatives:
+  - remove
+  - prune
+  - trim
+  - filter out
+  severity: warning
+  note: Euphemism for mass killing of animals — used in wildlife management and farming
   options:
     word_boundary: true
     categories:
