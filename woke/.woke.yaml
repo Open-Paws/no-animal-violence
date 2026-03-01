@@ -578,7 +578,7 @@ rules:
   - untouchable topic
   - protected assumption
   severity: warning
-  note: Both speciesist and culturally insensitive — trivializes Hindu beliefs while objectifying cattle
+  note: Animal objectification with cultural insensitivity — trivializes Hindu beliefs while treating cattle as objects
   options:
     word_boundary: true
     categories:
