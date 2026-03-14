@@ -155,6 +155,105 @@
   inconsiderate:
     red herring: animal-violence
 - type: basic
+  note: Directly references killing a cat
+  considerate:
+    curiosity backfired: a
+    being nosy caused trouble: a
+    curiosity led to trouble: a
+  inconsiderate:
+    curiosity killed the cat: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Graphic slaughter imagery — decapitating a chicken
+  considerate:
+    in a panic: a
+    running around chaotically: a
+    in complete disarray: a
+  inconsiderate:
+    like a chicken with its head cut off: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: References killing and cooking a goose
+  considerate:
+    you're in trouble: a
+    your fate is sealed: a
+    it's over for you: a
+  inconsiderate:
+    your goose is cooked: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: References feeding a person to wolves
+  considerate:
+    abandon to criticism: a
+    leave to face hostility alone: a
+    sacrifice someone: a
+  inconsiderate:
+    throw someone to the wolves: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: References hooking fish — fishing kills fish
+  considerate:
+    completely: a
+    without question: a
+    fell for it entirely: a
+  inconsiderate:
+    hook, line, and sinker: animal-violence
+- type: basic
+  note: References wing-clipping — physical mutilation done to farmed birds
+  considerate:
+    restrict someone's freedom: a
+    limit someone's options: a
+    hold someone back: a
+  inconsiderate:
+    clip someone's wings: animal-violence
+- type: basic
+  note: References overloading a pack animal until injury
+  considerate:
+    the tipping point: a
+    the breaking point: a
+    the final provocation: a
+  inconsiderate:
+    the straw that broke the camel's back: animal-violence
+- type: basic
+  note: References trapping and catching wild birds
+  considerate:
+    a sure thing beats a possibility: a
+    certainty over speculation: a
+  inconsiderate:
+    a bird in the hand is worth two in the bush: animal-violence
+- type: basic
+  note: References eating a killed bird as punishment
+  considerate:
+    admit being wrong: a
+    swallow one's pride: a
+    accept humiliation: a
+  inconsiderate:
+    eat crow: animal-violence
+- type: basic
+  note: References animal fighting
+  considerate:
+    constantly argue: a
+    clash frequently: a
+    have constant conflict: a
+  inconsiderate:
+    fight like cats and dogs: animal-violence
+- type: basic
+  note: References baiting hooks to catch and kill fish
+  considerate:
+    fall for it: a
+    be lured in: a
+    be deceived: a
+  inconsiderate:
+    take the bait: animal-violence
+- type: basic
+  note: References farming chickens as commodity and property
+  considerate:
+    don't assume success prematurely: a
+    wait for confirmed results: a
+    don't get ahead of yourself: a
+  inconsiderate:
+    don't count your chickens before they hatch: animal-violence
+- type: basic
   note: Animal-as-coward insult in comments
   considerate:
     don't hesitate: a
@@ -186,6 +285,22 @@
     engineer: a
   inconsiderate:
     code monkey: animal-violence
+- type: basic
+  note: From badger-baiting — a blood sport where dogs attack captive badgers
+  considerate:
+    pester: a
+    pressure: a
+    harass: a
+  inconsiderate:
+    badger someone: animal-violence
+- type: basic
+  note: From using ferrets to hunt rabbits out of burrows
+  considerate:
+    uncover: a
+    discover: a
+    dig up: a
+  inconsiderate:
+    ferret out: animal-violence
 - type: basic
   note: Infrastructure metaphor — alternatives are technically more precise
   considerate:
@@ -235,7 +350,7 @@
   inconsiderate:
     go on a fishing expedition: animal-violence
 - type: basic
-  note: Both speciesist and culturally insensitive — trivializes Hindu beliefs while objectifying cattle
+  note: Animal objectification with cultural insensitivity — trivializes Hindu beliefs while treating cattle as objects
   considerate:
     unquestioned belief: a
     untouchable topic: a
@@ -288,6 +403,57 @@
   inconsiderate:
     whack-a-mole: animal-violence
 - type: basic
+  note: Commodifies cows — treats living beings as profit generators
+  considerate:
+    profit center: a
+    reliable revenue source: a
+    money maker: a
+  inconsiderate:
+    cash cow: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: References ritual slaughter of lambs
+  considerate:
+    expendable person: a
+    person set up to fail: a
+    someone sacrificed for others: a
+  inconsiderate:
+    sacrificial lamb: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: References a duck in the open, easy to shoot — hunting imagery
+  considerate:
+    easy target: a
+    vulnerable target: a
+    exposed: a
+  inconsiderate:
+    sitting duck: animal-violence
+- type: basic
+  note: References hunting season — the legal period for killing animals
+  considerate:
+    free-for-all: a
+    unrestricted criticism: a
+    no holds barred: a
+  inconsiderate:
+    open season: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: References disposing of farm animals when no longer productive
+  considerate:
+    retire: a
+    phase out: a
+    sunset: a
+  inconsiderate:
+    put out to pasture: animal-violence
+- type: basic
+  note: References a duck that has been shot and killed — hunting
+  considerate:
+    lost cause: a
+    doomed effort: a
+    foregone conclusion: a
+  inconsiderate:
+    dead duck: animal-violence
+- type: basic
   note: Process language — in POSIX context this is standard, in docs alternatives may be clearer
   considerate:
     terminate the process: a
@@ -319,6 +485,15 @@
     halt: a
   inconsiderate:
     abort: animal-violence
+- type: basic
+  note: Euphemism for mass killing of animals — used in wildlife management and farming
+  considerate:
+    remove: a
+    prune: a
+    trim: a
+    filter out: a
+  inconsiderate:
+    cull: animal-violence
 - type: basic
   note: Actively being replaced across the industry — follows existing inclusive naming initiatives
   considerate:
