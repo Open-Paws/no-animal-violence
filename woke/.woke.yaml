@@ -845,3 +845,181 @@ rules:
     word_boundary: true
     categories:
     - animal-violence
+# === Industry Euphemisms ===
+# Source: Common Crawl audit (CC-MAIN-2024-51), 105 euphemism pairs, 240+ domains
+# These terms sanitize animal agriculture practices. Ratios show how much more
+# frequently the euphemism appears vs the direct term in AI training data.
+- name: livestock
+  terms:
+  - livestock
+  alternatives:
+  - farmed animals
+  - animals raised for food
+  severity: warning
+  note: >-
+    Industry commodity framing (24.8:1 ratio vs 'farmed animals' in training data).
+    Defines sentient beings by their commercial function. 'Farmed animals' is
+    factually equivalent and does not erase the subject.
+  options:
+    word_boundary: true
+    categories:
+    - industry-euphemism
+- name: poultry
+  terms:
+  - poultry
+  alternatives:
+  - farmed birds
+  - chickens
+  - chickens and turkeys
+  severity: warning
+  note: >-
+    Industry commodity framing (16.5:1 ratio vs 'farmed birds' in training data).
+    Abstracts individual birds into a bulk commodity term. 'Farmed birds' or the
+    specific species name is more precise.
+  options:
+    word_boundary: true
+    categories:
+    - industry-euphemism
+- name: gestation-crate
+  terms:
+  - gestation crate
+  - gestation crates
+  alternatives:
+  - pregnancy cage
+  - pregnancy cages
+  severity: error
+  note: >-
+    Industry euphemism (15.0:1 ratio vs 'pregnancy cage' in training data).
+    A metal enclosure so small a pregnant sow cannot turn around for her
+    entire 3.5-month pregnancy. 'Pregnancy cage' describes what it actually is.
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+- name: depopulation
+  terms:
+  - depopulation
+  - depopulated
+  - depopulating
+  alternatives:
+  - mass killing
+  - mass culling
+  severity: warning
+  note: >-
+    Industry euphemism (13.9:1 ratio vs 'mass killing' in training data).
+    Used to describe killing entire flocks or herds, typically via gassing,
+    ventilation shutdown, or foam. Suppress in database or population
+    statistics contexts where 'depopulation' means removing data rows.
+  options:
+    word_boundary: true
+    categories:
+    - industry-euphemism
+- name: processing-plant
+  terms:
+  - processing plant
+  - processing plants
+  - processing facility
+  - processing facilities
+  alternatives:
+  - slaughterhouse
+  - slaughterhouses
+  severity: warning
+  note: >-
+    Industry euphemism (34.3:1 ratio vs 'slaughterhouse' in training data).
+    Suppress in chemical, data, or manufacturing contexts. When referring to
+    facilities that kill animals, 'slaughterhouse' is the accurate term.
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+- name: farrowing-crate
+  terms:
+  - farrowing crate
+  - farrowing crates
+  alternatives:
+  - birthing cage
+  - birthing cages
+  severity: error
+  note: >-
+    Industry euphemism. A metal cage that confines a sow during and after birth,
+    preventing her from turning around or reaching her piglets. 'Birthing cage'
+    describes the reality.
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+- name: battery-cage
+  terms:
+  - battery cage
+  - battery cages
+  alternatives:
+  - small wire cage
+  - small wire cages
+  - confined cage
+  - confined cages
+  severity: error
+  note: >-
+    Industry euphemism. Wire enclosures giving each hen less floor space than a
+    sheet of paper (67 sq inches / 432 sq cm). The word 'battery' obscures that
+    this is a tiny cage stacked in rows of thousands.
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+- name: spent-hen
+  terms:
+  - spent hen
+  - spent hens
+  alternatives:
+  - hen killed after egg production declines
+  - discarded hen
+  - discarded hens
+  severity: error
+  note: >-
+    Industry euphemism. 'Spent' frames a living hen as a depleted resource.
+    These hens are typically killed at 18 months (natural lifespan: 8-10 years)
+    when egg production drops below commercial thresholds.
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+- name: humane-slaughter
+  terms:
+  - humane slaughter
+  - humanely slaughtered
+  - humane killing
+  - humanely killed
+  alternatives:
+  - slaughter
+  - slaughtered
+  - killing
+  - killed
+  severity: error
+  note: >-
+    Industry oxymoron. The adjective 'humane' sanitizes the act. USDA
+    'humane slaughter' standards permit bolt guns, electrocution, and gas
+    chambers. The alternative drops the misleading modifier — the act is
+    slaughter regardless of method.
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+- name: broiler
+  terms:
+  - broiler
+  - broilers
+  alternatives:
+  - chicken raised for meat
+  - chickens raised for meat
+  - meat chicken
+  - meat chickens
+  severity: warning
+  note: >-
+    Industry commodity term that defines a living chicken entirely by its
+    commercial purpose. Suppress in kitchen appliance contexts (a broiler is
+    also an oven element). When referring to animals, 'chicken raised for meat'
+    is accurate without reducing the animal to a product category.
+  options:
+    word_boundary: true
+    categories:
+    - industry-euphemism

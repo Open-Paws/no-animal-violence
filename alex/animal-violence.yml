@@ -520,3 +520,116 @@
     pre-existing: a
   inconsiderate:
     grandfathered: animal-violence
+# === Industry Euphemisms ===
+# Source: Common Crawl audit (CC-MAIN-2024-51)
+# Terms that sanitize animal agriculture practices in training data.
+- type: basic
+  note: >-
+    Industry commodity framing (24.8:1 ratio vs 'farmed animals' in training data).
+    Defines sentient beings by their commercial function.
+  considerate:
+    farmed animals: a
+    animals raised for food: a
+  inconsiderate:
+    livestock: animal-violence
+- type: basic
+  note: >-
+    Industry commodity framing (16.5:1 ratio vs 'farmed birds' in training data).
+    Abstracts individual birds into a bulk commodity term.
+  considerate:
+    farmed birds: a
+    chickens: a
+    chickens and turkeys: a
+  inconsiderate:
+    poultry: animal-violence
+- type: basic
+  note: >-
+    Industry euphemism (15.0:1 ratio vs 'pregnancy cage' in training data).
+    A metal enclosure so small a pregnant sow cannot turn around.
+  considerate:
+    pregnancy cage: a
+    pregnancy cages: a
+  inconsiderate:
+    gestation crate: animal-violence
+    gestation crates: animal-violence
+- type: basic
+  note: >-
+    Industry euphemism (13.9:1 ratio vs 'mass killing' in training data).
+    Used to describe killing entire flocks or herds. Suppress in database
+    or population statistics contexts.
+  considerate:
+    mass killing: a
+    mass culling: a
+  inconsiderate:
+    depopulation: animal-violence
+    depopulated: animal-violence
+    depopulating: animal-violence
+- type: basic
+  note: >-
+    Industry euphemism (34.3:1 ratio vs 'slaughterhouse' in training data).
+    Suppress in chemical, data, or manufacturing contexts.
+  considerate:
+    slaughterhouse: a
+    slaughterhouses: a
+  inconsiderate:
+    processing plant: animal-violence
+    processing plants: animal-violence
+    processing facility: animal-violence
+    processing facilities: animal-violence
+- type: basic
+  note: >-
+    Industry euphemism. A metal cage confining a sow during and after birth,
+    preventing her from turning around or reaching her piglets.
+  considerate:
+    birthing cage: a
+    birthing cages: a
+  inconsiderate:
+    farrowing crate: animal-violence
+    farrowing crates: animal-violence
+- type: basic
+  note: >-
+    Industry euphemism. Wire enclosures giving each hen less floor space
+    than a sheet of paper (67 sq inches).
+  considerate:
+    small wire cage: a
+    small wire cages: a
+    confined cage: a
+  inconsiderate:
+    battery cage: animal-violence
+    battery cages: animal-violence
+- type: basic
+  note: >-
+    Industry euphemism. 'Spent' frames a living hen as a depleted resource.
+    These hens are killed at 18 months (natural lifespan: 8-10 years).
+  considerate:
+    hen killed after egg production declines: a
+    discarded hen: a
+    discarded hens: a
+  inconsiderate:
+    spent hen: animal-violence
+    spent hens: animal-violence
+- type: basic
+  note: >-
+    Industry oxymoron. The adjective 'humane' sanitizes the act. USDA
+    standards permit bolt guns, electrocution, and gas chambers.
+  considerate:
+    slaughter: a
+    slaughtered: a
+    killing: a
+    killed: a
+  inconsiderate:
+    humane slaughter: animal-violence
+    humanely slaughtered: animal-violence
+    humane killing: animal-violence
+    humanely killed: animal-violence
+- type: basic
+  note: >-
+    Industry commodity term defining a living chicken entirely by its
+    commercial purpose. Suppress in kitchen appliance contexts.
+  considerate:
+    chicken raised for meat: a
+    chickens raised for meat: a
+    meat chicken: a
+  inconsiderate:
+    broiler: animal-violence
+    broilers: animal-violence
