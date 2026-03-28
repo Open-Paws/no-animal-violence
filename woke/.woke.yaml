@@ -929,7 +929,7 @@ rules:
     Suppress in chemical, data, or manufacturing contexts. When referring to
     facilities that kill animals, 'slaughterhouse' is the accurate term.
   options:
-    word_boundary: false
+    word_boundary: true
     categories:
     - industry-euphemism
 - name: farrowing-crate
