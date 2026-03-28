@@ -17,6 +17,7 @@ By default, looks for sibling directories:
 
 import argparse
 import json
+import logging
 import os
 import re
 import sys
@@ -24,6 +25,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 import yaml
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -233,7 +236,8 @@ def check_semgrep(canonical: list[CanonicalRule], repos_dir: Path) -> list[Drift
     for entry in data.get("rules", []):
         rule_id = entry.get("id", "")
         # Extract the short name from the ID (e.g., "animal-violence.kill-two-birds" -> "kill-two-birds")
-        short_name = rule_id.replace("animal-violence.", "")
+        prefix = "animal-violence."
+        short_name = rule_id[len(prefix):] if rule_id.startswith(prefix) else rule_id
         pattern = entry.get("pattern-regex", "")
         alt = entry.get("metadata", {}).get("alternative", "")
         semgrep_rules[short_name] = {
@@ -313,8 +317,8 @@ def check_vale(canonical: list[CanonicalRule], repos_dir: Path) -> list[DriftFin
                         clean_term = re.sub(r"\?\:", "", clean_term)
                         clean_term = re.sub(r"[?+*]", "", clean_term)
                         vale_terms[clean_term] = alt.lower() if isinstance(alt, str) else str(alt).lower()
-            except Exception:
-                pass
+            except Exception as exc:
+                logger.debug("Failed to parse Vale file %s: %s", yml_file, exc)
 
         # Check each canonical rule
         for rule in canonical:
@@ -353,9 +357,9 @@ def run_check(repo_dir: Path, repos_dir: Path) -> DriftReport:
     # ESLint
     eslint_findings = check_eslint(canonical, repos_dir)
     report.findings.extend(eslint_findings)
-    eslint_dir = repos_dir / "eslint-plugin-no-animal-violence" / "lib" / "rules" / "no-violent-language.js"
-    if eslint_dir.exists():
-        content = eslint_dir.read_text()
+    eslint_file = repos_dir / "eslint-plugin-no-animal-violence" / "lib" / "rules" / "no-violent-language.js"
+    if eslint_file.exists():
+        content = eslint_file.read_text()
         report.downstream_counts["eslint"] = len(re.findall(r'\["[^"]+",\s*"[^"]+"', content))
 
     # Semgrep
@@ -379,8 +383,8 @@ def run_check(repo_dir: Path, repos_dir: Path) -> DriftReport:
                     data = yaml.safe_load(f)
                 if data and "swap" in data:
                     count += len(data["swap"])
-            except Exception:
-                pass
+            except Exception as exc:
+                logger.debug("Failed to parse Vale file %s: %s", yml_file, exc)
         report.downstream_counts["vale"] = count
 
     return report
