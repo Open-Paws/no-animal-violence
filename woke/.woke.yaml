@@ -971,9 +971,9 @@ rules:
   - spent hen
   - spent hens
   alternatives:
-  - hen killed after egg production declines
   - discarded hen
   - discarded hens
+  - hen killed after egg production declines
   severity: error
   note: >-
     Industry euphemism. 'Spent' frames a living hen as a depleted resource.
