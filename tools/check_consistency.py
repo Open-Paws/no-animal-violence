@@ -18,7 +18,6 @@ By default, looks for sibling directories:
 import argparse
 import json
 import logging
-import os
 import re
 import sys
 from dataclasses import dataclass, field
@@ -108,8 +107,19 @@ class DriftReport:
 def load_canonical(repo_dir: Path) -> list[CanonicalRule]:
     """Load canonical rules from woke/.woke.yaml."""
     woke_path = repo_dir / "woke" / ".woke.yaml"
-    with open(woke_path) as f:
-        data = yaml.safe_load(f)
+    try:
+        with open(woke_path) as f:
+            data = yaml.safe_load(f)
+    except FileNotFoundError:
+        logger.error("Canonical rules file not found: %s", woke_path)
+        return []
+    except yaml.YAMLError as exc:
+        logger.error("Failed to parse canonical rules %s: %s", woke_path, exc)
+        return []
+
+    if not isinstance(data, dict):
+        logger.error("Canonical rules file is not a valid YAML mapping: %s", woke_path)
+        return []
 
     rules = []
     for entry in data.get("rules", []):
@@ -228,8 +238,17 @@ def check_semgrep(canonical: list[CanonicalRule], repos_dir: Path) -> list[Drift
         ))
         return findings
 
-    with open(generic_file) as f:
-        data = yaml.safe_load(f)
+    try:
+        with open(generic_file) as f:
+            data = yaml.safe_load(f)
+    except yaml.YAMLError as exc:
+        findings.append(DriftFinding(
+            downstream="semgrep",
+            rule_name="*",
+            kind="missing",
+            detail=f"Failed to parse Semgrep rules {generic_file}: {exc}",
+        ))
+        return findings
 
     # Extract Semgrep rule IDs and their regex patterns
     semgrep_rules = {}
@@ -299,13 +318,11 @@ def check_vale(canonical: list[CanonicalRule], repos_dir: Path) -> list[DriftFin
             ))
             continue
 
-        # Find all Vale YAML files (skip meta.json, README)
+        # Find all Vale YAML files
         vale_terms = {}
         label = f"vale ({vale_dir.name})"
 
         for yml_file in vale_dir.rglob("*.yml"):
-            if yml_file.name == "meta.json":
-                continue
             try:
                 with open(yml_file) as f:
                     data = yaml.safe_load(f)
@@ -317,7 +334,7 @@ def check_vale(canonical: list[CanonicalRule], repos_dir: Path) -> list[DriftFin
                         clean_term = re.sub(r"\?\:", "", clean_term)
                         clean_term = re.sub(r"[?+*]", "", clean_term)
                         vale_terms[clean_term] = alt.lower() if isinstance(alt, str) else str(alt).lower()
-            except Exception as exc:
+            except (yaml.YAMLError, OSError) as exc:
                 logger.debug("Failed to parse Vale file %s: %s", yml_file, exc)
 
         # Check each canonical rule
@@ -367,9 +384,12 @@ def run_check(repo_dir: Path, repos_dir: Path) -> DriftReport:
     report.findings.extend(semgrep_findings)
     semgrep_file = repos_dir / "semgrep-rules-no-animal-violence" / "rules" / "animal-violence-generic.yaml"
     if semgrep_file.exists():
-        with open(semgrep_file) as f:
-            data = yaml.safe_load(f)
-        report.downstream_counts["semgrep (generic)"] = len(data.get("rules", []))
+        try:
+            with open(semgrep_file) as f:
+                data = yaml.safe_load(f)
+            report.downstream_counts["semgrep (generic)"] = len(data.get("rules", []))
+        except yaml.YAMLError as exc:
+            logger.debug("Failed to parse Semgrep file for count: %s", exc)
 
     # Vale
     vale_findings = check_vale(canonical, repos_dir)
@@ -383,7 +403,7 @@ def run_check(repo_dir: Path, repos_dir: Path) -> DriftReport:
                     data = yaml.safe_load(f)
                 if data and "swap" in data:
                     count += len(data["swap"])
-            except Exception as exc:
+            except (yaml.YAMLError, OSError) as exc:
                 logger.debug("Failed to parse Vale file %s: %s", yml_file, exc)
         report.downstream_counts["vale"] = count
 
