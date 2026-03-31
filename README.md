@@ -41,6 +41,10 @@ This work is grounded in peer-reviewed research documenting speciesist bias in l
 - Hagendorff et al. (2025). "SpeciesismBench: A benchmark for evaluating speciesist bias in large language models." arXiv:2508.11534.
 - Leach et al. (2023). "Speciesism in everyday language." *British Journal of Social Psychology*.
 
+## Adding to Your Project
+
+See **[INTEGRATION.md](INTEGRATION.md)** for a single guide that covers all nine tools — from a 5-minute GitHub Action setup to the full local + CI stack in 15 minutes.
+
 ## License
 
 MIT
