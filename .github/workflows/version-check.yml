@@ -6,6 +6,9 @@ name: Version Compatibility Check
 on:
   push:
     branches: [main]
+  schedule:
+    # Run every Monday at 09:00 UTC to catch tools that drift without a push
+    - cron: '0 9 * * 1'
   workflow_dispatch:
 
 jobs:
@@ -139,8 +142,20 @@ jobs:
           if (( OUTDATED > 0 )); then
             echo "RESULT: $OUTDATED stale pin(s) found. Update downstream repos to reference $CORE_TAG."
             echo "See VERSIONS.md for the compatibility matrix and update instructions."
+            # Write a job summary for GitHub UI
+            {
+              echo "## Version Check Failed"
+              echo ""
+              echo "$OUTDATED downstream tool(s) pin an outdated version of the core rules."
+              echo "Update them to reference \`$CORE_TAG\` and see [VERSIONS.md](../blob/main/VERSIONS.md) for instructions."
+            } >> "$GITHUB_STEP_SUMMARY"
             exit 1
           else
             echo "RESULT: All checked pins are consistent with core rules version $CORE_TAG."
+            {
+              echo "## Version Check Passed"
+              echo ""
+              echo "All downstream tool pins are consistent with core rules version \`$CORE_TAG\`."
+            } >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
