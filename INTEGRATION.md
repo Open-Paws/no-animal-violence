@@ -1,6 +1,6 @@
 # Integration Guide — no-animal-violence Suite
 
-Add the full speciesist language detection stack to any project. The ecosystem has nine tools: this guide gets all of them working in 15 minutes without reading nine separate READMEs.
+Add the full speciesist language detection stack to any project. The ecosystem has eight tools: this guide gets all of them working in 15 minutes without reading eight separate READMEs.
 
 **Jump to:**
 - [5-minute quick start](#5-minute-quick-start) — just the GitHub Action, nothing local
@@ -428,11 +428,13 @@ os.abort(); // eslint-disable-line no-animal-violence/no-speciesist-language
 The "canary" idiom is flagged at `warning` level in most tools. If your project's core subject matter is deployment patterns, disable the specific rule:
 
 In `.vale.ini`:
+
 ```ini
 NoAnimalViolence.TechTerminology = NO
 ```
 
 In `eslint.config.js`:
+
 ```js
 // For a specific file
 /* eslint-disable no-animal-violence/no-speciesist-language */
@@ -498,7 +500,7 @@ hooks:
 | `danger-plugin-no-animal-violence` | 0.1.0 | danger ≥10.0.0, Node.js ≥16 |
 | `vscode-no-animal-violence` | 0.1.0 | VS Code ≥1.74.0 |
 
-**Tool interoperability:** all tools draw from the same canonical dictionary (maintained in this repo). There is no version skew between tools — all rules refer back to `woke/.woke.yaml`, `alex/`, and `vale/Speciesism/` in this repository.
+**Tool interoperability:** all tools detect the same phrases and suggest the same alternatives, ensuring consistency across the toolchain. Each tool has its own rule format (woke YAML, Vale substitution files, ESLint AST rules, etc.), but all derive from the same canonical phrase list maintained in this repository under `woke/.woke.yaml`, `alex/`, and `vale/Speciesism/`. The tools do not import each other's configs — they independently implement the same concepts in their native formats.
 
 **Semgrep version note:** the CI integration uses `returntocorp/semgrep-action@v1`. If your org uses Semgrep App (managed), substitute with your org's configured action.
 
