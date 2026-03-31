@@ -47,6 +47,7 @@ version_gte() {
   local a="$1" b="$2"
   # Strip leading 'v'
   a="${a#v}"; b="${b#v}"
+  local a_maj a_min a_pat b_maj b_min b_pat
   IFS='.' read -r a_maj a_min a_pat <<<"$a"
   IFS='.' read -r b_maj b_min b_pat <<<"$b"
   a_maj="${a_maj:-0}"; a_min="${a_min:-0}"; a_pat="${a_pat:-0}"
@@ -64,6 +65,7 @@ version_gte() {
 more_than_one_minor_behind() {
   local installed="$1" latest="$2"
   installed="${installed#v}"; latest="${latest#v}"
+  local i_maj i_min l_maj l_min
   IFS='.' read -r i_maj i_min _ <<<"$installed"
   IFS='.' read -r l_maj l_min _ <<<"$latest"
   i_maj="${i_maj:-0}"; i_min="${i_min:-0}"
@@ -213,25 +215,21 @@ check_tool "Danger Plugin"      "danger-plugin-no-animal-violence"  "$(installed
 OUTDATED=0
 
 if $JSON_OUTPUT; then
-  python3 - <<'PYEOF'
-import json, os, sys
-
-tools = [
-  "ESLint Plugin", "VS Code Extension", "Semgrep Rules", "Vale Package",
-  "Pre-commit Hook", "GitHub Action", "Reviewdog Runner", "Danger Plugin"
-]
-
-# Read from environment — bash exports set before calling python
-result = {}
-for t in tools:
-  key = t.replace(" ", "_").upper()
-  result[t] = {
-    "installed": os.environ.get(f"INSTALLED_{key}", ""),
-    "latest":    os.environ.get(f"LATEST_{key}", ""),
-    "status":    os.environ.get(f"STATUS_{key}", ""),
-  }
-print(json.dumps(result, indent=2))
-PYEOF
+  # Build JSON directly from bash associative arrays using printf
+  printf '{\n'
+  TOOLS_JSON=("ESLint Plugin" "VS Code Extension" "Semgrep Rules" "Vale Package" "Pre-commit Hook" "GitHub Action" "Reviewdog Runner" "Danger Plugin")
+  last_idx=$(( ${#TOOLS_JSON[@]} - 1 ))
+  for idx in "${!TOOLS_JSON[@]}"; do
+    label="${TOOLS_JSON[$idx]}"
+    comma=$( (( idx < last_idx )) && echo ',' || echo '' )
+    printf '  "%s": {"installed": "%s", "latest": "%s", "status": "%s"}%s\n' \
+      "$label" \
+      "${INSTALLED_VERSIONS[$label]:-}" \
+      "${LATEST_VERSIONS[$label]:-}" \
+      "${STATUS[$label]:-}" \
+      "$comma"
+  done
+  printf '}\n'
 else
   echo ""
   echo "no-animal-violence tool version check"
