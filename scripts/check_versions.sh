@@ -214,13 +214,20 @@ check_tool "Danger Plugin"      "danger-plugin-no-animal-violence"  "$(installed
 
 OUTDATED=0
 
+# Count outdated tools once (shared by both output modes)
+TOOLS_LIST=("ESLint Plugin" "VS Code Extension" "Semgrep Rules" "Vale Package" "Pre-commit Hook" "GitHub Action" "Reviewdog Runner" "Danger Plugin")
+for _label in "${TOOLS_LIST[@]}"; do
+  if [[ "${STATUS[$_label]:-}" == "outdated" ]]; then
+    OUTDATED=$(( OUTDATED + 1 ))
+  fi
+done
+
 if $JSON_OUTPUT; then
   # Build JSON directly from bash associative arrays using printf
   printf '{\n'
-  TOOLS_JSON=("ESLint Plugin" "VS Code Extension" "Semgrep Rules" "Vale Package" "Pre-commit Hook" "GitHub Action" "Reviewdog Runner" "Danger Plugin")
-  last_idx=$(( ${#TOOLS_JSON[@]} - 1 ))
-  for idx in "${!TOOLS_JSON[@]}"; do
-    label="${TOOLS_JSON[$idx]}"
+  last_idx=$(( ${#TOOLS_LIST[@]} - 1 ))
+  for idx in "${!TOOLS_LIST[@]}"; do
+    label="${TOOLS_LIST[$idx]}"
     comma=$( (( idx < last_idx )) && echo ',' || echo '' )
     printf '  "%s": {"installed": "%s", "latest": "%s", "status": "%s"}%s\n' \
       "$label" \
@@ -230,6 +237,7 @@ if $JSON_OUTPUT; then
       "$comma"
   done
   printf '}\n'
+  (( OUTDATED == 0 )) && exit 0 || exit 1
 else
   echo ""
   echo "no-animal-violence tool version check"
@@ -237,9 +245,7 @@ else
   printf "%-22s %-18s %-18s %s\n" "Tool" "Installed" "Latest" "Status"
   printf "%-22s %-18s %-18s %s\n" "----" "---------" "------" "------"
 
-  TOOLS=("ESLint Plugin" "VS Code Extension" "Semgrep Rules" "Vale Package" "Pre-commit Hook" "GitHub Action" "Reviewdog Runner" "Danger Plugin")
-
-  for label in "${TOOLS[@]}"; do
+  for label in "${TOOLS_LIST[@]}"; do
     installed="${INSTALLED_VERSIONS[$label]}"
     latest="${LATEST_VERSIONS[$label]}"
     st="${STATUS[$label]}"
@@ -247,7 +253,7 @@ else
     case "$st" in
       ok)            status_str="${GREEN}up to date${RESET}" ;;
       warn)          status_str="${YELLOW}behind (< 1 minor)${RESET}" ;;
-      outdated)      status_str="${RED}OUTDATED (> 1 minor behind)${RESET}"; OUTDATED=1 ;;
+      outdated)      status_str="${RED}OUTDATED (> 1 minor behind)${RESET}" ;;
       not_installed) status_str="not installed" ;;
       *)             status_str="unknown" ;;
     esac
