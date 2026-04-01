@@ -452,12 +452,17 @@ hooks:
 
 **"master" in git branch names or legacy API references**
 
-The Semgrep generic rules may match `master` in references to `origin/master` in documentation. Suppress with Vale's inline comment syntax:
+The Semgrep generic rules may match `master` in references to `origin/master` in documentation. Suppress with Semgrep's inline suppression comment:
 
-```markdown
-<!-- vale NoAnimalViolence.TechTerminology = NO -->
-See `git checkout master` in the legacy docs.
-<!-- vale NoAnimalViolence.TechTerminology = YES -->
+```python
+branch = "origin/master"  # nosemgrep: no-animal-violence.generic.master-replica
+```
+
+For a block of lines, place the suppression comment on each affected line or use a `nosemgrep` comment without a rule ID to suppress all findings on that line:
+
+```python
+# nosemgrep
+branch = "origin/master"
 ```
 
 **"red herring" in academic or legal writing**
