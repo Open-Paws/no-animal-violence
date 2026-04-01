@@ -178,9 +178,9 @@ semgrep --config /tmp/nav-semgrep-rules/rules/animal-violence-go.yaml --autofix 
 - uses: returntocorp/semgrep-action@v1
   with:
     config: >-
-      https://github.com/Open-Paws/semgrep-rules-no-animal-violence/blob/main/rules/animal-violence-generic.yaml
-      https://github.com/Open-Paws/semgrep-rules-no-animal-violence/blob/main/rules/animal-violence-javascript.yaml
-      https://github.com/Open-Paws/semgrep-rules-no-animal-violence/blob/main/rules/animal-violence-python.yaml
+      https://raw.githubusercontent.com/Open-Paws/semgrep-rules-no-animal-violence/master/rules/animal-violence-generic.yaml
+      https://raw.githubusercontent.com/Open-Paws/semgrep-rules-no-animal-violence/master/rules/animal-violence-javascript.yaml
+      https://raw.githubusercontent.com/Open-Paws/semgrep-rules-no-animal-violence/master/rules/animal-violence-python.yaml
 ```
 
 ### 5. GitHub Action (CI/CD Gate)
@@ -384,9 +384,9 @@ jobs:
       - uses: returntocorp/semgrep-action@v1
         with:
           config: >-
-            https://github.com/Open-Paws/semgrep-rules-no-animal-violence/blob/main/rules/animal-violence-generic.yaml
-            https://github.com/Open-Paws/semgrep-rules-no-animal-violence/blob/main/rules/animal-violence-javascript.yaml
-            https://github.com/Open-Paws/semgrep-rules-no-animal-violence/blob/main/rules/animal-violence-python.yaml
+            https://raw.githubusercontent.com/Open-Paws/semgrep-rules-no-animal-violence/master/rules/animal-violence-generic.yaml
+            https://raw.githubusercontent.com/Open-Paws/semgrep-rules-no-animal-violence/master/rules/animal-violence-javascript.yaml
+            https://raw.githubusercontent.com/Open-Paws/semgrep-rules-no-animal-violence/master/rules/animal-violence-python.yaml
 
   reviewdog-scan:
     name: Reviewdog Inline Annotations
@@ -495,7 +495,7 @@ hooks:
 | `no-animal-violence-action` | v1 | GitHub Actions runner (ubuntu-latest) |
 | `eslint-plugin-no-animal-violence` | 0.1.0 | ESLint ≥7.0.0 (flat config: ESLint ≥8.21.0) |
 | `vale-no-animal-violence` | latest release | Vale ≥2.0.0 |
-| `semgrep-rules-no-animal-violence` | main | semgrep ≥1.0.0 |
+| `semgrep-rules-no-animal-violence` | master | semgrep ≥1.0.0 |
 | `reviewdog-no-animal-violence` | v1 | Python 3.x, reviewdog v0.14+ |
 | `danger-plugin-no-animal-violence` | 0.1.0 | danger ≥10.0.0, Node.js ≥16 |
 | `vscode-no-animal-violence` | 0.1.0 | VS Code ≥1.74.0 |
