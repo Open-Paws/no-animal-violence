@@ -1,0 +1,161 @@
+name: Version Compatibility Check
+
+# Runs on push to main to verify that all downstream tool repos reference
+# the current rules version. A stale tool silently misses new violations.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Run every Monday at 09:00 UTC to catch tools that drift without a push
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  version-check:
+    name: Check downstream tool versions
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Determine current core rules version
+        id: core-version
+        run: |
+          # Prefer a git tag on the current commit; fall back to the most recent tag.
+          TAG=$(git describe --tags --exact-match 2>/dev/null || git describe --tags --abbrev=0 2>/dev/null || echo "untagged")
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Core rules version: $TAG"
+
+      - name: Check tool repos for pinned rules version
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CORE_TAG: ${{ steps.core-version.outputs.tag }}
+        run: |
+          set +e  # collect all results before deciding exit code
+
+          OUTDATED=0
+
+          check_npm_version() {
+            local label="$1"
+            local repo="$2"
+
+            local content
+            content=$(gh api "repos/Open-Paws/${repo}/contents/package.json" \
+              --jq '.content' 2>/dev/null | base64 -d 2>/dev/null) || { echo "  SKIP  $label — could not read package.json"; return; }
+
+            local ver
+            ver=$(echo "$content" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('version','?'))" 2>/dev/null)
+            echo "  $label: $ver"
+          }
+
+          check_pip_version() {
+            local label="$1"
+            local repo="$2"
+
+            local content
+            content=$(gh api "repos/Open-Paws/${repo}/contents/setup.py" \
+              --jq '.content' 2>/dev/null | base64 -d 2>/dev/null) || { echo "  SKIP  $label — could not read setup.py"; return; }
+
+            local ver
+            ver=$(echo "$content" | grep -oP "version\s*=\s*['\"]\\K[^'\"]*" | head -1)
+            echo "  $label: ${ver:-?}"
+          }
+
+          check_action_version() {
+            local label="$1"
+            local repo="$2"
+
+            local content
+            content=$(gh api "repos/Open-Paws/${repo}/contents/action.yml" \
+              --jq '.content' 2>/dev/null | base64 -d 2>/dev/null) || { echo "  SKIP  $label — could not read action.yml"; return; }
+
+            # Look for a version comment or tag reference inside the action
+            local ver
+            ver=$(echo "$content" | grep -oP "(?i)version[:\s]+\K[0-9]+\.[0-9]+\.[0-9]+" | head -1 || echo "no version field")
+            echo "  $label: ${ver}"
+          }
+
+          echo "=== Downstream tool versions ==="
+          check_npm_version "eslint-plugin-no-animal-violence"  "eslint-plugin-no-animal-violence"
+          check_npm_version "vscode-no-animal-violence"         "vscode-no-animal-violence"
+          check_npm_version "danger-plugin-no-animal-violence"  "danger-plugin-no-animal-violence"
+          check_pip_version "no-animal-violence-pre-commit"     "no-animal-violence-pre-commit"
+          check_action_version "no-animal-violence-action"      "no-animal-violence-action"
+          check_action_version "reviewdog-no-animal-violence"   "reviewdog-no-animal-violence"
+
+          echo ""
+          echo "=== Checking GitHub Action workflow pins in downstream repos ==="
+
+          check_action_pin() {
+            local label="$1"
+            local repo="$2"
+            local workflows
+
+            workflows=$(gh api "repos/Open-Paws/${repo}/contents/.github/workflows" \
+              --jq '.[].name' 2>/dev/null) || { echo "  SKIP  $label — no workflows found"; return; }
+
+            local stale_count=0
+            while IFS= read -r wf; do
+              local wf_content
+              wf_content=$(gh api "repos/Open-Paws/${repo}/contents/.github/workflows/${wf}" \
+                --jq '.content' 2>/dev/null | base64 -d 2>/dev/null) || continue
+
+              # Find any pins to this (no-animal-violence) repo's action refs
+              local pins
+              pins=$(echo "$wf_content" | grep -oP "Open-Paws/no-animal-violence[^@]*@\K[^\s]+" || true)
+
+              while IFS= read -r pin; do
+                [[ -z "$pin" ]] && continue
+                echo "  $label / $wf uses no-animal-violence@${pin}"
+                if [[ "$CORE_TAG" != "untagged" && "$pin" != "$CORE_TAG" ]]; then
+                  echo "    WARNING: pin $pin does not match current core tag $CORE_TAG"
+                  stale_count=$(( stale_count + 1 ))
+                fi
+              done <<<"$pins"
+            done <<<"$workflows"
+
+            if (( stale_count > 0 )); then
+              OUTDATED=$(( OUTDATED + stale_count ))
+            fi
+          }
+
+          REPOS=(
+            "eslint-plugin-no-animal-violence"
+            "vscode-no-animal-violence"
+            "semgrep-rules-no-animal-violence"
+            "vale-no-animal-violence"
+            "no-animal-violence-pre-commit"
+            "no-animal-violence-action"
+            "reviewdog-no-animal-violence"
+            "danger-plugin-no-animal-violence"
+          )
+
+          for r in "${REPOS[@]}"; do
+            check_action_pin "$r" "$r"
+          done
+
+          echo ""
+          if (( OUTDATED > 0 )); then
+            echo "RESULT: $OUTDATED stale pin(s) found. Update downstream repos to reference $CORE_TAG."
+            echo "See VERSIONS.md for the compatibility matrix and update instructions."
+            # Write a job summary for GitHub UI
+            {
+              echo "## Version Check Failed"
+              echo ""
+              echo "$OUTDATED downstream tool(s) pin an outdated version of the core rules."
+              echo "Update them to reference \`$CORE_TAG\` and see [VERSIONS.md](../blob/main/VERSIONS.md) for instructions."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          else
+            echo "RESULT: All checked pins are consistent with core rules version $CORE_TAG."
+            {
+              echo "## Version Check Passed"
+              echo ""
+              echo "All downstream tool pins are consistent with core rules version \`$CORE_TAG\`."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
