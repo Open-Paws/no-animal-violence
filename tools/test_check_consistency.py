@@ -8,9 +8,7 @@ from pathlib import Path
 from unittest import TestCase, main
 
 import yaml
-
 from check_consistency import (
-    CanonicalRule,
     DriftFinding,
     DriftReport,
     check_eslint,
