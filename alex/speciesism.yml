@@ -247,3 +247,174 @@
     dogfooding: speciesism
     eating your own dogfood: speciesism
     eat your own dogfood: speciesism
+
+- type: basic
+  note: >-
+    This phrase uses a predator-prey relationship as the archetype of deception.
+    Alternatives describe the concept directly without animal framing.
+  considerate:
+    deceptive actor: a
+    bad actor in disguise: a
+    hidden threat: a
+  inconsiderate:
+    wolf in sheep's clothing: speciesism
+    wolves in sheep's clothing: speciesism
+
+- type: basic
+  note: >-
+    This phrase references trading horses as commodities. Alternatives describe
+    the negotiation pattern without the animal framing.
+  considerate:
+    political bargaining: a
+    transactional negotiation: a
+    trading favors: a
+  inconsiderate:
+    horse trading: speciesism
+    horse-trading: speciesism
+
+- type: basic
+  note: >-
+    This phrase uses a snake as a metaphor for treachery. Alternatives describe
+    the threat directly.
+  considerate:
+    hidden threat: a
+    concealed adversary: a
+    lurking danger: a
+  inconsiderate:
+    snake in the grass: speciesism
+
+- type: basic
+  note: >-
+    This phrase uses a weasel as a metaphor for evasiveness. Alternatives
+    describe the language problem precisely.
+  considerate:
+    deliberately vague language: a
+    evasive language: a
+    non-committal phrasing: a
+  inconsiderate:
+    weasel words: speciesism
+    weasel word: speciesism
+
+- type: basic
+  note: >-
+    This phrase references a predator killing farmed birds to describe conflicted
+    oversight. Alternatives describe the structural conflict directly.
+  considerate:
+    conflicted oversight: a
+    self-interested regulator: a
+  inconsiderate:
+    fox guarding the henhouse: speciesism
+    fox in the henhouse: speciesism
+
+- type: basic
+  note: >-
+    This phrase references slaughtered and chilled poultry to describe abrupt
+    cessation. Alternatives describe the action directly.
+  considerate:
+    abrupt cessation: a
+    stop immediately: a
+    quit all at once: a
+  inconsiderate:
+    cold turkey: speciesism
+    go cold turkey: speciesism
+
+- type: basic
+  note: >-
+    This phrase references stealing a goat. Alternatives describe the irritation
+    directly.
+  considerate:
+    annoy you: a
+    irritate you: a
+    get under your skin: a
+  inconsiderate:
+    get your goat: speciesism
+    get my goat: speciesism
+    got my goat: speciesism
+
+- type: basic
+  note: >-
+    This phrase references farmed cattle returning from pasture. Alternatives
+    communicate the indefinite timeframe directly.
+  considerate:
+    indefinitely: a
+    for a very long time: a
+    without end: a
+  inconsiderate:
+    until the cows come home: speciesism
+
+- type: basic
+  note: >-
+    This phrase references farm animals in an implausibility idiom. Alternatives
+    describe the deception without the animal framing.
+  considerate:
+    fabricated story: a
+    implausible claim: a
+    tall tale: a
+  inconsiderate:
+    cock-and-bull story: speciesism
+    cock and bull story: speciesism
+
+- type: basic
+  note: >-
+    Variant of 'throw someone to the wolves' — also covers the form without
+    an explicit pronoun.
+  considerate:
+    abandon to criticism: a
+    leave to face hostility alone: a
+  inconsiderate:
+    throw to the wolves: speciesism
+    thrown to the wolves: speciesism
+
+- type: basic
+  note: >-
+    Standalone variant of 'there are bigger fish to fry' — catches the shortened
+    form used in technical writing.
+  considerate:
+    more important matters to address: a
+    higher priorities: a
+  inconsiderate:
+    bigger fish to fry: speciesism
+
+# === Industry Euphemisms ===
+
+- type: basic
+  note: >-
+    Applies agricultural crop-harvest framing to killing animals. 'Harvesting'
+    obscures that living beings are being killed.
+  considerate:
+    catching fish: a
+    fishing: a
+    taking animals: a
+  inconsiderate:
+    harvesting animals: industry-euphemism
+    harvest animals: industry-euphemism
+    fish harvest: industry-euphemism
+    harvesting fish: industry-euphemism
+
+- type: basic
+  note: >-
+    Welfare-washing: 'free-range' implies humane conditions but still involves
+    confinement and slaughter. Use only when quoting certification standards
+    directly; otherwise describe actual conditions.
+  considerate:
+    eggs from hens with outdoor access: a
+    chicken with outdoor access: a
+  inconsiderate:
+    free-range eggs: industry-euphemism
+    free range eggs: industry-euphemism
+    free-range chicken: industry-euphemism
+    free range chicken: industry-euphemism
+
+- type: basic
+  note: >-
+    Welfare-washing: 'cage-free' implies humane conditions but hens may still
+    be confined at high density indoors. Use only when quoting certification
+    standards directly; otherwise describe actual conditions.
+  considerate:
+    eggs from uncaged hens: a
+    hens without cages: a
+  inconsiderate:
+    cage-free eggs: industry-euphemism
+    cage free eggs: industry-euphemism
+    cage-free hens: industry-euphemism
+    cage free hens: industry-euphemism
