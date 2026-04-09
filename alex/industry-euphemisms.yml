@@ -1,0 +1,67 @@
+# Industry euphemism patterns for retext-equality / alex
+# Category: industry-euphemism
+#
+# These patterns detect welfare-washing language and agricultural euphemisms
+# that obscure the reality of animal exploitation. Alternatives are factually
+# accurate and consistent with movement-standard terminology.
+#
+# This file covers three euphemism categories extracted from speciesism.yml
+# to maintain clean category separation (one file = one concern).
+#
+# Academic sources:
+# - Hagendorff, Bossert, Tse & Singer (2023), "Speciesist bias in AI", AI and Ethics
+
+# === Harvest / Kill Euphemisms ===
+
+- type: basic
+  note: >-
+    Applies agricultural crop-harvest framing to killing animals. 'Harvesting'
+    obscures that living beings are being killed. Alternatives align with
+    Vale's IndustryEuphemisms suggestions for cross-tool consistency.
+  # true-positive:  "The report described harvesting animals as an efficient process."
+  # false-positive: "The fruit harvest attracted workers from across the region." (crop harvest — not animals)
+  considerate:
+    killing animals: a
+    catching and killing fish: a
+    catching fish: a
+  inconsiderate:
+    harvesting animals: industry-euphemism
+    harvest animals: industry-euphemism
+    fish harvest: industry-euphemism
+    harvesting fish: industry-euphemism
+
+# === Free-Range Welfare-Washing ===
+
+- type: basic
+  note: >-
+    Welfare-washing: 'free-range' implies humane conditions but still involves
+    confinement, forced reproduction, and slaughter. Use only when quoting
+    certification standards directly; otherwise describe actual conditions.
+  # true-positive:  "The supermarket stocks free-range eggs alongside conventional ones."
+  # false-positive: "The certification body defines 'free-range' as requiring 4 sq ft of outdoor space per bird." (quoting a standard directly)
+  considerate:
+    eggs from hens with outdoor access: a
+    chicken with outdoor access: a
+  inconsiderate:
+    free-range eggs: industry-euphemism
+    free range eggs: industry-euphemism
+    free-range chicken: industry-euphemism
+    free range chicken: industry-euphemism
+
+# === Cage-Free Welfare-Washing ===
+
+- type: basic
+  note: >-
+    Welfare-washing: 'cage-free' implies humane conditions but hens may still
+    be confined at high density indoors. Use only when quoting certification
+    standards directly; otherwise describe actual conditions.
+  # true-positive:  "The company pledged to source only cage-free eggs by 2025."
+  # false-positive: "Under USDA 'cage-free' certification, hens must have unlimited access to food and water." (quoting a standard directly)
+  considerate:
+    eggs from uncaged hens: a
+    hens without cages: a
+  inconsiderate:
+    cage-free eggs: industry-euphemism
+    cage free eggs: industry-euphemism
+    cage-free hens: industry-euphemism
+    cage free hens: industry-euphemism

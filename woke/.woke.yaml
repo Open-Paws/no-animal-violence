@@ -1004,6 +1004,8 @@ rules:
     word_boundary: true
     categories:
     - animal-violence
+# true-positive:  "Be wary — that consultant is a wolf in sheep's clothing."
+# false-positive: "The fable 'Wolf in Sheep's Clothing' is referenced by its exact title." (direct title quotation)
 - name: wolf-in-sheeps-clothing
   terms:
   - wolf in sheep's clothing
@@ -1019,6 +1021,8 @@ rules:
     word_boundary: false
     categories:
     - animal-violence
+# true-positive:  "The legislation passed only after extensive horse trading between caucuses."
+# false-positive: "Horse trading was a common feature of medieval country fairs." (historical / literal context)
 - name: horse-trading
   terms:
   - horse trading
@@ -1033,6 +1037,8 @@ rules:
     word_boundary: true
     categories:
     - animal-violence
+# true-positive:  "Nobody mentioned the gorilla in the room — the project is six months behind."
+# false-positive: "The gorilla in the enclosure at the zoo was observed using tools." (literal animal reference)
 - name: gorilla-in-the-room
   terms:
   - gorilla in the room
@@ -1045,6 +1051,8 @@ rules:
     word_boundary: false
     categories:
     - animal-violence
+# true-positive:  "Don't trust him — he's a snake in the grass waiting for a chance to betray us."
+# false-positive: "The grass snake is a harmless, non-venomous species common across Europe." (literal species description)
 - name: snake-in-the-grass
   terms:
   - snake in the grass
@@ -1058,6 +1066,8 @@ rules:
     word_boundary: false
     categories:
     - animal-violence
+# true-positive:  "The policy uses weasel words like 'may consider' to avoid any commitment."
+# false-positive: "Theodore Roosevelt introduced the term 'weasel words' in a speech criticising vague political language." (discussing the rhetorical concept — suppress with inline comment)
 - name: weasel-words
   terms:
   - weasel words
@@ -1072,6 +1082,8 @@ rules:
     word_boundary: true
     categories:
     - animal-violence
+# true-positive:  "Letting industry lobbyists write the regulations is the fox guarding the henhouse."
+# false-positive: "The farmer installed an electric fence after a fox got into the henhouse last autumn." (literal agricultural context)
 - name: fox-guarding-the-henhouse
   terms:
   - fox guarding the henhouse
@@ -1087,6 +1099,8 @@ rules:
     word_boundary: false
     categories:
     - animal-violence
+# true-positive:  "She stopped smoking cold turkey after her diagnosis."
+# false-positive: "The harm-reduction guide warns against stopping cold turkey without medical guidance." (clinical / addiction-treatment context — suppress with inline comment)
 - name: cold-turkey
   terms:
   - cold turkey
@@ -1103,6 +1117,8 @@ rules:
     word_boundary: false
     categories:
     - animal-violence
+# true-positive:  "Flaky tests late on a Friday really get my goat."
+# false-positive: "The sanctuary volunteer said the goat gets your full attention from the moment you arrive." (literal animal interaction)
 - name: get-your-goat
   terms:
   - get your goat
@@ -1120,6 +1136,8 @@ rules:
     word_boundary: false
     categories:
     - animal-violence
+# true-positive:  "We could debate this architecture decision until the cows come home."
+# false-positive: "The cows come home each evening; the farmer closes the gate at dusk." (literal farming description)
 - name: until-the-cows-come-home
   terms:
   - until the cows come home
@@ -1133,6 +1151,8 @@ rules:
     word_boundary: false
     categories:
     - animal-violence
+# true-positive:  "The vendor gave us a cock-and-bull story about why the integration failed."
+# false-positive: "The Cock and Bull is the name of the public house at the end of the high street." (proper noun)
 - name: cock-and-bull-story
   terms:
   - cock-and-bull story

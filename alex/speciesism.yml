@@ -252,6 +252,8 @@
   note: >-
     This phrase uses a predator-prey relationship as the archetype of deception.
     Alternatives describe the concept directly without animal framing.
+  # true-positive:  "Be alert — that consultant is a wolf in sheep's clothing."
+  # false-positive: "The fable 'Wolf in Sheep's Clothing' is quoted verbatim here."
   considerate:
     deceptive actor: a
     bad actor in disguise: a
@@ -264,6 +266,8 @@
   note: >-
     This phrase references trading horses as commodities. Alternatives describe
     the negotiation pattern without the animal framing.
+  # true-positive:  "The bill passed only after extensive horse trading between parties."
+  # false-positive: "The historical practice of horse trading was regulated by medieval guilds."
   considerate:
     political bargaining: a
     transactional negotiation: a
@@ -276,6 +280,8 @@
   note: >-
     This phrase uses a snake as a metaphor for treachery. Alternatives describe
     the threat directly.
+  # true-positive:  "Watch out for him — he is a real snake in the grass."
+  # false-positive: "The grass snake is a non-venomous species found across Europe."
   considerate:
     hidden threat: a
     concealed adversary: a
@@ -286,7 +292,11 @@
 - type: basic
   note: >-
     This phrase uses a weasel as a metaphor for evasiveness. Alternatives
-    describe the language problem precisely.
+    describe the language problem precisely. False positive: linguistics or
+    copy-editing docs that discuss the rhetorical concept by name — suppress
+    with an inline comment in those contexts.
+  # true-positive:  "The policy document is full of weasel words like 'may' and 'considers'."
+  # false-positive: "The term 'weasel words' was coined by Theodore Roosevelt in 1916." (discussing the concept)
   considerate:
     deliberately vague language: a
     evasive language: a
@@ -299,6 +309,8 @@
   note: >-
     This phrase references a predator killing farmed birds to describe conflicted
     oversight. Alternatives describe the structural conflict directly.
+  # true-positive:  "Letting the industry self-regulate is like the fox guarding the henhouse."
+  # false-positive: "The farmer built a fence after a fox got into the henhouse last winter."
   considerate:
     conflicted oversight: a
     self-interested regulator: a
@@ -309,7 +321,11 @@
 - type: basic
   note: >-
     This phrase references slaughtered and chilled poultry to describe abrupt
-    cessation. Alternatives describe the action directly.
+    cessation. Alternatives describe the action directly. False positive: medical
+    or addiction-treatment documentation where the phrase is standard clinical
+    shorthand — suppress with an inline comment in those contexts.
+  # true-positive:  "He decided to quit social media cold turkey."
+  # false-positive: "The harm-reduction guide advises against quitting cold turkey without medical support." (clinical context)
   considerate:
     abrupt cessation: a
     stop immediately: a
@@ -322,6 +338,8 @@
   note: >-
     This phrase references stealing a goat. Alternatives describe the irritation
     directly.
+  # true-positive:  "Slow CI pipelines really get my goat."
+  # false-positive: "The sanctuary volunteer said the goat gets your full attention the moment you enter."
   considerate:
     annoy you: a
     irritate you: a
@@ -335,6 +353,8 @@
   note: >-
     This phrase references farmed cattle returning from pasture. Alternatives
     communicate the indefinite timeframe directly.
+  # true-positive:  "We could debate this until the cows come home and still not agree."
+  # false-positive: "The cows come home at dusk and the farmer closes the gate." (literal farming description)
   considerate:
     indefinitely: a
     for a very long time: a
@@ -346,6 +366,8 @@
   note: >-
     This phrase references farm animals in an implausibility idiom. Alternatives
     describe the deception without the animal framing.
+  # true-positive:  "The vendor's explanation was a complete cock-and-bull story."
+  # false-positive: "The village pub sign depicts a cock and bull as its historical emblem." (proper noun / literal)
   considerate:
     fabricated story: a
     implausible claim: a
@@ -358,6 +380,8 @@
   note: >-
     Variant of 'throw someone to the wolves' — also covers the form without
     an explicit pronoun.
+  # true-positive:  "The manager threw the junior developer to the wolves at the client meeting."
+  # false-positive: "In the documentary, researchers throw food to the wolves to observe pack hierarchy." (literal wildlife)
   considerate:
     abandon to criticism: a
     leave to face hostility alone: a
@@ -369,52 +393,13 @@
   note: >-
     Standalone variant of 'there are bigger fish to fry' — catches the shortened
     form used in technical writing.
+  # true-positive:  "Don't get stuck on this edge case — we have bigger fish to fry."
+  # false-positive: "The chef said the bigger fish to fry requires a wider pan." (literal cooking context)
   considerate:
     more important matters to address: a
     higher priorities: a
   inconsiderate:
     bigger fish to fry: speciesism
 
-# === Industry Euphemisms ===
-
-- type: basic
-  note: >-
-    Applies agricultural crop-harvest framing to killing animals. 'Harvesting'
-    obscures that living beings are being killed.
-  considerate:
-    catching fish: a
-    fishing: a
-    taking animals: a
-  inconsiderate:
-    harvesting animals: industry-euphemism
-    harvest animals: industry-euphemism
-    fish harvest: industry-euphemism
-    harvesting fish: industry-euphemism
-
-- type: basic
-  note: >-
-    Welfare-washing: 'free-range' implies humane conditions but still involves
-    confinement and slaughter. Use only when quoting certification standards
-    directly; otherwise describe actual conditions.
-  considerate:
-    eggs from hens with outdoor access: a
-    chicken with outdoor access: a
-  inconsiderate:
-    free-range eggs: industry-euphemism
-    free range eggs: industry-euphemism
-    free-range chicken: industry-euphemism
-    free range chicken: industry-euphemism
-
-- type: basic
-  note: >-
-    Welfare-washing: 'cage-free' implies humane conditions but hens may still
-    be confined at high density indoors. Use only when quoting certification
-    standards directly; otherwise describe actual conditions.
-  considerate:
-    eggs from uncaged hens: a
-    hens without cages: a
-  inconsiderate:
-    cage-free eggs: industry-euphemism
-    cage free eggs: industry-euphemism
-    cage-free hens: industry-euphemism
-    cage free hens: industry-euphemism
+# Industry euphemism rules (harvesting, free-range, cage-free) have been
+# extracted to alex/industry-euphemisms.yml for clean category separation.

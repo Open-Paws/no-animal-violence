@@ -21,6 +21,7 @@ This is a **mono-repo of rule definitions** for three different inclusive-langua
 | `woke/.woke.yaml` | woke scanner config with all speciesist patterns |
 | `alex/animal-violence.yml` | alex/retext-equality rules for violent idioms |
 | `alex/speciesism.yml` | alex/retext-equality rules for speciesist metaphors |
+| `alex/industry-euphemisms.yml` | alex/retext-equality rules for industry euphemisms (free-range, cage-free, harvest) |
 | `vale/Speciesism/AnimalIdioms.yml` | Vale rule: violent animal idioms |
 | `vale/Speciesism/AnimalMetaphors.yml` | Vale rule: animal-as-object metaphors |
 | `vale/Speciesism/TechTerminology.yml` | Vale rule: speciesist tech terms |

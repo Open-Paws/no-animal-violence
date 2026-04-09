@@ -12,5 +12,8 @@ swap:
   'dog eat dog': ruthlessly competitive
   'rat race': competitive grind
   'red herring': false lead
+  # weasel words / weasel word (new in PR #16)
+  #   true-positive:  "The policy document is full of weasel words like 'may' and 'endeavours to'."
+  #   false-positive: "Theodore Roosevelt coined the term 'weasel words' in a 1916 speech." (discussing the rhetorical concept by name — suppress with inline comment)
   'weasel words': deliberately vague language
   'weasel word': deliberately vague language
