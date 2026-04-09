@@ -32,6 +32,17 @@ This repo is the **canonical rule dictionary** for the entire no-animal-violence
 
 **Strategic significance (Lever 1 + Lever 3):** This is a concrete Lever 3 tool — it embeds animal welfare standards into the development process itself. Every developer who installs an adapter becomes aware of speciesist language patterns. The suite is intervention #8 from the 25 Ranked Interventions (Animal-Friendly Data Labelling Standards) made concrete.
 
+**Academic backing:** Rules are backed by peer-reviewed research on AI speciesism and language bias. Key citations:
+- Hagendorff et al. (2023–2025) — speciesist bias in LLM outputs; doi:10.1007/s43681-023-00380-w
+- Takeshita et al. (2022) — language normalization of animal exploitation
+- Leach et al. (2023) — moral circle expansion and language framing
+
+These citations appear in rule metadata (`references:` field) and give the suite credibility in Lever 3 outreach to development teams and AI labs.
+
+**MCP ecosystem integrations:**
+- `lbr8-mcp-constraints` — bundles 12 offline NAV patterns sourced from this repo as a `StaticConstraintSource`. These patterns run in air-gapped/offline contexts where the full Semgrep ruleset cannot be loaded. When updating rules here, check whether the 12 bundled patterns in `lbr8-mcp-constraints` need updating. See `repos/lbr8-mcp-constraints` in the strategy repo.
+- `mcp-server-nav-language` — loads `semgrep-rules-no-animal-violence` YAML at startup for the content pipeline NAV gate (PR #7). Canonical patterns flow: this repo → `project-compassionate-code` generator → `semgrep-rules-no-animal-violence` → `mcp-server-nav-language`.
+
 **Current org priorities relevant to this repo:**
 - The suite has zero platform presence despite being a shipped product. Planned: bootcamp setup instructions (VS Code extension + pre-commit hook), guild developer onboarding, platform CI. See `ecosystem/integration-todos.md` §27a.
 - Suite maintenance has **no named owner** as of 2026-04-02. The 65+ rules need ongoing false-positive tuning and new term additions — ideal F/E-rank quests in the Guild pipeline.
