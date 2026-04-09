@@ -113,9 +113,10 @@ rules:
     word_boundary: false
     categories:
     - animal-violence
-- name: there-are-bigger-fish-to-fry
+- name: bigger-fish-to-fry
   terms:
   - there are bigger fish to fry
+  - bigger fish to fry
   alternatives:
   - more important matters to address
   - higher priorities
@@ -291,6 +292,9 @@ rules:
   - throw someone to the wolves
   - throwing someone to the wolves
   - threw someone to the wolves
+  - throw to the wolves
+  - throwing to the wolves
+  - thrown to the wolves
   alternatives:
   - abandon to criticism
   - leave to face hostility alone
@@ -853,17 +857,15 @@ rules:
     - animal-violence
 - name: open-season
   terms:
-  - open season
-  - opening season
-  - opened season
+  - open season on
   alternatives:
-  - free-for-all
-  - unrestricted criticism
-  - no holds barred
+  - free-for-all targeting
+  - unrestricted criticism of
+  - no holds barred against
   severity: warning
-  note: References hunting season — the legal period for killing animals
+  note: References hunting season — the legal period for killing animals. Scoped to "open season on [something]" to avoid false positives on "opening season" (sports/conferences) and "open season tickets".
   options:
-    word_boundary: true
+    word_boundary: false
     categories:
     - animal-violence
 - name: put-out-to-pasture
@@ -958,7 +960,7 @@ rules:
   - trim
   - filter out
   severity: warning
-  note: Euphemism for mass killing of animals — used in wildlife management and farming
+  note: Euphemism for mass killing of animals — used in wildlife management and farming. Known false positive in data pipeline code where "cull" means remove duplicates or trim a collection; suppress with inline comment in those contexts.
   options:
     word_boundary: true
     categories:
@@ -1002,3 +1004,229 @@ rules:
     word_boundary: true
     categories:
     - animal-violence
+# true-positive:  "Be wary — that consultant is a wolf in sheep's clothing."
+# false-positive: "The fable 'Wolf in Sheep's Clothing' is referenced by its exact title." (direct title quotation)
+- name: wolf-in-sheeps-clothing
+  terms:
+  - wolf in sheep's clothing
+  - wolves in sheep's clothing
+  - wolf in sheeps clothing
+  alternatives:
+  - deceptive actor
+  - bad actor in disguise
+  - hidden threat
+  severity: warning
+  note: Frames a predator-prey relationship as the archetype of deception — alternatives describe the concept directly
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+# true-positive:  "The legislation passed only after extensive horse trading between caucuses."
+# false-positive: "Horse trading was a common feature of medieval country fairs." (historical / literal context)
+- name: horse-trading
+  terms:
+  - horse trading
+  - horse-trading
+  alternatives:
+  - political bargaining
+  - transactional negotiation
+  - trading favors
+  severity: info
+  note: References trading horses as commodities — alternatives describe the negotiation pattern without the animal framing
+  options:
+    word_boundary: true
+    categories:
+    - animal-violence
+# true-positive:  "Nobody mentioned the gorilla in the room — the project is six months behind."
+# false-positive: "The gorilla in the enclosure at the zoo was observed using tools." (literal animal reference)
+- name: gorilla-in-the-room
+  terms:
+  - gorilla in the room
+  alternatives:
+  - the obvious issue
+  - the unaddressed problem
+  severity: info
+  note: Variant of "elephant in the room" — flag for awareness only
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+# true-positive:  "Don't trust him — he's a snake in the grass waiting for a chance to betray us."
+# false-positive: "The grass snake is a harmless, non-venomous species common across Europe." (literal species description)
+- name: snake-in-the-grass
+  terms:
+  - snake in the grass
+  alternatives:
+  - hidden threat
+  - concealed adversary
+  - lurking danger
+  severity: warning
+  note: Uses a snake as a metaphor for treachery — alternatives describe the threat directly
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+# true-positive:  "The policy uses weasel words like 'may consider' to avoid any commitment."
+# false-positive: "Theodore Roosevelt introduced the term 'weasel words' in a speech criticising vague political language." (discussing the rhetorical concept — suppress with inline comment)
+- name: weasel-words
+  terms:
+  - weasel words
+  - weasel word
+  alternatives:
+  - deliberately vague language
+  - evasive language
+  - non-committal phrasing
+  severity: warning
+  note: Uses a weasel as a metaphor for evasiveness — alternatives describe the language problem precisely
+  options:
+    word_boundary: true
+    categories:
+    - animal-violence
+# true-positive:  "Letting industry lobbyists write the regulations is the fox guarding the henhouse."
+# false-positive: "The farmer installed an electric fence after a fox got into the henhouse last autumn." (literal agricultural context)
+- name: fox-guarding-the-henhouse
+  terms:
+  - fox guarding the henhouse
+  - fox in the henhouse
+  - fox watching the henhouse
+  alternatives:
+  - conflicted oversight
+  - self-interested regulator
+  - the regulated watching the regulators
+  severity: warning
+  note: References a predator killing farmed birds — alternatives describe the structural conflict directly
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+# true-positive:  "She stopped smoking cold turkey after her diagnosis."
+# false-positive: "The harm-reduction guide warns against stopping cold turkey without medical guidance." (clinical / addiction-treatment context — suppress with inline comment)
+- name: cold-turkey
+  terms:
+  - cold turkey
+  - go cold turkey
+  - went cold turkey
+  - going cold turkey
+  alternatives:
+  - abrupt cessation
+  - stop immediately
+  - quit all at once
+  severity: info
+  note: References slaughtered and chilled poultry — alternatives describe the abrupt cessation directly
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+# true-positive:  "Flaky tests late on a Friday really get my goat."
+# false-positive: "The sanctuary volunteer said the goat gets your full attention from the moment you arrive." (literal animal interaction)
+- name: get-your-goat
+  terms:
+  - get your goat
+  - get my goat
+  - got my goat
+  - got your goat
+  - getting your goat
+  alternatives:
+  - annoy you
+  - irritate you
+  - get under your skin
+  severity: info
+  note: References stealing a goat to unsettle a competitor — alternatives describe the irritation directly
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+# true-positive:  "We could debate this architecture decision until the cows come home."
+# false-positive: "The cows come home each evening; the farmer closes the gate at dusk." (literal farming description)
+- name: until-the-cows-come-home
+  terms:
+  - until the cows come home
+  alternatives:
+  - indefinitely
+  - for a very long time
+  - without end
+  severity: info
+  note: References farmed cattle returning from pasture — alternatives communicate the indefinite timeframe directly
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+# true-positive:  "The vendor gave us a cock-and-bull story about why the integration failed."
+# false-positive: "The Cock and Bull is the name of the public house at the end of the high street." (proper noun)
+- name: cock-and-bull-story
+  terms:
+  - cock-and-bull story
+  - cock and bull story
+  alternatives:
+  - fabricated story
+  - implausible claim
+  - tall tale
+  severity: warning
+  note: References farm animals in an implausibility idiom — alternatives describe the deception without the animal framing
+  options:
+    word_boundary: false
+    categories:
+    - animal-violence
+- name: harvest-animals
+  terms:
+  - harvesting animals
+  - harvest animals
+  - animal harvest
+  - fish harvest
+  - harvesting fish
+  - shrimp harvest
+  - harvesting shrimp
+  alternatives:
+  - catching fish
+  - fishing
+  - taking animals
+  severity: warning
+  note: Industry euphemism applying agricultural crop-harvest framing to killing animals — "harvesting" obscures that living beings are being killed
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+- name: free-range-welfare-washing
+  terms:
+  - free-range eggs
+  - free range eggs
+  - free-range chicken
+  - free range chicken
+  alternatives:
+  - eggs from hens with outdoor access
+  - chicken with outdoor access
+  severity: info
+  note: 'Welfare-washing: "free-range" implies humane conditions but still involves confinement, forced reproduction, and slaughter. Use only when quoting certification standards directly; otherwise describe actual conditions.'
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+- name: cage-free-welfare-washing
+  terms:
+  - cage-free eggs
+  - cage free eggs
+  - cage-free hens
+  - cage free hens
+  alternatives:
+  - eggs from uncaged hens
+  - hens without cages
+  severity: info
+  note: 'Welfare-washing: "cage-free" implies humane conditions but hens may still be confined at high density indoors. Use only when quoting certification standards directly; otherwise describe actual conditions.'
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+- name: pest-control-mass-killing
+  terms:
+  - pest control
+  - pest management
+  alternatives:
+  - rodent deterrence
+  - rodent exclusion
+  - animal deterrence
+  severity: info
+  note: Framing animals as "pests" devalues their lives and normalizes mass killing. In code contexts (e.g., variable names, config files for rodent detection systems), suppress with inline comment if referring to a specific software tool name.
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism

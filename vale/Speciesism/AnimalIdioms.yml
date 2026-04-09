@@ -4,6 +4,7 @@ link: https://doi.org/10.1007/s43681-023-00380-w
 level: warning
 ignorecase: true
 swap:
+  # --- Existing rules (pre-PR) ---
   'kill two birds with one stone': accomplish two things at once
   'killing two birds with one stone': accomplishing two things at once
   'killed two birds with one stone': accomplished two things at once
@@ -30,3 +31,60 @@ swap:
   'from the horse''s mouth': from a reliable source
   'whack-a-mole': recurring problem
   'whack a mole': recurring problem
+  # --- New rules added in PR #16 ---
+  # wolf in sheep's clothing
+  #   true-positive:  "That vendor is a wolf in sheep's clothing — all promises, no delivery."
+  #   false-positive: "Aesop's fable 'The Wolf in Sheep's Clothing' is referenced by name here." (title / direct quotation)
+  'wolf in sheep''s clothing': deceptive actor
+  'wolves in sheep''s clothing': deceptive actors
+  # horse trading
+  #   true-positive:  "The budget was approved only after significant horse trading."
+  #   false-positive: "Horse trading was a common practice at medieval markets." (historical / literal context)
+  'horse trading': political bargaining
+  'horse-trading': political bargaining
+  # gorilla in the room
+  #   true-positive:  "Nobody mentioned the gorilla in the room — the project is massively over budget."
+  #   false-positive: "The gorilla in the room at the zoo attracted large crowds." (literal animal reference)
+  'gorilla in the room': the obvious issue
+  # snake in the grass
+  #   true-positive:  "Don't trust him — he's a snake in the grass."
+  #   false-positive: "A grass snake is a harmless, non-venomous reptile." (literal species description)
+  'snake in the grass': hidden threat
+  # fox guarding the henhouse
+  #   true-positive:  "Having the regulator funded by the industry is like the fox guarding the henhouse."
+  #   false-positive: "The farmer added electric fencing after a fox got into the henhouse." (literal agricultural context)
+  'fox guarding the henhouse': conflicted oversight
+  'fox in the henhouse': conflicted oversight
+  # cold turkey
+  #   true-positive:  "She quit caffeine cold turkey and had withdrawal headaches for a week."
+  #   false-positive: "The harm-reduction clinic advises against stopping cold turkey without medical supervision." (clinical context — suppress)
+  'cold turkey': abrupt cessation
+  'go cold turkey': stop immediately
+  # get your goat
+  #   true-positive:  "Merge conflicts late on Friday really get my goat."
+  #   false-positive: "The sanctuary said the goat gets your attention the moment you enter the pen." (literal animal interaction)
+  'get your goat': annoy you
+  'get my goat': annoy me
+  'got my goat': annoyed me
+  # until the cows come home
+  #   true-positive:  "We could argue about tabs vs. spaces until the cows come home."
+  #   false-positive: "The cows come home each evening when the farmer sounds the bell." (literal farming description)
+  'until the cows come home': indefinitely
+  # cock-and-bull story
+  #   true-positive:  "The contractor fed us a cock-and-bull story about why the deadline slipped."
+  #   false-positive: "The Cock and Bull is the name of the village pub on the high street." (proper noun)
+  'cock-and-bull story': fabricated story
+  'cock and bull story': fabricated story
+  # throw to the wolves
+  #   true-positive:  "They threw the junior dev to the wolves at the client postmortem."
+  #   false-positive: "Wildlife researchers throw food to the wolves to study pack feeding order." (literal wildlife research)
+  'throw to the wolves': abandon to criticism
+  'thrown to the wolves': abandoned to criticism
+  # bigger fish to fry
+  #   true-positive:  "Let's not get distracted by this — there are bigger fish to fry."
+  #   false-positive: "The fishmonger said the bigger fish to fry needed a wider pan." (literal cooking context)
+  'bigger fish to fry': more important matters to address
+  # open season on
+  #   true-positive:  "After the CTO's resignation it was open season on the engineering team."
+  #   false-positive: "Opening season for the conference begins in March." (conference scheduling — scoped by "open season on" term)
+  'open season on': free-for-all targeting

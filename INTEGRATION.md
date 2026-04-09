@@ -469,6 +469,18 @@ branch = "origin/master"
 
 `red herring` is flagged at `info` level (suggestion only, not blocking). In prose-heavy repos, you can lower the `MinAlertLevel` in `.vale.ini` to `warning` to suppress suggestion-level findings.
 
+**"weasel words" in linguistics or copy-editing docs**
+
+`weasel words` is flagged at `warning`. In docs that explicitly discuss the rhetorical concept (e.g., a guide to clear writing), suppress with an inline comment.
+
+**"cold turkey" in health or addiction-treatment contexts**
+
+`cold turkey` is flagged at `info` level. When documenting medical or harm-reduction topics where the phrase is the standard clinical shorthand, suppress with an inline comment.
+
+**"pest control" in software tooling names**
+
+`pest control` is flagged at `info` level. If your project integrates a third-party tool that uses this phrase in its official name, suppress with an inline comment on that specific reference rather than disabling the rule globally.
+
 ### Incremental Adoption
 
 If your existing codebase has many matches, adopt incrementally without blocking your team:
