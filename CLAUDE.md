@@ -105,3 +105,20 @@ These citations appear in rule metadata (`references:` field) and give the suite
 ### Structured Coding Reference
 
 For tool-specific AI coding instructions (Claude Code rules, Cursor MDC, Copilot, Windsurf, etc.), copy the corresponding directory from `structured-coding-with-ai` into this project root.
+## MCP Integrations (live 2026-04-09)
+
+These tools consume the rule definitions in this repo:
+
+- **mcp-server-nav-language** — Pure regex MCP server that loads the canonical rule patterns from this repo's `woke/.woke.yaml`, `alex/`, and `vale/Speciesism/` files at startup. Exposes three tools: `check_language`, `check_file`, `list_rules`. Sub-10ms response. Used by Gary MCP hub Phase 3. The canonical pattern dictionary here is what that server enforces at runtime.
+- **lbr8-mcp-constraints** — Wraps any MCP tool handler with NAV constraint middleware. `StaticConstraintSource` bundles 12 offline NAV patterns sourced from this suite.
+- **mcp-server-aha-evaluation** — Uses NAV rules as Stage 1 of a two-stage content evaluation pipeline.
+- **Audit-to-dispatch (decision #37, 2026-04-11)** — NAV violations found during ecosystem audits now auto-dispatch as agent fix tasks. This repo's patterns are the violation definition used by that pipeline.
+
+## Related Repos
+
+- [vale-no-animal-violence](https://github.com/Open-Paws/vale-no-animal-violence) — Standalone Vale distribution package
+- [eslint-plugin-no-animal-violence](https://github.com/Open-Paws/eslint-plugin-no-animal-violence) — ESLint plugin for JS/TS
+
+## Decisions Reviewed
+
+Last reviewed: 2026-04-11 (decisions #37 audit-to-dispatch, mcp-server-nav-language live)
