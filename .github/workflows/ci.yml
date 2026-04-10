@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     name: Lint
@@ -16,7 +19,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install ruff
-        run: pip install ruff
+        run: pip install ruff==0.15.10
       - name: Run ruff
         run: ruff check .
 
