@@ -1,8 +1,35 @@
 {
   "version": 8,
   "created": "2026-04-12T07:19:39+00:00",
-  "updated": "2026-04-12T07:28:28+00:00",
-  "queue_order": [],
+  "updated": "2026-04-12T09:00:38+00:00",
+  "queue_order": [
+    "subjective::abstraction_fitness",
+    "subjective::advocacy_data_sovereignty",
+    "subjective::advocacy_language_quality",
+    "subjective::advocacy_security_posture",
+    "subjective::advocacy_terminology_consistency",
+    "subjective::advocacy_tool_integration",
+    "subjective::advocacy_ux_inclusivity",
+    "subjective::ai_generated_debt",
+    "subjective::api_surface_coherence",
+    "subjective::authorization_consistency",
+    "subjective::contract_coherence",
+    "subjective::convention_outlier",
+    "subjective::cross_module_architecture",
+    "subjective::dependency_health",
+    "subjective::design_coherence",
+    "subjective::error_consistency",
+    "subjective::high_level_elegance",
+    "subjective::incomplete_migration",
+    "subjective::initialization_coupling",
+    "subjective::logic_clarity",
+    "subjective::low_level_elegance",
+    "subjective::mid_level_elegance",
+    "subjective::naming_quality",
+    "subjective::package_organization",
+    "subjective::test_strategy",
+    "subjective::type_safety"
+  ],
   "deferred": [],
   "skipped": {},
   "active_cluster": null,
@@ -11,157 +38,157 @@
       "issue_id": "subjective::abstraction_fitness",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::advocacy_data_sovereignty": {
       "issue_id": "subjective::advocacy_data_sovereignty",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::advocacy_language_quality": {
       "issue_id": "subjective::advocacy_language_quality",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::advocacy_security_posture": {
       "issue_id": "subjective::advocacy_security_posture",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::advocacy_terminology_consistency": {
       "issue_id": "subjective::advocacy_terminology_consistency",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::advocacy_tool_integration": {
       "issue_id": "subjective::advocacy_tool_integration",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::advocacy_ux_inclusivity": {
       "issue_id": "subjective::advocacy_ux_inclusivity",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::ai_generated_debt": {
       "issue_id": "subjective::ai_generated_debt",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::api_surface_coherence": {
       "issue_id": "subjective::api_surface_coherence",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::authorization_consistency": {
       "issue_id": "subjective::authorization_consistency",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::contract_coherence": {
       "issue_id": "subjective::contract_coherence",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::convention_outlier": {
       "issue_id": "subjective::convention_outlier",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::cross_module_architecture": {
       "issue_id": "subjective::cross_module_architecture",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::dependency_health": {
       "issue_id": "subjective::dependency_health",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::design_coherence": {
       "issue_id": "subjective::design_coherence",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::error_consistency": {
       "issue_id": "subjective::error_consistency",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::high_level_elegance": {
       "issue_id": "subjective::high_level_elegance",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::incomplete_migration": {
       "issue_id": "subjective::incomplete_migration",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::initialization_coupling": {
       "issue_id": "subjective::initialization_coupling",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::logic_clarity": {
       "issue_id": "subjective::logic_clarity",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::low_level_elegance": {
       "issue_id": "subjective::low_level_elegance",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::mid_level_elegance": {
       "issue_id": "subjective::mid_level_elegance",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::naming_quality": {
       "issue_id": "subjective::naming_quality",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::package_organization": {
       "issue_id": "subjective::package_organization",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::test_strategy": {
       "issue_id": "subjective::test_strategy",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "subjective::type_safety": {
       "issue_id": "subjective::type_safety",
       "created_at": "2026-04-12T07:19:39+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-04-12T07:26:19+00:00"
+      "updated_at": "2026-04-12T09:00:38+00:00"
     },
     "advocacy_language::INTEGRATION.md::abort": {
       "issue_id": "advocacy_language::INTEGRATION.md::abort",
@@ -370,20 +397,6 @@
       "cluster_key": "subjective::unscored",
       "action": "desloppify review --prepare --dimensions abstraction_fitness,advocacy_data_sovereignty,advocacy_language_quality,advocacy_security_posture,advocacy_terminology_consistency,advocacy_tool_integration,advocacy_ux_inclusivity,ai_generated_debt,api_surface_coherence,authorization_consistency,contract_coherence,convention_outlier,cross_module_architecture,dependency_health,design_coherence,error_consistency,high_level_elegance,incomplete_migration,initialization_coupling,logic_clarity,low_level_elegance,mid_level_elegance,naming_quality,package_organization,test_strategy,type_safety",
       "execution_status": "review",
-      "user_modified": false,
-      "action_type": "manual_fix",
-      "execution_policy": "planned_only"
-    },
-    "auto/advocacy_language": {
-      "name": "auto/advocacy_language",
-      "description": "Fix 28 advocacy language issues",
-      "issue_ids": [],
-      "created_at": "2026-04-12T07:26:19+00:00",
-      "updated_at": "2026-04-12T07:26:19+00:00",
-      "auto": true,
-      "cluster_key": "detector::advocacy_language",
-      "action": "replace speciesist language with inclusive alternatives \u2014 see the replacement suggestions in the issue summary",
-      "execution_status": "done",
       "user_modified": false,
       "action_type": "manual_fix",
       "execution_policy": "planned_only"
@@ -672,7 +685,12 @@
     }
   },
   "promoted_ids": [],
-  "plan_start_scores": {},
+  "plan_start_scores": {
+    "strict": 24.5,
+    "overall": 24.5,
+    "objective": 98.1,
+    "verified": 98.1
+  },
   "refresh_state": {
     "lifecycle_phase": "plan",
     "postflight_scan_completed_at_scan_count": 1,
@@ -902,6 +920,37 @@
     {
       "timestamp": "2026-04-12T07:28:28+00:00",
       "action": "clear_start_scores",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-04-12T09:00:38+00:00",
+      "action": "sync_subjective",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-04-12T09:00:38+00:00",
+      "action": "auto_cluster",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-04-12T09:00:38+00:00",
+      "action": "seed_start_scores",
       "issue_ids": [],
       "cluster_name": null,
       "actor": "system",
