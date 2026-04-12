@@ -1,0 +1,917 @@
+{
+  "version": 8,
+  "created": "2026-04-12T07:19:39+00:00",
+  "updated": "2026-04-12T07:28:28+00:00",
+  "queue_order": [],
+  "deferred": [],
+  "skipped": {},
+  "active_cluster": null,
+  "overrides": {
+    "subjective::abstraction_fitness": {
+      "issue_id": "subjective::abstraction_fitness",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::advocacy_data_sovereignty": {
+      "issue_id": "subjective::advocacy_data_sovereignty",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::advocacy_language_quality": {
+      "issue_id": "subjective::advocacy_language_quality",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::advocacy_security_posture": {
+      "issue_id": "subjective::advocacy_security_posture",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::advocacy_terminology_consistency": {
+      "issue_id": "subjective::advocacy_terminology_consistency",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::advocacy_tool_integration": {
+      "issue_id": "subjective::advocacy_tool_integration",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::advocacy_ux_inclusivity": {
+      "issue_id": "subjective::advocacy_ux_inclusivity",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::ai_generated_debt": {
+      "issue_id": "subjective::ai_generated_debt",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::api_surface_coherence": {
+      "issue_id": "subjective::api_surface_coherence",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::authorization_consistency": {
+      "issue_id": "subjective::authorization_consistency",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::contract_coherence": {
+      "issue_id": "subjective::contract_coherence",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::convention_outlier": {
+      "issue_id": "subjective::convention_outlier",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::cross_module_architecture": {
+      "issue_id": "subjective::cross_module_architecture",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::dependency_health": {
+      "issue_id": "subjective::dependency_health",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::design_coherence": {
+      "issue_id": "subjective::design_coherence",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::error_consistency": {
+      "issue_id": "subjective::error_consistency",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::high_level_elegance": {
+      "issue_id": "subjective::high_level_elegance",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::incomplete_migration": {
+      "issue_id": "subjective::incomplete_migration",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::initialization_coupling": {
+      "issue_id": "subjective::initialization_coupling",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::logic_clarity": {
+      "issue_id": "subjective::logic_clarity",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::low_level_elegance": {
+      "issue_id": "subjective::low_level_elegance",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::mid_level_elegance": {
+      "issue_id": "subjective::mid_level_elegance",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::naming_quality": {
+      "issue_id": "subjective::naming_quality",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::package_organization": {
+      "issue_id": "subjective::package_organization",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::test_strategy": {
+      "issue_id": "subjective::test_strategy",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "subjective::type_safety": {
+      "issue_id": "subjective::type_safety",
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "cluster": "auto/initial-review",
+      "updated_at": "2026-04-12T07:26:19+00:00"
+    },
+    "advocacy_language::INTEGRATION.md::abort": {
+      "issue_id": "advocacy_language::INTEGRATION.md::abort",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::INTEGRATION.md::canary deployment": {
+      "issue_id": "advocacy_language::INTEGRATION.md::canary deployment",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::INTEGRATION.md::cull": {
+      "issue_id": "advocacy_language::INTEGRATION.md::cull",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::INTEGRATION.md::master/slave": {
+      "issue_id": "advocacy_language::INTEGRATION.md::master/slave",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::INTEGRATION.md::red herring": {
+      "issue_id": "advocacy_language::INTEGRATION.md::red herring",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::README.md::kill two birds with one stone": {
+      "issue_id": "advocacy_language::README.md::kill two birds with one stone",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::README.md::beat a dead horse": {
+      "issue_id": "advocacy_language::README.md::beat a dead horse",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::README.md::more than one way to skin a cat": {
+      "issue_id": "advocacy_language::README.md::more than one way to skin a cat",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::README.md::guinea pig": {
+      "issue_id": "advocacy_language::README.md::guinea pig",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::README.md::sacred cow": {
+      "issue_id": "advocacy_language::README.md::sacred cow",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::README.md::scapegoat": {
+      "issue_id": "advocacy_language::README.md::scapegoat",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::README.md::cattle vs. pets": {
+      "issue_id": "advocacy_language::README.md::cattle vs. pets",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::README.md::canary deployment": {
+      "issue_id": "advocacy_language::README.md::canary deployment",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::README.md::monkey patching": {
+      "issue_id": "advocacy_language::README.md::monkey patching",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::tools/test_check_consistency.py::kill two birds with one stone": {
+      "issue_id": "advocacy_language::tools/test_check_consistency.py::kill two birds with one stone",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::tools/test_check_consistency.py::guinea pig": {
+      "issue_id": "advocacy_language::tools/test_check_consistency.py::guinea pig",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::kill two birds with one stone": {
+      "issue_id": "advocacy_language::.claude/rules/advocacy-domain.md::kill two birds with one stone",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::beat a dead horse": {
+      "issue_id": "advocacy_language::.claude/rules/advocacy-domain.md::beat a dead horse",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::more than one way to skin a cat": {
+      "issue_id": "advocacy_language::.claude/rules/advocacy-domain.md::more than one way to skin a cat",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::guinea pig": {
+      "issue_id": "advocacy_language::.claude/rules/advocacy-domain.md::guinea pig",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::open a can of worms": {
+      "issue_id": "advocacy_language::.claude/rules/advocacy-domain.md::open a can of worms",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::wild goose chase": {
+      "issue_id": "advocacy_language::.claude/rules/advocacy-domain.md::wild goose chase",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::cattle vs. pets": {
+      "issue_id": "advocacy_language::.claude/rules/advocacy-domain.md::cattle vs. pets",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::pet project": {
+      "issue_id": "advocacy_language::.claude/rules/advocacy-domain.md::pet project",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::master/slave": {
+      "issue_id": "advocacy_language::.claude/rules/advocacy-domain.md::master/slave",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::whitelist/blacklist": {
+      "issue_id": "advocacy_language::.claude/rules/advocacy-domain.md::whitelist/blacklist",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::grandfathered": {
+      "issue_id": "advocacy_language::.claude/rules/advocacy-domain.md::grandfathered",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    },
+    "advocacy_language::.claude/skills/security-audit/SKILL.md::kill process": {
+      "issue_id": "advocacy_language::.claude/skills/security-audit/SKILL.md::kill process",
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "cluster": null,
+      "updated_at": "2026-04-12T07:26:48+00:00"
+    }
+  },
+  "clusters": {
+    "auto/initial-review": {
+      "name": "auto/initial-review",
+      "description": "Initial review of 26 unscored subjective dimensions",
+      "issue_ids": [
+        "subjective::abstraction_fitness",
+        "subjective::advocacy_data_sovereignty",
+        "subjective::advocacy_language_quality",
+        "subjective::advocacy_security_posture",
+        "subjective::advocacy_terminology_consistency",
+        "subjective::advocacy_tool_integration",
+        "subjective::advocacy_ux_inclusivity",
+        "subjective::ai_generated_debt",
+        "subjective::api_surface_coherence",
+        "subjective::authorization_consistency",
+        "subjective::contract_coherence",
+        "subjective::convention_outlier",
+        "subjective::cross_module_architecture",
+        "subjective::dependency_health",
+        "subjective::design_coherence",
+        "subjective::error_consistency",
+        "subjective::high_level_elegance",
+        "subjective::incomplete_migration",
+        "subjective::initialization_coupling",
+        "subjective::logic_clarity",
+        "subjective::low_level_elegance",
+        "subjective::mid_level_elegance",
+        "subjective::naming_quality",
+        "subjective::package_organization",
+        "subjective::test_strategy",
+        "subjective::type_safety"
+      ],
+      "created_at": "2026-04-12T07:19:39+00:00",
+      "updated_at": "2026-04-12T07:19:39+00:00",
+      "auto": true,
+      "cluster_key": "subjective::unscored",
+      "action": "desloppify review --prepare --dimensions abstraction_fitness,advocacy_data_sovereignty,advocacy_language_quality,advocacy_security_posture,advocacy_terminology_consistency,advocacy_tool_integration,advocacy_ux_inclusivity,ai_generated_debt,api_surface_coherence,authorization_consistency,contract_coherence,convention_outlier,cross_module_architecture,dependency_health,design_coherence,error_consistency,high_level_elegance,incomplete_migration,initialization_coupling,logic_clarity,low_level_elegance,mid_level_elegance,naming_quality,package_organization,test_strategy,type_safety",
+      "execution_status": "review",
+      "user_modified": false,
+      "action_type": "manual_fix",
+      "execution_policy": "planned_only"
+    },
+    "auto/advocacy_language": {
+      "name": "auto/advocacy_language",
+      "description": "Fix 28 advocacy language issues",
+      "issue_ids": [],
+      "created_at": "2026-04-12T07:26:19+00:00",
+      "updated_at": "2026-04-12T07:26:19+00:00",
+      "auto": true,
+      "cluster_key": "detector::advocacy_language",
+      "action": "replace speciesist language with inclusive alternatives \u2014 see the replacement suggestions in the issue summary",
+      "execution_status": "done",
+      "user_modified": false,
+      "action_type": "manual_fix",
+      "execution_policy": "planned_only"
+    }
+  },
+  "superseded": {
+    "advocacy_language::.claude/rules/advocacy-domain.md::beat a dead horse": {
+      "original_id": "advocacy_language::.claude/rules/advocacy-domain.md::beat a dead horse",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::cattle vs. pets": {
+      "original_id": "advocacy_language::.claude/rules/advocacy-domain.md::cattle vs. pets",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::grandfathered": {
+      "original_id": "advocacy_language::.claude/rules/advocacy-domain.md::grandfathered",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::guinea pig": {
+      "original_id": "advocacy_language::.claude/rules/advocacy-domain.md::guinea pig",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::kill two birds with one stone": {
+      "original_id": "advocacy_language::.claude/rules/advocacy-domain.md::kill two birds with one stone",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::master/slave": {
+      "original_id": "advocacy_language::.claude/rules/advocacy-domain.md::master/slave",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::more than one way to skin a cat": {
+      "original_id": "advocacy_language::.claude/rules/advocacy-domain.md::more than one way to skin a cat",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::open a can of worms": {
+      "original_id": "advocacy_language::.claude/rules/advocacy-domain.md::open a can of worms",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::pet project": {
+      "original_id": "advocacy_language::.claude/rules/advocacy-domain.md::pet project",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::whitelist/blacklist": {
+      "original_id": "advocacy_language::.claude/rules/advocacy-domain.md::whitelist/blacklist",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::.claude/rules/advocacy-domain.md::wild goose chase": {
+      "original_id": "advocacy_language::.claude/rules/advocacy-domain.md::wild goose chase",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::.claude/skills/security-audit/SKILL.md::kill process": {
+      "original_id": "advocacy_language::.claude/skills/security-audit/SKILL.md::kill process",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::INTEGRATION.md::abort": {
+      "original_id": "advocacy_language::INTEGRATION.md::abort",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::INTEGRATION.md::canary deployment": {
+      "original_id": "advocacy_language::INTEGRATION.md::canary deployment",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::INTEGRATION.md::cull": {
+      "original_id": "advocacy_language::INTEGRATION.md::cull",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::INTEGRATION.md::master/slave": {
+      "original_id": "advocacy_language::INTEGRATION.md::master/slave",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::INTEGRATION.md::red herring": {
+      "original_id": "advocacy_language::INTEGRATION.md::red herring",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::README.md::beat a dead horse": {
+      "original_id": "advocacy_language::README.md::beat a dead horse",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::README.md::canary deployment": {
+      "original_id": "advocacy_language::README.md::canary deployment",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::README.md::cattle vs. pets": {
+      "original_id": "advocacy_language::README.md::cattle vs. pets",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::README.md::guinea pig": {
+      "original_id": "advocacy_language::README.md::guinea pig",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::README.md::kill two birds with one stone": {
+      "original_id": "advocacy_language::README.md::kill two birds with one stone",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::README.md::monkey patching": {
+      "original_id": "advocacy_language::README.md::monkey patching",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::README.md::more than one way to skin a cat": {
+      "original_id": "advocacy_language::README.md::more than one way to skin a cat",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::README.md::sacred cow": {
+      "original_id": "advocacy_language::README.md::sacred cow",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::README.md::scapegoat": {
+      "original_id": "advocacy_language::README.md::scapegoat",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::tools/test_check_consistency.py::guinea pig": {
+      "original_id": "advocacy_language::tools/test_check_consistency.py::guinea pig",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "advocacy_language::tools/test_check_consistency.py::kill two birds with one stone": {
+      "original_id": "advocacy_language::tools/test_check_consistency.py::kill two birds with one stone",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-04-12T07:26:48+00:00",
+      "remapped_to": null,
+      "candidates": []
+    }
+  },
+  "promoted_ids": [],
+  "plan_start_scores": {},
+  "refresh_state": {
+    "lifecycle_phase": "plan",
+    "postflight_scan_completed_at_scan_count": 1,
+    "_subjective_migration_pruned": true
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-04-12T07:19:39+00:00",
+      "action": "sync_subjective",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:19:39+00:00",
+      "action": "auto_cluster",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:19:39+00:00",
+      "action": "sync_lifecycle_phase",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "phase": "review_initial"
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:19:39+00:00",
+      "action": "seed_start_scores",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-04-12T07:23:19+00:00",
+      "action": "sync_subjective",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:23:19+00:00",
+      "action": "clear_start_scores",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-04-12T07:23:19+00:00",
+      "action": "complete_postflight_scan",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "scan_count": 2
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:24:05+00:00",
+      "action": "sync_subjective",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:24:05+00:00",
+      "action": "seed_start_scores",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-04-12T07:24:37+00:00",
+      "action": "sync_subjective",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:24:37+00:00",
+      "action": "clear_start_scores",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-04-12T07:24:37+00:00",
+      "action": "complete_postflight_scan",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "scan_count": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:26:19+00:00",
+      "action": "sync_subjective",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:26:19+00:00",
+      "action": "auto_cluster",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:26:19+00:00",
+      "action": "seed_start_scores",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-04-12T07:26:48+00:00",
+      "action": "cluster_done",
+      "issue_ids": [],
+      "cluster_name": "auto/advocacy_language",
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "reason": "cluster members no longer actionable in state"
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:26:48+00:00",
+      "action": "reconcile",
+      "issue_ids": [
+        "advocacy_language::.claude/rules/advocacy-domain.md::beat a dead horse",
+        "advocacy_language::.claude/rules/advocacy-domain.md::cattle vs. pets",
+        "advocacy_language::.claude/rules/advocacy-domain.md::grandfathered",
+        "advocacy_language::.claude/rules/advocacy-domain.md::guinea pig",
+        "advocacy_language::.claude/rules/advocacy-domain.md::kill two birds with one stone",
+        "advocacy_language::.claude/rules/advocacy-domain.md::master/slave",
+        "advocacy_language::.claude/rules/advocacy-domain.md::more than one way to skin a cat",
+        "advocacy_language::.claude/rules/advocacy-domain.md::open a can of worms",
+        "advocacy_language::.claude/rules/advocacy-domain.md::pet project",
+        "advocacy_language::.claude/rules/advocacy-domain.md::whitelist/blacklist",
+        "advocacy_language::.claude/rules/advocacy-domain.md::wild goose chase",
+        "advocacy_language::.claude/skills/security-audit/SKILL.md::kill process",
+        "advocacy_language::INTEGRATION.md::abort",
+        "advocacy_language::INTEGRATION.md::canary deployment",
+        "advocacy_language::INTEGRATION.md::cull",
+        "advocacy_language::INTEGRATION.md::master/slave",
+        "advocacy_language::INTEGRATION.md::red herring",
+        "advocacy_language::README.md::beat a dead horse",
+        "advocacy_language::README.md::canary deployment",
+        "advocacy_language::README.md::cattle vs. pets",
+        "advocacy_language::README.md::guinea pig",
+        "advocacy_language::README.md::kill two birds with one stone",
+        "advocacy_language::README.md::monkey patching",
+        "advocacy_language::README.md::more than one way to skin a cat",
+        "advocacy_language::README.md::sacred cow",
+        "advocacy_language::README.md::scapegoat",
+        "advocacy_language::tools/test_check_consistency.py::guinea pig",
+        "advocacy_language::tools/test_check_consistency.py::kill two birds with one stone"
+      ],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "superseded_count": 28,
+        "pruned_count": 0,
+        "resurfaced_count": 0,
+        "clusters_completed_count": 1
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:26:48+00:00",
+      "action": "sync_subjective",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-04-12T07:28:28+00:00",
+      "action": "clear_start_scores",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {}
+    }
+  ],
+  "epic_triage_meta": {},
+  "commit_log": [],
+  "uncommitted_issues": [],
+  "commit_tracking_branch": null,
+  "scan_count_at_plan_start": 1
+}
