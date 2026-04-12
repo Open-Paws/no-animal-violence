@@ -4,3 +4,8 @@ repos:
     hooks:
       - id: ruff-check
       - id: ruff-format
+  - repo: https://github.com/Open-Paws/no-animal-violence-pre-commit
+    rev: v1.0.0
+    hooks:
+      - id: no-animal-violence
+        files: \.(py|ts|js|md|yaml|yml)$
