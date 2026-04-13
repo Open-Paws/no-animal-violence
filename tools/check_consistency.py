@@ -19,7 +19,6 @@ import argparse
 import json
 import logging
 import re
-import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -142,228 +141,241 @@ def normalize_term(term: str) -> str:
     return re.sub(r"\s+", " ", term.lower().strip())
 
 
+def _extract_eslint_terms(content: str) -> dict[str, str]:
+    """Extract {normalized_term: alternative} from ESLint plugin JS source."""
+    terms = {}
+    for match in re.finditer(r'\["([^"]+)",\s*"([^"]+)"\]', content):
+        term = normalize_term(match.group(1))
+        alt = match.group(2).lower().strip()
+        terms[term] = alt
+    return terms
+
+
+def _collect_canonical_terms(canonical: list[CanonicalRule]) -> set[str]:
+    """Return the set of all normalized terms from canonical rules."""
+    return {normalize_term(t) for rule in canonical for t in rule.terms}
+
+
+def _check_eslint_coverage(
+    rule: CanonicalRule,
+    eslint_terms: dict[str, str],
+) -> DriftFinding | None:
+    """Return a DriftFinding if the canonical rule is missing or mismatched in ESLint."""
+    primary = normalize_term(rule.primary_term)
+    if primary in eslint_terms:
+        eslint_alt = eslint_terms[primary]
+        canonical_primary_alt = rule.alternatives[0].lower() if rule.alternatives else ""
+        if eslint_alt != canonical_primary_alt:
+            return DriftFinding(
+                downstream="eslint",
+                rule_name=rule.name,
+                kind="alternative_mismatch",
+                detail=f"canonical='{canonical_primary_alt}', eslint='{eslint_alt}'",
+            )
+        return None
+    # Check if any term variant matches
+    if any(normalize_term(t) in eslint_terms for t in rule.terms):
+        return None
+    return DriftFinding(
+        downstream="eslint",
+        rule_name=rule.name,
+        kind="missing",
+        detail=f"Term '{primary}' not found in ESLint plugin",
+    )
+
+
 def check_eslint(canonical: list[CanonicalRule], repos_dir: Path) -> list[DriftFinding]:
     """Check ESLint plugin for drift against canonical rules."""
-    eslint_dir = repos_dir / "eslint-plugin-no-animal-violence"
-    rule_file = eslint_dir / "lib" / "rules" / "no-violent-language.js"
+    rule_file = repos_dir / "eslint-plugin-no-animal-violence" / "lib" / "rules" / "no-violent-language.js"
     findings = []
 
     if not rule_file.exists():
-        findings.append(DriftFinding(
+        return [DriftFinding(
             downstream="eslint",
             rule_name="*",
             kind="missing",
             detail=f"Rule file not found: {rule_file}",
-        ))
-        return findings
+        )]
 
-    content = rule_file.read_text()
+    eslint_terms = _extract_eslint_terms(rule_file.read_text())
+    findings.extend(filter(None, (_check_eslint_coverage(r, eslint_terms) for r in canonical)))
 
-    # Extract Map entries: ["phrase", "alternative"]
-    eslint_terms = {}
-    for match in re.finditer(r'\["([^"]+)",\s*"([^"]+)"\]', content):
-        term = normalize_term(match.group(1))
-        alt = match.group(2).lower().strip()
-        eslint_terms[term] = alt
-
-    # Check each canonical rule
-    for rule in canonical:
-        primary = normalize_term(rule.primary_term)
-        if primary in eslint_terms:
-            # Check if the primary alternative matches
-            eslint_alt = eslint_terms[primary]
-            canonical_primary_alt = rule.alternatives[0].lower() if rule.alternatives else ""
-            if eslint_alt != canonical_primary_alt:
-                findings.append(DriftFinding(
-                    downstream="eslint",
-                    rule_name=rule.name,
-                    kind="alternative_mismatch",
-                    detail=f"canonical='{canonical_primary_alt}', eslint='{eslint_alt}'",
-                ))
-        else:
-            # Check if any term variant matches
-            found = False
-            for term in rule.terms:
-                if normalize_term(term) in eslint_terms:
-                    found = True
-                    break
-            if not found:
-                findings.append(DriftFinding(
-                    downstream="eslint",
-                    rule_name=rule.name,
-                    kind="missing",
-                    detail=f"Term '{primary}' not found in ESLint plugin",
-                ))
-
-    # Check for extra rules in ESLint not in canonical
-    canonical_terms = set()
-    for rule in canonical:
-        for term in rule.terms:
-            canonical_terms.add(normalize_term(term))
-
-    for eslint_term in eslint_terms:
-        if eslint_term not in canonical_terms:
-            findings.append(DriftFinding(
-                downstream="eslint",
-                rule_name=eslint_term,
-                kind="extra",
-                detail=f"Term '{eslint_term}' in ESLint but not in canonical",
-            ))
+    canonical_terms = _collect_canonical_terms(canonical)
+    findings.extend(
+        DriftFinding(
+            downstream="eslint",
+            rule_name=term,
+            kind="extra",
+            detail=f"Term '{term}' in ESLint but not in canonical",
+        )
+        for term in eslint_terms
+        if term not in canonical_terms
+    )
 
     return findings
+
+
+_SEMGREP_ID_PREFIX = "animal-violence."
+
+
+def _parse_semgrep_rules(generic_file: Path) -> tuple[dict[str, dict[str, str]], DriftFinding | None]:
+    """Parse Semgrep generic rules file. Returns (rules_dict, error_finding)."""
+    try:
+        with open(generic_file) as f:
+            data = yaml.safe_load(f)
+    except yaml.YAMLError as exc:
+        return {}, DriftFinding(
+            downstream="semgrep",
+            rule_name="*",
+            kind="missing",
+            detail=f"Failed to parse Semgrep rules {generic_file}: {exc}",
+        )
+    rules = {}
+    for entry in data.get("rules", []):
+        rule_id = entry.get("id", "")
+        short_name = rule_id.removeprefix(_SEMGREP_ID_PREFIX)
+        rules[short_name] = {
+            "id": rule_id,
+            "pattern": entry.get("pattern-regex", ""),
+            "alternative": entry.get("metadata", {}).get("alternative", "").lower(),
+        }
+    return rules, None
+
+
+def _check_semgrep_rule(rule: CanonicalRule, semgrep_rules: dict[str, dict[str, str]]) -> DriftFinding | None:
+    """Return a DriftFinding if this canonical rule is missing or mismatched in Semgrep."""
+    if rule.name not in semgrep_rules:
+        return DriftFinding(
+            downstream="semgrep",
+            rule_name=rule.name,
+            kind="missing",
+            detail=f"Rule '{rule.name}' not found in Semgrep generic rules",
+        )
+    semgrep_alt = semgrep_rules[rule.name]["alternative"]
+    canonical_primary_alt = rule.alternatives[0].lower() if rule.alternatives else ""
+    if semgrep_alt and canonical_primary_alt and semgrep_alt != canonical_primary_alt:
+        return DriftFinding(
+            downstream="semgrep",
+            rule_name=rule.name,
+            kind="alternative_mismatch",
+            detail=f"canonical='{canonical_primary_alt}', semgrep='{semgrep_alt}'",
+        )
+    return None
 
 
 def check_semgrep(canonical: list[CanonicalRule], repos_dir: Path) -> list[DriftFinding]:
     """Check Semgrep rules for drift against canonical rules."""
     semgrep_dir = repos_dir / "semgrep-rules-no-animal-violence" / "rules"
-    findings = []
+    generic_file = semgrep_dir / "animal-violence-generic.yaml"
 
     if not semgrep_dir.exists():
-        findings.append(DriftFinding(
-            downstream="semgrep",
-            rule_name="*",
-            kind="missing",
-            detail=f"Rules directory not found: {semgrep_dir}",
-        ))
-        return findings
-
-    # Load the generic rules file (most comparable to canonical)
-    generic_file = semgrep_dir / "animal-violence-generic.yaml"
+        return [DriftFinding(downstream="semgrep", rule_name="*", kind="missing",
+                             detail=f"Rules directory not found: {semgrep_dir}")]
     if not generic_file.exists():
-        findings.append(DriftFinding(
+        return [DriftFinding(downstream="semgrep", rule_name="*", kind="missing",
+                             detail=f"Generic rules file not found: {generic_file}")]
+
+    semgrep_rules, parse_error = _parse_semgrep_rules(generic_file)
+    if parse_error is not None:
+        return [parse_error]
+
+    findings = list(filter(None, (_check_semgrep_rule(r, semgrep_rules) for r in canonical)))
+
+    canonical_names = {r.name for r in canonical}
+    findings.extend(
+        DriftFinding(
             downstream="semgrep",
-            rule_name="*",
-            kind="missing",
-            detail=f"Generic rules file not found: {generic_file}",
-        ))
-        return findings
+            rule_name=name,
+            kind="extra",
+            detail=f"Rule '{name}' in Semgrep but not in canonical",
+        )
+        for name in semgrep_rules
+        if name not in canonical_names
+    )
+    return findings
 
-    try:
-        with open(generic_file) as f:
-            data = yaml.safe_load(f)
-    except yaml.YAMLError as exc:
-        findings.append(DriftFinding(
-            downstream="semgrep",
-            rule_name="*",
-            kind="missing",
-            detail=f"Failed to parse Semgrep rules {generic_file}: {exc}",
-        ))
-        return findings
 
-    # Extract Semgrep rule IDs and their regex patterns
-    semgrep_rules = {}
-    for entry in data.get("rules", []):
-        rule_id = entry.get("id", "")
-        # Extract the short name from the ID (e.g., "animal-violence.kill-two-birds" -> "kill-two-birds")
-        prefix = "animal-violence."
-        short_name = rule_id[len(prefix):] if rule_id.startswith(prefix) else rule_id
-        pattern = entry.get("pattern-regex", "")
-        alt = entry.get("metadata", {}).get("alternative", "")
-        semgrep_rules[short_name] = {
-            "id": rule_id,
-            "pattern": pattern,
-            "alternative": alt.lower(),
-        }
+def _clean_vale_term(term: str) -> str:
+    """Strip YAML regex artifacts from a Vale term for comparison."""
+    clean = re.sub(r"[\\()]", "", term).lower().strip()
+    clean = re.sub(r"\?\:", "", clean)
+    return re.sub(r"[?+*]", "", clean)
 
-    # Check each canonical rule against Semgrep
-    for rule in canonical:
-        if rule.name in semgrep_rules:
-            semgrep_alt = semgrep_rules[rule.name]["alternative"]
+
+def _load_vale_terms(vale_dir: Path) -> tuple[dict[str, str], list[str]]:
+    """Load all {normalized_term: alternative} entries from Vale YAML files.
+
+    Returns (terms, parse_errors) where parse_errors lists files that could not be read.
+    """
+    terms: dict[str, str] = {}
+    parse_errors: list[str] = []
+    for yml_file in vale_dir.rglob("*.yml"):
+        try:
+            with open(yml_file) as f:
+                data = yaml.safe_load(f)
+            if data and "swap" in data:
+                for term, alt in data["swap"].items():
+                    terms[_clean_vale_term(term)] = alt.lower() if isinstance(alt, str) else str(alt).lower()
+        except (yaml.YAMLError, OSError) as exc:
+            parse_errors.append(f"{yml_file}: {exc}")
+    return terms, parse_errors
+
+
+def _check_vale_coverage(
+    rule: CanonicalRule,
+    vale_terms: dict[str, str],
+    label: str,
+) -> DriftFinding | None:
+    """Return a DriftFinding if the canonical rule is missing or mismatched in Vale."""
+    for term in rule.terms:
+        nt = normalize_term(term)
+        if nt in vale_terms:
             canonical_primary_alt = rule.alternatives[0].lower() if rule.alternatives else ""
-            if semgrep_alt and canonical_primary_alt and semgrep_alt != canonical_primary_alt:
-                findings.append(DriftFinding(
-                    downstream="semgrep",
+            vale_alt = vale_terms[nt]
+            if canonical_primary_alt and vale_alt != canonical_primary_alt:
+                return DriftFinding(
+                    downstream=label,
                     rule_name=rule.name,
                     kind="alternative_mismatch",
-                    detail=f"canonical='{canonical_primary_alt}', semgrep='{semgrep_alt}'",
-                ))
-        else:
-            findings.append(DriftFinding(
-                downstream="semgrep",
-                rule_name=rule.name,
-                kind="missing",
-                detail=f"Rule '{rule.name}' not found in Semgrep generic rules",
-            ))
-
-    # Check for extra Semgrep rules
-    canonical_names = {r.name for r in canonical}
-    for semgrep_name in semgrep_rules:
-        if semgrep_name not in canonical_names:
-            findings.append(DriftFinding(
-                downstream="semgrep",
-                rule_name=semgrep_name,
-                kind="extra",
-                detail=f"Rule '{semgrep_name}' in Semgrep but not in canonical",
-            ))
-
-    return findings
+                    detail=f"canonical='{canonical_primary_alt}', vale='{vale_alt}'",
+                )
+            return None
+    primary = normalize_term(rule.primary_term)
+    return DriftFinding(
+        downstream=label,
+        rule_name=rule.name,
+        kind="missing",
+        detail=f"Term '{primary}' not found in Vale rules",
+    )
 
 
 def check_vale(canonical: list[CanonicalRule], repos_dir: Path) -> list[DriftFinding]:
     """Check Vale rules for drift against canonical rules."""
     findings = []
-
-    # Check both the downstream vale repo AND the in-repo vale directory
-    vale_dirs = [
-        repos_dir / "vale-no-animal-violence",
-    ]
-
-    for vale_dir in vale_dirs:
+    for vale_dir in [repos_dir / "vale-no-animal-violence"]:
+        label = f"vale ({vale_dir.name})"
         if not vale_dir.exists():
             findings.append(DriftFinding(
-                downstream=f"vale ({vale_dir.name})",
-                rule_name="*",
-                kind="missing",
+                downstream=label, rule_name="*", kind="missing",
                 detail=f"Vale directory not found: {vale_dir}",
             ))
             continue
-
-        # Find all Vale YAML files
-        vale_terms = {}
-        label = f"vale ({vale_dir.name})"
-
-        for yml_file in vale_dir.rglob("*.yml"):
-            try:
-                with open(yml_file) as f:
-                    data = yaml.safe_load(f)
-                if data and "swap" in data:
-                    for term, alt in data["swap"].items():
-                        # Strip YAML regex artifacts
-                        clean_term = re.sub(r"[\\()]", "", term).lower().strip()
-                        # Remove regex quantifiers like (?:ed|ing)?
-                        clean_term = re.sub(r"\?\:", "", clean_term)
-                        clean_term = re.sub(r"[?+*]", "", clean_term)
-                        vale_terms[clean_term] = alt.lower() if isinstance(alt, str) else str(alt).lower()
-            except (yaml.YAMLError, OSError) as exc:
-                logger.debug("Failed to parse Vale file %s: %s", yml_file, exc)
-
-        # Check each canonical rule
-        for rule in canonical:
-            primary = normalize_term(rule.primary_term)
-            found = False
-            for term in rule.terms:
-                nt = normalize_term(term)
-                if nt in vale_terms:
-                    found = True
-                    vale_alt = vale_terms[nt]
-                    canonical_primary_alt = rule.alternatives[0].lower() if rule.alternatives else ""
-                    if canonical_primary_alt and vale_alt != canonical_primary_alt:
-                        findings.append(DriftFinding(
-                            downstream=label,
-                            rule_name=rule.name,
-                            kind="alternative_mismatch",
-                            detail=f"canonical='{canonical_primary_alt}', vale='{vale_alt}'",
-                        ))
-                    break
-            if not found:
-                findings.append(DriftFinding(
-                    downstream=label,
-                    rule_name=rule.name,
-                    kind="missing",
-                    detail=f"Term '{primary}' not found in Vale rules",
-                ))
-
+        vale_terms, parse_errors = _load_vale_terms(vale_dir)
+        for err in parse_errors:
+            logger.warning("Vale parse error: %s", err)
+        findings.extend(filter(None, (_check_vale_coverage(r, vale_terms, label) for r in canonical)))
     return findings
+
+
+def _count_semgrep_rules(semgrep_file: Path) -> int | None:
+    """Return the number of rules in a Semgrep YAML file, or None on parse error."""
+    try:
+        with open(semgrep_file) as f:
+            data = yaml.safe_load(f)
+        return len(data.get("rules", []))
+    except yaml.YAMLError as exc:
+        logger.warning("Failed to parse Semgrep file for count: %s", exc)
+        return None
 
 
 def run_check(repo_dir: Path, repos_dir: Path) -> DriftReport:
@@ -384,12 +396,9 @@ def run_check(repo_dir: Path, repos_dir: Path) -> DriftReport:
     report.findings.extend(semgrep_findings)
     semgrep_file = repos_dir / "semgrep-rules-no-animal-violence" / "rules" / "animal-violence-generic.yaml"
     if semgrep_file.exists():
-        try:
-            with open(semgrep_file) as f:
-                data = yaml.safe_load(f)
-            report.downstream_counts["semgrep (generic)"] = len(data.get("rules", []))
-        except yaml.YAMLError as exc:
-            logger.debug("Failed to parse Semgrep file for count: %s", exc)
+        semgrep_count = _count_semgrep_rules(semgrep_file)
+        if semgrep_count is not None:
+            report.downstream_counts["semgrep (generic)"] = semgrep_count
 
     # Vale
     vale_findings = check_vale(canonical, repos_dir)
@@ -404,13 +413,14 @@ def run_check(repo_dir: Path, repos_dir: Path) -> DriftReport:
                 if data and "swap" in data:
                     count += len(data["swap"])
             except (yaml.YAMLError, OSError) as exc:
-                logger.debug("Failed to parse Vale file %s: %s", yml_file, exc)
+                logger.warning("Failed to parse Vale file %s: %s", yml_file, exc)
+                continue
         report.downstream_counts["vale"] = count
 
     return report
 
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser(
         description="Check no-animal-violence suite consistency across formats"
     )
@@ -451,8 +461,8 @@ def main():
     else:
         print(report.summary())
 
-    sys.exit(1 if report.has_drift else 0)
+    return 1 if report.has_drift else 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
