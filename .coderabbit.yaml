@@ -48,7 +48,7 @@ reviews:
     custom_checks:
       - name: "No speciesist idioms"
         mode: "error"
-        instructions: "Fail on: 'livestock', 'master/slave', 'whitelist/blacklist', 'cattle vs pets', 'kill two birds', 'guinea pig' as test subject, 'farm' as industry euphemism."
+        instructions: "Fail on speciesist idioms and industry euphemisms. Reference: https://github.com/Open-Paws/no-animal-violence for the full rule list."
 
       - name: "No hardcoded secrets or credentials"
         mode: "error"
