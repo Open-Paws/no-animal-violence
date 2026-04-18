@@ -132,6 +132,18 @@ def propagate_repo(config: dict, sync_branch: str, canonical_sha: str, dry_run: 
             run(["git", "commit", "-m", commit_msg], cwd=tmpdir)
             run(["git", "push", "origin", sync_branch], cwd=tmpdir)
 
+            gh_env = {**os.environ, "GH_TOKEN": token}
+            # Ensure the label exists in the downstream repo (idempotent)
+            run(
+                ["gh", "label", "create", "automated-sync",
+                 "--repo", repo,
+                 "--color", "0075ca",
+                 "--description", "Automated rule sync from canonical repo",
+                 "--force"],
+                cwd=tmpdir,
+                env=gh_env,
+            )
+
             pr_title = f"sync: update rules from canonical {canonical_sha[:12]}"
             pr_body = (
                 f"Automated sync from Open-Paws/no-animal-violence@{canonical_sha}.\n\n"
@@ -148,7 +160,7 @@ def propagate_repo(config: dict, sync_branch: str, canonical_sha: str, dry_run: 
                  "--body", pr_body,
                  "--label", "automated-sync"],
                 cwd=tmpdir,
-                env={**os.environ, "GH_TOKEN": token},
+                env=gh_env,
             )
             result["pr_url"] = pr_result.stdout.strip()
             result["status"] = "pr_opened"

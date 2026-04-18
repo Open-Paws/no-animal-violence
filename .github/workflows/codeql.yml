@@ -1,12 +1,8 @@
 name: "CodeQL"
-
+# Default setup is enabled in repo settings and handles CodeQL scanning automatically.
+# This workflow previously conflicted with it. Kept as workflow_dispatch only
+# so it can be re-enabled manually if default setup is ever turned off.
 on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
-  schedule:
-    - cron: "17 4 * * 1"
   workflow_dispatch:
 
 permissions:
