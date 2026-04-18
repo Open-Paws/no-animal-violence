@@ -1,4 +1,5 @@
-# AUTO-GENERATED from Open-Paws/no-animal-violence. Do not edit directly.
+# AUTO-GENERATED from project-compassionate-code. Do not edit directly.
+# Animal violence language patterns for retext-equality / alex
 # Source: https://doi.org/10.1007/s43681-023-00380-w
 
 - type: basic
@@ -9,8 +10,6 @@
     hit two targets with one shot: a
   inconsiderate:
     kill two birds with one stone: animal-violence
-    killing two birds with one stone: animal-violence
-    killed two birds with one stone: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Violent animal idiom — alternatives are more direct
@@ -30,8 +29,6 @@
     several ways to accomplish this: a
   inconsiderate:
     more than one way to skin a cat: animal-violence
-    many ways to skin a cat: animal-violence
-    other ways to skin a cat: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal idiom — alternatives are more precise
@@ -41,8 +38,6 @@
     let it slip: a
   inconsiderate:
     let the cat out of the bag: animal-violence
-    letting the cat out of the bag: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal idiom — alternatives communicate the idea more directly
   considerate:
@@ -51,9 +46,6 @@
     open Pandora's box: a
   inconsiderate:
     open a can of worms: animal-violence
-    opening a can of worms: animal-violence
-    opened a can of worms: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal idiom — alternatives are more universally understood
   considerate:
@@ -62,7 +54,6 @@
     fool's errand: a
   inconsiderate:
     wild goose chase: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Violent animal idiom with shorter alternatives
   considerate:
@@ -90,17 +81,14 @@
     bigger issues at hand: a
   inconsiderate:
     there are bigger fish to fry: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal-as-experiment metaphor — alternatives are more precise in technical
-    contexts
+  note: Animal-as-experiment metaphor — alternatives are more precise in technical contexts
   considerate:
     test subject: a
     first to try: a
     early adopter: a
   inconsiderate:
     guinea pig: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal idiom — alternatives are more direct
   considerate:
@@ -109,7 +97,6 @@
     be patient: a
   inconsiderate:
     hold your horses: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Well-understood idiom — flag for awareness only
   considerate:
@@ -117,7 +104,6 @@
     the unaddressed problem: a
   inconsiderate:
     the elephant in the room: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal idiom — alternatives are clearer for international audiences
   considerate:
@@ -126,7 +112,6 @@
     from the authority: a
   inconsiderate:
     straight from the horse's mouth: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal slaughter idiom — alternatives are equally expressive
   considerate:
@@ -135,9 +120,6 @@
     win the prize: a
   inconsiderate:
     bring home the bacon: animal-violence
-    bringing home the bacon: animal-violence
-    brought home the bacon: animal-violence
-    brings home the bacon: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Bullfighting idiom — alternatives convey the same assertiveness
@@ -147,9 +129,6 @@
     seize the opportunity: a
   inconsiderate:
     take the bull by the horns: animal-violence
-    taking the bull by the horns: animal-violence
-    took the bull by the horns: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Violent animal idiom referencing slaughter — alternatives are more descriptive
   considerate:
@@ -167,7 +146,6 @@
     barely any room: a
   inconsiderate:
     no room to swing a cat: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal-origin idiom — flag for awareness only
   considerate:
@@ -176,7 +154,6 @@
     misleading clue: a
   inconsiderate:
     red herring: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Directly references killing a cat
   considerate:
@@ -212,8 +189,6 @@
     sacrifice someone: a
   inconsiderate:
     throw someone to the wolves: animal-violence
-    throwing someone to the wolves: animal-violence
-    threw someone to the wolves: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References hooking fish — fishing kills fish
@@ -223,7 +198,6 @@
     fell for it entirely: a
   inconsiderate:
     hook, line, and sinker: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References wing-clipping — physical mutilation done to farmed birds
   considerate:
@@ -232,9 +206,6 @@
     hold someone back: a
   inconsiderate:
     clip someone's wings: animal-violence
-    clipping someone's wings: animal-violence
-    clipped someone's wings: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References overloading a pack animal until injury
   considerate:
@@ -243,7 +214,6 @@
     the final provocation: a
   inconsiderate:
     the straw that broke the camel's back: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References trapping and catching wild birds
   considerate:
@@ -251,7 +221,6 @@
     certainty over speculation: a
   inconsiderate:
     a bird in the hand is worth two in the bush: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References eating a killed bird as punishment
   considerate:
@@ -260,8 +229,6 @@
     accept humiliation: a
   inconsiderate:
     eat crow: animal-violence
-    eating crow: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References animal fighting
   considerate:
@@ -270,9 +237,6 @@
     have constant conflict: a
   inconsiderate:
     fight like cats and dogs: animal-violence
-    fighting like cats and dogs: animal-violence
-    fought like cats and dogs: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References baiting hooks to catch and kill fish
   considerate:
@@ -281,9 +245,6 @@
     be deceived: a
   inconsiderate:
     take the bait: animal-violence
-    taking the bait: animal-violence
-    took the bait: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References farming chickens as commodity and property
   considerate:
@@ -292,7 +253,118 @@
     don't get ahead of yourself: a
   inconsiderate:
     don't count your chickens before they hatch: animal-violence
+- type: basic
+  note: Industry commodity framing (24.8:1 ratio vs 'farmed animals' in training data). Defines sentient beings by their commercial
+    function. 'Farmed animals' is factually equivalent and does not erase the subject.
+  considerate:
+    farmed animals: a
+    animals raised for food: a
+  inconsiderate:
+    livestock: industry-euphemism
+- type: basic
+  note: Industry commodity framing (16.5:1 ratio vs 'farmed birds' in training data). Abstracts individual birds into a bulk
+    commodity term. 'Farmed birds' or the specific species name is more precise.
+  considerate:
+    farmed birds: a
+    chickens: a
+    chickens and turkeys: a
+  inconsiderate:
+    poultry: industry-euphemism
+- type: basic
+  note: Industry euphemism (15.0:1 ratio vs 'pregnancy cage' in training data). A metal enclosure so small a pregnant sow
+    cannot turn around for her entire 3.5-month pregnancy. 'Pregnancy cage' describes what it actually is.
+  considerate:
+    pregnancy cage: a
+    pregnancy cages: a
+  inconsiderate:
+    gestation crate: industry-euphemism
+    gestation crates: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry euphemism (13.9:1 ratio vs 'mass killing' in training data). Used to describe killing entire flocks or herds,
+    typically via gassing, ventilation shutdown, or foam. Suppress in database or population statistics contexts where 'depopulation'
+    means removing data rows.
+  considerate:
+    mass killing: a
+    killed en masse: a
+    killing en masse: a
+  inconsiderate:
+    depopulation: industry-euphemism
+    depopulated: industry-euphemism
+    depopulating: industry-euphemism
+- type: basic
+  note: Industry euphemism (34.3:1 ratio vs 'slaughterhouse' in training data). When referring to facilities that kill animals,
+    'slaughterhouse' is the accurate term.
+  considerate:
+    slaughterhouse: a
+    slaughterhouses: a
+  inconsiderate:
+    processing plant: industry-euphemism
+    processing plants: industry-euphemism
+    processing facility: industry-euphemism
+    processing facilities: industry-euphemism
+- type: basic
+  note: Industry euphemism. A metal cage that confines a sow during and after birth, preventing her from turning around or
+    reaching her piglets. 'Birthing cage' describes the reality.
+  considerate:
+    birthing cage: a
+    birthing cages: a
+  inconsiderate:
+    farrowing crate: industry-euphemism
+    farrowing crates: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry euphemism. Wire enclosures giving each hen less floor space than a sheet of paper (67 sq inches / 432 sq
+    cm). The word 'battery' obscures that this is a tiny cage stacked in rows of thousands.
+  considerate:
+    small wire cage: a
+    small wire cages: a
+    confined cage: a
+    confined cages: a
+  inconsiderate:
+    battery cage: industry-euphemism
+    battery cages: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: 'Industry euphemism. ''Spent'' frames a living hen as a depleted resource. These hens are typically killed at 18 months
+    (natural lifespan: 8-10 years) when egg production drops below commercial thresholds.'
+  considerate:
+    discarded hen: a
+    discarded hens: a
+    hen killed after egg production declines: a
+  inconsiderate:
+    spent hen: industry-euphemism
+    spent hens: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry oxymoron. The adjective 'humane' sanitizes the act. USDA 'humane slaughter' standards permit bolt guns, electrocution,
+    and gas chambers. The alternative drops the misleading modifier — the act is slaughter regardless of method.
+  considerate:
+    slaughter: a
+    slaughtered: a
+    killing: a
+    killed: a
+  inconsiderate:
+    humane slaughter: industry-euphemism
+    humanely slaughter: industry-euphemism
+    humane slaughtered: industry-euphemism
+    humanely slaughtered: industry-euphemism
+    humane killing: industry-euphemism
+    humanely killing: industry-euphemism
+    humane killed: industry-euphemism
+    humanely killed: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry commodity term that defines a living chicken entirely by its commercial purpose. When referring to animals,
+    'chicken raised for meat' is accurate without reducing the animal to a product category.
+  considerate:
+    chicken raised for meat: a
+    chickens raised for meat: a
+    meat chicken: a
+    meat chickens: a
+  inconsiderate:
+    broiler: industry-euphemism
+    broilers: industry-euphemism
 - type: basic
   note: Animal-as-coward insult in comments
   considerate:
@@ -301,7 +373,6 @@
     go for it: a
   inconsiderate:
     don't be a chicken: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal-as-insult for resource consumption
   considerate:
@@ -310,7 +381,6 @@
     heavy consumer: a
   inconsiderate:
     pig: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Not directly animal-related but reinforces animal industry terminology
   considerate:
@@ -319,7 +389,6 @@
     code without process: a
   inconsiderate:
     cowboy coding: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal-as-insult for programmers — dehumanizing and unprofessional
   considerate:
@@ -328,7 +397,6 @@
     engineer: a
   inconsiderate:
     code monkey: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: From badger-baiting — a blood sport where dogs attack captive badgers
   considerate:
@@ -337,7 +405,6 @@
     harass: a
   inconsiderate:
     badger someone: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: From using ferrets to hunt rabbits out of burrows
   considerate:
@@ -346,7 +413,6 @@
     dig up: a
   inconsiderate:
     ferret out: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Infrastructure metaphor — alternatives are technically more precise
   considerate:
@@ -363,7 +429,6 @@
     passion project: a
   inconsiderate:
     pet project: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal metaphor — alternatives are more technical
   considerate:
@@ -372,7 +437,6 @@
     sentinel: a
   inconsiderate:
     canary in a coal mine: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Common tech term — flag for awareness only
   considerate:
@@ -381,10 +445,6 @@
     using internally: a
   inconsiderate:
     dogfooding: animal-violence
-    dogfood: animal-violence
-    eating your own dogfood: animal-violence
-    eat your own dogfood: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal metaphor — alternatives are more descriptive
   considerate:
@@ -393,7 +453,6 @@
     organizing chaos: a
   inconsiderate:
     herding cats: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal metaphor — alternatives are more precise
   considerate:
@@ -402,10 +461,8 @@
     speculative inquiry: a
   inconsiderate:
     go on a fishing expedition: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal objectification with cultural insensitivity — trivializes Hindu beliefs
-    while treating cattle as objects
+  note: Animal objectification with cultural insensitivity — trivializes Hindu beliefs while treating cattle as objects
   considerate:
     unquestioned belief: a
     untouchable topic: a
@@ -424,7 +481,6 @@
     scapegoat: animal-violence
     scapegoated: animal-violence
     scapegoating: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Derogatory animal metaphor for futility — alternatives are more descriptive
   considerate:
@@ -433,7 +489,6 @@
     endless hustle: a
   inconsiderate:
     rat race: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Financial/tech term depicting animal death — alternatives are more professional
   considerate:
@@ -451,19 +506,14 @@
     fiercely competitive: a
   inconsiderate:
     dog-eat-dog: animal-violence
-    dog eat dog: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References a game based on hitting animals — alternatives describe the pattern
-    more precisely
+  note: References a game based on hitting animals — alternatives describe the pattern more precisely
   considerate:
     recurring problem: a
     endless loop: a
     unwinnable game: a
   inconsiderate:
     whack-a-mole: animal-violence
-    whack a mole: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Commodifies cows — treats living beings as profit generators
   considerate:
@@ -472,7 +522,6 @@
     money maker: a
   inconsiderate:
     cash cow: animal-violence
-    cash cows: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References ritual slaughter of lambs
@@ -482,7 +531,6 @@
     someone sacrificed for others: a
   inconsiderate:
     sacrificial lamb: animal-violence
-    sacrificial lambs: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References a duck in the open, easy to shoot — hunting imagery
@@ -492,8 +540,6 @@
     exposed: a
   inconsiderate:
     sitting duck: animal-violence
-    sitting ducks: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References hunting season — the legal period for killing animals
   considerate:
@@ -502,8 +548,6 @@
     no holds barred: a
   inconsiderate:
     open season: animal-violence
-    opening season: animal-violence
-    opened season: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References disposing of farm animals when no longer productive
@@ -513,7 +557,6 @@
     sunset: a
   inconsiderate:
     put out to pasture: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References a duck that has been shot and killed — hunting
   considerate:
@@ -522,20 +565,14 @@
     foregone conclusion: a
   inconsiderate:
     dead duck: animal-violence
-    dead ducks: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Process language — in POSIX context this is standard, in docs alternatives
-    may be clearer
+  note: Process language — in POSIX context this is standard, in docs alternatives may be clearer
   considerate:
     terminate the process: a
     stop the process: a
     end the process: a
   inconsiderate:
     kill process: animal-violence
-    killing process: animal-violence
-    killed process: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Process language — alternatives are equally clear
   considerate:
@@ -544,9 +581,6 @@
     terminate the server: a
   inconsiderate:
     kill the server: animal-violence
-    killing the server: animal-violence
-    killed the server: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Violent metaphor in technical context — alternatives are more professional
   considerate:
@@ -555,7 +589,6 @@
     remove entirely: a
   inconsiderate:
     nuke: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Standard technical term — flag for awareness only in non-technical contexts
   considerate:
@@ -564,7 +597,6 @@
     halt: a
   inconsiderate:
     abort: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Euphemism for mass killing of animals — used in wildlife management and farming
   considerate:
@@ -574,10 +606,8 @@
     filter out: a
   inconsiderate:
     cull: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Actively being replaced across the industry — follows existing inclusive naming
-    initiatives
+  note: Actively being replaced across the industry — follows existing inclusive naming initiatives
   considerate:
     primary/replica: a
     leader/follower: a
@@ -602,15 +632,3 @@
     pre-existing: a
   inconsiderate:
     grandfathered: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: References a bird unable to fly due to injury. 'Outgoing' or 'transitional'
-    are more precise in political and tech contexts.
-  considerate:
-    outgoing: a
-    transitional: a
-    ineffective: a
-  inconsiderate:
-    lame duck: animal-violence
-    lame-duck: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
