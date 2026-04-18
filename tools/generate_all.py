@@ -39,10 +39,15 @@ def main() -> int:
             print(f"OK:   {label}")
 
     for script, label in js_generators:
-        result = subprocess.run(
-            ["node", repo_root / script],
-            cwd=repo_root,
-        )
+        try:
+            result = subprocess.run(
+                ["node", repo_root / script],
+                cwd=repo_root,
+            )
+        except FileNotFoundError:
+            failed.append(label)
+            print(f"FAIL: {label} (node not found)")
+            continue
         if result.returncode != 0:
             failed.append(label)
             print(f"FAIL: {label}")

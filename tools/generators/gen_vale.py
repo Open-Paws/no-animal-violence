@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from loader import Rule, canonical_rules_path, load_rules
+from loader import Rule, canonical_rules_path, load_rules  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 BUILD_DIR = REPO_ROOT / "build" / "vale-no-animal-violence" / "NoAnimalViolence"
@@ -30,6 +30,8 @@ def _build_swap(rules: list[Rule]) -> dict[str, str]:
     swap: dict[str, str] = {}
     for rule in rules:
         for term in rule.terms:
+            if term in swap:
+                print(f"Warning: duplicate term '{term}' in rule '{rule.name}', overwriting")
             swap[term] = rule.primary_alt
     return swap
 
@@ -62,10 +64,8 @@ def generate_downstream(rules: list[Rule], output_path: Path) -> None:
 def main() -> int:
     rules = load_rules(canonical_rules_path())
 
-    # Downstream: all rules in one file
     generate_downstream(rules, BUILD_DIR / "AnimalIdioms.yml")
 
-    # Downstream: meta.json
     BUILD_DIR.mkdir(parents=True, exist_ok=True)
     meta = {
         "description": "Detects language that normalizes violence toward animals.",
@@ -73,7 +73,6 @@ def main() -> int:
     }
     (BUILD_DIR / "meta.json").write_text(json.dumps(meta, indent=2) + "\n")
 
-    # Canonical inline: split by category
     animal_violence = [r for r in rules if r.category == "animal-violence"]
     industry_euphemism = [r for r in rules if r.category == "industry-euphemism"]
 

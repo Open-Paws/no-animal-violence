@@ -47,7 +47,7 @@ rules:
     category: animal-violence
     note: Violent animal idiom — alternatives are shorter and clearer
     word_boundary: false
-    regex: "more\\s+than\\s+one\\s+way\\s+to\\s+skin\\s+a\\s+cat"
+    regex: "(?:more\\s+than\\s+one|many|other)\\s+ways?\\s+to\\s+skin\\s+a\\s+cat"
     context_suppressions: []
 
   - name: let-the-cat-out-of-the-bag
@@ -207,7 +207,7 @@ rules:
     category: animal-violence
     note: Animal slaughter idiom — alternatives are equally expressive
     word_boundary: false
-    regex: "bring(ing)?\\s+home\\s+the\\s+bacon"
+    regex: "(?:bring(?:ing|s)?|brought)\\s+home\\s+the\\s+bacon"
     context_suppressions: []
 
   - name: take-the-bull-by-the-horns
@@ -223,7 +223,7 @@ rules:
     category: animal-violence
     note: Bullfighting idiom — alternatives convey the same assertiveness
     word_boundary: false
-    regex: "take?(ing|ook)?\\s+the\\s+bull\\s+by\\s+the\\s+horns"
+    regex: "(?:take|taking|took)\\s+the\\s+bull\\s+by\\s+the\\s+horns"
     context_suppressions: []
 
   - name: like-lambs-to-the-slaughter
@@ -427,7 +427,7 @@ rules:
     category: animal-violence
     note: References baiting hooks to catch and kill fish
     word_boundary: false
-    regex: "take?(ing|ook)?\\s+the\\s+bait"
+    regex: "(?:take|taking|took)\\s+the\\s+bait"
     context_suppressions: []
 
   - name: dont-count-your-chickens-before-they-hatch

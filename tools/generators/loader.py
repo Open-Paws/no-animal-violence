@@ -1,8 +1,9 @@
 """Load and validate rules.yaml."""
 from __future__ import annotations
+
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional
+
 import yaml
 
 
@@ -32,8 +33,10 @@ class Rule:
 
 
 def load_rules(rules_yaml_path: Path) -> list[Rule]:
-    with open(rules_yaml_path) as f:
-        data = yaml.safe_load(f)
+    with open(rules_yaml_path, encoding="utf-8") as f:
+        data = yaml.safe_load(f) or {}
+    if not isinstance(data, dict):
+        raise ValueError(f"Invalid rules file: expected mapping at root in {rules_yaml_path}")
     rules = []
     for r in data.get("rules", []):
         rules.append(Rule(

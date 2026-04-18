@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from loader import Rule, canonical_rules_path, load_rules
+from loader import Rule, canonical_rules_path, load_rules  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 BUILD_DIR = REPO_ROOT / "build" / "semgrep-rules-no-animal-violence" / "rules"
@@ -32,6 +32,11 @@ def _autofix_note(rule: Rule) -> str:
     return "."
 
 
+def _safe_yaml_single_quoted(s: str) -> str:
+    """Escape a string for embedding in a YAML single-quoted scalar."""
+    return s.replace("'", "''")
+
+
 def generate_generic(rules: list[Rule], output_path: Path) -> None:
     """Generate the generic (regex-based) semgrep rules file."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -46,7 +51,7 @@ def generate_generic(rules: list[Rule], output_path: Path) -> None:
         msg = f'Animal violence language: "{rule.primary_term}". Consider: {alts}{autofix}'
         lines.append(f"- id: animal-violence.{rule.name}\n")
         lines.append(f"  pattern-regex: {rule.regex}\n")
-        lines.append(f"  message: '{msg}'\n")
+        lines.append(f"  message: '{_safe_yaml_single_quoted(msg)}'\n")
         lines.append("  languages:\n")
         lines.append("  - generic\n")
         lines.append(f"  severity: {rule.semgrep_severity}\n")
@@ -77,14 +82,17 @@ def _generate_lang_file(
     for rule in rules:
         alts = _alts_str(rule)
         autofix = _autofix_note(rule)
-        msg = f'Animal violence language in string: "{rule.primary_term}". Consider: {alts}{autofix}'
+        msg = (
+            f'Animal violence language in string: "{rule.primary_term}". '
+            f"Consider: {alts}{autofix}"
+        )
         lines.append(f"- id: {rule_id_prefix}.{rule.name}\n")
         lines.append("  patterns:\n")
         lines.append("  - pattern: $S\n")
         lines.append("  - metavariable-regex:\n")
         lines.append("      metavariable: $S\n")
         lines.append(f"      regex: .*{rule.regex}.*\n")
-        lines.append(f"  message: '{msg}'\n")
+        lines.append(f"  message: '{_safe_yaml_single_quoted(msg)}'\n")
         lines.append("  languages:\n")
         lines.append(lang_yaml + "\n")
         lines.append(f"  severity: {rule.semgrep_severity}\n")
@@ -104,7 +112,10 @@ def generate_python(rules: list[Rule], output_path: Path) -> None:
 
 
 def generate_javascript(rules: list[Rule], output_path: Path) -> None:
-    _generate_lang_file(rules, output_path, "JavaScript/TypeScript", "animal-violence.javascript.string", ["javascript", "typescript"])
+    _generate_lang_file(
+        rules, output_path, "JavaScript/TypeScript",
+        "animal-violence.javascript.string", ["javascript", "typescript"],
+    )
 
 
 def generate_go(rules: list[Rule], output_path: Path) -> None:

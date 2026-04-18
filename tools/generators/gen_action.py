@@ -8,8 +8,10 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import yaml
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from loader import Rule, canonical_rules_path, load_rules
+from loader import Rule, canonical_rules_path, load_rules  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 OUTPUT_PATH = REPO_ROOT / "build" / "no-animal-violence-action" / "action.yml"
@@ -24,10 +26,6 @@ branding:
   color: 'green'
 
 inputs:
-  severity:
-    description: 'Minimum severity to report (error, warning, info)'
-    required: false
-    default: 'warning'
   paths:
     description: 'Paths to scan (space-separated)'
     required: false
@@ -66,25 +64,28 @@ STATIC_FOOTER = """\
 def _build_woke_yaml(rules: list[Rule], indent: int = 8) -> str:
     """Render rules in woke YAML format, indented for heredoc embedding."""
     pad = " " * indent
-    lines = [f"{pad}rules:"]
+    rules_list = []
     for rule in rules:
-        lines.append(f"{pad}- name: {rule.name}")
-        lines.append(f"{pad}  terms:")
-        for term in rule.terms:
-            lines.append(f"{pad}  - {term}")
-        lines.append(f"{pad}  alternatives:")
-        for alt in rule.alternatives:
-            lines.append(f"{pad}  - {alt}")
-        lines.append(f"{pad}  severity: {rule.severity}")
+        entry: dict = {
+            "name": rule.name,
+            "terms": rule.terms,
+            "alternatives": rule.alternatives,
+            "severity": rule.severity,
+            "options": {
+                "word_boundary": rule.word_boundary,
+                "categories": [rule.category],
+            },
+        }
         if rule.note:
-            # Safe single-line quoting for notes
-            note_safe = rule.note.replace("\\", "\\\\").replace('"', '\\"')
-            lines.append(f'{pad}  note: "{note_safe}"')
-        lines.append(f"{pad}  options:")
-        lines.append(f"{pad}    word_boundary: {'true' if rule.word_boundary else 'false'}")
-        lines.append(f"{pad}    categories:")
-        lines.append(f"{pad}    - {rule.category}")
-    return "\n".join(lines)
+            entry["note"] = rule.note
+        rules_list.append(entry)
+    dumped = yaml.safe_dump(
+        {"rules": rules_list},
+        default_flow_style=False,
+        sort_keys=False,
+        allow_unicode=True,
+    )
+    return "\n".join(pad + line for line in dumped.splitlines())
 
 
 def generate(rules: list[Rule], output_path: Path) -> None:

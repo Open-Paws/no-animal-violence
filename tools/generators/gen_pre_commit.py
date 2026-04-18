@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from loader import Rule, canonical_rules_path, load_rules
+from loader import Rule, canonical_rules_path, load_rules  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 OUTPUT_PATH = (
@@ -72,10 +72,9 @@ def generate(rules: list[Rule], output_path: Path) -> None:
 
     pattern_lines = []
     for rule in rules:
-        # The regex is stored with single backslash in Python string representation
-        # We need to write it as a raw string literal
+        escaped_regex = rule.regex.replace('"', '\\"')
         escaped_alt = rule.primary_alt.replace('"', '\\"')
-        pattern_lines.append(f'    (r"{rule.regex}", "{escaped_alt}"),')
+        pattern_lines.append(f'    (r"{escaped_regex}", "{escaped_alt}"),')
 
     patterns_block = "\n".join(pattern_lines)
 

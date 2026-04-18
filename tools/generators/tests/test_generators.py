@@ -1,10 +1,7 @@
 """Golden-file tests for all generators."""
-import json
-import subprocess
 import sys
 from pathlib import Path
 
-import pytest
 import yaml
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -12,7 +9,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 GENERATORS = REPO_ROOT / "tools" / "generators"
 
 sys.path.insert(0, str(GENERATORS))
-from loader import load_rules
+from loader import load_rules  # noqa: E402
 
 
 def test_load_rules_mini():
@@ -45,7 +42,6 @@ def test_semgrep_generic_output(tmp_path):
     rule_ids = {r["id"] for r in data["rules"]}
     assert "animal-violence.guinea-pig" in rule_ids
     assert "animal-violence.livestock" in rule_ids
-    # Severity mapping
     gp_rule = next(r for r in data["rules"] if r["id"] == "animal-violence.guinea-pig")
     assert gp_rule["severity"] == "WARNING"
     cat_rule = next(r for r in data["rules"] if r["id"] == "animal-violence.curiosity-killed-the-cat")
@@ -85,9 +81,7 @@ def test_semgrep_python_has_fix_regex(tmp_path):
     output_path = tmp_path / "animal-violence-python.yaml"
     generate_python(rules, output_path)
     content = output_path.read_text()
-    # curiosity-killed-the-cat is error severity — should have fix-regex
     assert "fix-regex" in content
-    # livestock is warning severity — should also have fix-regex
     assert "livestock" in content
 
 
@@ -109,7 +103,6 @@ def test_vale_all_terms_present(tmp_path):
     generate_downstream(rules, output_path)
     with open(output_path) as f:
         data = yaml.safe_load(f)
-    # All 3 rules' primary terms should be present
     assert "guinea pig" in data["swap"]
     assert "livestock" in data["swap"]
     assert "curiosity killed the cat" in data["swap"]
