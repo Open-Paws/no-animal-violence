@@ -153,7 +153,7 @@ All eight adapters detect the same phrases and suggest the same alternatives. Ea
 
 ## Code Quality
 
-<img src="scorecard.png" width="100%">
+<img src="scorecard.png" alt="Desloppify code quality scorecard — 88.3/100" width="100%">
 
 ## Contributing
 
