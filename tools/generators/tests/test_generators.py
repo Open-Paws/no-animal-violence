@@ -155,3 +155,66 @@ def test_reviewdog_output_reformatter():
         "path/to/file.py:5: guinea pig",
         "another/file.md:12: livestock",
     ]
+
+
+def test_pre_commit_word_boundary(tmp_path):
+    """gen_pre_commit wraps word_boundary:true patterns with \\b and leaves false ones bare."""
+    from gen_pre_commit import generate
+    rules = load_rules(FIXTURES / "rules_mini.yaml")
+    output_path = tmp_path / "no_animal_violence_check.py"
+    generate(rules, output_path)
+    content = output_path.read_text()
+    # guinea-pig has word_boundary:true — must have \b boundaries
+    assert r'(r"\b(?:guinea\s+pig)\b"' in content
+    # curiosity-killed-the-cat has word_boundary:false — must NOT have \b
+    assert r'(r"curiosity\s+killed\s+the\s+cat"' in content
+    assert r'\b(?:curiosity' not in content
+
+
+def test_semgrep_generic_word_boundary(tmp_path):
+    """gen_semgrep wraps word_boundary:true pattern-regex with \\b and leaves false ones bare."""
+    from gen_semgrep import generate_generic
+    rules = load_rules(FIXTURES / "rules_mini.yaml")
+    output_path = tmp_path / "animal-violence-generic.yaml"
+    generate_generic(rules, output_path)
+    content = output_path.read_text()
+    # guinea-pig: word_boundary:true
+    assert r"pattern-regex: '\b(?:guinea\s+pig)\b'" in content
+    # curiosity: word_boundary:false — raw regex, no \b
+    assert "pattern-regex: 'curiosity\\s+killed\\s+the\\s+cat'" in content
+    assert r"\b(?:curiosity" not in content
+
+
+def test_eslint_word_boundary(tmp_path):
+    """gen_eslint emits per-rule patterns respecting word_boundary, using r.regex not r.terms[0]."""
+    result = subprocess.run(
+        ["node", str(GENERATORS / "gen_eslint.js")],
+        capture_output=True, text=True, cwd=str(REPO_ROOT),
+    )
+    assert result.returncode == 0, result.stderr
+    output = (
+        REPO_ROOT / "build" / "eslint-plugin-no-animal-violence"
+        / "lib" / "rules" / "no-violent-language.js"
+    ).read_text()
+    # word_boundary:true — must use \b and the canonical regex (not the literal term)
+    assert re.search(r"/\\bguinea\\s\+pig\\b/gi", output), "guinea-pig missing word boundaries or wrong pattern"
+    # word_boundary:false — no \b
+    assert re.search(r"/curiosity\\s\+killed\\s\+the\\s\+cat/gi", output)
+    assert "\\bcuriosity" not in output
+
+
+def test_danger_word_boundary(tmp_path):
+    """gen_danger wraps word_boundary:true regexes with \\b and leaves false ones bare."""
+    result = subprocess.run(
+        ["node", str(GENERATORS / "gen_danger.js")],
+        capture_output=True, text=True, cwd=str(REPO_ROOT),
+    )
+    assert result.returncode == 0, result.stderr
+    output = (
+        REPO_ROOT / "build" / "danger-plugin-no-animal-violence" / "src" / "index.ts"
+    ).read_text()
+    # word_boundary:true
+    assert r'"\\bguinea\\s+pig\\b"' in output
+    # word_boundary:false — no \b prefix
+    assert r'"curiosity\\s+killed\\s+the\\s+cat"' in output
+    assert r'"\\bcuriosity' not in output

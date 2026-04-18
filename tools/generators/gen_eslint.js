@@ -25,37 +25,26 @@ function loadRules() {
 	return data.rules;
 }
 
-function buildMapEntries(rules) {
-	return rules
-		.map((r) => {
-			const term = r.terms[0];
-			const alt = r.alternatives[0];
-			return `\t[${JSON.stringify(term)}, ${JSON.stringify(alt)}],`;
-		})
-		.join("\n");
+function buildPatternEntries(rules) {
+	return rules.map((r) => {
+		const wb = r.word_boundary !== false;
+		const raw = wb ? `\\b${r.regex}\\b` : r.regex;
+		const patternForLiteral = raw.replace(/\//g, "\\/");
+		const phrase = r.terms[0].replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+		const alt = r.alternatives[0].replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+		return `\t{ pattern: /${patternForLiteral}/gi, phrase: "${phrase}", alt: "${alt}" },`;
+	}).join("\n");
 }
 
 // Static boilerplate lines for the generated ESLint rule file.
 // Stored as an array to avoid complex escaping in template literals.
 const STATIC_BOILERPLATE_LINES = [
 	"",
-	"function buildPattern() {",
-	"\tconst escaped = Array.from(VIOLENT_ANIMAL_PHRASES.keys()).map((phrase) =>",
-	'\t\tphrase.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\$&"),',
-	"\t);",
-	"\tescaped.sort((a, b) => b.length - a.length);",
-	'\treturn new RegExp(`\\\\b(?:${escaped.join("|")})\\\\b`, "gi");',
-	"}",
-	"",
-	"const PATTERN = buildPattern();",
-	"",
 	"function checkText(context, node, text, offsetCalculator) {",
-	"\tPATTERN.lastIndex = 0;",
-	"\tlet match = PATTERN.exec(text);",
-	"\twhile (match !== null) {",
-	"\t\tconst phrase = match[0].toLowerCase();",
-	"\t\tconst alternative = VIOLENT_ANIMAL_PHRASES.get(phrase);",
-	"\t\tif (alternative) {",
+	"\tfor (const { pattern, phrase, alt } of PATTERNS) {",
+	"\t\tpattern.lastIndex = 0;",
+	"\t\tlet match;",
+	"\t\twhile ((match = pattern.exec(text)) !== null) {",
 	"\t\t\tconst loc = offsetCalculator ? offsetCalculator(match.index) : node.loc.start;",
 	"\t\t\tcontext.report({",
 	"\t\t\t\tnode,",
@@ -63,11 +52,10 @@ const STATIC_BOILERPLATE_LINES = [
 	'\t\t\t\tmessageId: "avoidViolentAnimalLanguage",',
 	"\t\t\t\tdata: {",
 	"\t\t\t\t\tphrase: match[0],",
-	"\t\t\t\t\talternatives: alternative,",
+	"\t\t\t\t\talternatives: alt,",
 	"\t\t\t\t},",
 	"\t\t\t});",
 	"\t\t}",
-	"\t\tmatch = PATTERN.exec(text);",
 	"\t}",
 	"}",
 	"",
@@ -121,15 +109,15 @@ const STATIC_BOILERPLATE_LINES = [
 
 function main() {
 	const rules = loadRules();
-	const mapEntries = buildMapEntries(rules);
+	const patternEntries = buildPatternEntries(rules);
 
 	const output = [
 		"// AUTO-GENERATED from Open-Paws/no-animal-violence. Do not edit directly.",
 		'"use strict";',
 		"",
-		"const VIOLENT_ANIMAL_PHRASES = new Map([",
-		mapEntries,
-		"]);",
+		"const PATTERNS = [",
+		patternEntries,
+		"];",
 		...STATIC_BOILERPLATE_LINES,
 	].join("\n");
 
