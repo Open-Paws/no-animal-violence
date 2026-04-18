@@ -104,7 +104,7 @@ class DriftReport:
         return "\n".join(lines)
 
 
-def _load_canonical(repo_dir: Path) -> list[Rule]:
+def load_canonical(repo_dir: Path) -> list[Rule]:
     """Load canonical rules from rules.yaml (preferred) or woke/.woke.yaml (fallback)."""
     rules_yaml = repo_dir / "rules.yaml"
     if _LOADER_AVAILABLE and rules_yaml.exists():
@@ -356,7 +356,7 @@ def check_vale(canonical: list, repos_dir: Path) -> list[DriftFinding]:
 
 def run_check(repo_dir: Path, repos_dir: Path) -> DriftReport:
     """Run full consistency check and return a report."""
-    canonical = _load_canonical(repo_dir)
+    canonical = load_canonical(repo_dir)
     report = DriftReport(canonical_count=len(canonical))
 
     # ESLint
