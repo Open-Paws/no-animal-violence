@@ -29,7 +29,7 @@ DOWNSTREAM_REPOS = [
     },
     {
         "repo": "Open-Paws/semgrep-rules-no-animal-violence",
-        "branch": "master",
+        "branch": "main",
         "files": {
             "rules/animal-violence-generic.yaml": f"{SEMGREP_BUILD}animal-violence-generic.yaml",
             "rules/animal-violence-python.yaml": f"{SEMGREP_BUILD}animal-violence-python.yaml",
