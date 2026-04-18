@@ -1,60 +1,35 @@
+# AUTO-GENERATED from Open-Paws/no-animal-violence. Do not edit directly.
 extends: substitution
-message: "Consider using '%s' instead of '%s'. This is an industry euphemism that sanitizes animal agriculture practices."
-link: https://github.com/open-paws/common-crawl-audit
+message: "Consider using '%s' instead of '%s'. This phrase normalizes violence toward animals."
+link: https://doi.org/10.1007/s43681-023-00380-w
 level: warning
 ignorecase: true
 swap:
-  'livestock': farmed animals
-  'poultry': farmed birds
-  'gestation crate': pregnancy cage
-  'gestation crates': pregnancy cages
-  'depopulation': mass killing
-  'depopulated': mass killed
-  'depopulating': mass killing
-  'processing plant': slaughterhouse
-  'processing plants': slaughterhouses
-  'processing facility': slaughterhouse
-  'processing facilities': slaughterhouses
-  'farrowing crate': birthing cage
-  'farrowing crates': birthing cages
-  'battery cage': small wire cage
-  'battery cages': small wire cages
-  'confined cage': small wire cage
-  'confined cages': small wire cages
-  'spent hen': discarded hen
-  'spent hens': discarded hens
-  'humane slaughter': slaughter
-  'humanely slaughtered': slaughtered
-  'humane killing': killing
-  'humanely killed': killed
-  'broiler': chicken raised for meat
-  'broilers': chickens raised for meat
-  # harvest / kill euphemisms (new in PR #16)
-  #   true-positive:  "The report described harvesting animals as an efficient production process."
-  #   false-positive: "The apple harvest this autumn was the largest in a decade." (crop harvest — not animals)
-  'harvesting animals': killing animals
-  'harvest animals': kill animals
-  #   true-positive:  "The fishing industry's fish harvest totalled 80 million tonnes last year."
-  #   false-positive: "The harvest festival celebrated the community's grain and vegetable yield." (crop harvest — not fish)
-  'fish harvest': fish killing
-  #   true-positive:  "They discussed harvesting fish more 'sustainably' without addressing mortality."
-  #   false-positive: "Harvesting rainwater helps farms reduce reliance on groundwater." (water — not animals)
-  'harvesting fish': catching and killing fish
-  # free-range welfare-washing (new in PR #16)
-  #   true-positive:  "The menu proudly lists free-range eggs from a certified farm."
-  #   false-positive: "The RSPCA Assured standard defines 'free-range eggs' as requiring 4 m² of outdoor range per hen." (quoting a certification standard directly — suppress)
-  'free-range eggs': eggs from hens with outdoor access
-  'free range eggs': eggs from hens with outdoor access
-  #   true-positive:  "Consumers are willing to pay more for free-range chicken."
-  #   false-positive: "The Soil Association's 'free-range chicken' certification requires year-round outdoor access." (quoting a certification standard directly — suppress)
-  'free-range chicken': chicken with outdoor access
-  'free range chicken': chicken with outdoor access
-  # cage-free welfare-washing (new in PR #16)
-  #   true-positive:  "The company pledged to source only cage-free eggs by 2025."
-  #   false-positive: "The USDA defines 'cage-free eggs' as eggs from hens able to roam freely in a building." (quoting a certification standard directly — suppress)
-  'cage-free eggs': eggs from uncaged hens
-  'cage free eggs': eggs from uncaged hens
-  #   true-positive:  "The farm houses thousands of cage-free hens in a single barn."
-  #   false-positive: "Under EU Directive 1999/74/EC, cage-free hens must have access to litter, perches, and nest boxes." (quoting legislation directly — suppress)
-  'cage-free hens': uncaged hens
-  'cage free hens': uncaged hens
+  'livestock': 'farmed animals'
+  'poultry': 'farmed birds'
+  'gestation crate': 'pregnancy cage'
+  'gestation crates': 'pregnancy cage'
+  'depopulation': 'mass killing'
+  'depopulated': 'mass killing'
+  'depopulating': 'mass killing'
+  'processing plant': 'slaughterhouse'
+  'processing plants': 'slaughterhouse'
+  'processing facility': 'slaughterhouse'
+  'processing facilities': 'slaughterhouse'
+  'farrowing crate': 'birthing cage'
+  'farrowing crates': 'birthing cage'
+  'battery cage': 'small wire cage'
+  'battery cages': 'small wire cage'
+  'spent hen': 'discarded hen'
+  'spent hens': 'discarded hen'
+  'humane slaughter': 'slaughter'
+  'humanely slaughter': 'slaughter'
+  'humane slaughtered': 'slaughter'
+  'humanely slaughtered': 'slaughter'
+  'humane killing': 'slaughter'
+  'humanely killing': 'slaughter'
+  'humane killed': 'slaughter'
+  'humanely killed': 'slaughter'
+  'broiler': 'chicken raised for meat'
+  'broilers': 'chicken raised for meat'
+  'veal': 'calf flesh'
