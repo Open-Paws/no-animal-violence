@@ -49,8 +49,9 @@ def generate_generic(rules: list[Rule], output_path: Path) -> None:
         alts = _alts_str(rule)
         autofix = _autofix_note(rule)
         msg = f'Animal violence language: "{rule.primary_term}". Consider: {alts}{autofix}'
+        pattern = f'\\b(?:{rule.regex})\\b' if rule.word_boundary else rule.regex
         lines.append(f"- id: animal-violence.{rule.name}\n")
-        lines.append(f"  pattern-regex: '{_safe_yaml_single_quoted(rule.regex)}'\n")
+        lines.append(f"  pattern-regex: '{_safe_yaml_single_quoted(pattern)}'\n")
         lines.append(f"  message: '{_safe_yaml_single_quoted(msg)}'\n")
         lines.append("  languages:\n")
         lines.append("  - generic\n")
@@ -86,12 +87,13 @@ def _generate_lang_file(
             f'Animal violence language in string: "{rule.primary_term}". '
             f"Consider: {alts}{autofix}"
         )
+        bounded = f'\\b(?:{rule.regex})\\b' if rule.word_boundary else rule.regex
         lines.append(f"- id: {rule_id_prefix}.{rule.name}\n")
         lines.append("  patterns:\n")
         lines.append("  - pattern: $S\n")
         lines.append("  - metavariable-regex:\n")
         lines.append("      metavariable: $S\n")
-        lines.append(f"      regex: '.*{_safe_yaml_single_quoted(rule.regex)}.*'\n")
+        lines.append(f"      regex: '.*{_safe_yaml_single_quoted(bounded)}.*'\n")
         lines.append(f"  message: '{_safe_yaml_single_quoted(msg)}'\n")
         lines.append("  languages:\n")
         lines.append(lang_yaml + "\n")
@@ -102,7 +104,7 @@ def _generate_lang_file(
         lines.append(f"    alternative: '{_safe_yaml_single_quoted(rule.primary_alt)}'\n")
         if rule.severity in ("error", "warning"):
             lines.append("  fix-regex:\n")
-            lines.append(f"    regex: '{_safe_yaml_single_quoted(rule.regex)}'\n")
+            lines.append(f"    regex: '{_safe_yaml_single_quoted(bounded)}'\n")
             lines.append(f"    replacement: '{_safe_yaml_single_quoted(rule.primary_alt)}'\n")
     output_path.write_text("".join(lines), encoding="utf-8")
 

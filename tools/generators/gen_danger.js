@@ -25,8 +25,10 @@ function loadRules() {
 
 function buildPatternEntries(rules) {
 	return rules.map((r) => {
+		const wb = r.word_boundary !== false;
+		const raw = wb ? `\\b${r.regex}\\b` : r.regex;
 		const altsJson = JSON.stringify(r.alternatives);
-		return `  { regex: new RegExp(${JSON.stringify(r.regex)}, "gi"), phrase: ${JSON.stringify(r.terms[0])}, alternatives: ${altsJson} },`;
+		return `  { regex: new RegExp(${JSON.stringify(raw)}, "gi"), phrase: ${JSON.stringify(r.terms[0])}, alternatives: ${altsJson} },`;
 	}).join("\n");
 }
 

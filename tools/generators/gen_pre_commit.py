@@ -73,8 +73,11 @@ def generate(rules: list[Rule], output_path: Path) -> None:
     pattern_lines = []
     for rule in rules:
         escaped_regex = rule.regex.replace('"', '\\"')
+        if rule.word_boundary:
+            escaped_regex = f'\\b(?:{escaped_regex})\\b'
         escaped_alt = rule.primary_alt.replace('"', '\\"')
         pattern_lines.append(f'    (r"{escaped_regex}", "{escaped_alt}"),')
+
 
     patterns_block = "\n".join(pattern_lines)
 
