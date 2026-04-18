@@ -18,6 +18,7 @@ def main() -> int:
         ("tools/generators/gen_action.py", "GitHub Action"),
         ("tools/generators/gen_reviewdog.py", "Reviewdog"),
         ("tools/generators/gen_woke.py", "Woke"),
+        ("tools/generators/gen_alex.py", "Alex"),
     ]
     js_generators = [
         ("tools/generators/gen_eslint.js", "ESLint"),

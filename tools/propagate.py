@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Open sync PRs against all 8 downstream repos.
+"""Open sync PRs against all downstream repos.
 
 Environment variables required:
   GH_TOKEN       Fine-grained PAT with contents:write and pull_requests:write
@@ -42,6 +42,7 @@ DOWNSTREAM_REPOS = [
         "branch": "main",
         "files": {
             "NoAnimalViolence/AnimalIdioms.yml": "vale-no-animal-violence/NoAnimalViolence/AnimalIdioms.yml",
+            "NoAnimalViolence/IndustryEuphemisms.yml": "vale-no-animal-violence/NoAnimalViolence/IndustryEuphemisms.yml",
             "NoAnimalViolence/meta.json": "vale-no-animal-violence/NoAnimalViolence/meta.json",
         },
     },
@@ -78,6 +79,21 @@ DOWNSTREAM_REPOS = [
         "branch": "main",
         "files": {
             "extension.js": "vscode-no-animal-violence/extension.js",
+        },
+    },
+    {
+        "repo": "Open-Paws/alex-no-animal-violence",
+        "branch": "main",
+        "files": {
+            "animal-violence.yml": "alex-no-animal-violence/animal-violence.yml",
+            "industry-euphemisms.yml": "alex-no-animal-violence/industry-euphemisms.yml",
+        },
+    },
+    {
+        "repo": "Open-Paws/woke-no-animal-violence",
+        "branch": "main",
+        "files": {
+            ".woke.yaml": "woke-no-animal-violence/.woke.yaml",
         },
     },
 ]
@@ -133,7 +149,6 @@ def propagate_repo(config: dict, sync_branch: str, canonical_sha: str, dry_run: 
             run(["git", "push", "origin", sync_branch], cwd=tmpdir)
 
             gh_env = {**os.environ, "GH_TOKEN": token}
-            # Ensure the label exists in the downstream repo (idempotent)
             run(
                 ["gh", "label", "create", "automated-sync",
                  "--repo", repo,
@@ -148,7 +163,7 @@ def propagate_repo(config: dict, sync_branch: str, canonical_sha: str, dry_run: 
             pr_body = (
                 f"Automated sync from Open-Paws/no-animal-violence@{canonical_sha}.\n\n"
                 "This PR was opened by the `propagate.yml` workflow. "
-                "Rule definitions live in the canonical repo — edit there, not here.\n\n"
+                "Rule definitions live in the canonical repo \u2014 edit there, not here.\n\n"
                 "See [AUTOSYNC.md](.github/AUTOSYNC.md) for details."
             )
             pr_result = run(

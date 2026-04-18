@@ -3,6 +3,7 @@
 
 Outputs (downstream):
   build/vale-no-animal-violence/NoAnimalViolence/AnimalIdioms.yml
+  build/vale-no-animal-violence/NoAnimalViolence/IndustryEuphemisms.yml
   build/vale-no-animal-violence/NoAnimalViolence/meta.json
 
 Outputs (canonical inline):
@@ -56,15 +57,14 @@ def _write_vale_file(rules: list[Rule], output_path: Path, level: str = "warning
     output_path.write_text("".join(lines), encoding="utf-8")
 
 
-def generate_downstream(rules: list[Rule], output_path: Path) -> None:
-    """Generate the downstream vale-no-animal-violence AnimalIdioms.yml (all rules)."""
-    _write_vale_file(rules, output_path)
-
-
 def main() -> int:
     rules = load_rules(canonical_rules_path())
 
-    generate_downstream(rules, BUILD_DIR / "AnimalIdioms.yml")
+    animal_violence = [r for r in rules if r.category == "animal-violence"]
+    industry_euphemism = [r for r in rules if r.category == "industry-euphemism"]
+
+    _write_vale_file(animal_violence, BUILD_DIR / "AnimalIdioms.yml")
+    _write_vale_file(industry_euphemism, BUILD_DIR / "IndustryEuphemisms.yml")
 
     BUILD_DIR.mkdir(parents=True, exist_ok=True)
     meta = {
@@ -72,9 +72,6 @@ def main() -> int:
         "url": "https://github.com/Open-Paws/vale-no-animal-violence",
     }
     (BUILD_DIR / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
-
-    animal_violence = [r for r in rules if r.category == "animal-violence"]
-    industry_euphemism = [r for r in rules if r.category == "industry-euphemism"]
 
     canonical_vale_dir = REPO_ROOT / "vale" / "Speciesism"
     canonical_vale_dir.mkdir(parents=True, exist_ok=True)
