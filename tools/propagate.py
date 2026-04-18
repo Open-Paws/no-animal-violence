@@ -41,8 +41,12 @@ DOWNSTREAM_REPOS = [
         "repo": "Open-Paws/vale-no-animal-violence",
         "branch": "main",
         "files": {
-            "NoAnimalViolence/AnimalIdioms.yml": "vale-no-animal-violence/NoAnimalViolence/AnimalIdioms.yml",
-            "NoAnimalViolence/IndustryEuphemisms.yml": "vale-no-animal-violence/NoAnimalViolence/IndustryEuphemisms.yml",
+            "NoAnimalViolence/AnimalIdioms.yml": (
+                "vale-no-animal-violence/NoAnimalViolence/AnimalIdioms.yml"
+            ),
+            "NoAnimalViolence/IndustryEuphemisms.yml": (
+                "vale-no-animal-violence/NoAnimalViolence/IndustryEuphemisms.yml"
+            ),
             "NoAnimalViolence/meta.json": "vale-no-animal-violence/NoAnimalViolence/meta.json",
         },
     },
