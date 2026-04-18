@@ -5,7 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: Open-Paws/no-animal-violence-action@v1
+      - uses: Open-Paws/no-animal-violence-action@main
         with:
-          fail_on_error: true
-          fail_on_warning: false
+          severity: error
