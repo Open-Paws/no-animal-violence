@@ -1101,12 +1101,13 @@ rules:
       - canary deployment
       - canary deploy
       - canary release
+      - canary-deployment
     alternatives: []
     severity: info
     category: animal-violence
     note: Deployment strategy named after canaries used as early warning signals in coal mines. Standard tech term — flag for awareness only, not a candidate for renaming.
     word_boundary: true
-    regex: "canary\\s+(deploy(ment|ed)?|release)"
+    regex: "canary[\\s-]+(deploy(ment|ed)?|release)"
     context_suppressions: []
 
   - name: duck-typing

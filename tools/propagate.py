@@ -10,6 +10,7 @@ Environment variables required:
 import json
 import os
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
@@ -131,8 +132,8 @@ def close_superseded_prs(repo: str, new_branch: str, canonical_sha: str, gh_env:
                  " All changes from this PR are included in the newer sync."],
                 env=gh_env, capture_output=True,
             )
-    except (subprocess.CalledProcessError, json.JSONDecodeError):
-        pass  # Non-fatal: worst case the old PR stays open
+    except (subprocess.CalledProcessError, json.JSONDecodeError) as exc:
+        print(f"Warning: could not close superseded PRs in {repo}: {exc}", file=sys.stderr, flush=True)
 
 
 def propagate_repo(config: dict, sync_branch: str, canonical_sha: str, dry_run: bool) -> dict:
@@ -170,7 +171,6 @@ def propagate_repo(config: dict, sync_branch: str, canonical_sha: str, dry_run: 
                 return result
 
             gh_env = {**os.environ, "GH_TOKEN": token}
-            close_superseded_prs(repo, sync_branch, canonical_sha, gh_env)
 
             run(["git", "checkout", "-b", sync_branch], cwd=tmpdir)
             run(["git", "config", "user.email", "sync-bot@openpaws.ai"], cwd=tmpdir)
@@ -213,6 +213,7 @@ def propagate_repo(config: dict, sync_branch: str, canonical_sha: str, dry_run: 
             )
             result["pr_url"] = pr_result.stdout.strip()
             result["status"] = "pr_opened"
+            close_superseded_prs(repo, sync_branch, canonical_sha, gh_env)
 
         except subprocess.CalledProcessError as exc:
             result["status"] = "error"
