@@ -1080,3 +1080,18 @@ rules:
     word_boundary: true
     regex: "veal"
     context_suppressions: []
+
+  - name: lame-duck
+    terms:
+      - lame duck
+      - lame-duck
+    alternatives:
+      - outgoing
+      - transitional
+      - ineffective
+    severity: info
+    category: animal-violence
+    note: References a bird unable to fly due to injury. 'Outgoing' or 'transitional' are more precise in political and tech contexts.
+    word_boundary: true
+    regex: "lame[\\s-]duck"
+    context_suppressions: []
