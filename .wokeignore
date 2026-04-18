@@ -9,3 +9,4 @@ semgrep-no-animal-violence.yaml
 tools/test_check_consistency.py
 tools/generators/tests/
 .claude/rules/advocacy-domain.md
+INTEGRATION.md

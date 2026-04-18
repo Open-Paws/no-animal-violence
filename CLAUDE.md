@@ -74,7 +74,7 @@ These citations appear in rule metadata (`references:` field) and give the suite
 3. **Single responsibility** — One rule entry = one pattern. Don't bundle multiple phrases into a single regex.
 4. **Error handling** — Validate YAML structure; fail explicitly on malformed rule files rather than silently skipping.
 5. **Information hiding** — Rule files expose patterns and alternatives, not internal implementation details of consumers.
-6. **Ubiquitous language** — Use movement terminology: "farmed animal" not "livestock," "factory farm" not "farm." Never introduce synonyms for domain terms.
+6. **Ubiquitous language** — Use movement terminology: "farmed animal" not the industry euphemism, "factory farm" not "farm." Never introduce synonyms for domain terms.
 7. **Design for change** — Rules should be addable/removable without restructuring the file. Each consumer embeds these patterns inline — changes require downstream propagation checks.
 8. **Legacy velocity** — Before modifying existing rules, verify no downstream consumer breaks. Pre-commit and CI action embed patterns inline.
 9. **Over-patterning** — A flat list of patterns is better than a complex inheritance hierarchy. Keep rule files simple.
