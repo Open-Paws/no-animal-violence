@@ -19,6 +19,9 @@ const OUTPUT_PATH = path.join(
 function loadRules() {
 	const content = fs.readFileSync(RULES_YAML, "utf8");
 	const data = yaml.load(content);
+	if (!data || !Array.isArray(data.rules)) {
+		throw new Error(`Invalid rules file: expected root object with a "rules" array (${RULES_YAML})`);
+	}
 	return data.rules;
 }
 
@@ -31,9 +34,10 @@ function buildPatternEntries(rules) {
 		const regex = r.regex;
 		const wb = r.word_boundary !== false;
 		const pattern = wb ? `\\b${regex}\\b` : regex;
+		const patternForLiteral = pattern.replace(/\//g, "\\/");
 		const phrase = escapeStringLiteral(r.terms[0]);
 		const suggest = escapeStringLiteral(r.alternatives[0]);
-		return `\t\t{\n\t\t\tpattern: /${pattern}/gi,\n\t\t\tphrase: "${phrase}",\n\t\t\tsuggest: "${suggest}",\n\t\t},`;
+		return `\t\t{\n\t\t\tpattern: /${patternForLiteral}/gi,\n\t\t\tphrase: "${phrase}",\n\t\t\tsuggest: "${suggest}",\n\t\t},`;
 	}).join("\n");
 }
 
