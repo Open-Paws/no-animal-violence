@@ -66,6 +66,22 @@ runs:
           -not -path "./node_modules/*" \\
           -not -path "./vendor/*" \\
           -exec no-animal-violence-check {} + 2>&1 \\
+          | python3 -c "
+        import sys, re
+        file_re = re.compile(r'^\\s{2}(\\S.*):(\\d+)$')
+        found_re = re.compile(r'^\\s{4}Found:\\s+\\\"(.+)\\\"$')
+        cur_loc = None
+        for line in sys.stdin:
+            line = line.rstrip()
+            m = file_re.match(line)
+            if m:
+                cur_loc = (m.group(1), m.group(2))
+                continue
+            m = found_re.match(line)
+            if m and cur_loc:
+                print(f'{cur_loc[0]}:{cur_loc[1]}: {m.group(1)}')
+                cur_loc = None
+        " \\
           | reviewdog -efm="%f:%l: %m" \\
               -name="no-animal-violence" \\
               -reporter=${{ inputs.reporter }} \\
