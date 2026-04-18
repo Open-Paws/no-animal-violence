@@ -38,8 +38,16 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: pip install pyyaml
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Node.js dependencies
+        run: npm install js-yaml
 
       - name: Run all generators
         run: python tools/generate_all.py

@@ -47,6 +47,7 @@ A GitHub App would be cleaner (no expiry, scoped to org, audit trail) but requir
 ```bash
 # Install dependencies
 pip install pyyaml
+npm install js-yaml
 
 # Generate all outputs
 python tools/generate_all.py

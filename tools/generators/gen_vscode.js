@@ -22,13 +22,17 @@ function loadRules() {
 	return data.rules;
 }
 
+function escapeStringLiteral(s) {
+	return s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+}
+
 function buildPatternEntries(rules) {
 	return rules.map((r) => {
 		const regex = r.regex;
 		const wb = r.word_boundary;
 		const pattern = wb ? `\\\\b${regex}\\\\b` : regex;
-		const phrase = r.terms[0];
-		const suggest = r.alternatives[0];
+		const phrase = escapeStringLiteral(r.terms[0]);
+		const suggest = escapeStringLiteral(r.alternatives[0]);
 		return `\t\t{\n\t\t\tpattern: /${pattern}/gi,\n\t\t\tphrase: "${phrase}",\n\t\t\tsuggest: "${suggest}",\n\t\t},`;
 	}).join("\n");
 }

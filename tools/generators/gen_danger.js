@@ -23,19 +23,10 @@ function loadRules() {
 	return data.rules;
 }
 
-function yamlRegexToJsLiteral(regexStr) {
-	// YAML stores \\s as literal backslash+s; in a JS regex literal we need \s
-	// The yaml.load already converts \\s -> \s in the JS string,
-	// so we just embed the string directly in /.../gi
-	return regexStr;
-}
-
 function buildPatternEntries(rules) {
 	return rules.map((r) => {
-		const regex = yamlRegexToJsLiteral(r.regex);
-		const phrase = r.terms[0];
 		const altsJson = JSON.stringify(r.alternatives);
-		return `  { regex: /${regex}/gi, phrase: "${phrase}", alternatives: ${altsJson} },`;
+		return `  { regex: new RegExp(${JSON.stringify(r.regex)}, "gi"), phrase: ${JSON.stringify(r.terms[0])}, alternatives: ${altsJson} },`;
 	}).join("\n");
 }
 
@@ -61,29 +52,27 @@ const PATTERNS: Pattern[] = [
 
 const STATIC_FOOTER = `];
 
-export default function noAnimalViolence(options: NoAnimalViolenceOptions = {}) {
+export default async function noAnimalViolence(options: NoAnimalViolenceOptions = {}) {
   const report = options.severity === "message" ? message : warn;
   const modifiedFiles = danger.git.modified_files.concat(danger.git.created_files);
 
-  for (const file of modifiedFiles) {
-    const diff = danger.git.diffForFile(file);
-    if (!diff) continue;
+  const diffs = await Promise.all(modifiedFiles.map(f => danger.git.diffForFile(f)));
+  for (let i = 0; i < modifiedFiles.length; i++) {
+    const result = diffs[i];
+    if (!result) continue;
+    const file = modifiedFiles[i];
+    const added = result.added;
 
-    diff.then((result) => {
-      if (!result) return;
-      const added = result.added;
-
-      for (const pattern of PATTERNS) {
-        if (pattern.regex.test(added)) {
-          report(
-            \`**\${file}**: Found "\${pattern.phrase}". \` +
-            \`Consider: \${pattern.alternatives.map(a => \`"\${a}"\`).join(" or ")}. \` +
-            \`[Why?](https://doi.org/10.1007/s43681-023-00380-w)\`
-          );
-          pattern.regex.lastIndex = 0;
-        }
+    for (const pattern of PATTERNS) {
+      if (pattern.regex.test(added)) {
+        report(
+          \`**\${file}**: Found "\${pattern.phrase}". \` +
+          \`Consider: \${pattern.alternatives.map(a => \`"\${a}"\`).join(" or ")}. \` +
+          \`[Why?](https://doi.org/10.1007/s43681-023-00380-w)\`
+        );
+        pattern.regex.lastIndex = 0;
       }
-    });
+    }
   }
 }
 `;

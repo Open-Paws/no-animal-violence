@@ -23,9 +23,9 @@ import json
 import logging
 import re
 import sys
-import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
+from types import SimpleNamespace
 
 import yaml
 
@@ -34,7 +34,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "tools" / "generators"))
 
 try:
-    from loader import Rule, canonical_rules_path, load_rules
+    from loader import Rule, load_rules
     _LOADER_AVAILABLE = True
 except ImportError:
     _LOADER_AVAILABLE = False
@@ -122,25 +122,23 @@ def _load_canonical(repo_dir: Path) -> list[Rule]:
         logger.error("Failed to parse woke rules: %s", exc)
         return []
 
-    # Import here to avoid circular if loader not available
-    from dataclasses import dataclass as _dc
     rules = []
     for entry in data.get("rules", []):
         category = "animal-violence"
         cats = entry.get("options", {}).get("categories", [])
         if cats:
             category = cats[0]
-        # Minimal Rule-like object for fallback
-        class _Rule:
-            pass
-        r = _Rule()
-        r.name = entry["name"]
-        r.terms = [t.lower() for t in entry.get("terms", [])]
-        r.alternatives = [a.lower() for a in entry.get("alternatives", [])]
-        r.severity = entry.get("severity", "info")
-        r.category = category
-        r.primary_term = r.terms[0] if r.terms else ""
-        r.primary_alt = r.alternatives[0] if r.alternatives else ""
+        terms = [t.lower() for t in entry.get("terms", [])]
+        alternatives = [a.lower() for a in entry.get("alternatives", [])]
+        r = SimpleNamespace(
+            name=entry["name"],
+            terms=terms,
+            alternatives=alternatives,
+            severity=entry.get("severity", "info"),
+            category=category,
+            primary_term=terms[0] if terms else "",
+            primary_alt=alternatives[0] if alternatives else "",
+        )
         rules.append(r)
     return rules
 
@@ -297,7 +295,7 @@ def check_semgrep(canonical: list, repos_dir: Path) -> list[DriftFinding]:
 
 def _clean_vale_term(term: str) -> str:
     clean = re.sub(r"[\\()]", "", term).lower().strip()
-    clean = re.sub(r"\?:", "", clean)
+    clean = re.sub(r"\\?:", "", clean)
     return re.sub(r"[?+*]", "", clean)
 
 

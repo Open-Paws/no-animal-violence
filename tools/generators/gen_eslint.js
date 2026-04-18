@@ -30,7 +30,7 @@ function buildMapEntries(rules) {
 		.map((r) => {
 			const term = r.terms[0];
 			const alt = r.alternatives[0];
-			return `\t["${term}", "${alt}"],`;
+			return `\t[${JSON.stringify(term)}, ${JSON.stringify(alt)}],`;
 		})
 		.join("\n");
 }
