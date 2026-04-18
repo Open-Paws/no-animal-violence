@@ -8,7 +8,9 @@ This generator writes the file deterministically.
 """
 from __future__ import annotations
 
+import re
 import sys
+from collections.abc import Iterable
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -88,6 +90,29 @@ runs:
               -level=${{ inputs.level }} \\
               -filter-mode=${{ inputs.filter_mode }}
 """
+
+
+def reformat_nav_output(lines: Iterable[str]) -> list[str]:
+    """Convert multi-line no-animal-violence-check output to file:line: message lines.
+
+    The pre-commit checker outputs multi-line blocks; reviewdog's -efm="%f:%l: %m"
+    expects single-line entries. This function performs that conversion.
+    """
+    file_re = re.compile(r"^\s{2}(\S.*):(\d+)$")
+    found_re = re.compile(r'^\s{4}Found:\s+"(.+)"$')
+    out: list[str] = []
+    cur_loc: tuple[str, str] | None = None
+    for line in lines:
+        line = line.rstrip()
+        m = file_re.match(line)
+        if m:
+            cur_loc = (m.group(1), m.group(2))
+            continue
+        m = found_re.match(line)
+        if m and cur_loc:
+            out.append(f"{cur_loc[0]}:{cur_loc[1]}: {m.group(1)}")
+            cur_loc = None
+    return out
 
 
 def main() -> int:

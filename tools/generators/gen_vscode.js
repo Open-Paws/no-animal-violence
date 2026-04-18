@@ -29,7 +29,7 @@ function escapeStringLiteral(s) {
 function buildPatternEntries(rules) {
 	return rules.map((r) => {
 		const regex = r.regex;
-		const wb = r.word_boundary;
+		const wb = r.word_boundary !== false;
 		const pattern = wb ? `\\b${regex}\\b` : regex;
 		const phrase = escapeStringLiteral(r.terms[0]);
 		const suggest = escapeStringLiteral(r.alternatives[0]);
