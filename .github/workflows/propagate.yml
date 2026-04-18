@@ -7,11 +7,10 @@ on:
         description: 'Dry run (skip push and PR creation)'
         required: false
         default: 'false'
-  # Uncomment to enable on push to main:
-  # push:
-  #   branches: [main]
-  #   paths:
-  #     - rules.yaml
+  push:
+    branches: [main]
+    paths:
+      - rules.yaml
 
 jobs:
   propagate:

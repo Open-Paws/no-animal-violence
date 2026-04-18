@@ -42,7 +42,7 @@ def generate_generic(rules: list[Rule], output_path: Path) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     lines = [
         AUTOGEN_HEADER,
-        "# Generic (regex-based) rules — matches across all file types including comments\n",
+        "# Generic (regex-based) rules \u2014 matches across all file types including comments\n",
         "rules:\n",
     ]
     for rule in rules:
@@ -50,7 +50,7 @@ def generate_generic(rules: list[Rule], output_path: Path) -> None:
         autofix = _autofix_note(rule)
         msg = f'Animal violence language: "{rule.primary_term}". Consider: {alts}{autofix}'
         lines.append(f"- id: animal-violence.{rule.name}\n")
-        lines.append(f"  pattern-regex: {rule.regex}\n")
+        lines.append(f"  pattern-regex: '{_safe_yaml_single_quoted(rule.regex)}'\n")
         lines.append(f"  message: '{_safe_yaml_single_quoted(msg)}'\n")
         lines.append("  languages:\n")
         lines.append("  - generic\n")
@@ -58,7 +58,7 @@ def generate_generic(rules: list[Rule], output_path: Path) -> None:
         lines.append("  metadata:\n")
         lines.append("    category: inclusive-language\n")
         lines.append(f"    subcategory: {rule.category}\n")
-        lines.append(f"    alternative: {rule.primary_alt}\n")
+        lines.append(f"    alternative: '{_safe_yaml_single_quoted(rule.primary_alt)}'\n")
         lines.append("    references:\n")
         lines.append(f"    - {REFERENCE_URL}\n")
     output_path.write_text("".join(lines))
@@ -91,7 +91,7 @@ def _generate_lang_file(
         lines.append("  - pattern: $S\n")
         lines.append("  - metavariable-regex:\n")
         lines.append("      metavariable: $S\n")
-        lines.append(f"      regex: .*{rule.regex}.*\n")
+        lines.append(f"      regex: '.*{_safe_yaml_single_quoted(rule.regex)}.*'\n")
         lines.append(f"  message: '{_safe_yaml_single_quoted(msg)}'\n")
         lines.append("  languages:\n")
         lines.append(lang_yaml + "\n")
@@ -99,11 +99,11 @@ def _generate_lang_file(
         lines.append("  metadata:\n")
         lines.append("    category: inclusive-language\n")
         lines.append(f"    subcategory: {rule.category}\n")
-        lines.append(f"    alternative: {rule.primary_alt}\n")
+        lines.append(f"    alternative: '{_safe_yaml_single_quoted(rule.primary_alt)}'\n")
         if rule.severity in ("error", "warning"):
             lines.append("  fix-regex:\n")
-            lines.append(f"    regex: {rule.regex}\n")
-            lines.append(f"    replacement: {rule.primary_alt}\n")
+            lines.append(f"    regex: '{_safe_yaml_single_quoted(rule.regex)}'\n")
+            lines.append(f"    replacement: '{_safe_yaml_single_quoted(rule.primary_alt)}'\n")
     output_path.write_text("".join(lines))
 
 

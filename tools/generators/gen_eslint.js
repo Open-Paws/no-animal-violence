@@ -105,7 +105,7 @@ const STATIC_BOILERPLATE_LINES = [
 	'\t\t\t\t\t\tconst lines = comment.value.substring(0, matchIndex).split("\\n");',
 	"\t\t\t\t\t\tconst lineOffset = lines.length - 1;",
 	"\t\t\t\t\t\tconst columnOffset =",
-	"\t\t\t\t\t\t\tlineOffset === 0 ? matchIndex + (comment.type === \"Block\" ? 2 : 2) : lines[lines.length - 1].length;",
+	"\t\t\t\t\t\t\tlineOffset === 0 ? matchIndex + 2 : lines[lines.length - 1].length;",
 	"\t\t\t\t\t\treturn {",
 	"\t\t\t\t\t\t\tline: comment.loc.start.line + lineOffset,",
 	"\t\t\t\t\t\t\tcolumn: lineOffset === 0 ? comment.loc.start.column + columnOffset : columnOffset,",
