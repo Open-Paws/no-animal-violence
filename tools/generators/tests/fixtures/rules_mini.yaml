@@ -1,0 +1,39 @@
+version: "1.0.0"
+rules:
+  - name: guinea-pig
+    terms:
+      - guinea pig
+    alternatives:
+      - test subject
+      - first to try
+    severity: warning
+    category: animal-violence
+    note: Animal-as-experiment metaphor
+    word_boundary: true
+    regex: "guinea\\s+pig"
+    context_suppressions: []
+
+  - name: livestock
+    terms:
+      - livestock
+    alternatives:
+      - farmed animals
+      - animals raised for food
+    severity: warning
+    category: industry-euphemism
+    note: Industry commodity framing
+    word_boundary: true
+    regex: "livestock"
+    context_suppressions: []
+
+  - name: curiosity-killed-the-cat
+    terms:
+      - curiosity killed the cat
+    alternatives:
+      - curiosity backfired
+    severity: error
+    category: animal-violence
+    note: Directly references killing a cat
+    word_boundary: false
+    regex: "curiosity\\s+killed\\s+the\\s+cat"
+    context_suppressions: []
