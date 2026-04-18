@@ -29,7 +29,7 @@ This is a **mono-repo of rule definitions** for three different inclusive-langua
 
 ## Organizational Context
 
-This repo is the **canonical rule dictionary** for the entire no-animal-violence suite. Every downstream adapter (Vale, ESLint, Semgrep, VS Code, pre-commit, GitHub Action, reviewdog, Danger) consumes or mirrors these definitions. Rule additions here should propagate to all consumers.
+This repo is the **canonical rule dictionary** for the entire no-animal-violence suite. Every downstream adapter (Vale, ESLint, Semgrep, VS Code, pre-commit, GitHub Action, reviewdog, Danger, Alex, Woke) consumes or mirrors these definitions. Rule additions here should propagate to all consumers.
 
 **Strategic significance (Lever 1 + Lever 3):** This is a concrete Lever 3 tool — it embeds animal welfare standards into the development process itself. Every developer who installs an adapter becomes aware of speciesist language patterns. The suite is intervention #8 from the 25 Ranked Interventions (Animal-Friendly Data Labelling Standards) made concrete.
 
@@ -64,6 +64,8 @@ These citations appear in rule metadata (`references:` field) and give the suite
 - [no-animal-violence-pre-commit](https://github.com/Open-Paws/no-animal-violence-pre-commit) — pre-commit hook
 - [reviewdog-no-animal-violence](https://github.com/Open-Paws/reviewdog-no-animal-violence) — reviewdog runner
 - [danger-plugin-no-animal-violence](https://github.com/Open-Paws/danger-plugin-no-animal-violence) — Danger.js plugin
+- [alex-no-animal-violence](https://github.com/Open-Paws/alex-no-animal-violence) — Alex/retext-equality rules
+- [woke-no-animal-violence](https://github.com/Open-Paws/woke-no-animal-violence) — Woke scanner config
 
 ## Development Standards
 
@@ -118,7 +120,15 @@ These tools consume the rule definitions in this repo:
 
 - [vale-no-animal-violence](https://github.com/Open-Paws/vale-no-animal-violence) — Standalone Vale distribution package
 - [eslint-plugin-no-animal-violence](https://github.com/Open-Paws/eslint-plugin-no-animal-violence) — ESLint plugin for JS/TS
+- [semgrep-rules-no-animal-violence](https://github.com/Open-Paws/semgrep-rules-no-animal-violence) — Semgrep rules
+- [vscode-no-animal-violence](https://github.com/Open-Paws/vscode-no-animal-violence) — VS Code extension
+- [no-animal-violence-action](https://github.com/Open-Paws/no-animal-violence-action) — GitHub Action
+- [no-animal-violence-pre-commit](https://github.com/Open-Paws/no-animal-violence-pre-commit) — pre-commit hook
+- [reviewdog-no-animal-violence](https://github.com/Open-Paws/reviewdog-no-animal-violence) — reviewdog runner
+- [danger-plugin-no-animal-violence](https://github.com/Open-Paws/danger-plugin-no-animal-violence) — Danger.js plugin
+- [alex-no-animal-violence](https://github.com/Open-Paws/alex-no-animal-violence) — Alex/retext-equality rules
+- [woke-no-animal-violence](https://github.com/Open-Paws/woke-no-animal-violence) — Woke scanner config
 
 ## Decisions Reviewed
 
-Last reviewed: 2026-04-11 (decisions #37 audit-to-dispatch, mcp-server-nav-language live)
+Last reviewed: 2026-04-18 (alex + woke promoted to downstream repos; vale IndustryEuphemisms.yml split into downstream build)
