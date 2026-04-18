@@ -1,4 +1,5 @@
-# AUTO-GENERATED from project-compassionate-code. Do not edit directly.
+# AUTO-GENERATED from rules.yaml. Do not edit directly.
+# Run tools/generate_all.py to regenerate.
 rules:
 - name: kill-two-birds-with-one-stone
   terms:
@@ -10,11 +11,11 @@ rules:
   - solve two problems with one action
   - hit two targets with one shot
   severity: error
-  note: Violent animal idiom with universally clearer alternatives
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Violent animal idiom with universally clearer alternatives
 - name: beat-a-dead-horse
   terms:
   - beat a dead horse
@@ -24,11 +25,11 @@ rules:
   - go over old ground
   - repeat unnecessarily
   severity: error
-  note: Violent animal idiom — alternatives are more direct
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Violent animal idiom — alternatives are more direct
 - name: more-than-one-way-to-skin-a-cat
   terms:
   - more than one way to skin a cat
@@ -39,11 +40,11 @@ rules:
   - multiple approaches available
   - several ways to accomplish this
   severity: error
-  note: Violent animal idiom — alternatives are shorter and clearer
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Violent animal idiom — alternatives are shorter and clearer
 - name: let-the-cat-out-of-the-bag
   terms:
   - let the cat out of the bag
@@ -53,11 +54,11 @@ rules:
   - disclose prematurely
   - let it slip
   severity: info
-  note: Animal idiom — alternatives are more precise
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Animal idiom — alternatives are more precise
 - name: open-a-can-of-worms
   terms:
   - open a can of worms
@@ -68,11 +69,11 @@ rules:
   - uncover hidden problems
   - open Pandora's box
   severity: info
-  note: Animal idiom — alternatives communicate the idea more directly
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Animal idiom — alternatives communicate the idea more directly
 - name: wild-goose-chase
   terms:
   - wild goose chase
@@ -81,11 +82,11 @@ rules:
   - pointless pursuit
   - fool's errand
   severity: info
-  note: Animal idiom — alternatives are more universally understood
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Animal idiom — alternatives are more universally understood
 - name: like-shooting-fish-in-a-barrel
   terms:
   - like shooting fish in a barrel
@@ -94,11 +95,11 @@ rules:
   - like taking candy from a baby
   - effortless
   severity: error
-  note: Violent animal idiom with shorter alternatives
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Violent animal idiom with shorter alternatives
 - name: flog-a-dead-horse
   terms:
   - flog a dead horse
@@ -108,11 +109,11 @@ rules:
   - waste effort on a settled matter
   - repeat unnecessarily
   severity: error
-  note: Violent animal idiom — same as 'beat a dead horse'
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Violent animal idiom — same as 'beat a dead horse'
 - name: there-are-bigger-fish-to-fry
   terms:
   - there are bigger fish to fry
@@ -121,11 +122,11 @@ rules:
   - higher priorities
   - bigger issues at hand
   severity: info
-  note: Animal idiom — alternatives are more professional
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Animal idiom — alternatives are more professional
 - name: guinea-pig
   terms:
   - guinea pig
@@ -134,11 +135,12 @@ rules:
   - first to try
   - early adopter
   severity: warning
-  note: Animal-as-experiment metaphor — alternatives are more precise in technical contexts
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Animal-as-experiment metaphor — alternatives are more precise in technical
+    contexts
 - name: hold-your-horses
   terms:
   - hold your horses
@@ -147,11 +149,11 @@ rules:
   - slow down
   - be patient
   severity: info
-  note: Animal idiom — alternatives are more direct
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Animal idiom — alternatives are more direct
 - name: the-elephant-in-the-room
   terms:
   - the elephant in the room
@@ -159,11 +161,11 @@ rules:
   - the obvious issue
   - the unaddressed problem
   severity: info
-  note: Well-understood idiom — flag for awareness only
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Well-understood idiom — flag for awareness only
 - name: straight-from-the-horses-mouth
   terms:
   - straight from the horse's mouth
@@ -172,11 +174,11 @@ rules:
   - firsthand
   - from the authority
   severity: info
-  note: Animal idiom — alternatives are clearer for international audiences
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Animal idiom — alternatives are clearer for international audiences
 - name: bring-home-the-bacon
   terms:
   - bring home the bacon
@@ -188,11 +190,11 @@ rules:
   - earn a living
   - win the prize
   severity: error
-  note: Animal slaughter idiom — alternatives are equally expressive
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Animal slaughter idiom — alternatives are equally expressive
 - name: take-the-bull-by-the-horns
   terms:
   - take the bull by the horns
@@ -203,11 +205,11 @@ rules:
   - tackle the problem directly
   - seize the opportunity
   severity: warning
-  note: Bullfighting idiom — alternatives convey the same assertiveness
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Bullfighting idiom — alternatives convey the same assertiveness
 - name: like-lambs-to-the-slaughter
   terms:
   - like lambs to the slaughter
@@ -216,11 +218,11 @@ rules:
   - blindly following
   - unknowingly walking into danger
   severity: error
-  note: Violent animal idiom referencing slaughter — alternatives are more descriptive
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Violent animal idiom referencing slaughter — alternatives are more descriptive
 - name: no-room-to-swing-a-cat
   terms:
   - no room to swing a cat
@@ -229,11 +231,11 @@ rules:
   - extremely tight space
   - barely any room
   severity: warning
-  note: Violent animal idiom — alternatives are shorter and clearer
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Violent animal idiom — alternatives are shorter and clearer
 - name: red-herring
   terms:
   - red herring
@@ -242,11 +244,11 @@ rules:
   - false lead
   - misleading clue
   severity: info
-  note: Animal-origin idiom — flag for awareness only
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Animal-origin idiom — flag for awareness only
 - name: curiosity-killed-the-cat
   terms:
   - curiosity killed the cat
@@ -255,11 +257,11 @@ rules:
   - being nosy caused trouble
   - curiosity led to trouble
   severity: error
-  note: Directly references killing a cat
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Directly references killing a cat
 - name: like-a-chicken-with-its-head-cut-off
   terms:
   - like a chicken with its head cut off
@@ -268,11 +270,11 @@ rules:
   - running around chaotically
   - in complete disarray
   severity: error
-  note: Graphic slaughter imagery — decapitating a chicken
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Graphic slaughter imagery — decapitating a chicken
 - name: your-goose-is-cooked
   terms:
   - your goose is cooked
@@ -281,11 +283,11 @@ rules:
   - your fate is sealed
   - it's over for you
   severity: error
-  note: References killing and cooking a goose
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: References killing and cooking a goose
 - name: throw-someone-to-the-wolves
   terms:
   - throw someone to the wolves
@@ -296,12 +298,12 @@ rules:
   - leave to face hostility alone
   - sacrifice someone
   severity: error
-  note: References feeding a person to wolves
   options:
     word_boundary: false
     categories:
     - animal-violence
-- name: hook,-line,-and-sinker
+  note: References feeding a person to wolves
+- name: hook-line-and-sinker
   terms:
   - hook, line, and sinker
   alternatives:
@@ -309,11 +311,11 @@ rules:
   - without question
   - fell for it entirely
   severity: warning
-  note: References hooking fish — fishing kills fish
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: References hooking fish — fishing kills fish
 - name: clip-someones-wings
   terms:
   - clip someone's wings
@@ -324,11 +326,11 @@ rules:
   - limit someone's options
   - hold someone back
   severity: warning
-  note: References wing-clipping — physical mutilation done to farmed birds
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: References wing-clipping — physical mutilation done to farmed birds
 - name: the-straw-that-broke-the-camels-back
   terms:
   - the straw that broke the camel's back
@@ -337,11 +339,11 @@ rules:
   - the breaking point
   - the final provocation
   severity: warning
-  note: References overloading a pack animal until injury
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: References overloading a pack animal until injury
 - name: a-bird-in-the-hand-is-worth-two-in-the-bush
   terms:
   - a bird in the hand is worth two in the bush
@@ -349,11 +351,11 @@ rules:
   - a sure thing beats a possibility
   - certainty over speculation
   severity: info
-  note: References trapping and catching wild birds
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: References trapping and catching wild birds
 - name: eat-crow
   terms:
   - eat crow
@@ -363,11 +365,11 @@ rules:
   - swallow one's pride
   - accept humiliation
   severity: warning
-  note: References eating a killed bird as punishment
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: References eating a killed bird as punishment
 - name: fight-like-cats-and-dogs
   terms:
   - fight like cats and dogs
@@ -378,11 +380,11 @@ rules:
   - clash frequently
   - have constant conflict
   severity: warning
-  note: References animal fighting
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: References animal fighting
 - name: take-the-bait
   terms:
   - take the bait
@@ -393,11 +395,11 @@ rules:
   - be lured in
   - be deceived
   severity: info
-  note: References baiting hooks to catch and kill fish
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: References baiting hooks to catch and kill fish
 - name: dont-count-your-chickens-before-they-hatch
   terms:
   - don't count your chickens before they hatch
@@ -406,11 +408,11 @@ rules:
   - wait for confirmed results
   - don't get ahead of yourself
   severity: info
-  note: References farming chickens as commodity and property
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: References farming chickens as commodity and property
 - name: livestock
   terms:
   - livestock
@@ -418,12 +420,12 @@ rules:
   - farmed animals
   - animals raised for food
   severity: warning
-  note: Industry commodity framing (24.8:1 ratio vs 'farmed animals' in training data). Defines sentient beings by their commercial
-    function. 'Farmed animals' is factually equivalent and does not erase the subject.
   options:
     word_boundary: true
     categories:
     - industry-euphemism
+  note: Industry commodity framing. Defines sentient beings by their commercial function.
+    'Farmed animals' is factually equivalent and does not erase the subject.
 - name: poultry
   terms:
   - poultry
@@ -432,12 +434,12 @@ rules:
   - chickens
   - chickens and turkeys
   severity: warning
-  note: Industry commodity framing (16.5:1 ratio vs 'farmed birds' in training data). Abstracts individual birds into a bulk
-    commodity term. 'Farmed birds' or the specific species name is more precise.
   options:
     word_boundary: true
     categories:
     - industry-euphemism
+  note: Industry commodity framing. Abstracts individual birds into a bulk commodity
+    term. 'Farmed birds' or the specific species name is more precise.
 - name: gestation-crate
   terms:
   - gestation crate
@@ -446,12 +448,13 @@ rules:
   - pregnancy cage
   - pregnancy cages
   severity: warning
-  note: Industry euphemism (15.0:1 ratio vs 'pregnancy cage' in training data). A metal enclosure so small a pregnant sow
-    cannot turn around for her entire 3.5-month pregnancy. 'Pregnancy cage' describes what it actually is.
   options:
     word_boundary: true
     categories:
     - industry-euphemism
+  note: Industry euphemism. A metal enclosure so small a pregnant sow cannot turn
+    around for her entire 3.5-month pregnancy. 'Pregnancy cage' describes what it
+    actually is.
 - name: depopulation
   terms:
   - depopulation
@@ -462,13 +465,13 @@ rules:
   - killed en masse
   - killing en masse
   severity: warning
-  note: Industry euphemism (13.9:1 ratio vs 'mass killing' in training data). Used to describe killing entire flocks or herds,
-    typically via gassing, ventilation shutdown, or foam. Suppress in database or population statistics contexts where 'depopulation'
-    means removing data rows.
   options:
     word_boundary: true
     categories:
     - industry-euphemism
+  note: Industry euphemism. Used to describe killing entire flocks or herds. Suppress
+    in database or population statistics contexts where 'depopulation' means removing
+    data rows.
 - name: processing-plant
   terms:
   - processing plant
@@ -479,12 +482,12 @@ rules:
   - slaughterhouse
   - slaughterhouses
   severity: warning
-  note: Industry euphemism (34.3:1 ratio vs 'slaughterhouse' in training data). When referring to facilities that kill animals,
-    'slaughterhouse' is the accurate term.
   options:
     word_boundary: true
     categories:
     - industry-euphemism
+  note: Industry euphemism. When referring to facilities that kill animals, 'slaughterhouse'
+    is the accurate term.
 - name: farrowing-crate
   terms:
   - farrowing crate
@@ -493,12 +496,13 @@ rules:
   - birthing cage
   - birthing cages
   severity: warning
-  note: Industry euphemism. A metal cage that confines a sow during and after birth, preventing her from turning around or
-    reaching her piglets. 'Birthing cage' describes the reality.
   options:
     word_boundary: true
     categories:
     - industry-euphemism
+  note: Industry euphemism. A metal cage that confines a sow during and after birth,
+    preventing her from turning around or reaching her piglets. 'Birthing cage' describes
+    the reality.
 - name: battery-cage
   terms:
   - battery cage
@@ -509,12 +513,13 @@ rules:
   - confined cage
   - confined cages
   severity: warning
-  note: Industry euphemism. Wire enclosures giving each hen less floor space than a sheet of paper (67 sq inches / 432 sq
-    cm). The word 'battery' obscures that this is a tiny cage stacked in rows of thousands.
   options:
     word_boundary: true
     categories:
     - industry-euphemism
+  note: Industry euphemism. Wire enclosures giving each hen less floor space than
+    a sheet of paper. The word 'battery' obscures that this is a tiny cage stacked
+    in rows of thousands.
 - name: spent-hen
   terms:
   - spent hen
@@ -524,12 +529,13 @@ rules:
   - discarded hens
   - hen killed after egg production declines
   severity: warning
-  note: 'Industry euphemism. ''Spent'' frames a living hen as a depleted resource. These hens are typically killed at 18 months
-    (natural lifespan: 8-10 years) when egg production drops below commercial thresholds.'
   options:
     word_boundary: true
     categories:
     - industry-euphemism
+  note: Industry euphemism. 'Spent' frames a living hen as a depleted resource. These
+    hens are typically killed at 18 months when egg production drops below commercial
+    thresholds.
 - name: humane-slaughter
   terms:
   - humane slaughter
@@ -546,12 +552,12 @@ rules:
   - killing
   - killed
   severity: warning
-  note: Industry oxymoron. The adjective 'humane' sanitizes the act. USDA 'humane slaughter' standards permit bolt guns, electrocution,
-    and gas chambers. The alternative drops the misleading modifier — the act is slaughter regardless of method.
   options:
     word_boundary: true
     categories:
     - industry-euphemism
+  note: Industry oxymoron. The adjective 'humane' sanitizes the act. USDA 'humane
+    slaughter' standards permit bolt guns, electrocution, and gas chambers.
 - name: broiler
   terms:
   - broiler
@@ -562,12 +568,12 @@ rules:
   - meat chicken
   - meat chickens
   severity: warning
-  note: Industry commodity term that defines a living chicken entirely by its commercial purpose. When referring to animals,
-    'chicken raised for meat' is accurate without reducing the animal to a product category.
   options:
     word_boundary: true
     categories:
     - industry-euphemism
+  note: Industry commodity term that defines a living chicken entirely by its commercial
+    purpose.
 - name: dont-be-a-chicken
   terms:
   - don't be a chicken
@@ -575,12 +581,12 @@ rules:
   - don't hesitate
   - be brave
   - go for it
-  severity: warning
-  note: Animal-as-coward insult in comments
+  severity: error
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Animal-as-coward insult in comments
 - name: pig
   terms:
   - pig
@@ -589,11 +595,11 @@ rules:
   - bloated
   - heavy consumer
   severity: warning
-  note: Animal-as-insult for resource consumption
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Animal-as-insult for resource consumption
 - name: cowboy-coding
   terms:
   - cowboy coding
@@ -602,11 +608,11 @@ rules:
   - ad-hoc development
   - code without process
   severity: info
-  note: Not directly animal-related but reinforces animal industry terminology
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Not directly animal-related but reinforces animal industry terminology
 - name: code-monkey
   terms:
   - code monkey
@@ -615,11 +621,11 @@ rules:
   - programmer
   - engineer
   severity: warning
-  note: Animal-as-insult for programmers — dehumanizing and unprofessional
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Animal-as-insult for programmers — dehumanizing and unprofessional
 - name: badger-someone
   terms:
   - badger someone
@@ -628,11 +634,11 @@ rules:
   - pressure
   - harass
   severity: info
-  note: From badger-baiting — a blood sport where dogs attack captive badgers
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: From badger-baiting — a blood sport where dogs attack captive badgers
 - name: ferret-out
   terms:
   - ferret out
@@ -641,11 +647,11 @@ rules:
   - discover
   - dig up
   severity: info
-  note: From using ferrets to hunt rabbits out of burrows
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: From using ferrets to hunt rabbits out of burrows
 - name: cattle-vs-pets
   terms:
   - cattle vs. pets
@@ -654,11 +660,11 @@ rules:
   - disposable vs. unique
   - numbered vs. named
   severity: warning
-  note: Infrastructure metaphor — alternatives are technically more precise
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Infrastructure metaphor — alternatives are technically more precise
 - name: pet-project
   terms:
   - pet project
@@ -666,11 +672,11 @@ rules:
   - side project
   - passion project
   severity: info
-  note: Common idiom — flag for awareness only
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Common idiom — flag for awareness only
 - name: canary-in-a-coal-mine
   terms:
   - canary in a coal mine
@@ -679,11 +685,11 @@ rules:
   - leading indicator
   - sentinel
   severity: info
-  note: Animal metaphor — alternatives are more technical
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Animal metaphor — alternatives are more technical
 - name: dogfooding
   terms:
   - dogfooding
@@ -695,11 +701,11 @@ rules:
   - eating your own cooking
   - using internally
   severity: info
-  note: Common tech term — flag for awareness only
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Common tech term — flag for awareness only
 - name: herding-cats
   terms:
   - herding cats
@@ -708,11 +714,11 @@ rules:
   - managing a distributed effort
   - organizing chaos
   severity: warning
-  note: Animal metaphor — alternatives are more descriptive
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Animal metaphor — alternatives are more descriptive
 - name: go-on-a-fishing-expedition
   terms:
   - go on a fishing expedition
@@ -721,11 +727,11 @@ rules:
   - unfocused search
   - speculative inquiry
   severity: warning
-  note: Animal metaphor — alternatives are more precise
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Animal metaphor — alternatives are more precise
 - name: sacred-cow
   terms:
   - sacred cow
@@ -735,11 +741,12 @@ rules:
   - untouchable topic
   - protected assumption
   severity: warning
-  note: Animal objectification with cultural insensitivity — trivializes Hindu beliefs while treating cattle as objects
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Animal objectification with cultural insensitivity — trivializes Hindu beliefs
+    while treating cattle as objects
 - name: scapegoat
   terms:
   - scapegoat
@@ -750,11 +757,11 @@ rules:
   - fall person
   - wrongly blamed
   severity: warning
-  note: Originates from ritual sacrifice of goats — alternatives are more precise
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Originates from ritual sacrifice of goats — alternatives are more precise
 - name: rat-race
   terms:
   - rat race
@@ -763,11 +770,11 @@ rules:
   - competitive treadmill
   - endless hustle
   severity: info
-  note: Derogatory animal metaphor for futility — alternatives are more descriptive
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Derogatory animal metaphor for futility — alternatives are more descriptive
 - name: dead-cat-bounce
   terms:
   - dead cat bounce
@@ -776,11 +783,11 @@ rules:
   - false recovery
   - brief uptick
   severity: warning
-  note: Financial/tech term depicting animal death — alternatives are more professional
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Financial/tech term depicting animal death — alternatives are more professional
 - name: dog-eat-dog
   terms:
   - dog-eat-dog
@@ -790,11 +797,11 @@ rules:
   - cutthroat
   - fiercely competitive
   severity: info
-  note: Characterizes animals as violent — alternatives convey meaning more precisely
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Characterizes animals as violent — alternatives convey meaning more precisely
 - name: whack-a-mole
   terms:
   - whack-a-mole
@@ -804,11 +811,12 @@ rules:
   - endless loop
   - unwinnable game
   severity: info
-  note: References a game based on hitting animals — alternatives describe the pattern more precisely
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: References a game based on hitting animals — alternatives describe the pattern
+    more precisely
 - name: cash-cow
   terms:
   - cash cow
@@ -818,11 +826,11 @@ rules:
   - reliable revenue source
   - money maker
   severity: warning
-  note: Commodifies cows — treats living beings as profit generators
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Commodifies cows — treats living beings as profit generators
 - name: sacrificial-lamb
   terms:
   - sacrificial lamb
@@ -832,11 +840,11 @@ rules:
   - person set up to fail
   - someone sacrificed for others
   severity: warning
-  note: References ritual slaughter of lambs
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: References ritual slaughter of lambs
 - name: sitting-duck
   terms:
   - sitting duck
@@ -846,11 +854,11 @@ rules:
   - vulnerable target
   - exposed
   severity: warning
-  note: References a duck in the open, easy to shoot — hunting imagery
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: References a duck in the open, easy to shoot — hunting imagery
 - name: open-season
   terms:
   - open season
@@ -861,11 +869,11 @@ rules:
   - unrestricted criticism
   - no holds barred
   severity: warning
-  note: References hunting season — the legal period for killing animals
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: References hunting season — the legal period for killing animals
 - name: put-out-to-pasture
   terms:
   - put out to pasture
@@ -874,11 +882,11 @@ rules:
   - phase out
   - sunset
   severity: warning
-  note: References disposing of farm animals when no longer productive
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: References disposing of farm animals when no longer productive
 - name: dead-duck
   terms:
   - dead duck
@@ -888,11 +896,11 @@ rules:
   - doomed effort
   - foregone conclusion
   severity: info
-  note: References a duck that has been shot and killed — hunting
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: References a duck that has been shot and killed — hunting
 - name: kill-process
   terms:
   - kill process
@@ -903,11 +911,12 @@ rules:
   - stop the process
   - end the process
   severity: info
-  note: Process language — in POSIX context this is standard, in docs alternatives may be clearer
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Process language — in POSIX context this is standard, in docs alternatives
+    may be clearer
 - name: kill-the-server
   terms:
   - kill the server
@@ -918,11 +927,11 @@ rules:
   - shut down the server
   - terminate the server
   severity: info
-  note: Process language — alternatives are equally clear
   options:
     word_boundary: false
     categories:
     - animal-violence
+  note: Process language — alternatives are equally clear
 - name: nuke
   terms:
   - nuke
@@ -931,11 +940,11 @@ rules:
   - wipe clean
   - remove entirely
   severity: warning
-  note: Violent metaphor in technical context — alternatives are more professional
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Violent metaphor in technical context — alternatives are more professional
 - name: abort
   terms:
   - abort
@@ -944,11 +953,11 @@ rules:
   - stop
   - halt
   severity: info
-  note: Standard technical term — flag for awareness only in non-technical contexts
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Standard technical term — flag for awareness only in non-technical contexts
 - name: cull
   terms:
   - cull
@@ -958,11 +967,11 @@ rules:
   - trim
   - filter out
   severity: warning
-  note: Euphemism for mass killing of animals — used in wildlife management and farming
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Euphemism for mass killing of animals — used in wildlife management and farming
 - name: master-slave
   terms:
   - master/slave
@@ -971,11 +980,12 @@ rules:
   - leader/follower
   - controller/worker
   severity: warning
-  note: Actively being replaced across the industry — follows existing inclusive naming initiatives
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Actively being replaced across the industry — follows existing inclusive naming
+    initiatives
 - name: whitelist-blacklist
   terms:
   - whitelist/blacklist
@@ -984,11 +994,11 @@ rules:
   - permit list/block list
   - inclusion list/exclusion list
   severity: warning
-  note: Actively being replaced — Google, Twitter, IETF have adopted alternatives
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Actively being replaced — Google, Twitter, IETF have adopted alternatives
 - name: grandfathered
   terms:
   - grandfathered
@@ -997,8 +1007,36 @@ rules:
   - exempt
   - pre-existing
   severity: info
-  note: Historically exclusionary origin — alternatives are equally clear
   options:
     word_boundary: true
     categories:
     - animal-violence
+  note: Historically exclusionary origin — alternatives are equally clear
+- name: veal
+  terms:
+  - veal
+  alternatives:
+  - calf flesh
+  - flesh from calves
+  severity: warning
+  options:
+    word_boundary: true
+    categories:
+    - industry-euphemism
+  note: Industry euphemism for the flesh of male dairy calves, typically killed within
+    weeks of birth. Obscures both the species and the age of the individual.
+- name: lame-duck
+  terms:
+  - lame duck
+  - lame-duck
+  alternatives:
+  - outgoing
+  - transitional
+  - ineffective
+  severity: info
+  options:
+    word_boundary: true
+    categories:
+    - animal-violence
+  note: References a bird unable to fly due to injury. 'Outgoing' or 'transitional'
+    are more precise in political and tech contexts.

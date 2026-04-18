@@ -1,90 +1,112 @@
+# AUTO-GENERATED from Open-Paws/no-animal-violence. Do not edit directly.
 extends: substitution
 message: "Consider using '%s' instead of '%s'. This phrase normalizes violence toward animals."
 link: https://doi.org/10.1007/s43681-023-00380-w
 level: warning
 ignorecase: true
 swap:
-  # --- Existing rules (pre-PR) ---
-  'kill two birds with one stone': accomplish two things at once
-  'killing two birds with one stone': accomplishing two things at once
-  'killed two birds with one stone': accomplished two things at once
-  'beat a dead horse': belabor the point
-  'beating a dead horse': belaboring the point
-  'flog a dead horse': belabor the point
-  'flogging a dead horse': belaboring the point
-  'bring home the bacon': bring home the results
-  'bringing home the bacon': bringing home the results
-  'brought home the bacon': brought home the results
-  'more than one way to skin a cat': more than one way to solve this
-  'many ways to skin a cat': many ways to approach this
-  'let the cat out of the bag': reveal the secret
-  'letting the cat out of the bag': revealing the secret
-  'open a can of worms': create a complicated situation
-  'opening a can of worms': creating a complicated situation
-  'opened a can of worms': created a complicated situation
-  'wild goose chase': pointless pursuit
-  'take the bull by the horns': face the challenge head-on
-  'taking the bull by the horns': facing the challenge head-on
-  'took the bull by the horns': faced the challenge head-on
-  'like shooting fish in a barrel': extremely easy
-  'straight from the horse''s mouth': directly from the source
-  'from the horse''s mouth': from a reliable source
-  'whack-a-mole': recurring problem
-  'whack a mole': recurring problem
-  # --- New rules added in PR #16 ---
-  # wolf in sheep's clothing
-  #   true-positive:  "That vendor is a wolf in sheep's clothing — all promises, no delivery."
-  #   false-positive: "Aesop's fable 'The Wolf in Sheep's Clothing' is referenced by name here." (title / direct quotation)
-  'wolf in sheep''s clothing': deceptive actor
-  'wolves in sheep''s clothing': deceptive actors
-  # horse trading
-  #   true-positive:  "The budget was approved only after significant horse trading."
-  #   false-positive: "Horse trading was a common practice at medieval markets." (historical / literal context)
-  'horse trading': political bargaining
-  'horse-trading': political bargaining
-  # gorilla in the room
-  #   true-positive:  "Nobody mentioned the gorilla in the room — the project is massively over budget."
-  #   false-positive: "The gorilla in the room at the zoo attracted large crowds." (literal animal reference)
-  'gorilla in the room': the obvious issue
-  # snake in the grass
-  #   true-positive:  "Don't trust him — he's a snake in the grass."
-  #   false-positive: "A grass snake is a harmless, non-venomous reptile." (literal species description)
-  'snake in the grass': hidden threat
-  # fox guarding the henhouse
-  #   true-positive:  "Having the regulator funded by the industry is like the fox guarding the henhouse."
-  #   false-positive: "The farmer added electric fencing after a fox got into the henhouse." (literal agricultural context)
-  'fox guarding the henhouse': conflicted oversight
-  'fox in the henhouse': conflicted oversight
-  # cold turkey
-  #   true-positive:  "She quit caffeine cold turkey and had withdrawal headaches for a week."
-  #   false-positive: "The harm-reduction clinic advises against stopping cold turkey without medical supervision." (clinical context — suppress)
-  'cold turkey': abrupt cessation
-  'go cold turkey': stop immediately
-  # get your goat
-  #   true-positive:  "Merge conflicts late on Friday really get my goat."
-  #   false-positive: "The sanctuary said the goat gets your attention the moment you enter the pen." (literal animal interaction)
-  'get your goat': annoy you
-  'get my goat': annoy me
-  'got my goat': annoyed me
-  # until the cows come home
-  #   true-positive:  "We could argue about tabs vs. spaces until the cows come home."
-  #   false-positive: "The cows come home each evening when the farmer sounds the bell." (literal farming description)
-  'until the cows come home': indefinitely
-  # cock-and-bull story
-  #   true-positive:  "The contractor fed us a cock-and-bull story about why the deadline slipped."
-  #   false-positive: "The Cock and Bull is the name of the village pub on the high street." (proper noun)
-  'cock-and-bull story': fabricated story
-  'cock and bull story': fabricated story
-  # throw to the wolves
-  #   true-positive:  "They threw the junior dev to the wolves at the client postmortem."
-  #   false-positive: "Wildlife researchers throw food to the wolves to study pack feeding order." (literal wildlife research)
-  'throw to the wolves': abandon to criticism
-  'thrown to the wolves': abandoned to criticism
-  # bigger fish to fry
-  #   true-positive:  "Let's not get distracted by this — there are bigger fish to fry."
-  #   false-positive: "The fishmonger said the bigger fish to fry needed a wider pan." (literal cooking context)
-  'bigger fish to fry': more important matters to address
-  # open season on
-  #   true-positive:  "After the CTO's resignation it was open season on the engineering team."
-  #   false-positive: "Opening season for the conference begins in March." (conference scheduling — scoped by "open season on" term)
-  'open season on': free-for-all targeting
+  'kill two birds with one stone': 'accomplish two things at once'
+  'killing two birds with one stone': 'accomplish two things at once'
+  'killed two birds with one stone': 'accomplish two things at once'
+  'beat a dead horse': 'belabor the point'
+  'beating a dead horse': 'belabor the point'
+  'more than one way to skin a cat': 'more than one way to solve this'
+  'many ways to skin a cat': 'more than one way to solve this'
+  'other ways to skin a cat': 'more than one way to solve this'
+  'let the cat out of the bag': 'reveal the secret'
+  'letting the cat out of the bag': 'reveal the secret'
+  'open a can of worms': 'create a complicated situation'
+  'opening a can of worms': 'create a complicated situation'
+  'opened a can of worms': 'create a complicated situation'
+  'wild goose chase': 'futile search'
+  'like shooting fish in a barrel': 'trivially easy'
+  'flog a dead horse': 'belabor the point'
+  'flogging a dead horse': 'belabor the point'
+  'there are bigger fish to fry': 'more important matters to address'
+  'guinea pig': 'test subject'
+  'hold your horses': 'wait a moment'
+  'the elephant in the room': 'the obvious issue'
+  'straight from the horse''s mouth': 'directly from the source'
+  'bring home the bacon': 'bring home the results'
+  'bringing home the bacon': 'bring home the results'
+  'brought home the bacon': 'bring home the results'
+  'brings home the bacon': 'bring home the results'
+  'take the bull by the horns': 'face the challenge head-on'
+  'taking the bull by the horns': 'face the challenge head-on'
+  'took the bull by the horns': 'face the challenge head-on'
+  'like lambs to the slaughter': 'without resistance'
+  'no room to swing a cat': 'very cramped'
+  'red herring': 'distraction'
+  'curiosity killed the cat': 'curiosity backfired'
+  'like a chicken with its head cut off': 'in a panic'
+  'your goose is cooked': 'you''re in trouble'
+  'throw someone to the wolves': 'abandon to criticism'
+  'throwing someone to the wolves': 'abandon to criticism'
+  'threw someone to the wolves': 'abandon to criticism'
+  'hook, line, and sinker': 'completely'
+  'clip someone''s wings': 'restrict someone''s freedom'
+  'clipping someone''s wings': 'restrict someone''s freedom'
+  'clipped someone''s wings': 'restrict someone''s freedom'
+  'the straw that broke the camel''s back': 'the tipping point'
+  'a bird in the hand is worth two in the bush': 'a sure thing beats a possibility'
+  'eat crow': 'admit being wrong'
+  'eating crow': 'admit being wrong'
+  'fight like cats and dogs': 'constantly argue'
+  'fighting like cats and dogs': 'constantly argue'
+  'fought like cats and dogs': 'constantly argue'
+  'take the bait': 'fall for it'
+  'taking the bait': 'fall for it'
+  'took the bait': 'fall for it'
+  'don''t count your chickens before they hatch': 'don''t assume success prematurely'
+  'don''t be a chicken': 'don''t hesitate'
+  'pig': 'resource-intensive'
+  'cowboy coding': 'undisciplined coding'
+  'code monkey': 'developer'
+  'badger someone': 'pester'
+  'ferret out': 'uncover'
+  'cattle vs. pets': 'ephemeral vs. persistent'
+  'pet project': 'side project'
+  'canary in a coal mine': 'early warning signal'
+  'dogfooding': 'self-hosting'
+  'dogfood': 'self-hosting'
+  'eating your own dogfood': 'self-hosting'
+  'eat your own dogfood': 'self-hosting'
+  'herding cats': 'coordinating independent contributors'
+  'go on a fishing expedition': 'exploratory investigation'
+  'sacred cow': 'unquestioned belief'
+  'sacred cows': 'unquestioned belief'
+  'scapegoat': 'blame target'
+  'scapegoated': 'blame target'
+  'scapegoating': 'blame target'
+  'rat race': 'daily grind'
+  'dead cat bounce': 'temporary rebound'
+  'dog-eat-dog': 'ruthlessly competitive'
+  'dog eat dog': 'ruthlessly competitive'
+  'whack-a-mole': 'recurring problem'
+  'whack a mole': 'recurring problem'
+  'cash cow': 'profit center'
+  'cash cows': 'profit center'
+  'sacrificial lamb': 'expendable person'
+  'sacrificial lambs': 'expendable person'
+  'sitting duck': 'easy target'
+  'sitting ducks': 'easy target'
+  'open season': 'free-for-all'
+  'opening season': 'free-for-all'
+  'opened season': 'free-for-all'
+  'put out to pasture': 'retire'
+  'dead duck': 'lost cause'
+  'dead ducks': 'lost cause'
+  'kill process': 'terminate the process'
+  'killing process': 'terminate the process'
+  'killed process': 'terminate the process'
+  'kill the server': 'stop the server'
+  'killing the server': 'stop the server'
+  'killed the server': 'stop the server'
+  'nuke': 'delete completely'
+  'abort': 'cancel'
+  'cull': 'remove'
+  'master/slave': 'primary/replica'
+  'whitelist/blacklist': 'allowlist/denylist'
+  'grandfathered': 'legacy'
+  'lame duck': 'outgoing'
+  'lame-duck': 'outgoing'
