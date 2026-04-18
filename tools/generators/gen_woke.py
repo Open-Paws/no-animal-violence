@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-"""Generate woke/.woke.yaml from rules.yaml.
+"""Generate woke config files from rules.yaml.
 
-Writes directly to the canonical repo's woke/.woke.yaml
-(not to build/) since it lives in the same repo.
+Outputs (downstream):
+  build/woke-no-animal-violence/.woke.yaml
+
+Outputs (canonical inline):
+  woke/.woke.yaml
 """
 from __future__ import annotations
 
@@ -15,11 +18,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from loader import Rule, canonical_rules_path, load_rules  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-OUTPUT_PATH = REPO_ROOT / "woke" / ".woke.yaml"
+CANONICAL_PATH = REPO_ROOT / "woke" / ".woke.yaml"
+BUILD_PATH = REPO_ROOT / "build" / "woke-no-animal-violence" / ".woke.yaml"
 
 
 def generate(rules: list[Rule], output_path: Path) -> None:
-    """Write woke/.woke.yaml from rules (dropping fields woke doesn't understand)."""
+    """Write a woke config from rules (dropping fields woke doesn't understand)."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
     rules_list = []
     for rule in rules:
@@ -49,8 +53,10 @@ def generate(rules: list[Rule], output_path: Path) -> None:
 
 def main() -> int:
     rules = load_rules(canonical_rules_path())
-    generate(rules, OUTPUT_PATH)
-    print(f"Woke: wrote {OUTPUT_PATH}")
+    generate(rules, CANONICAL_PATH)
+    generate(rules, BUILD_PATH)
+    print(f"Woke: wrote {CANONICAL_PATH}")
+    print(f"Woke: wrote {BUILD_PATH}")
     return 0
 
 

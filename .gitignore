@@ -7,3 +7,8 @@
 *.log
 node_modules/
 __pycache__/
+build/
+.desloppify/
+.pytest_cache/
+dist/
+*.egg-info/
