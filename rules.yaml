@@ -1067,3 +1067,16 @@ rules:
     word_boundary: true
     regex: "grandfather(ed|ing)?"
     context_suppressions: []
+
+  - name: veal
+    terms:
+      - veal
+    alternatives:
+      - calf flesh
+      - flesh from calves
+    severity: warning
+    category: industry-euphemism
+    note: Industry euphemism for the flesh of male dairy calves, typically killed within weeks of birth. Obscures both the species and the age of the individual.
+    word_boundary: true
+    regex: "veal"
+    context_suppressions: []
