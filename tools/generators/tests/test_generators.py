@@ -1,4 +1,6 @@
 """Golden-file tests for all generators."""
+import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -106,3 +108,50 @@ def test_vale_all_terms_present(tmp_path):
     assert "guinea pig" in data["swap"]
     assert "livestock" in data["swap"]
     assert "curiosity killed the cat" in data["swap"]
+
+
+def test_vscode_word_boundary_emission():
+    """gen_vscode emits /\\b.../gi for word_boundary:true rules, not /\\\\b.../gi.
+
+    Regression test for the double-escape bug: \\\\b in a JS template literal
+    produces \\b in the string, which in a regex literal means literal backslash+b
+    not a word boundary. The fix uses \\b → \\b in the output.
+    """
+    result = subprocess.run(
+        ["node", str(GENERATORS / "gen_vscode.js")],
+        capture_output=True, text=True, cwd=str(REPO_ROOT),
+    )
+    assert result.returncode == 0, result.stderr
+    output = (REPO_ROOT / "build" / "vscode-no-animal-violence" / "extension.js").read_text()
+    # Double-escaped \\b must not appear — that was the broken form
+    assert "/\\\\b" not in output, "Double-escaped \\\\b found — word boundary fix regressed"
+    # At least one word_boundary:true rule must emit correct /\b...\b/gi form
+    assert re.search(r"/\\b[^/]+\\b/gi", output), "No /\\b...\\b/gi pattern found — word boundaries missing"
+
+
+def test_reviewdog_output_reformatter():
+    """reformat_nav_output converts multi-line scanner output to file:line: message.
+
+    Regression test for the reviewdog -efm format mismatch: the pre-commit checker
+    outputs multi-line blocks but reviewdog -efm="%f:%l: %m" expects single-line
+    entries. The reformatter must extract file, line, and found phrase.
+    """
+    from gen_reviewdog import reformat_nav_output
+    sample = [
+        "Animal violence language detected:\n",
+        "\n",
+        "  path/to/file.py:5\n",
+        '    Found:   "guinea pig"\n',
+        '    Suggest: "test subject"\n',
+        "\n",
+        "  another/file.md:12\n",
+        '    Found:   "livestock"\n',
+        '    Suggest: "farmed animals"\n',
+        "\n",
+        "2 instance(s) found.\n",
+    ]
+    result = reformat_nav_output(sample)
+    assert result == [
+        "path/to/file.py:5: guinea pig",
+        "another/file.md:12: livestock",
+    ]
