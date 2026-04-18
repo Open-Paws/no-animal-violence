@@ -1,0 +1,12 @@
+# This repo IS the speciesist idiom ruleset — the rule definitions, generated
+# output files, and test fixtures necessarily contain every prohibited term.
+# Exclude them from the NAV check; only scan source code and new docs.
+rules.yaml
+woke/
+alex/
+vale/
+semgrep-no-animal-violence.yaml
+tools/test_check_consistency.py
+tools/generators/tests/
+.claude/rules/advocacy-domain.md
+INTEGRATION.md
