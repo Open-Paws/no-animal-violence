@@ -1,141 +1,21 @@
 # no-animal-violence
 
-**Status: 🟡 Active Development** — canonical rule source for the Open Paws speciesist language detection suite
+[![CI](https://github.com/Open-Paws/no-animal-violence/actions/workflows/ci.yml/badge.svg)](https://github.com/Open-Paws/no-animal-violence/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Open-Paws/no-animal-violence/blob/main/LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/Open-Paws/no-animal-violence)](https://github.com/Open-Paws/no-animal-violence/commits/main)
 
-Rule files for detecting speciesist language in code, documentation, and configuration. This is the **canonical pattern dictionary** for the entire no-animal-violence ecosystem. Eight downstream tools consume or mirror these definitions.
+## TL;DR
 
----
+`no-animal-violence` is the canonical pattern dictionary for detecting speciesist language in code, documentation, and configuration. It defines 65+ detection rules across four categories — violent animal idioms, animal-as-object metaphors, speciesist technical terminology, and industry euphemisms — with precise alternatives for each. Eight downstream tool adapters (ESLint, Semgrep, Vale, VS Code, pre-commit, GitHub Action, reviewdog, Danger.js) consume these rules in their native formats. Changes made here propagate to all eight tools.
 
-## What This Is
+> [!NOTE]
+> This project is part of the [Open Paws](https://openpaws.ai) ecosystem — AI infrastructure for the animal liberation movement. [Explore the full platform →](https://github.com/Open-Paws)
 
-Every major inclusive language scanner covers racial, gender, and ableist language. None include speciesism. This repository fills that gap.
+Language shapes moral perception. Peer-reviewed research confirms that speciesist idioms and industry euphemisms in AI training data suppress moral concern for animals at a statistically significant level. This toolchain embeds animal welfare standards directly into the development process so that every developer who installs an adapter encounters an alternative framing — and a reason for it — each time a flagged phrase appears.
 
-It maintains 65+ detection patterns across four categories, each with precise, professional alternatives. The patterns are published as native rule files for three scanners (`woke`, `alex/retext-equality`, `Vale`) and are mirrored by six additional tool adapters (ESLint, Semgrep, VS Code, pre-commit, GitHub Action, reviewdog, Danger.js).
+## Quickstart
 
-**Changes made here propagate to all eight downstream tools.** This is the single source of truth.
-
----
-
-## Why This Matters for Advocacy Software
-
-Language shapes moral perception. Peer-reviewed research confirms that speciesist idioms and industry euphemisms in AI training data suppress moral concern for animals at a statistically significant level (Hagendorff et al., 2023; Takeshita et al., 2022). When those same phrases appear in developer communications, documentation, and code comments, they normalize the framing that produced the bias.
-
-This toolchain embeds animal welfare standards into the development process itself. Every developer who installs an adapter encounters an alternative framing — and a reason for it — each time a flagged phrase appears.
-
-**Academic backing:**
-- Hagendorff, Bossert, Tse & Singer (2023). "Speciesist bias in AI." *AI and Ethics*. [DOI: 10.1007/s43681-023-00380-w](https://doi.org/10.1007/s43681-023-00380-w)
-- Takeshita, Rzepka & Araki (2022). "Speciesist language and nonhuman animal bias in English masked language models." *Information Processing & Management*.
-- Hagendorff et al. (2025). "SpeciesismBench: A benchmark for evaluating speciesist bias in large language models." arXiv:2508.11534.
-- Leach et al. (2023). "Speciesism in everyday language." *British Journal of Social Psychology*.
-
----
-
-## Pattern Categories
-
-### 1. Violent Animal Idioms (`animal-violence`) — severity: `error` or `warning`
-
-Phrases that reference harming, killing, or coercing animals:
-
-| Flagged phrase | Suggested alternative |
-|---|---|
-| kill two birds with one stone | accomplish two things at once |
-| beat a dead horse | belabor the point |
-| more than one way to skin a cat | more than one way to solve this |
-| like shooting fish in a barrel | trivially easy |
-| like lambs to the slaughter | without resistance |
-| curiosity killed the cat | curiosity led to trouble |
-| like a chicken with its head cut off | in a panic |
-| your goose is cooked | you're in trouble |
-| throw someone to the wolves | abandon to criticism |
-| bring home the bacon | bring home the results |
-| flog a dead horse | belabor the point |
-| no room to swing a cat | very cramped |
-| clip someone's wings | restrict someone's freedom |
-| open season | free-for-all |
-| sacrificial lamb | expendable person |
-| sitting duck | easy target |
-
-### 2. Animal-as-Object Metaphors (`animal-violence`) — severity: `warning` or `info`
-
-Phrases that frame animals as commodities, insults, or props:
-
-| Flagged phrase | Suggested alternative |
-|---|---|
-| guinea pig | test subject |
-| sacred cow | unquestioned belief |
-| scapegoat | blame target |
-| cash cow | profit center |
-| dead cat bounce | temporary rebound |
-| code monkey | developer |
-| cattle vs. pets | ephemeral vs. persistent |
-| herding cats | coordinating independent contributors |
-| pet project | side project |
-| rat race | daily grind |
-| dog-eat-dog | ruthlessly competitive |
-| whack-a-mole | recurring problem |
-
-### 3. Speciesist Technical Terminology (`speciesism`) — severity: `warning` or `info`
-
-Infrastructure and development metaphors with animal exploitation origins, where a more precise technical term exists:
-
-| Flagged phrase | Suggested alternative |
-|---|---|
-| canary deployment / canary release | progressive rollout |
-| monkey patch / monkey patching | runtime patch |
-| duck typing | structural typing |
-| dogfooding / eat your own dogfood | self-hosting |
-| stack canary / canary value | sentinel value |
-| rubber duck debugging | talk-through debugging |
-| wolf in sheep's clothing | deceptive actor |
-| weasel words | deliberately vague language |
-| fox guarding the henhouse | conflicted oversight |
-| horse trading | transactional negotiation |
-| cold turkey | abrupt cessation |
-
-### 4. Industry Euphemisms (`industry-euphemism`) — severity: `warning`
-
-Agricultural and food-industry language that obscures what is actually happening to animals. These terms are disproportionately represented in AI training data at ratios of 13:1 to 34:1 over accurate alternatives:
-
-| Flagged phrase | Suggested alternative | Ratio in training data |
-|---|---|---|
-| processing plant / processing facility | slaughterhouse | 34.3:1 |
-| livestock | farmed animals | 24.8:1 |
-| poultry | farmed birds | 16.5:1 |
-| gestation crate | pregnancy cage | 15.0:1 |
-| depopulation | mass killing | 13.9:1 |
-| humane slaughter | slaughter | — |
-| farrowing crate | birthing cage | — |
-| battery cage | small wire cage | — |
-| spent hen | discarded hen | — |
-| broiler | chicken raised for meat | — |
-| harvesting animals | killing animals | — |
-| free-range eggs | eggs from hens with outdoor access | — |
-| cage-free eggs | eggs from uncaged hens | — |
-
----
-
-## Downstream Tool Ecosystem
-
-All eight adapters detect the same phrases and suggest the same alternatives. Each implements the patterns in its tool's native format. The canonical source is this repository.
-
-| Tool | Repository | What it covers |
-|---|---|---|
-| ESLint plugin | [eslint-plugin-no-animal-violence](https://github.com/Open-Paws/eslint-plugin-no-animal-violence) | JS/TS files: comments, strings, JSX |
-| Semgrep rules | [semgrep-rules-no-animal-violence](https://github.com/Open-Paws/semgrep-rules-no-animal-violence) | Multi-language static analysis with autofix |
-| Vale package | [vale-no-animal-violence](https://github.com/Open-Paws/vale-no-animal-violence) | Markdown, RST, prose documentation |
-| VS Code extension | [vscode-no-animal-violence](https://github.com/Open-Paws/vscode-no-animal-violence) | Real-time editor underlining + Quick Fix |
-| Pre-commit hook | [no-animal-violence-pre-commit](https://github.com/Open-Paws/no-animal-violence-pre-commit) | Blocks commits containing violations |
-| GitHub Action | [no-animal-violence-action](https://github.com/Open-Paws/no-animal-violence-action) | CI/CD gate on every PR |
-| Reviewdog runner | [reviewdog-no-animal-violence](https://github.com/Open-Paws/reviewdog-no-animal-violence) | Inline annotations on PR diffs |
-| Danger.js plugin | [danger-plugin-no-animal-violence](https://github.com/Open-Paws/danger-plugin-no-animal-violence) | Consolidated PR review comment |
-
-For full setup instructions for all eight tools, see **[INTEGRATION.md](INTEGRATION.md)**.
-
----
-
-## Quick Start
-
-**5-minute CI gate** — add to `.github/workflows/inclusive-language.yml`:
+**CI gate** — add to `.github/workflows/inclusive-language.yml`:
 
 ```yaml
 name: Inclusive Language
@@ -177,100 +57,148 @@ export default [
 ];
 ```
 
-**woke** — copy or reference `woke/.woke.yaml` directly:
+**woke** — reference `woke/.woke.yaml` directly:
 
 ```bash
 woke --config path/to/woke/.woke.yaml .
 ```
 
----
+**Validate cross-file consistency** (after adding new patterns):
 
-## How to Add a New Pattern
+```bash
+python tools/check_consistency.py
+```
 
-Patterns are governed by the same principles as code: clarity over cleverness, single responsibility per entry, and every new rule must include at least one true-positive example and one false-positive suppression example.
+## Features
 
-### Governance process
+- **65+ detection patterns** across four categories: violent animal idioms, animal-as-object metaphors, speciesist technical terminology, and industry euphemisms
+- **Three native rule formats** — woke (`.woke.yaml`), alex/retext-equality (`.yml`), and Vale (`.yml`) — all in sync
+- **Severity tiers** (`error` / `warning` / `info`) so consuming tools can tune blocking vs. advisory behavior
+- **Academic grounding** — industry-euphemism ratios sourced from corpus analysis (13:1 to 34:1 over accurate alternatives in public training data)
+- **Cross-file consistency validator** (`tools/check_consistency.py`) detects drift between the three canonical formats
+- **Downstream version drift detector** (`scripts/check_versions.sh`) reports which tool adapters are behind
+- **CI/CD workflows** for linting (ruff) and testing (pytest) on every push and pull request
 
-1. **Check for duplicates first.** Search `woke/.woke.yaml`, `alex/animal-violence.yml`, `alex/speciesism.yml`, `alex/industry-euphemisms.yml`, and `vale/Speciesism/` before adding anything. AI-assisted additions duplicate at a significantly higher rate than human-authored ones.
+## Documentation
 
-2. **Classify the category.** Determine which of the four categories applies: `animal-violence` (idioms or insults), `speciesism` (normalized metaphors), `industry-euphemism` (agricultural euphemisms), or a new category if none fits.
+- **[INTEGRATION.md](INTEGRATION.md)** — full setup guide for all eight downstream tools
+- **[VERSIONS.md](VERSIONS.md)** — compatibility matrix and version drift policy
+- **[Downstream tool ecosystem](#downstream-tool-ecosystem)** — links to all eight adapter repos
 
-3. **Write a spec first.** Before writing the YAML, define:
-   - The exact phrase(s) to flag
-   - The suggested alternative(s)
-   - One true-positive example (a sentence that should trigger the rule)
-   - One false-positive example (a sentence that should not trigger the rule)
+## Architecture
 
-4. **Add to all three canonical files:**
-   - `woke/.woke.yaml` — woke format
-   - `alex/` — the appropriate alex/retext-equality file
-   - `vale/Speciesism/` — the appropriate Vale rule file
+<details>
+<summary>Rule propagation architecture</summary>
 
-5. **Open issues in downstream tool repos** to pull the new pattern in. See `VERSIONS.md` for the full list of downstream repos.
+```mermaid
+graph TD
+    A["no-animal-violence (canonical rules)"]
+    A -->|"woke/.woke.yaml"| B[woke scanner]
+    A -->|"alex/*.yml"| C[alex / retext-equality]
+    A -->|"vale/Speciesism/*.yml"| D[Vale]
+    A -->|mirrors rules| E[eslint-plugin-no-animal-violence]
+    A -->|mirrors rules| F[semgrep-rules-no-animal-violence]
+    A -->|mirrors rules| G[vscode-no-animal-violence]
+    A -->|mirrors rules| H[no-animal-violence-pre-commit]
+    A -->|mirrors rules| I[no-animal-violence-action]
+    A -->|mirrors rules| J[reviewdog-no-animal-violence]
+    A -->|mirrors rules| K[danger-plugin-no-animal-violence]
+```
 
-6. **Validate:**
-   ```bash
-   # Check cross-file consistency
-   python tools/check_consistency.py
+This repo is the single source of truth. Rule definitions live in three canonical files — `woke/.woke.yaml`, the `alex/` directory, and `vale/Speciesism/` — and are synchronized via `tools/check_consistency.py`. Downstream adapters implement the patterns in their tool's native format and are expected to track the core rules version. Any rule ID change in this repo requires downstream suppression comments to be updated; see [VERSIONS.md](VERSIONS.md) for the versioning policy.
 
-   # Run the suite against itself
-   woke --config woke/.woke.yaml .
-   ```
-
-### Severity guidelines
-
-| Severity | Use when |
-|---|---|
-| `error` | Phrase directly references animal harm with no legitimate technical use |
-| `warning` | Phrase normalizes exploitation; technical contexts may exist |
-| `info` | Common idiom; flag for awareness only; not blocking |
-
----
-
-## Contributing
-
-1. Read the existing patterns before proposing additions — search broadly.
-2. Follow the governance process above.
-3. Run `python tools/check_consistency.py` before opening a PR.
-4. Every PR must include true-positive and false-positive examples for each new rule.
-5. PRs that modify existing rule IDs or remove patterns are high-risk and require explicit justification — downstream tool suppression comments reference rule IDs by name.
-
----
-
-## Repository Structure
+**Repository structure:**
 
 ```
 no-animal-violence/
 ├── woke/
 │   └── .woke.yaml              # Canonical pattern dictionary (all 65+ rules)
 ├── alex/
-│   ├── animal-violence.yml     # Violent idioms + industry euphemisms (alex format)
-│   ├── speciesism.yml          # Speciesist metaphors + tech terminology (alex format)
-│   └── industry-euphemisms.yml # Harvest/welfare-washing euphemisms (alex format)
+│   ├── animal-violence.yml     # Violent idioms + industry euphemisms
+│   ├── speciesism.yml          # Speciesist metaphors + tech terminology
+│   └── industry-euphemisms.yml # Agricultural euphemisms
 ├── vale/
 │   └── Speciesism/
-│       ├── AnimalIdioms.yml    # Vale: violent animal idioms
-│       ├── AnimalMetaphors.yml # Vale: animal-as-object metaphors
-│       ├── TechTerminology.yml # Vale: speciesist tech terms
-│       ├── IndustryEuphemisms.yml # Vale: agricultural euphemisms
-│       └── meta.json           # Vale style package metadata
+│       ├── AnimalIdioms.yml
+│       ├── AnimalMetaphors.yml
+│       ├── TechTerminology.yml
+│       ├── IndustryEuphemisms.yml
+│       └── meta.json
 ├── tools/
 │   └── check_consistency.py   # Cross-file consistency validator
 ├── scripts/
 │   └── check_versions.sh      # Downstream version drift detector
-├── semgrep-no-animal-violence.yaml  # Semgrep import shim
-├── INTEGRATION.md              # Full setup guide for all eight tools
-└── VERSIONS.md                 # Compatibility matrix for downstream tools
+├── semgrep-no-animal-violence.yaml
+├── INTEGRATION.md
+└── VERSIONS.md
 ```
 
+</details>
+
+## Downstream Tool Ecosystem
+
+All eight adapters detect the same phrases and suggest the same alternatives. Each implements the patterns in the tool's native format.
+
+| Tool | Repository | What it covers |
+|---|---|---|
+| ESLint plugin | [eslint-plugin-no-animal-violence](https://github.com/Open-Paws/eslint-plugin-no-animal-violence) | JS/TS files: comments, strings, JSX |
+| Semgrep rules | [semgrep-rules-no-animal-violence](https://github.com/Open-Paws/semgrep-rules-no-animal-violence) | Multi-language static analysis with autofix |
+| Vale package | [vale-no-animal-violence](https://github.com/Open-Paws/vale-no-animal-violence) | Markdown, RST, prose documentation |
+| VS Code extension | [vscode-no-animal-violence](https://github.com/Open-Paws/vscode-no-animal-violence) | Real-time editor underlining + Quick Fix |
+| Pre-commit hook | [no-animal-violence-pre-commit](https://github.com/Open-Paws/no-animal-violence-pre-commit) | Blocks commits containing violations |
+| GitHub Action | [no-animal-violence-action](https://github.com/Open-Paws/no-animal-violence-action) | CI/CD gate on every PR |
+| Reviewdog runner | [reviewdog-no-animal-violence](https://github.com/Open-Paws/reviewdog-no-animal-violence) | Inline annotations on PR diffs |
+| Danger.js plugin | [danger-plugin-no-animal-violence](https://github.com/Open-Paws/danger-plugin-no-animal-violence) | Consolidated PR review comment |
+
+## Contributing
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) <!-- TODO: create CONTRIBUTING.md --> before opening a PR. The short version:
+
+1. Search existing patterns before proposing additions — duplicates are the most common contribution failure.
+2. Classify the new pattern into one of the four categories: `animal-violence`, `speciesism`, `industry-euphemism`, or propose a new category if none fits.
+3. Write a spec first: the exact phrase(s), the suggested alternative(s), one true-positive example, and one false-positive suppression example.
+4. Add the pattern to all three canonical files: `woke/.woke.yaml`, the appropriate `alex/` file, and the appropriate `vale/Speciesism/` file.
+5. Run `python tools/check_consistency.py` before opening a PR.
+6. PRs that change rule IDs or remove patterns require explicit justification — downstream tool suppression comments reference rule IDs by name.
+
+We especially welcome contributions of new industry euphemisms and technical terminology patterns that lack accurate alternatives in mainstream usage.
+
+## License + Acknowledgments
+
+[MIT License](LICENSE) — Copyright (c) 2026 Open Paws.
+
+Academic backing for the industry-euphemism severity levels and training-data ratios:
+
+- Hagendorff, Bossert, Tse & Singer (2023). "Speciesist bias in AI." *AI and Ethics*. [DOI: 10.1007/s43681-023-00380-w](https://doi.org/10.1007/s43681-023-00380-w)
+- Takeshita, Rzepka & Araki (2022). "Speciesist language and nonhuman animal bias in English masked language models." *Information Processing & Management*.
+- Hagendorff et al. (2025). "SpeciesismBench: A benchmark for evaluating speciesist bias in large language models." arXiv:2508.11534.
+- Leach et al. (2023). "Speciesism in everyday language." *British Journal of Social Psychology*.
+
 ---
 
-## License
-
-MIT
+[Donate](https://openpaws.ai/donate) · [Discord](https://discord.gg/openpaws) · [openpaws.ai](https://openpaws.ai) · [Volunteer](https://openpaws.ai/volunteer)
 
 ---
 
-## About
-
-Built by [Open Paws](https://openpaws.ai) — AI infrastructure for animal liberation.
+```yaml
+tech_stack:
+  - yaml
+  - python
+project_status: alpha
+difficulty: beginner
+skill_tags:
+  - inclusive-language
+  - static-analysis
+  - linting
+  - speciesism
+  - advocacy
+related_repos:
+  - https://github.com/Open-Paws/eslint-plugin-no-animal-violence
+  - https://github.com/Open-Paws/semgrep-rules-no-animal-violence
+  - https://github.com/Open-Paws/vale-no-animal-violence
+  - https://github.com/Open-Paws/vscode-no-animal-violence
+  - https://github.com/Open-Paws/no-animal-violence-pre-commit
+  - https://github.com/Open-Paws/no-animal-violence-action
+  - https://github.com/Open-Paws/reviewdog-no-animal-violence
+  - https://github.com/Open-Paws/danger-plugin-no-animal-violence
+```
