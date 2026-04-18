@@ -12,20 +12,18 @@ Rules are static YAML/config files — no build step required. Copy or reference
 
 ## Architecture
 
-This is a **mono-repo of rule definitions** for three different inclusive-language scanners. Each tool has its own directory with rules in its native format. All rule sets detect the same categories: violent animal idioms, animal-as-object metaphors, and speciesist technical terminology.
+`rules.yaml` is the **single canonical source of truth**. All rule files in `alex/`, `woke/`, and `vale/Speciesism/` are generated from it — do not edit them directly. Run `tools/generate_all.py` to regenerate. All downstream adapter repos receive rule updates via the `propagate.yml` CI workflow.
 
 ## Key Files
 
 | File | Description |
 |------|-------------|
-| `woke/.woke.yaml` | woke scanner config with all speciesist patterns |
-| `alex/animal-violence.yml` | alex/retext-equality rules for violent idioms |
-| `alex/speciesism.yml` | alex/retext-equality rules for speciesist metaphors |
-| `alex/industry-euphemisms.yml` | alex/retext-equality rules for industry euphemisms (free-range, cage-free, harvest) |
-| `vale/Speciesism/AnimalIdioms.yml` | Vale rule: violent animal idioms |
-| `vale/Speciesism/AnimalMetaphors.yml` | Vale rule: animal-as-object metaphors |
-| `vale/Speciesism/TechTerminology.yml` | Vale rule: speciesist tech terms |
-| `vale/Speciesism/meta.json` | Vale style package metadata |
+| `rules.yaml` | **Edit this.** Canonical rule definitions for all downstream formats. |
+| `woke/.woke.yaml` | Generated: woke scanner config |
+| `alex/animal-violence.yml` | Generated: alex/retext-equality rules (animal-violence category) |
+| `alex/industry-euphemisms.yml` | Generated: alex/retext-equality rules (industry-euphemism category) |
+| `vale/Speciesism/AnimalIdioms.yml` | Generated: Vale substitution rules (animal-violence category) |
+| `vale/Speciesism/IndustryEuphemisms.yml` | Generated: Vale substitution rules (industry-euphemism category) |
 
 ## Organizational Context
 
@@ -53,6 +51,7 @@ These citations appear in rule metadata (`references:` field) and give the suite
 **Decisions affecting this repo:**
 - 2026-03-25: Every repo in the org runs `semgrep --config semgrep-no-animal-violence.yaml` on all code/docs edits as a quality gate.
 - 2026-04-01: The no-animal-violence suite is the model for how shared canonical configs should work org-wide (the external contribution safety pattern should mirror this structure).
+- 2026-04-18: `rules.yaml` is the sole canonical source. All generated files in `alex/`, `woke/`, `vale/Speciesism/` are produced by `generate_all.py`. Handcrafted supplementary files removed.
 
 ## Related Repos
 
@@ -107,6 +106,7 @@ These citations appear in rule metadata (`references:` field) and give the suite
 ### Structured Coding Reference
 
 For tool-specific AI coding instructions (Claude Code rules, Cursor MDC, Copilot, Windsurf, etc.), copy the corresponding directory from `structured-coding-with-ai` into this project root.
+
 ## MCP Integrations (live 2026-04-09)
 
 These tools consume the rule definitions in this repo:
@@ -116,19 +116,6 @@ These tools consume the rule definitions in this repo:
 - **mcp-server-aha-evaluation** — Uses NAV rules as Stage 1 of a two-stage content evaluation pipeline.
 - **Audit-to-dispatch (decision #37, 2026-04-11)** — NAV violations found during ecosystem audits now auto-dispatch as agent fix tasks. This repo's patterns are the violation definition used by that pipeline.
 
-## Related Repos
-
-- [vale-no-animal-violence](https://github.com/Open-Paws/vale-no-animal-violence) — Standalone Vale distribution package
-- [eslint-plugin-no-animal-violence](https://github.com/Open-Paws/eslint-plugin-no-animal-violence) — ESLint plugin for JS/TS
-- [semgrep-rules-no-animal-violence](https://github.com/Open-Paws/semgrep-rules-no-animal-violence) — Semgrep rules
-- [vscode-no-animal-violence](https://github.com/Open-Paws/vscode-no-animal-violence) — VS Code extension
-- [no-animal-violence-action](https://github.com/Open-Paws/no-animal-violence-action) — GitHub Action
-- [no-animal-violence-pre-commit](https://github.com/Open-Paws/no-animal-violence-pre-commit) — pre-commit hook
-- [reviewdog-no-animal-violence](https://github.com/Open-Paws/reviewdog-no-animal-violence) — reviewdog runner
-- [danger-plugin-no-animal-violence](https://github.com/Open-Paws/danger-plugin-no-animal-violence) — Danger.js plugin
-- [alex-no-animal-violence](https://github.com/Open-Paws/alex-no-animal-violence) — Alex/retext-equality rules
-- [woke-no-animal-violence](https://github.com/Open-Paws/woke-no-animal-violence) — Woke scanner config
-
 ## Decisions Reviewed
 
-Last reviewed: 2026-04-18 (alex + woke promoted to downstream repos; vale IndustryEuphemisms.yml split into downstream build)
+Last reviewed: 2026-04-18 (alex + woke promoted to downstream repos; rules.yaml made sole canonical source; handcrafted supplementary files removed)
