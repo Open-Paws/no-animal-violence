@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/Open-Paws/no-animal-violence/actions/workflows/ci.yml/badge.svg)](https://github.com/Open-Paws/no-animal-violence/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Open-Paws/no-animal-violence/blob/main/LICENSE)
+[![desloppify score](https://img.shields.io/badge/desloppify-88.3%2F100-brightgreen)](scorecard.png)
 [![Last Commit](https://img.shields.io/github/last-commit/Open-Paws/no-animal-violence)](https://github.com/Open-Paws/no-animal-violence/commits/main)
 
 ## TL;DR
@@ -149,6 +150,10 @@ All eight adapters detect the same phrases and suggest the same alternatives. Ea
 | GitHub Action | [no-animal-violence-action](https://github.com/Open-Paws/no-animal-violence-action) | CI/CD gate on every PR |
 | Reviewdog runner | [reviewdog-no-animal-violence](https://github.com/Open-Paws/reviewdog-no-animal-violence) | Inline annotations on PR diffs |
 | Danger.js plugin | [danger-plugin-no-animal-violence](https://github.com/Open-Paws/danger-plugin-no-animal-violence) | Consolidated PR review comment |
+
+## Code Quality
+
+<img src="scorecard.png" width="100%">
 
 ## Contributing
 
