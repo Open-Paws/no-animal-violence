@@ -83,7 +83,7 @@ def generate(rules: list[Rule], output_path: Path) -> None:
     header += "import re\nimport sys\n\n\nPATTERNS = [\n"
 
     content = header + patterns_block + "\n]\n" + STATIC_FOOTER
-    output_path.write_text(content)
+    output_path.write_text(content, encoding="utf-8")
 
 
 def main() -> int:

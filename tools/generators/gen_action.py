@@ -93,7 +93,7 @@ def generate(rules: list[Rule], output_path: Path) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     woke_content = _build_woke_yaml(rules)
     content = STATIC_HEADER + woke_content + "\n" + STATIC_FOOTER
-    output_path.write_text(content)
+    output_path.write_text(content, encoding="utf-8")
 
 
 def main() -> int:

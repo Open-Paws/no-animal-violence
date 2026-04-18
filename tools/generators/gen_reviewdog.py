@@ -77,7 +77,7 @@ runs:
 def main() -> int:
     load_rules(canonical_rules_path())
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(CONTENT)
+    OUTPUT_PATH.write_text(CONTENT, encoding="utf-8")
     print(f"Reviewdog: wrote {OUTPUT_PATH}")
     return 0
 

@@ -53,7 +53,7 @@ def _write_vale_file(rules: list[Rule], output_path: Path, level: str = "warning
         term_escaped = term.replace("'", "''")
         alt_escaped = alt.replace("'", "''")
         lines.append(f"  '{term_escaped}': '{alt_escaped}'\n")
-    output_path.write_text("".join(lines))
+    output_path.write_text("".join(lines), encoding="utf-8")
 
 
 def generate_downstream(rules: list[Rule], output_path: Path) -> None:
@@ -71,7 +71,7 @@ def main() -> int:
         "description": "Detects language that normalizes violence toward animals.",
         "url": "https://github.com/Open-Paws/vale-no-animal-violence",
     }
-    (BUILD_DIR / "meta.json").write_text(json.dumps(meta, indent=2) + "\n")
+    (BUILD_DIR / "meta.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
 
     animal_violence = [r for r in rules if r.category == "animal-violence"]
     industry_euphemism = [r for r in rules if r.category == "industry-euphemism"]

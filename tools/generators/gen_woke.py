@@ -44,7 +44,7 @@ def generate(rules: list[Rule], output_path: Path) -> None:
         sort_keys=False,
         allow_unicode=True,
     )
-    output_path.write_text(header + body)
+    output_path.write_text(header + body, encoding="utf-8")
 
 
 def main() -> int:

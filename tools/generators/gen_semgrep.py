@@ -61,7 +61,7 @@ def generate_generic(rules: list[Rule], output_path: Path) -> None:
         lines.append(f"    alternative: '{_safe_yaml_single_quoted(rule.primary_alt)}'\n")
         lines.append("    references:\n")
         lines.append(f"    - {REFERENCE_URL}\n")
-    output_path.write_text("".join(lines))
+    output_path.write_text("".join(lines), encoding="utf-8")
 
 
 def _generate_lang_file(
@@ -104,7 +104,7 @@ def _generate_lang_file(
             lines.append("  fix-regex:\n")
             lines.append(f"    regex: '{_safe_yaml_single_quoted(rule.regex)}'\n")
             lines.append(f"    replacement: '{_safe_yaml_single_quoted(rule.primary_alt)}'\n")
-    output_path.write_text("".join(lines))
+    output_path.write_text("".join(lines), encoding="utf-8")
 
 
 def generate_python(rules: list[Rule], output_path: Path) -> None:
