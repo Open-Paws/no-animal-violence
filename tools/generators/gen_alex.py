@@ -54,8 +54,6 @@ def main() -> int:
 
     for category, filename in CATEGORY_FILES.items():
         category_rules = [r for r in rules if r.category == category]
-        if not category_rules:
-            continue
         _write_alex_file(category_rules, BUILD_DIR / filename, category)
         _write_alex_file(category_rules, CANONICAL_DIR / filename, category)
 
