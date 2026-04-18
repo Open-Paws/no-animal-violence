@@ -1,0 +1,64 @@
+name: Propagate rules to downstream repos
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (skip push and PR creation)'
+        required: false
+        default: 'false'
+  # Uncomment to enable on push to main:
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - rules.yaml
+
+jobs:
+  propagate:
+    name: Generate and propagate rule changes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    env:
+      SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+
+    steps:
+      - name: Check SYNC_TOKEN
+        run: |
+          if [ -z "$SYNC_TOKEN" ]; then
+            echo "::error::SYNC_TOKEN secret is not set. See SYNC.md for setup instructions."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Run all generators
+        run: python tools/generate_all.py
+
+      - name: Determine canonical SHA and short SHA
+        id: sha
+        run: |
+          echo "full=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "short=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Propagate to downstream repos
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
+          CANONICAL_SHA: ${{ steps.sha.outputs.full }}
+          SHORT_SHA: ${{ steps.sha.outputs.short }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: python tools/propagate.py
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "Propagation complete. See job log for per-repo results."
