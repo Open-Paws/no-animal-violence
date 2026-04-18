@@ -1,44 +1,45 @@
 #!/usr/bin/env python3
-"""
-Cross-format consistency checker for the no-animal-violence suite.
+"""Cross-format consistency checker for the no-animal-violence suite.
 
-Reads the canonical rule set from woke/.woke.yaml and checks downstream
+Reads the canonical rule set from rules.yaml and checks downstream
 repos (ESLint, Semgrep, Vale) for drift: missing rules, extra rules,
 and alternative mismatches.
 
 Usage:
-    python tools/check_consistency.py [--repos-dir /path/to/repos]
+    python tools/check_consistency.py [--repos-dir /path/to/repos] [--skip-clone] [--json]
 
 By default, looks for sibling directories:
     ../eslint-plugin-no-animal-violence
     ../semgrep-rules-no-animal-violence
     ../vale-no-animal-violence
+
+With --skip-clone (or when repos are already present locally), performs a direct
+file comparison without cloning. Without --skip-clone and with network access,
+can be extended to shallow-clone repos for comparison.
 """
 
 import argparse
 import json
 import logging
 import re
+import sys
+import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 
 import yaml
 
+# Make generators importable when run from repo root
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT / "tools" / "generators"))
+
+try:
+    from loader import Rule, canonical_rules_path, load_rules
+    _LOADER_AVAILABLE = True
+except ImportError:
+    _LOADER_AVAILABLE = False
+
 logger = logging.getLogger(__name__)
-
-
-@dataclass
-class CanonicalRule:
-    """A rule from the canonical woke/.woke.yaml dictionary."""
-    name: str
-    terms: list[str]
-    alternatives: list[str]
-    severity: str
-    category: str
-
-    @property
-    def primary_term(self) -> str:
-        return self.terms[0] if self.terms else ""
 
 
 @dataclass
@@ -76,7 +77,7 @@ class DriftReport:
         lines.append(f"\nDrift findings: {len(self.findings)}")
         lines.append("-" * 60)
 
-        by_downstream = {}
+        by_downstream: dict[str, list[DriftFinding]] = {}
         for f in self.findings:
             by_downstream.setdefault(f.downstream, []).append(f)
 
@@ -103,36 +104,44 @@ class DriftReport:
         return "\n".join(lines)
 
 
-def load_canonical(repo_dir: Path) -> list[CanonicalRule]:
-    """Load canonical rules from woke/.woke.yaml."""
+def _load_canonical(repo_dir: Path) -> list[Rule]:
+    """Load canonical rules from rules.yaml (preferred) or woke/.woke.yaml (fallback)."""
+    rules_yaml = repo_dir / "rules.yaml"
+    if _LOADER_AVAILABLE and rules_yaml.exists():
+        return load_rules(rules_yaml)
+
+    # Fallback: load from woke/.woke.yaml
     woke_path = repo_dir / "woke" / ".woke.yaml"
     try:
         with open(woke_path) as f:
             data = yaml.safe_load(f)
     except FileNotFoundError:
-        logger.error("Canonical rules file not found: %s", woke_path)
+        logger.error("Neither rules.yaml nor woke/.woke.yaml found in %s", repo_dir)
         return []
     except yaml.YAMLError as exc:
-        logger.error("Failed to parse canonical rules %s: %s", woke_path, exc)
+        logger.error("Failed to parse woke rules: %s", exc)
         return []
 
-    if not isinstance(data, dict):
-        logger.error("Canonical rules file is not a valid YAML mapping: %s", woke_path)
-        return []
-
+    # Import here to avoid circular if loader not available
+    from dataclasses import dataclass as _dc
     rules = []
     for entry in data.get("rules", []):
         category = "animal-violence"
         cats = entry.get("options", {}).get("categories", [])
         if cats:
             category = cats[0]
-        rules.append(CanonicalRule(
-            name=entry["name"],
-            terms=[t.lower() for t in entry.get("terms", [])],
-            alternatives=[a.lower() for a in entry.get("alternatives", [])],
-            severity=entry.get("severity", "info"),
-            category=category,
-        ))
+        # Minimal Rule-like object for fallback
+        class _Rule:
+            pass
+        r = _Rule()
+        r.name = entry["name"]
+        r.terms = [t.lower() for t in entry.get("terms", [])]
+        r.alternatives = [a.lower() for a in entry.get("alternatives", [])]
+        r.severity = entry.get("severity", "info")
+        r.category = category
+        r.primary_term = r.terms[0] if r.terms else ""
+        r.primary_alt = r.alternatives[0] if r.alternatives else ""
+        rules.append(r)
     return rules
 
 
@@ -151,16 +160,12 @@ def _extract_eslint_terms(content: str) -> dict[str, str]:
     return terms
 
 
-def _collect_canonical_terms(canonical: list[CanonicalRule]) -> set[str]:
+def _collect_canonical_terms(canonical: list) -> set[str]:
     """Return the set of all normalized terms from canonical rules."""
     return {normalize_term(t) for rule in canonical for t in rule.terms}
 
 
-def _check_eslint_coverage(
-    rule: CanonicalRule,
-    eslint_terms: dict[str, str],
-) -> DriftFinding | None:
-    """Return a DriftFinding if the canonical rule is missing or mismatched in ESLint."""
+def _check_eslint_coverage(rule, eslint_terms: dict[str, str]) -> DriftFinding | None:
     primary = normalize_term(rule.primary_term)
     if primary in eslint_terms:
         eslint_alt = eslint_terms[primary]
@@ -173,7 +178,6 @@ def _check_eslint_coverage(
                 detail=f"canonical='{canonical_primary_alt}', eslint='{eslint_alt}'",
             )
         return None
-    # Check if any term variant matches
     if any(normalize_term(t) in eslint_terms for t in rule.terms):
         return None
     return DriftFinding(
@@ -184,7 +188,7 @@ def _check_eslint_coverage(
     )
 
 
-def check_eslint(canonical: list[CanonicalRule], repos_dir: Path) -> list[DriftFinding]:
+def check_eslint(canonical: list, repos_dir: Path) -> list[DriftFinding]:
     """Check ESLint plugin for drift against canonical rules."""
     rule_file = repos_dir / "eslint-plugin-no-animal-violence" / "lib" / "rules" / "no-violent-language.js"
     findings = []
@@ -211,15 +215,13 @@ def check_eslint(canonical: list[CanonicalRule], repos_dir: Path) -> list[DriftF
         for term in eslint_terms
         if term not in canonical_terms
     )
-
     return findings
 
 
 _SEMGREP_ID_PREFIX = "animal-violence."
 
 
-def _parse_semgrep_rules(generic_file: Path) -> tuple[dict[str, dict[str, str]], DriftFinding | None]:
-    """Parse Semgrep generic rules file. Returns (rules_dict, error_finding)."""
+def _parse_semgrep_rules(generic_file: Path) -> tuple[dict, DriftFinding | None]:
     try:
         with open(generic_file) as f:
             data = yaml.safe_load(f)
@@ -228,7 +230,7 @@ def _parse_semgrep_rules(generic_file: Path) -> tuple[dict[str, dict[str, str]],
             downstream="semgrep",
             rule_name="*",
             kind="missing",
-            detail=f"Failed to parse Semgrep rules {generic_file}: {exc}",
+            detail=f"Failed to parse Semgrep rules: {exc}",
         )
     rules = {}
     for entry in data.get("rules", []):
@@ -242,8 +244,7 @@ def _parse_semgrep_rules(generic_file: Path) -> tuple[dict[str, dict[str, str]],
     return rules, None
 
 
-def _check_semgrep_rule(rule: CanonicalRule, semgrep_rules: dict[str, dict[str, str]]) -> DriftFinding | None:
-    """Return a DriftFinding if this canonical rule is missing or mismatched in Semgrep."""
+def _check_semgrep_rule(rule, semgrep_rules: dict) -> DriftFinding | None:
     if rule.name not in semgrep_rules:
         return DriftFinding(
             downstream="semgrep",
@@ -263,7 +264,7 @@ def _check_semgrep_rule(rule: CanonicalRule, semgrep_rules: dict[str, dict[str, 
     return None
 
 
-def check_semgrep(canonical: list[CanonicalRule], repos_dir: Path) -> list[DriftFinding]:
+def check_semgrep(canonical: list, repos_dir: Path) -> list[DriftFinding]:
     """Check Semgrep rules for drift against canonical rules."""
     semgrep_dir = repos_dir / "semgrep-rules-no-animal-violence" / "rules"
     generic_file = semgrep_dir / "animal-violence-generic.yaml"
@@ -280,7 +281,6 @@ def check_semgrep(canonical: list[CanonicalRule], repos_dir: Path) -> list[Drift
         return [parse_error]
 
     findings = list(filter(None, (_check_semgrep_rule(r, semgrep_rules) for r in canonical)))
-
     canonical_names = {r.name for r in canonical}
     findings.extend(
         DriftFinding(
@@ -296,17 +296,12 @@ def check_semgrep(canonical: list[CanonicalRule], repos_dir: Path) -> list[Drift
 
 
 def _clean_vale_term(term: str) -> str:
-    """Strip YAML regex artifacts from a Vale term for comparison."""
     clean = re.sub(r"[\\()]", "", term).lower().strip()
-    clean = re.sub(r"\?\:", "", clean)
+    clean = re.sub(r"\?:", "", clean)
     return re.sub(r"[?+*]", "", clean)
 
 
 def _load_vale_terms(vale_dir: Path) -> tuple[dict[str, str], list[str]]:
-    """Load all {normalized_term: alternative} entries from Vale YAML files.
-
-    Returns (terms, parse_errors) where parse_errors lists files that could not be read.
-    """
     terms: dict[str, str] = {}
     parse_errors: list[str] = []
     for yml_file in vale_dir.rglob("*.yml"):
@@ -321,12 +316,7 @@ def _load_vale_terms(vale_dir: Path) -> tuple[dict[str, str], list[str]]:
     return terms, parse_errors
 
 
-def _check_vale_coverage(
-    rule: CanonicalRule,
-    vale_terms: dict[str, str],
-    label: str,
-) -> DriftFinding | None:
-    """Return a DriftFinding if the canonical rule is missing or mismatched in Vale."""
+def _check_vale_coverage(rule, vale_terms: dict[str, str], label: str) -> DriftFinding | None:
     for term in rule.terms:
         nt = normalize_term(term)
         if nt in vale_terms:
@@ -349,8 +339,7 @@ def _check_vale_coverage(
     )
 
 
-def check_vale(canonical: list[CanonicalRule], repos_dir: Path) -> list[DriftFinding]:
-    """Check Vale rules for drift against canonical rules."""
+def check_vale(canonical: list, repos_dir: Path) -> list[DriftFinding]:
     findings = []
     for vale_dir in [repos_dir / "vale-no-animal-violence"]:
         label = f"vale ({vale_dir.name})"
@@ -367,42 +356,31 @@ def check_vale(canonical: list[CanonicalRule], repos_dir: Path) -> list[DriftFin
     return findings
 
 
-def _count_semgrep_rules(semgrep_file: Path) -> int | None:
-    """Return the number of rules in a Semgrep YAML file, or None on parse error."""
-    try:
-        with open(semgrep_file) as f:
-            data = yaml.safe_load(f)
-        return len(data.get("rules", []))
-    except yaml.YAMLError as exc:
-        logger.warning("Failed to parse Semgrep file for count: %s", exc)
-        return None
-
-
 def run_check(repo_dir: Path, repos_dir: Path) -> DriftReport:
     """Run full consistency check and return a report."""
-    canonical = load_canonical(repo_dir)
+    canonical = _load_canonical(repo_dir)
     report = DriftReport(canonical_count=len(canonical))
 
     # ESLint
-    eslint_findings = check_eslint(canonical, repos_dir)
-    report.findings.extend(eslint_findings)
+    report.findings.extend(check_eslint(canonical, repos_dir))
     eslint_file = repos_dir / "eslint-plugin-no-animal-violence" / "lib" / "rules" / "no-violent-language.js"
     if eslint_file.exists():
         content = eslint_file.read_text()
         report.downstream_counts["eslint"] = len(re.findall(r'\["[^"]+",\s*"[^"]+"', content))
 
     # Semgrep
-    semgrep_findings = check_semgrep(canonical, repos_dir)
-    report.findings.extend(semgrep_findings)
+    report.findings.extend(check_semgrep(canonical, repos_dir))
     semgrep_file = repos_dir / "semgrep-rules-no-animal-violence" / "rules" / "animal-violence-generic.yaml"
     if semgrep_file.exists():
-        semgrep_count = _count_semgrep_rules(semgrep_file)
-        if semgrep_count is not None:
-            report.downstream_counts["semgrep (generic)"] = semgrep_count
+        try:
+            with open(semgrep_file) as f:
+                data = yaml.safe_load(f)
+            report.downstream_counts["semgrep (generic)"] = len(data.get("rules", []))
+        except yaml.YAMLError:
+            pass
 
     # Vale
-    vale_findings = check_vale(canonical, repos_dir)
-    report.findings.extend(vale_findings)
+    report.findings.extend(check_vale(canonical, repos_dir))
     vale_dir = repos_dir / "vale-no-animal-violence"
     if vale_dir.exists():
         count = 0
@@ -412,8 +390,7 @@ def run_check(repo_dir: Path, repos_dir: Path) -> DriftReport:
                     data = yaml.safe_load(f)
                 if data and "swap" in data:
                     count += len(data["swap"])
-            except (yaml.YAMLError, OSError) as exc:
-                logger.warning("Failed to parse Vale file %s: %s", yml_file, exc)
+            except (yaml.YAMLError, OSError):
                 continue
         report.downstream_counts["vale"] = count
 
@@ -429,6 +406,11 @@ def main() -> int:
         type=Path,
         default=None,
         help="Directory containing sibling repos (default: parent of this repo)",
+    )
+    parser.add_argument(
+        "--skip-clone",
+        action="store_true",
+        help="Skip cloning; compare against already-present local repos only",
     )
     parser.add_argument(
         "--json",
