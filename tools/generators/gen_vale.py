@@ -57,6 +57,11 @@ def _write_vale_file(rules: list[Rule], output_path: Path, level: str = "warning
     output_path.write_text("".join(lines), encoding="utf-8")
 
 
+def generate_downstream(rules: list[Rule], output_path: Path) -> None:
+    """Write a Vale substitution file for the given rules (backward-compat shim)."""
+    _write_vale_file(rules, output_path)
+
+
 def main() -> int:
     rules = load_rules(canonical_rules_path())
 
