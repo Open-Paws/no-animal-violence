@@ -48,10 +48,14 @@ def _write_vale_file(rules: list[Rule], output_path: Path, level: str = "warning
     """
     output_path.parent.mkdir(parents=True, exist_ok=True)
     index = _build_term_index(rules)
+    message = (
+        "Consider using '%s' instead of '%s'. "
+        "This phrase normalizes violence toward animals (see rule comment for why)."
+    )
     lines = [
         AUTOGEN_HEADER,
         "extends: substitution\n",
-        "message: \"Consider using '%s' instead of '%s'. This phrase normalizes violence toward animals (see rule comment for why).\"\n",
+        f'message: "{message}"\n',
         f"link: {REFERENCE_URL}\n",
         f"level: {level}\n",
         "ignorecase: true\n",
