@@ -1,35 +1,63 @@
 # AUTO-GENERATED from Open-Paws/no-animal-violence. Do not edit directly.
 extends: substitution
-message: "Consider using '%s' instead of '%s'. This phrase normalizes violence toward animals."
+message: "Consider using '%s' instead of '%s'. This phrase normalizes violence toward animals (see rule comment for why)."
 link: https://doi.org/10.1007/s43681-023-00380-w
 level: warning
 ignorecase: true
 swap:
+  # livestock: Industry term that defines sentient beings by their commercial function. 'Farmed animals' is factually equivalent and doesn't erase the individuals.
   'livestock': 'farmed animals'
+  # poultry: Industry term that abstracts individual birds into a bulk commodity. 'Farmed birds' or the specific species is more precise.
   'poultry': 'farmed birds'
+  # gestation-crate: Industry euphemism for a metal enclosure so small a pregnant pig cannot turn around for her entire pregnancy. 'Pregnancy cage' describes what it actually is.
   'gestation crate': 'pregnancy cage'
+  # gestation-crate: Industry euphemism for a metal enclosure so small a pregnant pig cannot turn around for her entire pregnancy. 'Pregnancy cage' describes what it actually is.
   'gestation crates': 'pregnancy cage'
+  # depopulation: Industry euphemism for killing entire flocks or herds at once. 'Mass killing' is the accurate term. (Suppressed automatically in database or population-statistics contexts where the word refers to removing records.)
   'depopulation': 'mass killing'
+  # depopulation: Industry euphemism for killing entire flocks or herds at once. 'Mass killing' is the accurate term. (Suppressed automatically in database or population-statistics contexts where the word refers to removing records.)
   'depopulated': 'mass killing'
+  # depopulation: Industry euphemism for killing entire flocks or herds at once. 'Mass killing' is the accurate term. (Suppressed automatically in database or population-statistics contexts where the word refers to removing records.)
   'depopulating': 'mass killing'
+  # processing-plant: Industry euphemism for a facility that kills animals. 'Slaughterhouse' is the accurate term.
   'processing plant': 'slaughterhouse'
+  # processing-plant: Industry euphemism for a facility that kills animals. 'Slaughterhouse' is the accurate term.
   'processing plants': 'slaughterhouse'
+  # processing-plant: Industry euphemism for a facility that kills animals. 'Slaughterhouse' is the accurate term.
   'processing facility': 'slaughterhouse'
+  # processing-plant: Industry euphemism for a facility that kills animals. 'Slaughterhouse' is the accurate term.
   'processing facilities': 'slaughterhouse'
+  # farrowing-crate: Industry euphemism for a metal cage that confines a pig during and after giving birth. 'Birthing cage' describes the reality.
   'farrowing crate': 'birthing cage'
+  # farrowing-crate: Industry euphemism for a metal cage that confines a pig during and after giving birth. 'Birthing cage' describes the reality.
   'farrowing crates': 'birthing cage'
+  # battery-cage: Industry euphemism for wire enclosures giving each hen less floor space than a sheet of paper. 'Small wire cage' or 'confined cage' is more accurate.
   'battery cage': 'small wire cage'
+  # battery-cage: Industry euphemism for wire enclosures giving each hen less floor space than a sheet of paper. 'Small wire cage' or 'confined cage' is more accurate.
   'battery cages': 'small wire cage'
+  # spent-hen: Frames a living hen as a depleted resource. These hens are typically killed when egg production drops below commercial thresholds. 'Discarded hen' describes the reality.
   'spent hen': 'discarded hen'
+  # spent-hen: Frames a living hen as a depleted resource. These hens are typically killed when egg production drops below commercial thresholds. 'Discarded hen' describes the reality.
   'spent hens': 'discarded hen'
+  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
   'humane slaughter': 'slaughter'
+  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
   'humanely slaughter': 'slaughter'
+  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
   'humane slaughtered': 'slaughter'
+  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
   'humanely slaughtered': 'slaughter'
+  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
   'humane killing': 'slaughter'
+  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
   'humanely killing': 'slaughter'
+  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
   'humane killed': 'slaughter'
+  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
   'humanely killed': 'slaughter'
+  # broiler: Industry term that defines a living chicken entirely by its commercial purpose. 'Chicken raised for meat' or 'meat chicken' preserves the individual.
   'broiler': 'chicken raised for meat'
+  # broiler: Industry term that defines a living chicken entirely by its commercial purpose. 'Chicken raised for meat' or 'meat chicken' preserves the individual.
   'broilers': 'chicken raised for meat'
+  # veal: Industry euphemism for the flesh of male dairy calves, typically killed within weeks of birth. 'Calf flesh' makes the species and age visible.
   'veal': 'calf flesh'

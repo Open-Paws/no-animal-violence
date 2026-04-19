@@ -1,88 +1,169 @@
 # AUTO-GENERATED from Open-Paws/no-animal-violence. Do not edit directly.
 extends: substitution
-message: "Consider using '%s' instead of '%s'. This phrase normalizes violence toward animals."
+message: "Consider using '%s' instead of '%s'. This phrase normalizes violence toward animals (see rule comment for why)."
 link: https://doi.org/10.1007/s43681-023-00380-w
 level: warning
 ignorecase: true
 swap:
+  # kill-two-birds-with-one-stone: This phrase frames killing animals as a routine way to solve a problem. Plain alternatives like 'accomplish two things at once' carry the same meaning without invoking harm.
   'kill two birds with one stone': 'accomplish two things at once'
+  # kill-two-birds-with-one-stone: This phrase frames killing animals as a routine way to solve a problem. Plain alternatives like 'accomplish two things at once' carry the same meaning without invoking harm.
   'killing two birds with one stone': 'accomplish two things at once'
+  # kill-two-birds-with-one-stone: This phrase frames killing animals as a routine way to solve a problem. Plain alternatives like 'accomplish two things at once' carry the same meaning without invoking harm.
   'killed two birds with one stone': 'accomplish two things at once'
+  # beat-a-dead-horse: This phrase uses an image of striking an animal's body as a metaphor for wasted effort. 'Belabor the point' is clearer and skips the imagery.
   'beat a dead horse': 'belabor the point'
+  # beat-a-dead-horse: This phrase uses an image of striking an animal's body as a metaphor for wasted effort. 'Belabor the point' is clearer and skips the imagery.
   'beating a dead horse': 'belabor the point'
+  # more-than-one-way-to-skin-a-cat: Treats a graphic act of violence against cats as an everyday problem-solving metaphor. 'More than one way to solve this' works just as well.
   'more than one way to skin a cat': 'more than one way to solve this'
+  # more-than-one-way-to-skin-a-cat: Treats a graphic act of violence against cats as an everyday problem-solving metaphor. 'More than one way to solve this' works just as well.
   'many ways to skin a cat': 'more than one way to solve this'
+  # more-than-one-way-to-skin-a-cat: Treats a graphic act of violence against cats as an everyday problem-solving metaphor. 'More than one way to solve this' works just as well.
   'other ways to skin a cat': 'more than one way to solve this'
+  # let-the-cat-out-of-the-bag: Traced to fraudulent livestock markets and implies trapping animals. 'Reveal the secret' says the same thing more directly.
   'let the cat out of the bag': 'reveal the secret'
+  # let-the-cat-out-of-the-bag: Traced to fraudulent livestock markets and implies trapping animals. 'Reveal the secret' says the same thing more directly.
   'letting the cat out of the bag': 'reveal the secret'
+  # open-a-can-of-worms: References worms packaged as live bait to catch and kill fish. 'Open a difficult topic' or 'uncover hidden problems' is more precise.
   'open a can of worms': 'create a complicated situation'
+  # open-a-can-of-worms: References worms packaged as live bait to catch and kill fish. 'Open a difficult topic' or 'uncover hidden problems' is more precise.
   'opening a can of worms': 'create a complicated situation'
+  # open-a-can-of-worms: References worms packaged as live bait to catch and kill fish. 'Open a difficult topic' or 'uncover hidden problems' is more precise.
   'opened a can of worms': 'create a complicated situation'
+  # wild-goose-chase: Casts pursuing a living bird as a pointless annoyance. 'Futile search' or 'fool's errand' says the same thing without the hunting framing.
   'wild goose chase': 'futile search'
+  # like-shooting-fish-in-a-barrel: Treats killing trapped fish as a lighthearted comparison for an easy task. 'Trivially easy' or 'effortless' avoids the image.
   'like shooting fish in a barrel': 'trivially easy'
+  # flog-a-dead-horse: Describes whipping an animal's corpse — the same image as 'beat a dead horse'. 'Belabor the point' is a direct replacement.
   'flog a dead horse': 'belabor the point'
+  # flog-a-dead-horse: Describes whipping an animal's corpse — the same image as 'beat a dead horse'. 'Belabor the point' is a direct replacement.
   'flogging a dead horse': 'belabor the point'
+  # there-are-bigger-fish-to-fry: Frames killing and cooking fish as a throwaway comparison. 'More important matters to address' is just as expressive.
   'there are bigger fish to fry': 'more important matters to address'
+  # guinea-pig: Refers to using guinea pigs as expendable test subjects in harmful experiments. 'Test subject' or 'early adopter' is more precise in technical contexts.
   'guinea pig': 'test subject'
+  # bring-home-the-bacon: Describes slaughtered pig flesh as the fruit of success. 'Bring home the results' or 'earn a living' carries the same meaning.
   'bring home the bacon': 'bring home the results'
+  # bring-home-the-bacon: Describes slaughtered pig flesh as the fruit of success. 'Bring home the results' or 'earn a living' carries the same meaning.
   'bringing home the bacon': 'bring home the results'
+  # bring-home-the-bacon: Describes slaughtered pig flesh as the fruit of success. 'Bring home the results' or 'earn a living' carries the same meaning.
   'brought home the bacon': 'bring home the results'
+  # bring-home-the-bacon: Describes slaughtered pig flesh as the fruit of success. 'Bring home the results' or 'earn a living' carries the same meaning.
   'brings home the bacon': 'bring home the results'
+  # take-the-bull-by-the-horns: Evokes bullfighting, where bulls are wounded and killed for entertainment. 'Face the challenge head-on' conveys the same assertiveness.
   'take the bull by the horns': 'face the challenge head-on'
+  # take-the-bull-by-the-horns: Evokes bullfighting, where bulls are wounded and killed for entertainment. 'Face the challenge head-on' conveys the same assertiveness.
   'taking the bull by the horns': 'face the challenge head-on'
+  # take-the-bull-by-the-horns: Evokes bullfighting, where bulls are wounded and killed for entertainment. 'Face the challenge head-on' conveys the same assertiveness.
   'took the bull by the horns': 'face the challenge head-on'
+  # like-lambs-to-the-slaughter: Directly references the slaughter of young animals. 'Unknowingly walking into danger' or 'without resistance' is more descriptive.
   'like lambs to the slaughter': 'without resistance'
+  # no-room-to-swing-a-cat: Depicts swinging a living cat by its body. 'Very cramped' or 'barely any room' is shorter and clearer.
   'no room to swing a cat': 'very cramped'
+  # red-herring: Originates from dead, smoked fish reportedly used to train hunting dogs. 'Distraction' or 'false lead' communicates the idea directly.
   'red herring': 'distraction'
+  # curiosity-killed-the-cat: A direct reference to killing a cat, used as a cautionary phrase. 'Curiosity backfired' or 'being nosy caused trouble' says the same thing.
   'curiosity killed the cat': 'curiosity backfired'
+  # like-a-chicken-with-its-head-cut-off: Graphic slaughter imagery. 'In a panic' or 'in complete disarray' describes the behavior without the image.
   'like a chicken with its head cut off': 'in a panic'
+  # your-goose-is-cooked: References killing and cooking a goose as a threat. 'Your fate is sealed' or 'you're in trouble' is just as vivid.
   'your goose is cooked': 'you''re in trouble'
+  # throw-someone-to-the-wolves: Pictures feeding a person to wild animals as a betrayal metaphor. 'Abandon to criticism' or 'sacrifice someone' is more precise.
   'throw someone to the wolves': 'abandon to criticism'
+  # throw-someone-to-the-wolves: Pictures feeding a person to wild animals as a betrayal metaphor. 'Abandon to criticism' or 'sacrifice someone' is more precise.
   'throwing someone to the wolves': 'abandon to criticism'
+  # throw-someone-to-the-wolves: Pictures feeding a person to wild animals as a betrayal metaphor. 'Abandon to criticism' or 'sacrifice someone' is more precise.
   'threw someone to the wolves': 'abandon to criticism'
+  # hook-line-and-sinker: References the equipment used to hook and kill fish. 'Completely' or 'without question' conveys total buy-in without the fishing imagery.
   'hook, line, and sinker': 'completely'
+  # clip-someones-wings: Wing-clipping is a painful mutilation performed on farmed and captive birds. 'Restrict someone's freedom' describes the metaphor without the harm.
   'clip someone''s wings': 'restrict someone''s freedom'
+  # clip-someones-wings: Wing-clipping is a painful mutilation performed on farmed and captive birds. 'Restrict someone's freedom' describes the metaphor without the harm.
   'clipping someone''s wings': 'restrict someone''s freedom'
+  # clip-someones-wings: Wing-clipping is a painful mutilation performed on farmed and captive birds. 'Restrict someone's freedom' describes the metaphor without the harm.
   'clipped someone''s wings': 'restrict someone''s freedom'
+  # the-straw-that-broke-the-camels-back: Describes overloading a pack animal until it collapses. 'The tipping point' or 'breaking point' is a more precise metaphor.
   'the straw that broke the camel''s back': 'the tipping point'
+  # a-bird-in-the-hand-is-worth-two-in-the-bush: Comes from bird-hunting — a caught bird being worth more than two still alive. 'A sure thing beats a possibility' carries the same meaning.
   'a bird in the hand is worth two in the bush': 'a sure thing beats a possibility'
+  # eat-crow: References eating a killed bird as humiliating punishment. 'Admit being wrong' or 'swallow one's pride' says the same thing directly.
   'eat crow': 'admit being wrong'
+  # eat-crow: References eating a killed bird as humiliating punishment. 'Admit being wrong' or 'swallow one's pride' says the same thing directly.
   'eating crow': 'admit being wrong'
+  # fight-like-cats-and-dogs: Frames cats and dogs as inherently violent toward each other. 'Constantly argue' or 'clash frequently' describes the behavior without the stereotype.
   'fight like cats and dogs': 'constantly argue'
+  # fight-like-cats-and-dogs: Frames cats and dogs as inherently violent toward each other. 'Constantly argue' or 'clash frequently' describes the behavior without the stereotype.
   'fighting like cats and dogs': 'constantly argue'
+  # fight-like-cats-and-dogs: Frames cats and dogs as inherently violent toward each other. 'Constantly argue' or 'clash frequently' describes the behavior without the stereotype.
   'fought like cats and dogs': 'constantly argue'
+  # take-the-bait: References baiting hooks and traps to catch and kill animals. 'Fall for it' or 'be deceived' is more direct.
   'take the bait': 'fall for it'
+  # take-the-bait: References baiting hooks and traps to catch and kill animals. 'Fall for it' or 'be deceived' is more direct.
   'taking the bait': 'fall for it'
+  # take-the-bait: References baiting hooks and traps to catch and kill animals. 'Fall for it' or 'be deceived' is more direct.
   'took the bait': 'fall for it'
+  # dont-count-your-chickens-before-they-hatch: Treats unhatched chicks as units of production to be counted. 'Don't assume success prematurely' conveys the same caution.
   'don''t count your chickens before they hatch': 'don''t assume success prematurely'
+  # dont-be-a-chicken: Uses a chicken as an insult for cowardice. 'Don't hesitate' or 'be brave' is direct and doesn't rely on a demeaning stereotype.
   'don''t be a chicken': 'don''t hesitate'
+  # badger-someone: Comes from badger-baiting, a blood sport where dogs were set on captive badgers. 'Pester' or 'pressure' carries the same meaning without the origin.
   'badger someone': 'pester'
+  # ferret-out: Refers to the historical use of ferrets to flush rabbits out of burrows to be killed. 'Uncover' or 'dig up' works just as well.
   'ferret out': 'uncover'
+  # cattle-vs-pets: Infrastructure metaphor that frames cattle as disposable and pets as individual — erasing that both are sentient. 'Ephemeral vs. persistent' is technically more precise.
   'cattle vs. pets': 'ephemeral vs. persistent'
+  # canary-in-a-coal-mine: Refers to canaries historically placed in coal mines to die first as a warning to miners. 'Early warning signal' or 'sentinel' conveys the meaning without the harm.
   'canary in a coal mine': 'early warning signal'
+  # go-on-a-fishing-expedition: Describes fishing — which kills fish — as a metaphor for aimless searching. 'Exploratory investigation' or 'speculative inquiry' is more precise.
   'go on a fishing expedition': 'exploratory investigation'
+  # sacred-cow: Treats cattle as objects in an 'untouchable' metaphor while also trivializing Hindu beliefs. 'Unquestioned belief' or 'protected assumption' avoids both issues.
   'sacred cow': 'unquestioned belief'
+  # sacred-cow: Treats cattle as objects in an 'untouchable' metaphor while also trivializing Hindu beliefs. 'Unquestioned belief' or 'protected assumption' avoids both issues.
   'sacred cows': 'unquestioned belief'
+  # scapegoat: Originates from the ritual sacrifice of goats to carry away blame. 'Blame target' or 'wrongly blamed' is more precise.
   'scapegoat': 'blame target'
+  # scapegoat: Originates from the ritual sacrifice of goats to carry away blame. 'Blame target' or 'wrongly blamed' is more precise.
   'scapegoated': 'blame target'
+  # scapegoat: Originates from the ritual sacrifice of goats to carry away blame. 'Blame target' or 'wrongly blamed' is more precise.
   'scapegoating': 'blame target'
+  # dead-cat-bounce: A financial term built on the image of a dead cat. 'Temporary rebound' or 'false recovery' is more professional and avoids the image.
   'dead cat bounce': 'temporary rebound'
+  # dog-eat-dog: Frames dogs as inherently violent toward each other as a model for competition. 'Ruthlessly competitive' or 'cutthroat' conveys the meaning without the stereotype.
   'dog-eat-dog': 'ruthlessly competitive'
+  # dog-eat-dog: Frames dogs as inherently violent toward each other as a model for competition. 'Ruthlessly competitive' or 'cutthroat' conveys the meaning without the stereotype.
   'dog eat dog': 'ruthlessly competitive'
+  # whack-a-mole: References a game built around repeatedly striking animals as they pop up. 'Recurring problem' or 'endless loop' describes the pattern more precisely.
   'whack-a-mole': 'recurring problem'
+  # whack-a-mole: References a game built around repeatedly striking animals as they pop up. 'Recurring problem' or 'endless loop' describes the pattern more precisely.
   'whack a mole': 'recurring problem'
+  # cash-cow: Reduces cows to profit generators. 'Profit center' or 'reliable revenue source' conveys the same meaning without commodifying animals.
   'cash cow': 'profit center'
+  # cash-cow: Reduces cows to profit generators. 'Profit center' or 'reliable revenue source' conveys the same meaning without commodifying animals.
   'cash cows': 'profit center'
+  # sacrificial-lamb: References the ritual slaughter of lambs. 'Expendable person' or 'someone sacrificed for others' communicates the metaphor directly.
   'sacrificial lamb': 'expendable person'
+  # sacrificial-lamb: References the ritual slaughter of lambs. 'Expendable person' or 'someone sacrificed for others' communicates the metaphor directly.
   'sacrificial lambs': 'expendable person'
+  # sitting-duck: Hunting imagery — a duck in the open, easy to shoot. 'Easy target' or 'vulnerable target' says the same thing.
   'sitting duck': 'easy target'
+  # sitting-duck: Hunting imagery — a duck in the open, easy to shoot. 'Easy target' or 'vulnerable target' says the same thing.
   'sitting ducks': 'easy target'
+  # open-season: Refers to the legal hunting period when killing animals is permitted. 'Free-for-all' or 'no holds barred' conveys the meaning without the hunting framing.
   'open season': 'free-for-all'
+  # open-season: Refers to the legal hunting period when killing animals is permitted. 'Free-for-all' or 'no holds barred' conveys the meaning without the hunting framing.
   'opening season': 'free-for-all'
+  # open-season: Refers to the legal hunting period when killing animals is permitted. 'Free-for-all' or 'no holds barred' conveys the meaning without the hunting framing.
   'opened season': 'free-for-all'
+  # put-out-to-pasture: Often a euphemism for disposing of farm animals when they are no longer productive. 'Retire', 'phase out', or 'sunset' is a cleaner metaphor.
   'put out to pasture': 'retire'
+  # dead-duck: Hunting imagery — a duck that has been shot and killed. 'Lost cause' or 'doomed effort' is just as expressive.
   'dead duck': 'lost cause'
+  # dead-duck: Hunting imagery — a duck that has been shot and killed. 'Lost cause' or 'doomed effort' is just as expressive.
   'dead ducks': 'lost cause'
+  # cull: Euphemism used in wildlife management and farming for mass killing. 'Remove', 'prune', 'trim', or 'filter out' is accurate in technical contexts.
   'cull': 'remove'
+  # lame-duck: Combines an ableist adjective with a reference to a bird unable to fly due to injury. 'Outgoing', 'transitional', or 'ineffective' is more precise.
   'lame duck': 'outgoing'
+  # lame-duck: Combines an ableist adjective with a reference to a bird unable to fly due to injury. 'Outgoing', 'transitional', or 'ineffective' is more precise.
   'lame-duck': 'outgoing'

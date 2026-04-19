@@ -14,7 +14,7 @@ class Rule:
     alternatives: list[str]
     severity: str
     category: str
-    note: str
+    reason: str
     word_boundary: bool
     regex: str
     context_suppressions: list[str] = field(default_factory=list)
@@ -39,13 +39,18 @@ def load_rules(rules_yaml_path: Path) -> list[Rule]:
         raise ValueError(f"Invalid rules file: expected mapping at root in {rules_yaml_path}")
     rules = []
     for r in data.get("rules", []):
+        reason = r.get("reason", "").strip()
+        if not reason:
+            raise ValueError(
+                f"Rule '{r.get('name', '?')}' in {rules_yaml_path} is missing a non-empty 'reason' field."
+            )
         rules.append(Rule(
             name=r["name"],
             terms=r["terms"],
             alternatives=r["alternatives"],
             severity=r["severity"],
             category=r.get("category", "animal-violence"),
-            note=r.get("note", ""),
+            reason=reason,
             word_boundary=r.get("word_boundary", True),
             regex=r["regex"],
             context_suppressions=r.get("context_suppressions", []),

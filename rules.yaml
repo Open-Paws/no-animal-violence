@@ -14,7 +14,7 @@ rules:
       - hit two targets with one shot
     severity: error
     category: animal-violence
-    note: Violent animal idiom with universally clearer alternatives
+    reason: "This phrase frames killing animals as a routine way to solve a problem. Plain alternatives like 'accomplish two things at once' carry the same meaning without invoking harm."
     word_boundary: false
     regex: "kill\\s+two\\s+birds\\s+with\\s+one\\s+stone"
     context_suppressions: []
@@ -29,7 +29,7 @@ rules:
       - repeat unnecessarily
     severity: error
     category: animal-violence
-    note: Violent animal idiom — alternatives are more direct
+    reason: "This phrase uses an image of striking an animal's body as a metaphor for wasted effort. 'Belabor the point' is clearer and skips the imagery."
     word_boundary: false
     regex: "beat(ing)?\\s+a\\s+dead\\s+horse"
     context_suppressions: []
@@ -45,7 +45,7 @@ rules:
       - several ways to accomplish this
     severity: error
     category: animal-violence
-    note: Violent animal idiom — alternatives are shorter and clearer
+    reason: "Treats a graphic act of violence against cats as an everyday problem-solving metaphor. 'More than one way to solve this' works just as well."
     word_boundary: false
     regex: "(?:more\\s+than\\s+one|many|other)\\s+ways?\\s+to\\s+skin\\s+a\\s+cat"
     context_suppressions: []
@@ -60,7 +60,7 @@ rules:
       - let it slip
     severity: info
     category: animal-violence
-    note: Animal idiom — alternatives are more precise
+    reason: "Traced to fraudulent livestock markets and implies trapping animals. 'Reveal the secret' says the same thing more directly."
     word_boundary: false
     regex: "let\\s+the\\s+cat\\s+out\\s+of\\s+the\\s+bag"
     context_suppressions: []
@@ -76,7 +76,7 @@ rules:
       - open Pandora's box
     severity: info
     category: animal-violence
-    note: Animal idiom — alternatives communicate the idea more directly
+    reason: "References worms packaged as live bait to catch and kill fish. 'Open a difficult topic' or 'uncover hidden problems' is more precise."
     word_boundary: false
     regex: "open(ing)?\\s+a\\s+can\\s+of\\s+worms"
     context_suppressions: []
@@ -90,7 +90,7 @@ rules:
       - fool's errand
     severity: info
     category: animal-violence
-    note: Animal idiom — alternatives are more universally understood
+    reason: "Casts pursuing a living bird as a pointless annoyance. 'Futile search' or 'fool's errand' says the same thing without the hunting framing."
     word_boundary: false
     regex: "wild\\s+goose\\s+chase"
     context_suppressions: []
@@ -104,7 +104,7 @@ rules:
       - effortless
     severity: error
     category: animal-violence
-    note: Violent animal idiom with shorter alternatives
+    reason: "Treats killing trapped fish as a lighthearted comparison for an easy task. 'Trivially easy' or 'effortless' avoids the image."
     word_boundary: false
     regex: "like\\s+shooting\\s+fish\\s+in\\s+a\\s+barrel"
     context_suppressions: []
@@ -119,7 +119,7 @@ rules:
       - repeat unnecessarily
     severity: error
     category: animal-violence
-    note: Violent animal idiom — same as 'beat a dead horse'
+    reason: "Describes whipping an animal's corpse — the same image as 'beat a dead horse'. 'Belabor the point' is a direct replacement."
     word_boundary: false
     regex: "flog(ging)?\\s+a\\s+dead\\s+horse"
     context_suppressions: []
@@ -133,7 +133,7 @@ rules:
       - bigger issues at hand
     severity: info
     category: animal-violence
-    note: Animal idiom — alternatives are more professional
+    reason: "Frames killing and cooking fish as a throwaway comparison. 'More important matters to address' is just as expressive."
     word_boundary: false
     regex: "bigger\\s+fish\\s+to\\s+fry"
     context_suppressions: []
@@ -147,7 +147,7 @@ rules:
       - early adopter
     severity: warning
     category: animal-violence
-    note: Animal-as-experiment metaphor — alternatives are more precise in technical contexts
+    reason: "Refers to using guinea pigs as expendable test subjects in harmful experiments. 'Test subject' or 'early adopter' is more precise in technical contexts."
     word_boundary: true
     regex: "guinea\\s+pig"
     context_suppressions: []
@@ -164,7 +164,7 @@ rules:
       - win the prize
     severity: error
     category: animal-violence
-    note: Animal slaughter idiom — alternatives are equally expressive
+    reason: "Describes slaughtered pig flesh as the fruit of success. 'Bring home the results' or 'earn a living' carries the same meaning."
     word_boundary: false
     regex: "(?:bring(?:ing|s)?|brought)\\s+home\\s+the\\s+bacon"
     context_suppressions: []
@@ -180,7 +180,7 @@ rules:
       - seize the opportunity
     severity: warning
     category: animal-violence
-    note: Bullfighting idiom — alternatives convey the same assertiveness
+    reason: "Evokes bullfighting, where bulls are wounded and killed for entertainment. 'Face the challenge head-on' conveys the same assertiveness."
     word_boundary: false
     regex: "(?:take|taking|took)\\s+the\\s+bull\\s+by\\s+the\\s+horns"
     context_suppressions: []
@@ -194,7 +194,7 @@ rules:
       - unknowingly walking into danger
     severity: error
     category: animal-violence
-    note: Violent animal idiom referencing slaughter — alternatives are more descriptive
+    reason: "Directly references the slaughter of young animals. 'Unknowingly walking into danger' or 'without resistance' is more descriptive."
     word_boundary: false
     regex: "like\\s+lambs?\\s+to\\s+(the\\s+)?slaughter"
     context_suppressions: []
@@ -208,7 +208,7 @@ rules:
       - barely any room
     severity: warning
     category: animal-violence
-    note: Violent animal idiom — alternatives are shorter and clearer
+    reason: "Depicts swinging a living cat by its body. 'Very cramped' or 'barely any room' is shorter and clearer."
     word_boundary: false
     regex: "no\\s+room\\s+to\\s+swing\\s+a\\s+cat"
     context_suppressions: []
@@ -222,7 +222,7 @@ rules:
       - misleading clue
     severity: info
     category: animal-violence
-    note: Animal-origin idiom — flag for awareness only
+    reason: "Originates from dead, smoked fish reportedly used to train hunting dogs. 'Distraction' or 'false lead' communicates the idea directly."
     word_boundary: true
     regex: "red\\s+herring"
     context_suppressions: []
@@ -236,7 +236,7 @@ rules:
       - curiosity led to trouble
     severity: error
     category: animal-violence
-    note: Directly references killing a cat
+    reason: "A direct reference to killing a cat, used as a cautionary phrase. 'Curiosity backfired' or 'being nosy caused trouble' says the same thing."
     word_boundary: false
     regex: "curiosity\\s+killed\\s+the\\s+cat"
     context_suppressions: []
@@ -250,7 +250,7 @@ rules:
       - in complete disarray
     severity: error
     category: animal-violence
-    note: Graphic slaughter imagery — decapitating a chicken
+    reason: "Graphic slaughter imagery. 'In a panic' or 'in complete disarray' describes the behavior without the image."
     word_boundary: false
     regex: "like\\s+a\\s+chicken\\s+with\\s+(its|their)\\s+head\\s+cut\\s+off"
     context_suppressions: []
@@ -264,7 +264,7 @@ rules:
       - it's over for you
     severity: error
     category: animal-violence
-    note: References killing and cooking a goose
+    reason: "References killing and cooking a goose as a threat. 'Your fate is sealed' or 'you're in trouble' is just as vivid."
     word_boundary: false
     regex: "(your|their|his|her)\\s+goose\\s+is\\s+cooked"
     context_suppressions: []
@@ -280,7 +280,7 @@ rules:
       - sacrifice someone
     severity: error
     category: animal-violence
-    note: References feeding a person to wolves
+    reason: "Pictures feeding a person to wild animals as a betrayal metaphor. 'Abandon to criticism' or 'sacrifice someone' is more precise."
     word_boundary: false
     regex: "throw(ing|n)?\\s+\\w+\\s+to\\s+the\\s+wolves"
     context_suppressions: []
@@ -294,7 +294,7 @@ rules:
       - fell for it entirely
     severity: warning
     category: animal-violence
-    note: References hooking fish — fishing kills fish
+    reason: "References the equipment used to hook and kill fish. 'Completely' or 'without question' conveys total buy-in without the fishing imagery."
     word_boundary: false
     regex: "hook,?\\s+line,?\\s+and\\s+sinker"
     context_suppressions: []
@@ -310,7 +310,7 @@ rules:
       - hold someone back
     severity: warning
     category: animal-violence
-    note: References wing-clipping — physical mutilation done to farmed birds
+    reason: "Wing-clipping is a painful mutilation performed on farmed and captive birds. 'Restrict someone's freedom' describes the metaphor without the harm."
     word_boundary: false
     regex: "clip(ping|ped)?\\s+(\\w+('s)?\\s+)?wings"
     context_suppressions: []
@@ -324,7 +324,7 @@ rules:
       - the final provocation
     severity: warning
     category: animal-violence
-    note: References overloading a pack animal until injury
+    reason: "Describes overloading a pack animal until it collapses. 'The tipping point' or 'breaking point' is a more precise metaphor."
     word_boundary: false
     regex: "(the\\s+)?straw\\s+that\\s+broke\\s+the\\s+camel'?s\\s+back"
     context_suppressions: []
@@ -337,7 +337,7 @@ rules:
       - certainty over speculation
     severity: info
     category: animal-violence
-    note: References trapping and catching wild birds
+    reason: "Comes from bird-hunting — a caught bird being worth more than two still alive. 'A sure thing beats a possibility' carries the same meaning."
     word_boundary: false
     regex: "bird\\s+in\\s+(the|a)\\s+hand\\s+(is\\s+)?worth\\s+two\\s+in\\s+the\\s+bush"
     context_suppressions: []
@@ -352,7 +352,7 @@ rules:
       - accept humiliation
     severity: warning
     category: animal-violence
-    note: References eating a killed bird as punishment
+    reason: "References eating a killed bird as humiliating punishment. 'Admit being wrong' or 'swallow one's pride' says the same thing directly."
     word_boundary: true
     regex: "eat(ing)?\\s+crow"
     context_suppressions: []
@@ -368,7 +368,7 @@ rules:
       - have constant conflict
     severity: warning
     category: animal-violence
-    note: References animal fighting
+    reason: "Frames cats and dogs as inherently violent toward each other. 'Constantly argue' or 'clash frequently' describes the behavior without the stereotype."
     word_boundary: false
     regex: "fight(ing)?\\s+like\\s+cats\\s+and\\s+dogs"
     context_suppressions: []
@@ -384,7 +384,7 @@ rules:
       - be deceived
     severity: info
     category: animal-violence
-    note: References baiting hooks to catch and kill fish
+    reason: "References baiting hooks and traps to catch and kill animals. 'Fall for it' or 'be deceived' is more direct."
     word_boundary: false
     regex: "(?:take|taking|took)\\s+the\\s+bait"
     context_suppressions: []
@@ -398,7 +398,7 @@ rules:
       - don't get ahead of yourself
     severity: info
     category: animal-violence
-    note: References farming chickens as commodity and property
+    reason: "Treats unhatched chicks as units of production to be counted. 'Don't assume success prematurely' conveys the same caution."
     word_boundary: false
     regex: "don'?t\\s+count\\s+your\\s+chickens"
     context_suppressions: []
@@ -411,7 +411,7 @@ rules:
       - animals raised for food
     severity: warning
     category: industry-euphemism
-    note: Industry commodity framing. Defines sentient beings by their commercial function. 'Farmed animals' is factually equivalent and does not erase the subject.
+    reason: "Industry term that defines sentient beings by their commercial function. 'Farmed animals' is factually equivalent and doesn't erase the individuals."
     word_boundary: true
     regex: "livestock"
     context_suppressions: []
@@ -425,7 +425,7 @@ rules:
       - chickens and turkeys
     severity: warning
     category: industry-euphemism
-    note: Industry commodity framing. Abstracts individual birds into a bulk commodity term. 'Farmed birds' or the specific species name is more precise.
+    reason: "Industry term that abstracts individual birds into a bulk commodity. 'Farmed birds' or the specific species is more precise."
     word_boundary: true
     regex: "poultry"
     context_suppressions: []
@@ -439,7 +439,7 @@ rules:
       - pregnancy cages
     severity: warning
     category: industry-euphemism
-    note: Industry euphemism. A metal enclosure so small a pregnant sow cannot turn around for her entire 3.5-month pregnancy. 'Pregnancy cage' describes what it actually is.
+    reason: "Industry euphemism for a metal enclosure so small a pregnant pig cannot turn around for her entire pregnancy. 'Pregnancy cage' describes what it actually is."
     word_boundary: true
     regex: "gestation crates?"
     context_suppressions: []
@@ -455,7 +455,7 @@ rules:
       - killing en masse
     severity: warning
     category: industry-euphemism
-    note: Industry euphemism. Used to describe killing entire flocks or herds. Suppress in database or population statistics contexts where 'depopulation' means removing data rows.
+    reason: "Industry euphemism for killing entire flocks or herds at once. 'Mass killing' is the accurate term. (Suppressed automatically in database or population-statistics contexts where the word refers to removing records.)"
     word_boundary: true
     regex: "depopulat(ion|ed|ing)"
     context_suppressions:
@@ -473,7 +473,7 @@ rules:
       - slaughterhouses
     severity: warning
     category: industry-euphemism
-    note: Industry euphemism. When referring to facilities that kill animals, 'slaughterhouse' is the accurate term.
+    reason: "Industry euphemism for a facility that kills animals. 'Slaughterhouse' is the accurate term."
     word_boundary: true
     regex: "processing (plants?|facilit(y|ies))"
     context_suppressions: []
@@ -487,7 +487,7 @@ rules:
       - birthing cages
     severity: warning
     category: industry-euphemism
-    note: Industry euphemism. A metal cage that confines a sow during and after birth, preventing her from turning around or reaching her piglets. 'Birthing cage' describes the reality.
+    reason: "Industry euphemism for a metal cage that confines a pig during and after giving birth. 'Birthing cage' describes the reality."
     word_boundary: true
     regex: "farrowing crates?"
     context_suppressions: []
@@ -503,7 +503,7 @@ rules:
       - confined cages
     severity: warning
     category: industry-euphemism
-    note: Industry euphemism. Wire enclosures giving each hen less floor space than a sheet of paper. The word 'battery' obscures that this is a tiny cage stacked in rows of thousands.
+    reason: "Industry euphemism for wire enclosures giving each hen less floor space than a sheet of paper. 'Small wire cage' or 'confined cage' is more accurate."
     word_boundary: true
     regex: "battery cages?"
     context_suppressions: []
@@ -518,7 +518,7 @@ rules:
       - hen killed after egg production declines
     severity: warning
     category: industry-euphemism
-    note: Industry euphemism. 'Spent' frames a living hen as a depleted resource. These hens are typically killed at 18 months when egg production drops below commercial thresholds.
+    reason: "Frames a living hen as a depleted resource. These hens are typically killed when egg production drops below commercial thresholds. 'Discarded hen' describes the reality."
     word_boundary: true
     regex: "spent hens?"
     context_suppressions: []
@@ -540,7 +540,7 @@ rules:
       - killed
     severity: warning
     category: industry-euphemism
-    note: Industry oxymoron. The adjective 'humane' sanitizes the act. USDA 'humane slaughter' standards permit bolt guns, electrocution, and gas chambers.
+    reason: "An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'."
     word_boundary: true
     regex: "(humane(ly)? (slaughter(ed)?|kill(ing|ed)))"
     context_suppressions: []
@@ -556,7 +556,7 @@ rules:
       - meat chickens
     severity: warning
     category: industry-euphemism
-    note: Industry commodity term that defines a living chicken entirely by its commercial purpose.
+    reason: "Industry term that defines a living chicken entirely by its commercial purpose. 'Chicken raised for meat' or 'meat chicken' preserves the individual."
     word_boundary: true
     regex: "broilers?"
     context_suppressions: []
@@ -570,7 +570,7 @@ rules:
       - go for it
     severity: error
     category: animal-violence
-    note: Animal-as-coward insult in comments
+    reason: "Uses a chicken as an insult for cowardice. 'Don't hesitate' or 'be brave' is direct and doesn't rely on a demeaning stereotype."
     word_boundary: false
     regex: "don'?t\\s+be\\s+a\\s+chicken"
     context_suppressions: []
@@ -584,7 +584,7 @@ rules:
       - harass
     severity: info
     category: animal-violence
-    note: From badger-baiting — a blood sport where dogs attack captive badgers
+    reason: "Comes from badger-baiting, a blood sport where dogs were set on captive badgers. 'Pester' or 'pressure' carries the same meaning without the origin."
     word_boundary: true
     regex: "badger(ed|ing|s)?"
     context_suppressions: []
@@ -598,7 +598,7 @@ rules:
       - dig up
     severity: info
     category: animal-violence
-    note: From using ferrets to hunt rabbits out of burrows
+    reason: "Refers to the historical use of ferrets to flush rabbits out of burrows to be killed. 'Uncover' or 'dig up' works just as well."
     word_boundary: true
     regex: "ferret(ed|ing)?\\s+out"
     context_suppressions: []
@@ -612,7 +612,7 @@ rules:
       - numbered vs. named
     severity: warning
     category: animal-violence
-    note: Infrastructure metaphor — alternatives are technically more precise
+    reason: "Infrastructure metaphor that frames cattle as disposable and pets as individual — erasing that both are sentient. 'Ephemeral vs. persistent' is technically more precise."
     word_boundary: false
     regex: "cattle\\s+(vs?\\.?|versus)\\s+pets?"
     context_suppressions: []
@@ -626,7 +626,7 @@ rules:
       - sentinel
     severity: info
     category: animal-violence
-    note: Animal metaphor — alternatives are more technical
+    reason: "Refers to canaries historically placed in coal mines to die first as a warning to miners. 'Early warning signal' or 'sentinel' conveys the meaning without the harm."
     word_boundary: false
     regex: "canary\\s+in\\s+(a|the)\\s+coal\\s+mine"
     context_suppressions: []
@@ -640,7 +640,7 @@ rules:
       - speculative inquiry
     severity: warning
     category: animal-violence
-    note: Animal metaphor — alternatives are more precise
+    reason: "Describes fishing — which kills fish — as a metaphor for aimless searching. 'Exploratory investigation' or 'speculative inquiry' is more precise."
     word_boundary: false
     regex: "fishing\\s+expedition"
     context_suppressions: []
@@ -655,7 +655,7 @@ rules:
       - protected assumption
     severity: warning
     category: animal-violence
-    note: Animal objectification with cultural insensitivity — trivializes Hindu beliefs while treating cattle as objects
+    reason: "Treats cattle as objects in an 'untouchable' metaphor while also trivializing Hindu beliefs. 'Unquestioned belief' or 'protected assumption' avoids both issues."
     word_boundary: true
     regex: "sacred\\s+cows?"
     context_suppressions: []
@@ -671,7 +671,7 @@ rules:
       - wrongly blamed
     severity: warning
     category: animal-violence
-    note: Originates from ritual sacrifice of goats — alternatives are more precise
+    reason: "Originates from the ritual sacrifice of goats to carry away blame. 'Blame target' or 'wrongly blamed' is more precise."
     word_boundary: true
     regex: "scapegoat(ed|ing|s)?"
     context_suppressions: []
@@ -685,7 +685,7 @@ rules:
       - brief uptick
     severity: warning
     category: animal-violence
-    note: Financial/tech term depicting animal death — alternatives are more professional
+    reason: "A financial term built on the image of a dead cat. 'Temporary rebound' or 'false recovery' is more professional and avoids the image."
     word_boundary: false
     regex: "dead[\\s_-]?cat[\\s_-]?bounce"
     context_suppressions: []
@@ -700,7 +700,7 @@ rules:
       - fiercely competitive
     severity: info
     category: animal-violence
-    note: Characterizes animals as violent — alternatives convey meaning more precisely
+    reason: "Frames dogs as inherently violent toward each other as a model for competition. 'Ruthlessly competitive' or 'cutthroat' conveys the meaning without the stereotype."
     word_boundary: true
     regex: "dog[\\s-]eat[\\s-]dog"
     context_suppressions: []
@@ -715,7 +715,7 @@ rules:
       - unwinnable game
     severity: info
     category: animal-violence
-    note: References a game based on hitting animals — alternatives describe the pattern more precisely
+    reason: "References a game built around repeatedly striking animals as they pop up. 'Recurring problem' or 'endless loop' describes the pattern more precisely."
     word_boundary: true
     regex: "whack[\\s-]a[\\s-]mole"
     context_suppressions: []
@@ -730,7 +730,7 @@ rules:
       - money maker
     severity: warning
     category: animal-violence
-    note: Commodifies cows — treats living beings as profit generators
+    reason: "Reduces cows to profit generators. 'Profit center' or 'reliable revenue source' conveys the same meaning without commodifying animals."
     word_boundary: true
     regex: "cash\\s+cows?"
     context_suppressions: []
@@ -745,7 +745,7 @@ rules:
       - someone sacrificed for others
     severity: warning
     category: animal-violence
-    note: References ritual slaughter of lambs
+    reason: "References the ritual slaughter of lambs. 'Expendable person' or 'someone sacrificed for others' communicates the metaphor directly."
     word_boundary: true
     regex: "sacrificial\\s+lambs?"
     context_suppressions: []
@@ -760,7 +760,7 @@ rules:
       - exposed
     severity: warning
     category: animal-violence
-    note: References a duck in the open, easy to shoot — hunting imagery
+    reason: "Hunting imagery — a duck in the open, easy to shoot. 'Easy target' or 'vulnerable target' says the same thing."
     word_boundary: true
     regex: "sitting\\s+ducks?"
     context_suppressions: []
@@ -776,7 +776,7 @@ rules:
       - no holds barred
     severity: warning
     category: animal-violence
-    note: References hunting season — the legal period for killing animals
+    reason: "Refers to the legal hunting period when killing animals is permitted. 'Free-for-all' or 'no holds barred' conveys the meaning without the hunting framing."
     word_boundary: true
     regex: "open\\s+season"
     context_suppressions: []
@@ -790,7 +790,7 @@ rules:
       - sunset
     severity: warning
     category: animal-violence
-    note: References disposing of farm animals when no longer productive
+    reason: "Often a euphemism for disposing of farm animals when they are no longer productive. 'Retire', 'phase out', or 'sunset' is a cleaner metaphor."
     word_boundary: false
     regex: "put(ting)?\\s+(\\w+\\s+)?out\\s+to\\s+pasture"
     context_suppressions: []
@@ -805,7 +805,7 @@ rules:
       - foregone conclusion
     severity: info
     category: animal-violence
-    note: References a duck that has been shot and killed — hunting
+    reason: "Hunting imagery — a duck that has been shot and killed. 'Lost cause' or 'doomed effort' is just as expressive."
     word_boundary: true
     regex: "dead\\s+ducks?"
     context_suppressions: []
@@ -820,7 +820,7 @@ rules:
       - filter out
     severity: warning
     category: animal-violence
-    note: Euphemism for mass killing of animals — used in wildlife management and farming
+    reason: "Euphemism used in wildlife management and farming for mass killing. 'Remove', 'prune', 'trim', or 'filter out' is accurate in technical contexts."
     word_boundary: true
     regex: "cull(ed|ing|s)?"
     context_suppressions: []
@@ -833,7 +833,7 @@ rules:
       - flesh from calves
     severity: warning
     category: industry-euphemism
-    note: Industry euphemism for the flesh of male dairy calves, typically killed within weeks of birth. Obscures both the species and the age of the individual.
+    reason: "Industry euphemism for the flesh of male dairy calves, typically killed within weeks of birth. 'Calf flesh' makes the species and age visible."
     word_boundary: true
     regex: "veal"
     context_suppressions: []
@@ -848,7 +848,7 @@ rules:
       - ineffective
     severity: info
     category: animal-violence
-    note: References a bird unable to fly due to injury. 'Outgoing' or 'transitional' are more precise in political and tech contexts.
+    reason: "Combines an ableist adjective with a reference to a bird unable to fly due to injury. 'Outgoing', 'transitional', or 'ineffective' is more precise."
     word_boundary: true
     regex: "lame[\\s-]duck"
     context_suppressions: []

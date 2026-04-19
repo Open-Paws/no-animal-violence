@@ -8,7 +8,7 @@ rules:
       - first to try
     severity: warning
     category: animal-violence
-    note: Animal-as-experiment metaphor
+    reason: "Refers to using guinea pigs as expendable test subjects. 'Test subject' is more precise."
     word_boundary: true
     regex: "guinea\\s+pig"
     context_suppressions: []
@@ -21,7 +21,7 @@ rules:
       - animals raised for food
     severity: warning
     category: industry-euphemism
-    note: Industry commodity framing
+    reason: "Industry term that defines sentient beings by their commercial function. 'Farmed animals' is factually equivalent."
     word_boundary: true
     regex: "livestock"
     context_suppressions: []
@@ -33,7 +33,7 @@ rules:
       - curiosity backfired
     severity: error
     category: animal-violence
-    note: Directly references killing a cat
+    reason: "A direct reference to killing a cat. 'Curiosity backfired' says the same thing."
     word_boundary: false
     regex: "curiosity\\s+killed\\s+the\\s+cat"
     context_suppressions: []

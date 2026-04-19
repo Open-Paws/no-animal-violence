@@ -165,10 +165,65 @@ def test_pre_commit_word_boundary(tmp_path):
     generate(rules, output_path)
     content = output_path.read_text()
     # guinea-pig has word_boundary:true — must have \b boundaries
-    assert r'(r"\b(?:guinea\s+pig)\b"' in content
+    assert r'"regex": r"\b(?:guinea\s+pig)\b"' in content
     # curiosity-killed-the-cat has word_boundary:false — must NOT have \b
-    assert r'(r"curiosity\s+killed\s+the\s+cat"' in content
+    assert r'"regex": r"curiosity\s+killed\s+the\s+cat"' in content
     assert r'\b(?:curiosity' not in content
+
+
+def test_pre_commit_emits_reason(tmp_path):
+    """gen_pre_commit emits the user-facing reason field for each pattern."""
+    from gen_pre_commit import generate
+    rules = load_rules(FIXTURES / "rules_mini.yaml")
+    output_path = tmp_path / "no_animal_violence_check.py"
+    generate(rules, output_path)
+    content = output_path.read_text()
+    assert '"reason":' in content
+    assert "expendable test subjects" in content  # from guinea-pig reason in fixture
+    assert "Why:" in content  # user-facing output includes reason
+
+
+def test_semgrep_generic_includes_reason(tmp_path):
+    """gen_semgrep embeds the reason in both message and metadata."""
+    from gen_semgrep import generate_generic
+    rules = load_rules(FIXTURES / "rules_mini.yaml")
+    output_path = tmp_path / "animal-violence-generic.yaml"
+    generate_generic(rules, output_path)
+    content = output_path.read_text()
+    assert "reason:" in content  # emitted as metadata key
+    assert "expendable test subjects" in content  # appears in message and/or metadata
+
+
+def test_vale_embeds_reason_as_comment(tmp_path):
+    """gen_vale writes the reason as a YAML comment above each swap entry."""
+    from gen_vale import generate_downstream
+    rules = load_rules(FIXTURES / "rules_mini.yaml")
+    output_path = tmp_path / "AnimalIdioms.yml"
+    generate_downstream(rules, output_path)
+    content = output_path.read_text()
+    # Each rule should have a comment with its name and reason
+    assert "# guinea-pig:" in content
+    assert "expendable test subjects" in content
+
+
+def test_loader_rejects_missing_reason(tmp_path):
+    """loader.load_rules must fail loudly when a rule is missing its reason."""
+    import pytest
+    from loader import load_rules
+    bad = tmp_path / "bad.yaml"
+    bad.write_text(
+        "version: '1.0.0'\n"
+        "rules:\n"
+        "  - name: no-reason\n"
+        "    terms: ['foo']\n"
+        "    alternatives: ['bar']\n"
+        "    severity: info\n"
+        "    category: animal-violence\n"
+        "    word_boundary: true\n"
+        "    regex: 'foo'\n"
+    )
+    with pytest.raises(ValueError, match="missing a non-empty 'reason'"):
+        load_rules(bad)
 
 
 def test_semgrep_generic_word_boundary(tmp_path):

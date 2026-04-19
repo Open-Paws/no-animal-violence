@@ -2,8 +2,8 @@
 # Source: https://doi.org/10.1007/s43681-023-00380-w
 
 - type: basic
-  note: Industry commodity framing. Defines sentient beings by their commercial function.
-    'Farmed animals' is factually equivalent and does not erase the subject.
+  note: Industry term that defines sentient beings by their commercial function. 'Farmed
+    animals' is factually equivalent and doesn't erase the individuals.
   considerate:
     farmed animals: a
     animals raised for food: a
@@ -11,8 +11,8 @@
     livestock: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry commodity framing. Abstracts individual birds into a bulk commodity
-    term. 'Farmed birds' or the specific species name is more precise.
+  note: Industry term that abstracts individual birds into a bulk commodity. 'Farmed
+    birds' or the specific species is more precise.
   considerate:
     farmed birds: a
     chickens: a
@@ -21,9 +21,8 @@
     poultry: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism. A metal enclosure so small a pregnant sow cannot turn
-    around for her entire 3.5-month pregnancy. 'Pregnancy cage' describes what it
-    actually is.
+  note: Industry euphemism for a metal enclosure so small a pregnant pig cannot turn
+    around for her entire pregnancy. 'Pregnancy cage' describes what it actually is.
   considerate:
     pregnancy cage: a
     pregnancy cages: a
@@ -32,9 +31,9 @@
     gestation crates: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism. Used to describe killing entire flocks or herds. Suppress
-    in database or population statistics contexts where 'depopulation' means removing
-    data rows.
+  note: Industry euphemism for killing entire flocks or herds at once. 'Mass killing'
+    is the accurate term. (Suppressed automatically in database or population-statistics
+    contexts where the word refers to removing records.)
   considerate:
     mass killing: a
     killed en masse: a
@@ -45,8 +44,8 @@
     depopulating: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism. When referring to facilities that kill animals, 'slaughterhouse'
-    is the accurate term.
+  note: Industry euphemism for a facility that kills animals. 'Slaughterhouse' is
+    the accurate term.
   considerate:
     slaughterhouse: a
     slaughterhouses: a
@@ -57,9 +56,8 @@
     processing facilities: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism. A metal cage that confines a sow during and after birth,
-    preventing her from turning around or reaching her piglets. 'Birthing cage' describes
-    the reality.
+  note: Industry euphemism for a metal cage that confines a pig during and after giving
+    birth. 'Birthing cage' describes the reality.
   considerate:
     birthing cage: a
     birthing cages: a
@@ -68,9 +66,8 @@
     farrowing crates: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism. Wire enclosures giving each hen less floor space than
-    a sheet of paper. The word 'battery' obscures that this is a tiny cage stacked
-    in rows of thousands.
+  note: Industry euphemism for wire enclosures giving each hen less floor space than
+    a sheet of paper. 'Small wire cage' or 'confined cage' is more accurate.
   considerate:
     small wire cage: a
     small wire cages: a
@@ -81,9 +78,9 @@
     battery cages: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism. 'Spent' frames a living hen as a depleted resource. These
-    hens are typically killed at 18 months when egg production drops below commercial
-    thresholds.
+  note: Frames a living hen as a depleted resource. These hens are typically killed
+    when egg production drops below commercial thresholds. 'Discarded hen' describes
+    the reality.
   considerate:
     discarded hen: a
     discarded hens: a
@@ -93,8 +90,8 @@
     spent hens: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry oxymoron. The adjective 'humane' sanitizes the act. USDA 'humane
-    slaughter' standards permit bolt guns, electrocution, and gas chambers.
+  note: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit
+    bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
   considerate:
     slaughter: a
     slaughtered: a
@@ -111,8 +108,8 @@
     humanely killed: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry commodity term that defines a living chicken entirely by its commercial
-    purpose.
+  note: Industry term that defines a living chicken entirely by its commercial purpose.
+    'Chicken raised for meat' or 'meat chicken' preserves the individual.
   considerate:
     chicken raised for meat: a
     chickens raised for meat: a
@@ -124,7 +121,7 @@
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Industry euphemism for the flesh of male dairy calves, typically killed within
-    weeks of birth. Obscures both the species and the age of the individual.
+    weeks of birth. 'Calf flesh' makes the species and age visible.
   considerate:
     calf flesh: a
     flesh from calves: a

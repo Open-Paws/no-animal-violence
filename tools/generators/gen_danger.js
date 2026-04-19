@@ -28,7 +28,8 @@ function buildPatternEntries(rules) {
 		const wb = r.word_boundary !== false;
 		const raw = wb ? `\\b${r.regex}\\b` : r.regex;
 		const altsJson = JSON.stringify(r.alternatives);
-		return `  { regex: new RegExp(${JSON.stringify(raw)}, "gi"), phrase: ${JSON.stringify(r.terms[0])}, alternatives: ${altsJson} },`;
+		const reason = JSON.stringify(r.reason || "");
+		return `  { regex: new RegExp(${JSON.stringify(raw)}, "gi"), phrase: ${JSON.stringify(r.terms[0])}, alternatives: ${altsJson}, reason: ${reason} },`;
 	}).join("\n");
 }
 
@@ -47,6 +48,7 @@ interface Pattern {
   regex: RegExp;
   phrase: string;
   alternatives: string[];
+  reason: string;
 }
 
 const PATTERNS: Pattern[] = [
@@ -68,7 +70,7 @@ export default async function noAnimalViolence(options: NoAnimalViolenceOptions 
     for (const pattern of PATTERNS) {
       if (pattern.regex.test(added)) {
         report(
-          \`**\${file}**: Found "\${pattern.phrase}". \` +
+          \`**\${file}**: Found "\${pattern.phrase}". \${pattern.reason} \` +
           \`Consider: \${pattern.alternatives.map(a => \`"\${a}"\`).join(" or ")}. \` +
           \`[Why?](https://doi.org/10.1007/s43681-023-00380-w)\`
         );

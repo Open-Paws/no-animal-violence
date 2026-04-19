@@ -76,8 +76,7 @@ def _build_woke_yaml(rules: list[Rule], indent: int = 8) -> str:
                 "categories": [rule.category],
             },
         }
-        if rule.note:
-            entry["note"] = rule.note
+        entry["reason"] = rule.reason
         rules_list.append(entry)
     dumped = yaml.safe_dump(
         {"rules": rules_list},
