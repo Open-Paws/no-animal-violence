@@ -141,44 +141,6 @@ rules:
     - animal-violence
   note: Animal-as-experiment metaphor — alternatives are more precise in technical
     contexts
-- name: hold-your-horses
-  terms:
-  - hold your horses
-  alternatives:
-  - wait a moment
-  - slow down
-  - be patient
-  severity: info
-  options:
-    word_boundary: false
-    categories:
-    - animal-violence
-  note: Animal idiom — alternatives are more direct
-- name: the-elephant-in-the-room
-  terms:
-  - the elephant in the room
-  alternatives:
-  - the obvious issue
-  - the unaddressed problem
-  severity: info
-  options:
-    word_boundary: false
-    categories:
-    - animal-violence
-  note: Well-understood idiom — flag for awareness only
-- name: straight-from-the-horses-mouth
-  terms:
-  - straight from the horse's mouth
-  alternatives:
-  - directly from the source
-  - firsthand
-  - from the authority
-  severity: info
-  options:
-    word_boundary: false
-    categories:
-    - animal-violence
-  note: Animal idiom — alternatives are clearer for international audiences
 - name: bring-home-the-bacon
   terms:
   - bring home the bacon
@@ -587,45 +549,6 @@ rules:
     categories:
     - animal-violence
   note: Animal-as-coward insult in comments
-- name: pig
-  terms:
-  - pig
-  alternatives:
-  - resource-intensive
-  - bloated
-  - heavy consumer
-  severity: warning
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Animal-as-insult for resource consumption
-- name: cowboy-coding
-  terms:
-  - cowboy coding
-  alternatives:
-  - undisciplined coding
-  - ad-hoc development
-  - code without process
-  severity: info
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Not directly animal-related but reinforces animal industry terminology
-- name: code-monkey
-  terms:
-  - code monkey
-  alternatives:
-  - developer
-  - programmer
-  - engineer
-  severity: warning
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Animal-as-insult for programmers — dehumanizing and unprofessional
 - name: badger-someone
   terms:
   - badger someone
@@ -665,18 +588,6 @@ rules:
     categories:
     - animal-violence
   note: Infrastructure metaphor — alternatives are technically more precise
-- name: pet-project
-  terms:
-  - pet project
-  alternatives:
-  - side project
-  - passion project
-  severity: info
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Common idiom — flag for awareness only
 - name: canary-in-a-coal-mine
   terms:
   - canary in a coal mine
@@ -690,35 +601,6 @@ rules:
     categories:
     - animal-violence
   note: Animal metaphor — alternatives are more technical
-- name: dogfooding
-  terms:
-  - dogfooding
-  - dogfood
-  - eating your own dogfood
-  - eat your own dogfood
-  alternatives:
-  - self-hosting
-  - eating your own cooking
-  - using internally
-  severity: info
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Common tech term — flag for awareness only
-- name: herding-cats
-  terms:
-  - herding cats
-  alternatives:
-  - coordinating independent contributors
-  - managing a distributed effort
-  - organizing chaos
-  severity: warning
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Animal metaphor — alternatives are more descriptive
 - name: go-on-a-fishing-expedition
   terms:
   - go on a fishing expedition
@@ -762,19 +644,6 @@ rules:
     categories:
     - animal-violence
   note: Originates from ritual sacrifice of goats — alternatives are more precise
-- name: rat-race
-  terms:
-  - rat race
-  alternatives:
-  - daily grind
-  - competitive treadmill
-  - endless hustle
-  severity: info
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Derogatory animal metaphor for futility — alternatives are more descriptive
 - name: dead-cat-bounce
   terms:
   - dead cat bounce
@@ -901,63 +770,6 @@ rules:
     categories:
     - animal-violence
   note: References a duck that has been shot and killed — hunting
-- name: kill-process
-  terms:
-  - kill process
-  - killing process
-  - killed process
-  alternatives:
-  - terminate the process
-  - stop the process
-  - end the process
-  severity: info
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Process language — in POSIX context this is standard, in docs alternatives
-    may be clearer
-- name: kill-the-server
-  terms:
-  - kill the server
-  - killing the server
-  - killed the server
-  alternatives:
-  - stop the server
-  - shut down the server
-  - terminate the server
-  severity: info
-  options:
-    word_boundary: false
-    categories:
-    - animal-violence
-  note: Process language — alternatives are equally clear
-- name: nuke
-  terms:
-  - nuke
-  alternatives:
-  - delete completely
-  - wipe clean
-  - remove entirely
-  severity: warning
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Violent metaphor in technical context — alternatives are more professional
-- name: abort
-  terms:
-  - abort
-  alternatives:
-  - cancel
-  - stop
-  - halt
-  severity: info
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Standard technical term — flag for awareness only in non-technical contexts
 - name: cull
   terms:
   - cull
@@ -972,46 +784,6 @@ rules:
     categories:
     - animal-violence
   note: Euphemism for mass killing of animals — used in wildlife management and farming
-- name: master-slave
-  terms:
-  - master/slave
-  alternatives:
-  - primary/replica
-  - leader/follower
-  - controller/worker
-  severity: warning
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Actively being replaced across the industry — follows existing inclusive naming
-    initiatives
-- name: whitelist-blacklist
-  terms:
-  - whitelist/blacklist
-  alternatives:
-  - allowlist/denylist
-  - permit list/block list
-  - inclusion list/exclusion list
-  severity: warning
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Actively being replaced — Google, Twitter, IETF have adopted alternatives
-- name: grandfathered
-  terms:
-  - grandfathered
-  alternatives:
-  - legacy
-  - exempt
-  - pre-existing
-  severity: info
-  options:
-    word_boundary: true
-    categories:
-    - animal-violence
-  note: Historically exclusionary origin — alternatives are equally clear
 - name: veal
   terms:
   - veal

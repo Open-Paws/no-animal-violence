@@ -102,32 +102,6 @@
     guinea pig: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal idiom — alternatives are more direct
-  considerate:
-    wait a moment: a
-    slow down: a
-    be patient: a
-  inconsiderate:
-    hold your horses: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Well-understood idiom — flag for awareness only
-  considerate:
-    the obvious issue: a
-    the unaddressed problem: a
-  inconsiderate:
-    the elephant in the room: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Animal idiom — alternatives are clearer for international audiences
-  considerate:
-    directly from the source: a
-    firsthand: a
-    from the authority: a
-  inconsiderate:
-    straight from the horse's mouth: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
   note: Animal slaughter idiom — alternatives are equally expressive
   considerate:
     bring home the results: a
@@ -303,33 +277,6 @@
     don't be a chicken: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal-as-insult for resource consumption
-  considerate:
-    resource-intensive: a
-    bloated: a
-    heavy consumer: a
-  inconsiderate:
-    pig: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Not directly animal-related but reinforces animal industry terminology
-  considerate:
-    undisciplined coding: a
-    ad-hoc development: a
-    code without process: a
-  inconsiderate:
-    cowboy coding: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Animal-as-insult for programmers — dehumanizing and unprofessional
-  considerate:
-    developer: a
-    programmer: a
-    engineer: a
-  inconsiderate:
-    code monkey: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
   note: From badger-baiting — a blood sport where dogs attack captive badgers
   considerate:
     pester: a
@@ -357,14 +304,6 @@
     cattle vs. pets: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Common idiom — flag for awareness only
-  considerate:
-    side project: a
-    passion project: a
-  inconsiderate:
-    pet project: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
   note: Animal metaphor — alternatives are more technical
   considerate:
     early warning signal: a
@@ -372,27 +311,6 @@
     sentinel: a
   inconsiderate:
     canary in a coal mine: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Common tech term — flag for awareness only
-  considerate:
-    self-hosting: a
-    eating your own cooking: a
-    using internally: a
-  inconsiderate:
-    dogfooding: animal-violence
-    dogfood: animal-violence
-    eating your own dogfood: animal-violence
-    eat your own dogfood: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Animal metaphor — alternatives are more descriptive
-  considerate:
-    coordinating independent contributors: a
-    managing a distributed effort: a
-    organizing chaos: a
-  inconsiderate:
-    herding cats: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Animal metaphor — alternatives are more precise
@@ -424,15 +342,6 @@
     scapegoat: animal-violence
     scapegoated: animal-violence
     scapegoating: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Derogatory animal metaphor for futility — alternatives are more descriptive
-  considerate:
-    daily grind: a
-    competitive treadmill: a
-    endless hustle: a
-  inconsiderate:
-    rat race: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Financial/tech term depicting animal death — alternatives are more professional
@@ -525,47 +434,6 @@
     dead ducks: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Process language — in POSIX context this is standard, in docs alternatives
-    may be clearer
-  considerate:
-    terminate the process: a
-    stop the process: a
-    end the process: a
-  inconsiderate:
-    kill process: animal-violence
-    killing process: animal-violence
-    killed process: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Process language — alternatives are equally clear
-  considerate:
-    stop the server: a
-    shut down the server: a
-    terminate the server: a
-  inconsiderate:
-    kill the server: animal-violence
-    killing the server: animal-violence
-    killed the server: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Violent metaphor in technical context — alternatives are more professional
-  considerate:
-    delete completely: a
-    wipe clean: a
-    remove entirely: a
-  inconsiderate:
-    nuke: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Standard technical term — flag for awareness only in non-technical contexts
-  considerate:
-    cancel: a
-    stop: a
-    halt: a
-  inconsiderate:
-    abort: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
   note: Euphemism for mass killing of animals — used in wildlife management and farming
   considerate:
     remove: a
@@ -574,34 +442,6 @@
     filter out: a
   inconsiderate:
     cull: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Actively being replaced across the industry — follows existing inclusive naming
-    initiatives
-  considerate:
-    primary/replica: a
-    leader/follower: a
-    controller/worker: a
-  inconsiderate:
-    master/slave: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Actively being replaced — Google, Twitter, IETF have adopted alternatives
-  considerate:
-    allowlist/denylist: a
-    permit list/block list: a
-    inclusion list/exclusion list: a
-  inconsiderate:
-    whitelist/blacklist: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Historically exclusionary origin — alternatives are equally clear
-  considerate:
-    legacy: a
-    exempt: a
-    pre-existing: a
-  inconsiderate:
-    grandfathered: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References a bird unable to fly due to injury. 'Outgoing' or 'transitional'

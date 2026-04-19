@@ -152,47 +152,6 @@ rules:
     regex: "guinea\\s+pig"
     context_suppressions: []
 
-  - name: hold-your-horses
-    terms:
-      - hold your horses
-    alternatives:
-      - wait a moment
-      - slow down
-      - be patient
-    severity: info
-    category: animal-violence
-    note: Animal idiom — alternatives are more direct
-    word_boundary: false
-    regex: "hold\\s+your\\s+horses"
-    context_suppressions: []
-
-  - name: the-elephant-in-the-room
-    terms:
-      - the elephant in the room
-    alternatives:
-      - the obvious issue
-      - the unaddressed problem
-    severity: info
-    category: animal-violence
-    note: Well-understood idiom — flag for awareness only
-    word_boundary: false
-    regex: "the\\s+elephant\\s+in\\s+the\\s+room"
-    context_suppressions: []
-
-  - name: straight-from-the-horses-mouth
-    terms:
-      - straight from the horse's mouth
-    alternatives:
-      - directly from the source
-      - firsthand
-      - from the authority
-    severity: info
-    category: animal-violence
-    note: Animal idiom — alternatives are clearer for international audiences
-    word_boundary: false
-    regex: "straight\\s+from\\s+the\\s+horse'?s\\s+mouth"
-    context_suppressions: []
-
   - name: bring-home-the-bacon
     terms:
       - bring home the bacon
@@ -616,48 +575,6 @@ rules:
     regex: "don'?t\\s+be\\s+a\\s+chicken"
     context_suppressions: []
 
-  - name: pig
-    terms:
-      - pig
-    alternatives:
-      - resource-intensive
-      - bloated
-      - heavy consumer
-    severity: warning
-    category: animal-violence
-    note: Animal-as-insult for resource consumption
-    word_boundary: true
-    regex: "(code|memory|resource)\\s+pig"
-    context_suppressions: []
-
-  - name: cowboy-coding
-    terms:
-      - cowboy coding
-    alternatives:
-      - undisciplined coding
-      - ad-hoc development
-      - code without process
-    severity: info
-    category: animal-violence
-    note: Not directly animal-related but reinforces animal industry terminology
-    word_boundary: true
-    regex: "cowboy\\s+cod(ing|er)"
-    context_suppressions: []
-
-  - name: code-monkey
-    terms:
-      - code monkey
-    alternatives:
-      - developer
-      - programmer
-      - engineer
-    severity: warning
-    category: animal-violence
-    note: Animal-as-insult for programmers — dehumanizing and unprofessional
-    word_boundary: true
-    regex: "code\\s+monkeys?"
-    context_suppressions: []
-
   - name: badger-someone
     terms:
       - badger someone
@@ -700,19 +617,6 @@ rules:
     regex: "cattle\\s+(vs?\\.?|versus)\\s+pets?"
     context_suppressions: []
 
-  - name: pet-project
-    terms:
-      - pet project
-    alternatives:
-      - side project
-      - passion project
-    severity: info
-    category: animal-violence
-    note: Common idiom — flag for awareness only
-    word_boundary: true
-    regex: "pet\\s+project"
-    context_suppressions: []
-
   - name: canary-in-a-coal-mine
     terms:
       - canary in a coal mine
@@ -725,37 +629,6 @@ rules:
     note: Animal metaphor — alternatives are more technical
     word_boundary: false
     regex: "canary\\s+in\\s+(a|the)\\s+coal\\s+mine"
-    context_suppressions: []
-
-  - name: dogfooding
-    terms:
-      - dogfooding
-      - dogfood
-      - eating your own dogfood
-      - eat your own dogfood
-    alternatives:
-      - self-hosting
-      - eating your own cooking
-      - using internally
-    severity: info
-    category: animal-violence
-    note: Common tech term — flag for awareness only
-    word_boundary: true
-    regex: "dog\\s?food(ing)?"
-    context_suppressions: []
-
-  - name: herding-cats
-    terms:
-      - herding cats
-    alternatives:
-      - coordinating independent contributors
-      - managing a distributed effort
-      - organizing chaos
-    severity: warning
-    category: animal-violence
-    note: Animal metaphor — alternatives are more descriptive
-    word_boundary: true
-    regex: "herding\\s+cats"
     context_suppressions: []
 
   - name: go-on-a-fishing-expedition
@@ -801,20 +674,6 @@ rules:
     note: Originates from ritual sacrifice of goats — alternatives are more precise
     word_boundary: true
     regex: "scapegoat(ed|ing|s)?"
-    context_suppressions: []
-
-  - name: rat-race
-    terms:
-      - rat race
-    alternatives:
-      - daily grind
-      - competitive treadmill
-      - endless hustle
-    severity: info
-    category: animal-violence
-    note: Derogatory animal metaphor for futility — alternatives are more descriptive
-    word_boundary: true
-    regex: "rat\\s+race"
     context_suppressions: []
 
   - name: dead-cat-bounce
@@ -951,66 +810,6 @@ rules:
     regex: "dead\\s+ducks?"
     context_suppressions: []
 
-  - name: kill-process
-    terms:
-      - kill process
-      - killing process
-      - killed process
-    alternatives:
-      - terminate the process
-      - stop the process
-      - end the process
-    severity: info
-    category: animal-violence
-    note: Process language — in POSIX context this is standard, in docs alternatives may be clearer
-    word_boundary: true
-    regex: "kill\\s+(the\\s+)?process"
-    context_suppressions: []
-
-  - name: kill-the-server
-    terms:
-      - kill the server
-      - killing the server
-      - killed the server
-    alternatives:
-      - stop the server
-      - shut down the server
-      - terminate the server
-    severity: info
-    category: animal-violence
-    note: Process language — alternatives are equally clear
-    word_boundary: false
-    regex: "kill\\s+(the\\s+)?server"
-    context_suppressions: []
-
-  - name: nuke
-    terms:
-      - nuke
-    alternatives:
-      - delete completely
-      - wipe clean
-      - remove entirely
-    severity: warning
-    category: animal-violence
-    note: Violent metaphor in technical context — alternatives are more professional
-    word_boundary: true
-    regex: "nuke\\s+(it|the|this|that|everything)"
-    context_suppressions: []
-
-  - name: abort
-    terms:
-      - abort
-    alternatives:
-      - cancel
-      - stop
-      - halt
-    severity: info
-    category: animal-violence
-    note: Standard technical term — flag for awareness only in non-technical contexts
-    word_boundary: true
-    regex: "abort(ed|ing)?"
-    context_suppressions: []
-
   - name: cull
     terms:
       - cull
@@ -1024,48 +823,6 @@ rules:
     note: Euphemism for mass killing of animals — used in wildlife management and farming
     word_boundary: true
     regex: "cull(ed|ing|s)?"
-    context_suppressions: []
-
-  - name: master-slave
-    terms:
-      - master/slave
-    alternatives:
-      - primary/replica
-      - leader/follower
-      - controller/worker
-    severity: warning
-    category: animal-violence
-    note: Actively being replaced across the industry — follows existing inclusive naming initiatives
-    word_boundary: true
-    regex: "(master|slave)"
-    context_suppressions: []
-
-  - name: whitelist-blacklist
-    terms:
-      - whitelist/blacklist
-    alternatives:
-      - allowlist/denylist
-      - permit list/block list
-      - inclusion list/exclusion list
-    severity: warning
-    category: animal-violence
-    note: Actively being replaced — Google, Twitter, IETF have adopted alternatives
-    word_boundary: true
-    regex: "(white|black)list"
-    context_suppressions: []
-
-  - name: grandfathered
-    terms:
-      - grandfathered
-    alternatives:
-      - legacy
-      - exempt
-      - pre-existing
-    severity: info
-    category: animal-violence
-    note: Historically exclusionary origin — alternatives are equally clear
-    word_boundary: true
-    regex: "grandfather(ed|ing)?"
     context_suppressions: []
 
   - name: veal
@@ -1096,42 +853,3 @@ rules:
     regex: "lame[\\s-]duck"
     context_suppressions: []
 
-  - name: canary-deployment
-    terms:
-      - canary deployment
-      - canary deploy
-      - canary release
-      - canary-deployment
-    alternatives: []
-    severity: info
-    category: animal-violence
-    note: Deployment strategy named after canaries used as early warning signals in coal mines. Standard tech term — flag for awareness only, not a candidate for renaming.
-    word_boundary: true
-    regex: "canary[\\s-]+(deploy(ment|ed)?|release)"
-    context_suppressions: []
-
-  - name: duck-typing
-    terms:
-      - duck typing
-      - duck-typed
-    alternatives: []
-    severity: info
-    category: animal-violence
-    note: Programming concept from 'if it walks like a duck, it's a duck'. Standard tech term — flag for awareness only, not a candidate for renaming.
-    word_boundary: true
-    regex: "duck[\\s-]typ(ing|ed|e)"
-    context_suppressions: []
-
-  - name: monkey-patching
-    terms:
-      - monkey patching
-      - monkey patch
-      - monkey-patching
-      - monkey-patch
-    alternatives: []
-    severity: info
-    category: animal-violence
-    note: Runtime code modification technique derived from 'guerrilla patching'. Standard tech term — flag for awareness only, not a candidate for renaming.
-    word_boundary: true
-    regex: "monkey[\\s-]patch(ing|ed|es)?"
-    context_suppressions: []
