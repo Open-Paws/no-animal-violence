@@ -26,16 +26,17 @@
     beating a dead horse: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Treats a graphic act of violence against cats as an everyday problem-solving
-    metaphor. 'More than one way to solve this' works just as well.
+  note: Cat skinning as a metaphor for having options. 'Multiple approaches available'
+    or 'more than one way to peel an orange' carries the same meaning.
   considerate:
-    more than one way to solve this: a
+    more than one way to peel an orange: a
     multiple approaches available: a
-    several ways to accomplish this: a
+    several ways to do this: a
   inconsiderate:
     more than one way to skin a cat: animal-violence
-    many ways to skin a cat: animal-violence
-    other ways to skin a cat: animal-violence
+    another way to skin a cat: animal-violence
+    different ways to skin a cat: animal-violence
+    several ways to skin a cat: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Traced to fraudulent livestock markets and implies trapping animals. 'Reveal
@@ -71,13 +72,15 @@
     wild goose chase: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Treats killing trapped fish as a lighthearted comparison for an easy task.
-    'Trivially easy' or 'effortless' avoids the image.
+  note: Mass-killing imagery used to mean 'easy.' 'Trivially easy' or 'a sure thing'
+    says the same thing without it.
   considerate:
     trivially easy: a
-    like taking candy from a baby: a
-    effortless: a
+    a sure thing: a
+    no challenge at all: a
   inconsiderate:
+    shooting fish in a barrel: animal-violence
+    shoot fish in a barrel: animal-violence
     like shooting fish in a barrel: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
@@ -92,14 +95,14 @@
     flogging a dead horse: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Frames killing and cooking fish as a throwaway comparison. 'More important
-    matters to address' is just as expressive.
+  note: Fish-as-food commodification for 'more important things.' 'More important
+    matters' says the same thing.
   considerate:
     more important matters to address: a
-    higher priorities: a
-    bigger issues at hand: a
+    bigger fish to free: a
   inconsiderate:
-    there are bigger fish to fry: animal-violence
+    bigger fish to fry: animal-violence
+    other fish to fry: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Refers to using guinea pigs as expendable test subjects in harmful experiments.
@@ -125,36 +128,39 @@
     brings home the bacon: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Evokes bullfighting, where bulls are wounded and killed for entertainment.
-    'Face the challenge head-on' conveys the same assertiveness.
+  note: Bullfighting/rodeo imagery. 'Tackle the problem directly' or 'face it head-on'
+    is cleaner.
   considerate:
-    face the challenge head-on: a
     tackle the problem directly: a
-    seize the opportunity: a
+    face it head-on: a
+    confront the issue: a
   inconsiderate:
     take the bull by the horns: animal-violence
-    taking the bull by the horns: animal-violence
     took the bull by the horns: animal-violence
+    taking the bull by the horns: animal-violence
+    takes the bull by the horns: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Directly references the slaughter of young animals. 'Unknowingly walking into
-    danger' or 'without resistance' is more descriptive.
+  note: Direct slaughter imagery. 'Without resistance' or 'unknowingly walking into
+    danger' captures the same meaning.
   considerate:
     without resistance: a
-    blindly following: a
     unknowingly walking into danger: a
+    defenseless: a
   inconsiderate:
+    lambs to the slaughter: animal-violence
+    lamb to the slaughter: animal-violence
     like lambs to the slaughter: animal-violence
+    like a lamb to the slaughter: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Depicts swinging a living cat by its body. 'Very cramped' or 'barely any room'
-    is shorter and clearer.
+  note: Violent animal imagery for 'cramped.' 'Extremely tight space' says it directly.
   considerate:
-    very cramped: a
     extremely tight space: a
-    barely any room: a
+    very cramped: a
   inconsiderate:
     no room to swing a cat: animal-violence
+    not enough room to swing a cat: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Originates from dead, smoked fish reportedly used to train hunting dogs. 'Distraction'
@@ -177,36 +183,49 @@
     curiosity killed the cat: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Graphic slaughter imagery. 'In a panic' or 'in complete disarray' describes
-    the behavior without the image.
+  note: Graphic slaughter imagery used to describe panic. 'In a panic' or 'like your
+    hair is on fire' captures the same thing.
   considerate:
+    like your hair is on fire: a
     in a panic: a
-    running around chaotically: a
-    in complete disarray: a
+    frantic and aimless: a
   inconsiderate:
     like a chicken with its head cut off: animal-violence
+    like a chicken with their head cut off: animal-violence
+    running around like a chicken with its head cut off: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References killing and cooking a goose as a threat. 'Your fate is sealed'
-    or 'you're in trouble' is just as vivid.
+  note: Killing-and-cooking imagery used to mean someone is in trouble. 'You're in
+    trouble' says it directly.
   considerate:
     you're in trouble: a
-    your fate is sealed: a
-    it's over for you: a
+    you're done for: a
+    you're dead in the water: a
   inconsiderate:
     your goose is cooked: animal-violence
+    their goose is cooked: animal-violence
+    his goose is cooked: animal-violence
+    her goose is cooked: animal-violence
+    my goose is cooked: animal-violence
+    our goose is cooked: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Pictures feeding a person to wild animals as a betrayal metaphor. 'Abandon
-    to criticism' or 'sacrifice someone' is more precise.
+  note: Frames a person as prey. 'Abandon to criticism' or 'leave exposed' carries
+    the same meaning without the imagery.
   considerate:
     abandon to criticism: a
-    leave to face hostility alone: a
     sacrifice someone: a
+    leave exposed: a
   inconsiderate:
     throw someone to the wolves: animal-violence
-    throwing someone to the wolves: animal-violence
-    threw someone to the wolves: animal-violence
+    thrown to the wolves: animal-violence
+    throwing to the wolves: animal-violence
+    threw to the wolves: animal-violence
+    throw them to the wolves: animal-violence
+    throw him to the wolves: animal-violence
+    throw her to the wolves: animal-violence
+    throw us to the wolves: animal-violence
+    throw me to the wolves: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References the equipment used to hook and kill fish. 'Completely' or 'without
@@ -219,35 +238,41 @@
     hook, line, and sinker: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Wing-clipping is a painful mutilation performed on farmed and captive birds.
-    'Restrict someone's freedom' describes the metaphor without the harm.
+  note: Wing-clipping is a real physical mutilation done to captive birds. 'Restrict
+    freedom' or 'limit options' says the same thing directly.
   considerate:
-    restrict someone's freedom: a
-    limit someone's options: a
-    hold someone back: a
+    restrict freedom: a
+    limit options: a
+    hold back: a
   inconsiderate:
     clip someone's wings: animal-violence
-    clipping someone's wings: animal-violence
-    clipped someone's wings: animal-violence
+    clip their wings: animal-violence
+    clip his wings: animal-violence
+    clip her wings: animal-violence
+    clipped wings: animal-violence
+    clipping wings: animal-violence
+    clips wings: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Describes overloading a pack animal until it collapses. 'The tipping point'
-    or 'breaking point' is a more precise metaphor.
+  note: Overloading a pack animal until its back breaks. 'Tipping point' or 'breaking
+    point' carries the same meaning.
   considerate:
-    the tipping point: a
-    the breaking point: a
-    the final provocation: a
+    tipping point: a
+    breaking point: a
+    final blow: a
   inconsiderate:
-    the straw that broke the camel's back: animal-violence
+    straw that broke the camel's back: animal-violence
+    last straw: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Comes from bird-hunting — a caught bird being worth more than two still alive.
-    'A sure thing beats a possibility' carries the same meaning.
+  note: References trapping wild birds. 'A sure thing beats a possibility' carries
+    the same meaning.
   considerate:
     a sure thing beats a possibility: a
-    certainty over speculation: a
+    a guaranteed outcome is worth more: a
   inconsiderate:
-    a bird in the hand is worth two in the bush: animal-violence
+    a bird in the hand: animal-violence
+    bird in the hand is worth: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: References eating a killed bird as humiliating punishment. 'Admit being wrong'
@@ -261,14 +286,14 @@
     eating crow: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Frames cats and dogs as inherently violent toward each other. 'Constantly
-    argue' or 'clash frequently' describes the behavior without the stereotype.
+  note: Animal-fighting imagery. 'Constantly argue' or 'clash frequently' says it
+    directly.
   considerate:
     constantly argue: a
     clash frequently: a
-    have constant conflict: a
   inconsiderate:
     fight like cats and dogs: animal-violence
+    fights like cats and dogs: animal-violence
     fighting like cats and dogs: animal-violence
     fought like cats and dogs: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
@@ -285,14 +310,15 @@
     took the bait: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Treats unhatched chicks as units of production to be counted. 'Don't assume
-    success prematurely' conveys the same caution.
+  note: Commodity framing of chickens as a yield to be counted. 'Don't assume success
+    prematurely' says it directly.
   considerate:
     don't assume success prematurely: a
-    wait for confirmed results: a
-    don't get ahead of yourself: a
+    don't celebrate too early: a
   inconsiderate:
-    don't count your chickens before they hatch: animal-violence
+    don't count your chickens: animal-violence
+    counting your chickens: animal-violence
+    count your chickens before: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Uses a chicken as an insult for cowardice. 'Don't hesitate' or 'be brave'
@@ -325,17 +351,6 @@
     ferret out: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Infrastructure metaphor that frames cattle as disposable and pets as individual
-    — erasing that both are sentient. 'Ephemeral vs. persistent' is technically more
-    precise.
-  considerate:
-    ephemeral vs. persistent: a
-    disposable vs. unique: a
-    numbered vs. named: a
-  inconsiderate:
-    cattle vs. pets: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
   note: Refers to canaries historically placed in coal mines to die first as a warning
     to miners. 'Early warning signal' or 'sentinel' conveys the meaning without the
     harm.
@@ -347,14 +362,15 @@
     canary in a coal mine: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Describes fishing — which kills fish — as a metaphor for aimless searching.
-    'Exploratory investigation' or 'speculative inquiry' is more precise.
+  note: Frames speculative inquiry as fishing — the metaphor softens the catch. 'Exploratory
+    investigation' is clearer, especially in legal writing.
   considerate:
     exploratory investigation: a
-    unfocused search: a
     speculative inquiry: a
+    unfocused search: a
   inconsiderate:
-    go on a fishing expedition: animal-violence
+    fishing expedition: animal-violence
+    fishing expeditions: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Treats cattle as objects in an 'untouchable' metaphor while also trivializing
@@ -412,17 +428,6 @@
     whack a mole: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Reduces cows to profit generators. 'Profit center' or 'reliable revenue source'
-    conveys the same meaning without commodifying animals.
-  considerate:
-    profit center: a
-    reliable revenue source: a
-    money maker: a
-  inconsiderate:
-    cash cow: animal-violence
-    cash cows: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
   note: References the ritual slaughter of lambs. 'Expendable person' or 'someone
     sacrificed for others' communicates the metaphor directly.
   considerate:
@@ -455,16 +460,6 @@
     open season: animal-violence
     opening season: animal-violence
     opened season: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Often a euphemism for disposing of farm animals when they are no longer productive.
-    'Retire', 'phase out', or 'sunset' is a cleaner metaphor.
-  considerate:
-    retire: a
-    phase out: a
-    sunset: a
-  inconsiderate:
-    put out to pasture: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Hunting imagery — a duck that has been shot and killed. 'Lost cause' or 'doomed

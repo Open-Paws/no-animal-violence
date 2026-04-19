@@ -2,131 +2,171 @@
 # Source: https://doi.org/10.1007/s43681-023-00380-w
 
 - type: basic
-  note: Industry term that defines sentient beings by their commercial function. 'Farmed
-    animals' is factually equivalent and doesn't erase the individuals.
+  note: Commodity framing that groups sentient beings as 'stock.' 'Farmed animals'
+    keeps the meaning without the commodity framing.
   considerate:
     farmed animals: a
-    animals raised for food: a
   inconsiderate:
     livestock: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry term that abstracts individual birds into a bulk commodity. 'Farmed
-    birds' or the specific species is more precise.
+  note: Commodity framing for farmed birds. 'Farmed birds' or the specific species
+    keeps the meaning without the commodity framing.
   considerate:
     farmed birds: a
-    chickens: a
     chickens and turkeys: a
   inconsiderate:
     poultry: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism for a metal enclosure so small a pregnant pig cannot turn
-    around for her entire pregnancy. 'Pregnancy cage' describes what it actually is.
+  note: Industry euphemism for a metal enclosure so small a pregnant sow cannot turn
+    around for her entire 3.5-month pregnancy. 'Pregnancy cage' is accurate.
   considerate:
     pregnancy cage: a
-    pregnancy cages: a
   inconsiderate:
     gestation crate: industry-euphemism
     gestation crates: industry-euphemism
+    gestation stall: industry-euphemism
+    gestation stalls: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Industry euphemism for killing entire flocks or herds at once. 'Mass killing'
-    is the accurate term. (Suppressed automatically in database or population-statistics
-    contexts where the word refers to removing records.)
+    is the accurate term. (Suppressed in database or population-statistics contexts
+    where the word refers to removing records.)
   considerate:
     mass killing: a
     killed en masse: a
-    killing en masse: a
   inconsiderate:
     depopulation: industry-euphemism
     depopulated: industry-euphemism
     depopulating: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism for a facility that kills animals. 'Slaughterhouse' is
-    the accurate term.
+  note: Industry euphemisms for slaughterhouse. 'Slaughterhouse' is the accurate term.
+    (Suppressed in clearly non-animal contexts like data or chemical processing.)
   considerate:
     slaughterhouse: a
-    slaughterhouses: a
   inconsiderate:
+    meat plant: industry-euphemism
+    meat plants: industry-euphemism
+    meat packing plant: industry-euphemism
+    meat-packing plant: industry-euphemism
+    meatpacking plant: industry-euphemism
+    packing plant: industry-euphemism
+    packing plants: industry-euphemism
     processing plant: industry-euphemism
-    processing plants: industry-euphemism
     processing facility: industry-euphemism
-    processing facilities: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism for a metal cage that confines a pig during and after giving
-    birth. 'Birthing cage' describes the reality.
+  note: Industry euphemism for the metal cage confining a sow during birth and nursing.
+    'Birthing cage' is accurate.
   considerate:
     birthing cage: a
-    birthing cages: a
   inconsiderate:
     farrowing crate: industry-euphemism
     farrowing crates: industry-euphemism
+    farrowing stall: industry-euphemism
+    farrowing stalls: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism for wire enclosures giving each hen less floor space than
-    a sheet of paper. 'Small wire cage' or 'confined cage' is more accurate.
+  note: Industry euphemism for wire enclosures that give each hen less floor space
+    than a sheet of paper. 'Small wire cage' describes what it is.
   considerate:
     small wire cage: a
-    small wire cages: a
     confined cage: a
-    confined cages: a
   inconsiderate:
     battery cage: industry-euphemism
     battery cages: industry-euphemism
+    battery-cage: industry-euphemism
+    battery-caged: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Frames a living hen as a depleted resource. These hens are typically killed
-    when egg production drops below commercial thresholds. 'Discarded hen' describes
-    the reality.
+  note: '''Spent'' frames the hen as a depleted resource. Naming what actually happens
+    — she is killed when her egg production falls — is more accurate.'
   considerate:
-    discarded hen: a
-    discarded hens: a
     hen killed after egg production declines: a
   inconsiderate:
     spent hen: industry-euphemism
     spent hens: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit
-    bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
+  note: Industry oxymoron — a killing cannot be 'humane' to the one being killed.
+    Drop the modifier and use 'slaughter' or 'killing.'
   considerate:
     slaughter: a
-    slaughtered: a
     killing: a
-    killed: a
   inconsiderate:
     humane slaughter: industry-euphemism
     humanely slaughter: industry-euphemism
-    humane slaughtered: industry-euphemism
     humanely slaughtered: industry-euphemism
     humane killing: industry-euphemism
-    humanely killing: industry-euphemism
-    humane killed: industry-euphemism
-    humanely killed: industry-euphemism
+    humane death: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry term that defines a living chicken entirely by its commercial purpose.
-    'Chicken raised for meat' or 'meat chicken' preserves the individual.
+  note: Industry term that defines a chicken by its commercial purpose. 'Chicken raised
+    for meat' is the human-readable version. (The kitchen appliance is not flagged.)
   considerate:
     chicken raised for meat: a
-    chickens raised for meat: a
-    meat chicken: a
-    meat chickens: a
   inconsiderate:
-    broiler: industry-euphemism
+    broiler chicken: industry-euphemism
+    broiler chickens: industry-euphemism
+    broiler hen: industry-euphemism
+    broiler hens: industry-euphemism
     broilers: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism for the flesh of male dairy calves, typically killed within
-    weeks of birth. 'Calf flesh' makes the species and age visible.
+  note: Infrastructure metaphor that Google's own style guide flags for removal as
+    'figurative language that relates to the slaughter of animals.' 'Ephemeral vs.
+    persistent' or 'disposable vs. unique' captures the same architectural concept.
+  considerate:
+    ephemeral vs. persistent: a
+    disposable vs. unique: a
+    numbered vs. named: a
+  inconsiderate:
+    cattle not pets: industry-euphemism
+    cattle vs pets: industry-euphemism
+    cattle vs. pets: industry-euphemism
+    cattle versus pets: industry-euphemism
+    cattle, not pets: industry-euphemism
+    pets not cattle: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Treats a cow as a thing to be extracted from for profit. 'Moneymaker' or 'profit
+    center' carries the same meaning.
+  considerate:
+    moneymaker: a
+    profit center: a
+    reliable revenue source: a
+  inconsiderate:
+    cash cow: industry-euphemism
+    cash cows: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Refers to the farm practice of disposing of animals once they're no longer
+    productive. 'Retire,' 'phase out,' or 'sunset' is clearer and carries no harm.
+  considerate:
+    retire: a
+    phase out: a
+    sunset: a
+  inconsiderate:
+    put out to pasture: industry-euphemism
+    putting out to pasture: industry-euphemism
+    put him out to pasture: industry-euphemism
+    put her out to pasture: industry-euphemism
+    put them out to pasture: industry-euphemism
+    puts out to pasture: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: '''Veal'' softens ''slaughtered-calf flesh'' via a Norman-French borrowing.
+    In advocacy or industry-critical writing, ''calf flesh'' names what it is. (Suppressed
+    in recipes and cooking contexts.)'
   considerate:
     calf flesh: a
-    flesh from calves: a
+    calf meat: a
   inconsiderate:
     veal: industry-euphemism
+    veal calf: industry-euphemism
+    veal calves: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: Industry euphemism for slicing or burning off hens' beaks, typically without
@@ -284,6 +324,17 @@
   inconsiderate:
     cattle call: industry-euphemism
     cattle calls: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Carries over the property framing of 'pet' (something owned) to the project.
+    'Side project' or 'passion project' captures the same idea without the ownership
+    framing.
+  considerate:
+    side project: a
+    passion project: a
+  inconsiderate:
+    pet project: industry-euphemism
+    pet projects: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
   note: USDA-unregulated marketing label — companies define their own standards, and

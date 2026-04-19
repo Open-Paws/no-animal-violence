@@ -33,22 +33,23 @@ rules:
     - animal-violence
   reason: This phrase uses an image of striking an animal's body as a metaphor for
     wasted effort. 'Belabor the point' is clearer and skips the imagery.
-- name: more-than-one-way-to-skin-a-cat
+- name: skin-a-cat
   terms:
   - more than one way to skin a cat
-  - many ways to skin a cat
-  - other ways to skin a cat
+  - another way to skin a cat
+  - different ways to skin a cat
+  - several ways to skin a cat
   alternatives:
-  - more than one way to solve this
+  - more than one way to peel an orange
   - multiple approaches available
-  - several ways to accomplish this
+  - several ways to do this
   severity: error
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Treats a graphic act of violence against cats as an everyday problem-solving
-    metaphor. 'More than one way to solve this' works just as well.
+  reason: Cat skinning as a metaphor for having options. 'Multiple approaches available'
+    or 'more than one way to peel an orange' carries the same meaning.
 - name: let-the-cat-out-of-the-bag
   terms:
   - let the cat out of the bag
@@ -94,20 +95,22 @@ rules:
     - animal-violence
   reason: Casts pursuing a living bird as a pointless annoyance. 'Futile search' or
     'fool's errand' says the same thing without the hunting framing.
-- name: like-shooting-fish-in-a-barrel
+- name: shooting-fish-in-a-barrel
   terms:
+  - shooting fish in a barrel
+  - shoot fish in a barrel
   - like shooting fish in a barrel
   alternatives:
   - trivially easy
-  - like taking candy from a baby
-  - effortless
+  - a sure thing
+  - no challenge at all
   severity: error
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Treats killing trapped fish as a lighthearted comparison for an easy task.
-    'Trivially easy' or 'effortless' avoids the image.
+  reason: Mass-killing imagery used to mean 'easy.' 'Trivially easy' or 'a sure thing'
+    says the same thing without it.
 - name: flog-a-dead-horse
   terms:
   - flog a dead horse
@@ -123,20 +126,20 @@ rules:
     - animal-violence
   reason: Describes whipping an animal's corpse — the same image as 'beat a dead horse'.
     'Belabor the point' is a direct replacement.
-- name: there-are-bigger-fish-to-fry
+- name: bigger-fish-to-fry
   terms:
-  - there are bigger fish to fry
+  - bigger fish to fry
+  - other fish to fry
   alternatives:
   - more important matters to address
-  - higher priorities
-  - bigger issues at hand
+  - bigger fish to free
   severity: info
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Frames killing and cooking fish as a throwaway comparison. 'More important
-    matters to address' is just as expressive.
+  reason: Fish-as-food commodification for 'more important things.' 'More important
+    matters' says the same thing.
 - name: guinea-pig
   terms:
   - guinea pig
@@ -168,50 +171,53 @@ rules:
     - animal-violence
   reason: Describes slaughtered pig flesh as the fruit of success. 'Bring home the
     results' or 'earn a living' carries the same meaning.
-- name: take-the-bull-by-the-horns
+- name: take-the-bull-by-horns
   terms:
   - take the bull by the horns
-  - taking the bull by the horns
   - took the bull by the horns
+  - taking the bull by the horns
+  - takes the bull by the horns
   alternatives:
-  - face the challenge head-on
   - tackle the problem directly
-  - seize the opportunity
+  - face it head-on
+  - confront the issue
   severity: warning
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Evokes bullfighting, where bulls are wounded and killed for entertainment.
-    'Face the challenge head-on' conveys the same assertiveness.
-- name: like-lambs-to-the-slaughter
+  reason: Bullfighting/rodeo imagery. 'Tackle the problem directly' or 'face it head-on'
+    is cleaner.
+- name: lambs-to-slaughter
   terms:
+  - lambs to the slaughter
+  - lamb to the slaughter
   - like lambs to the slaughter
+  - like a lamb to the slaughter
   alternatives:
   - without resistance
-  - blindly following
   - unknowingly walking into danger
+  - defenseless
   severity: error
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Directly references the slaughter of young animals. 'Unknowingly walking
-    into danger' or 'without resistance' is more descriptive.
+  reason: Direct slaughter imagery. 'Without resistance' or 'unknowingly walking into
+    danger' captures the same meaning.
 - name: no-room-to-swing-a-cat
   terms:
   - no room to swing a cat
+  - not enough room to swing a cat
   alternatives:
-  - very cramped
   - extremely tight space
-  - barely any room
+  - very cramped
   severity: warning
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Depicts swinging a living cat by its body. 'Very cramped' or 'barely any
-    room' is shorter and clearer.
+  reason: Violent animal imagery for 'cramped.' 'Extremely tight space' says it directly.
 - name: red-herring
   terms:
   - red herring
@@ -240,50 +246,63 @@ rules:
     - animal-violence
   reason: A direct reference to killing a cat, used as a cautionary phrase. 'Curiosity
     backfired' or 'being nosy caused trouble' says the same thing.
-- name: like-a-chicken-with-its-head-cut-off
+- name: chicken-head-cut-off
   terms:
   - like a chicken with its head cut off
+  - like a chicken with their head cut off
+  - running around like a chicken with its head cut off
   alternatives:
+  - like your hair is on fire
   - in a panic
-  - running around chaotically
-  - in complete disarray
+  - frantic and aimless
   severity: error
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Graphic slaughter imagery. 'In a panic' or 'in complete disarray' describes
-    the behavior without the image.
-- name: your-goose-is-cooked
+  reason: Graphic slaughter imagery used to describe panic. 'In a panic' or 'like
+    your hair is on fire' captures the same thing.
+- name: goose-is-cooked
   terms:
   - your goose is cooked
+  - their goose is cooked
+  - his goose is cooked
+  - her goose is cooked
+  - my goose is cooked
+  - our goose is cooked
   alternatives:
   - you're in trouble
-  - your fate is sealed
-  - it's over for you
+  - you're done for
+  - you're dead in the water
   severity: error
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: References killing and cooking a goose as a threat. 'Your fate is sealed'
-    or 'you're in trouble' is just as vivid.
-- name: throw-someone-to-the-wolves
+  reason: Killing-and-cooking imagery used to mean someone is in trouble. 'You're
+    in trouble' says it directly.
+- name: throw-to-wolves
   terms:
   - throw someone to the wolves
-  - throwing someone to the wolves
-  - threw someone to the wolves
+  - thrown to the wolves
+  - throwing to the wolves
+  - threw to the wolves
+  - throw them to the wolves
+  - throw him to the wolves
+  - throw her to the wolves
+  - throw us to the wolves
+  - throw me to the wolves
   alternatives:
   - abandon to criticism
-  - leave to face hostility alone
   - sacrifice someone
+  - leave exposed
   severity: error
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Pictures feeding a person to wild animals as a betrayal metaphor. 'Abandon
-    to criticism' or 'sacrifice someone' is more precise.
+  reason: Frames a person as prey. 'Abandon to criticism' or 'leave exposed' carries
+    the same meaning without the imagery.
 - name: hook-line-and-sinker
   terms:
   - hook, line, and sinker
@@ -298,49 +317,55 @@ rules:
     - animal-violence
   reason: References the equipment used to hook and kill fish. 'Completely' or 'without
     question' conveys total buy-in without the fishing imagery.
-- name: clip-someones-wings
+- name: clip-wings
   terms:
   - clip someone's wings
-  - clipping someone's wings
-  - clipped someone's wings
+  - clip their wings
+  - clip his wings
+  - clip her wings
+  - clipped wings
+  - clipping wings
+  - clips wings
   alternatives:
-  - restrict someone's freedom
-  - limit someone's options
-  - hold someone back
+  - restrict freedom
+  - limit options
+  - hold back
   severity: warning
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Wing-clipping is a painful mutilation performed on farmed and captive birds.
-    'Restrict someone's freedom' describes the metaphor without the harm.
-- name: the-straw-that-broke-the-camels-back
+  reason: Wing-clipping is a real physical mutilation done to captive birds. 'Restrict
+    freedom' or 'limit options' says the same thing directly.
+- name: straw-that-broke-camels-back
   terms:
-  - the straw that broke the camel's back
+  - straw that broke the camel's back
+  - last straw
   alternatives:
-  - the tipping point
-  - the breaking point
-  - the final provocation
+  - tipping point
+  - breaking point
+  - final blow
   severity: warning
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Describes overloading a pack animal until it collapses. 'The tipping point'
-    or 'breaking point' is a more precise metaphor.
-- name: a-bird-in-the-hand-is-worth-two-in-the-bush
+  reason: Overloading a pack animal until its back breaks. 'Tipping point' or 'breaking
+    point' carries the same meaning.
+- name: a-bird-in-the-hand
   terms:
-  - a bird in the hand is worth two in the bush
+  - a bird in the hand
+  - bird in the hand is worth
   alternatives:
   - a sure thing beats a possibility
-  - certainty over speculation
+  - a guaranteed outcome is worth more
   severity: info
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Comes from bird-hunting — a caught bird being worth more than two still
-    alive. 'A sure thing beats a possibility' carries the same meaning.
+  reason: References trapping wild birds. 'A sure thing beats a possibility' carries
+    the same meaning.
 - name: eat-crow
   terms:
   - eat crow
@@ -359,19 +384,19 @@ rules:
 - name: fight-like-cats-and-dogs
   terms:
   - fight like cats and dogs
+  - fights like cats and dogs
   - fighting like cats and dogs
   - fought like cats and dogs
   alternatives:
   - constantly argue
   - clash frequently
-  - have constant conflict
   severity: warning
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Frames cats and dogs as inherently violent toward each other. 'Constantly
-    argue' or 'clash frequently' describes the behavior without the stereotype.
+  reason: Animal-fighting imagery. 'Constantly argue' or 'clash frequently' says it
+    directly.
 - name: take-the-bait
   terms:
   - take the bait
@@ -388,62 +413,61 @@ rules:
     - animal-violence
   reason: References baiting hooks and traps to catch and kill animals. 'Fall for
     it' or 'be deceived' is more direct.
-- name: dont-count-your-chickens-before-they-hatch
+- name: dont-count-your-chickens
   terms:
-  - don't count your chickens before they hatch
+  - don't count your chickens
+  - counting your chickens
+  - count your chickens before
   alternatives:
   - don't assume success prematurely
-  - wait for confirmed results
-  - don't get ahead of yourself
+  - don't celebrate too early
   severity: info
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Treats unhatched chicks as units of production to be counted. 'Don't assume
-    success prematurely' conveys the same caution.
+  reason: Commodity framing of chickens as a yield to be counted. 'Don't assume success
+    prematurely' says it directly.
 - name: livestock
   terms:
   - livestock
   alternatives:
   - farmed animals
-  - animals raised for food
   severity: warning
   options:
     word_boundary: true
     categories:
     - industry-euphemism
-  reason: Industry term that defines sentient beings by their commercial function.
-    'Farmed animals' is factually equivalent and doesn't erase the individuals.
+  reason: Commodity framing that groups sentient beings as 'stock.' 'Farmed animals'
+    keeps the meaning without the commodity framing.
 - name: poultry
   terms:
   - poultry
   alternatives:
   - farmed birds
-  - chickens
   - chickens and turkeys
   severity: warning
   options:
     word_boundary: true
     categories:
     - industry-euphemism
-  reason: Industry term that abstracts individual birds into a bulk commodity. 'Farmed
-    birds' or the specific species is more precise.
+  reason: Commodity framing for farmed birds. 'Farmed birds' or the specific species
+    keeps the meaning without the commodity framing.
 - name: gestation-crate
   terms:
   - gestation crate
   - gestation crates
+  - gestation stall
+  - gestation stalls
   alternatives:
   - pregnancy cage
-  - pregnancy cages
   severity: warning
   options:
-    word_boundary: true
+    word_boundary: false
     categories:
     - industry-euphemism
-  reason: Industry euphemism for a metal enclosure so small a pregnant pig cannot
-    turn around for her entire pregnancy. 'Pregnancy cage' describes what it actually
-    is.
+  reason: Industry euphemism for a metal enclosure so small a pregnant sow cannot
+    turn around for her entire 3.5-month pregnancy. 'Pregnancy cage' is accurate.
 - name: depopulation
   terms:
   - depopulation
@@ -452,115 +476,112 @@ rules:
   alternatives:
   - mass killing
   - killed en masse
-  - killing en masse
   severity: warning
   options:
     word_boundary: true
     categories:
     - industry-euphemism
   reason: Industry euphemism for killing entire flocks or herds at once. 'Mass killing'
-    is the accurate term. (Suppressed automatically in database or population-statistics
-    contexts where the word refers to removing records.)
+    is the accurate term. (Suppressed in database or population-statistics contexts
+    where the word refers to removing records.)
 - name: processing-plant
   terms:
+  - meat plant
+  - meat plants
+  - meat packing plant
+  - meat-packing plant
+  - meatpacking plant
+  - packing plant
+  - packing plants
   - processing plant
-  - processing plants
   - processing facility
-  - processing facilities
   alternatives:
   - slaughterhouse
-  - slaughterhouses
   severity: warning
   options:
-    word_boundary: true
+    word_boundary: false
     categories:
     - industry-euphemism
-  reason: Industry euphemism for a facility that kills animals. 'Slaughterhouse' is
-    the accurate term.
+  reason: Industry euphemisms for slaughterhouse. 'Slaughterhouse' is the accurate
+    term. (Suppressed in clearly non-animal contexts like data or chemical processing.)
 - name: farrowing-crate
   terms:
   - farrowing crate
   - farrowing crates
+  - farrowing stall
+  - farrowing stalls
   alternatives:
   - birthing cage
-  - birthing cages
   severity: warning
   options:
-    word_boundary: true
+    word_boundary: false
     categories:
     - industry-euphemism
-  reason: Industry euphemism for a metal cage that confines a pig during and after
-    giving birth. 'Birthing cage' describes the reality.
+  reason: Industry euphemism for the metal cage confining a sow during birth and nursing.
+    'Birthing cage' is accurate.
 - name: battery-cage
   terms:
   - battery cage
   - battery cages
+  - battery-cage
+  - battery-caged
   alternatives:
   - small wire cage
-  - small wire cages
   - confined cage
-  - confined cages
   severity: warning
   options:
-    word_boundary: true
+    word_boundary: false
     categories:
     - industry-euphemism
-  reason: Industry euphemism for wire enclosures giving each hen less floor space
-    than a sheet of paper. 'Small wire cage' or 'confined cage' is more accurate.
+  reason: Industry euphemism for wire enclosures that give each hen less floor space
+    than a sheet of paper. 'Small wire cage' describes what it is.
 - name: spent-hen
   terms:
   - spent hen
   - spent hens
   alternatives:
-  - discarded hen
-  - discarded hens
   - hen killed after egg production declines
   severity: warning
   options:
-    word_boundary: true
+    word_boundary: false
     categories:
     - industry-euphemism
-  reason: Frames a living hen as a depleted resource. These hens are typically killed
-    when egg production drops below commercial thresholds. 'Discarded hen' describes
-    the reality.
+  reason: '''Spent'' frames the hen as a depleted resource. Naming what actually happens
+    — she is killed when her egg production falls — is more accurate.'
 - name: humane-slaughter
   terms:
   - humane slaughter
   - humanely slaughter
-  - humane slaughtered
   - humanely slaughtered
   - humane killing
-  - humanely killing
-  - humane killed
-  - humanely killed
+  - humane death
   alternatives:
   - slaughter
-  - slaughtered
   - killing
-  - killed
   severity: warning
   options:
-    word_boundary: true
+    word_boundary: false
     categories:
     - industry-euphemism
-  reason: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit
-    bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
-- name: broiler
+  reason: Industry oxymoron — a killing cannot be 'humane' to the one being killed.
+    Drop the modifier and use 'slaughter' or 'killing.'
+- name: broiler-chicken
   terms:
-  - broiler
+  - broiler chicken
+  - broiler chickens
+  - broiler hen
+  - broiler hens
   - broilers
   alternatives:
   - chicken raised for meat
-  - chickens raised for meat
-  - meat chicken
-  - meat chickens
   severity: warning
   options:
     word_boundary: true
     categories:
     - industry-euphemism
-  reason: Industry term that defines a living chicken entirely by its commercial purpose.
-    'Chicken raised for meat' or 'meat chicken' preserves the individual.
+  reason: Industry term that defines a chicken by its commercial purpose. 'Chicken
+    raised for meat' is the human-readable version. (The kitchen appliance is not
+    flagged.)
 - name: dont-be-a-chicken
   terms:
   - don't be a chicken
@@ -605,7 +626,12 @@ rules:
     to be killed. 'Uncover' or 'dig up' works just as well.
 - name: cattle-vs-pets
   terms:
+  - cattle not pets
+  - cattle vs pets
   - cattle vs. pets
+  - cattle versus pets
+  - cattle, not pets
+  - pets not cattle
   alternatives:
   - ephemeral vs. persistent
   - disposable vs. unique
@@ -614,10 +640,10 @@ rules:
   options:
     word_boundary: false
     categories:
-    - animal-violence
-  reason: Infrastructure metaphor that frames cattle as disposable and pets as individual
-    — erasing that both are sentient. 'Ephemeral vs. persistent' is technically more
-    precise.
+    - industry-euphemism
+  reason: Infrastructure metaphor that Google's own style guide flags for removal
+    as 'figurative language that relates to the slaughter of animals.' 'Ephemeral
+    vs. persistent' or 'disposable vs. unique' captures the same architectural concept.
 - name: canary-in-a-coal-mine
   terms:
   - canary in a coal mine
@@ -633,20 +659,21 @@ rules:
   reason: Refers to canaries historically placed in coal mines to die first as a warning
     to miners. 'Early warning signal' or 'sentinel' conveys the meaning without the
     harm.
-- name: go-on-a-fishing-expedition
+- name: fishing-expedition
   terms:
-  - go on a fishing expedition
+  - fishing expedition
+  - fishing expeditions
   alternatives:
   - exploratory investigation
-  - unfocused search
   - speculative inquiry
+  - unfocused search
   severity: warning
   options:
     word_boundary: false
     categories:
     - animal-violence
-  reason: Describes fishing — which kills fish — as a metaphor for aimless searching.
-    'Exploratory investigation' or 'speculative inquiry' is more precise.
+  reason: Frames speculative inquiry as fishing — the metaphor softens the catch.
+    'Exploratory investigation' is clearer, especially in legal writing.
 - name: sacred-cow
   terms:
   - sacred cow
@@ -727,16 +754,16 @@ rules:
   - cash cow
   - cash cows
   alternatives:
+  - moneymaker
   - profit center
   - reliable revenue source
-  - money maker
   severity: warning
   options:
-    word_boundary: true
+    word_boundary: false
     categories:
-    - animal-violence
-  reason: Reduces cows to profit generators. 'Profit center' or 'reliable revenue
-    source' conveys the same meaning without commodifying animals.
+    - industry-euphemism
+  reason: Treats a cow as a thing to be extracted from for profit. 'Moneymaker' or
+    'profit center' carries the same meaning.
 - name: sacrificial-lamb
   terms:
   - sacrificial lamb
@@ -786,6 +813,11 @@ rules:
 - name: put-out-to-pasture
   terms:
   - put out to pasture
+  - putting out to pasture
+  - put him out to pasture
+  - put her out to pasture
+  - put them out to pasture
+  - puts out to pasture
   alternatives:
   - retire
   - phase out
@@ -794,9 +826,9 @@ rules:
   options:
     word_boundary: false
     categories:
-    - animal-violence
-  reason: Often a euphemism for disposing of farm animals when they are no longer
-    productive. 'Retire', 'phase out', or 'sunset' is a cleaner metaphor.
+    - industry-euphemism
+  reason: Refers to the farm practice of disposing of animals once they're no longer
+    productive. 'Retire,' 'phase out,' or 'sunset' is clearer and carries no harm.
 - name: dead-duck
   terms:
   - dead duck
@@ -830,16 +862,19 @@ rules:
 - name: veal
   terms:
   - veal
+  - veal calf
+  - veal calves
   alternatives:
   - calf flesh
-  - flesh from calves
-  severity: warning
+  - calf meat
+  severity: info
   options:
     word_boundary: true
     categories:
     - industry-euphemism
-  reason: Industry euphemism for the flesh of male dairy calves, typically killed
-    within weeks of birth. 'Calf flesh' makes the species and age visible.
+  reason: '''Veal'' softens ''slaughtered-calf flesh'' via a Norman-French borrowing.
+    In advocacy or industry-critical writing, ''calf flesh'' names what it is. (Suppressed
+    in recipes and cooking contexts.)'
 - name: lame-duck
   terms:
   - lame duck
@@ -1064,6 +1099,21 @@ rules:
     - industry-euphemism
   reason: Likens human applicants to livestock being herded. 'Open call' or 'mass
     audition' carries the same meaning without the framing.
+- name: pet-project
+  terms:
+  - pet project
+  - pet projects
+  alternatives:
+  - side project
+  - passion project
+  severity: info
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+  reason: Carries over the property framing of 'pet' (something owned) to the project.
+    'Side project' or 'passion project' captures the same idea without the ownership
+    framing.
 - name: humanely-raised
   terms:
   - humanely raised

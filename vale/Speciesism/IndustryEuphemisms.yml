@@ -5,62 +5,116 @@ link: https://doi.org/10.1007/s43681-023-00380-w
 level: warning
 ignorecase: true
 swap:
-  # livestock: Industry term that defines sentient beings by their commercial function. 'Farmed animals' is factually equivalent and doesn't erase the individuals.
+  # livestock: Commodity framing that groups sentient beings as 'stock.' 'Farmed animals' keeps the meaning without the commodity framing.
   'livestock': 'farmed animals'
-  # poultry: Industry term that abstracts individual birds into a bulk commodity. 'Farmed birds' or the specific species is more precise.
+  # poultry: Commodity framing for farmed birds. 'Farmed birds' or the specific species keeps the meaning without the commodity framing.
   'poultry': 'farmed birds'
-  # gestation-crate: Industry euphemism for a metal enclosure so small a pregnant pig cannot turn around for her entire pregnancy. 'Pregnancy cage' describes what it actually is.
+  # gestation-crate: Industry euphemism for a metal enclosure so small a pregnant sow cannot turn around for her entire 3.5-month pregnancy. 'Pregnancy cage' is accurate.
   'gestation crate': 'pregnancy cage'
-  # gestation-crate: Industry euphemism for a metal enclosure so small a pregnant pig cannot turn around for her entire pregnancy. 'Pregnancy cage' describes what it actually is.
+  # gestation-crate: Industry euphemism for a metal enclosure so small a pregnant sow cannot turn around for her entire 3.5-month pregnancy. 'Pregnancy cage' is accurate.
   'gestation crates': 'pregnancy cage'
-  # depopulation: Industry euphemism for killing entire flocks or herds at once. 'Mass killing' is the accurate term. (Suppressed automatically in database or population-statistics contexts where the word refers to removing records.)
+  # gestation-crate: Industry euphemism for a metal enclosure so small a pregnant sow cannot turn around for her entire 3.5-month pregnancy. 'Pregnancy cage' is accurate.
+  'gestation stall': 'pregnancy cage'
+  # gestation-crate: Industry euphemism for a metal enclosure so small a pregnant sow cannot turn around for her entire 3.5-month pregnancy. 'Pregnancy cage' is accurate.
+  'gestation stalls': 'pregnancy cage'
+  # depopulation: Industry euphemism for killing entire flocks or herds at once. 'Mass killing' is the accurate term. (Suppressed in database or population-statistics contexts where the word refers to removing records.)
   'depopulation': 'mass killing'
-  # depopulation: Industry euphemism for killing entire flocks or herds at once. 'Mass killing' is the accurate term. (Suppressed automatically in database or population-statistics contexts where the word refers to removing records.)
+  # depopulation: Industry euphemism for killing entire flocks or herds at once. 'Mass killing' is the accurate term. (Suppressed in database or population-statistics contexts where the word refers to removing records.)
   'depopulated': 'mass killing'
-  # depopulation: Industry euphemism for killing entire flocks or herds at once. 'Mass killing' is the accurate term. (Suppressed automatically in database or population-statistics contexts where the word refers to removing records.)
+  # depopulation: Industry euphemism for killing entire flocks or herds at once. 'Mass killing' is the accurate term. (Suppressed in database or population-statistics contexts where the word refers to removing records.)
   'depopulating': 'mass killing'
-  # processing-plant: Industry euphemism for a facility that kills animals. 'Slaughterhouse' is the accurate term.
+  # processing-plant: Industry euphemisms for slaughterhouse. 'Slaughterhouse' is the accurate term. (Suppressed in clearly non-animal contexts like data or chemical processing.)
+  'meat plant': 'slaughterhouse'
+  # processing-plant: Industry euphemisms for slaughterhouse. 'Slaughterhouse' is the accurate term. (Suppressed in clearly non-animal contexts like data or chemical processing.)
+  'meat plants': 'slaughterhouse'
+  # processing-plant: Industry euphemisms for slaughterhouse. 'Slaughterhouse' is the accurate term. (Suppressed in clearly non-animal contexts like data or chemical processing.)
+  'meat packing plant': 'slaughterhouse'
+  # processing-plant: Industry euphemisms for slaughterhouse. 'Slaughterhouse' is the accurate term. (Suppressed in clearly non-animal contexts like data or chemical processing.)
+  'meat-packing plant': 'slaughterhouse'
+  # processing-plant: Industry euphemisms for slaughterhouse. 'Slaughterhouse' is the accurate term. (Suppressed in clearly non-animal contexts like data or chemical processing.)
+  'meatpacking plant': 'slaughterhouse'
+  # processing-plant: Industry euphemisms for slaughterhouse. 'Slaughterhouse' is the accurate term. (Suppressed in clearly non-animal contexts like data or chemical processing.)
+  'packing plant': 'slaughterhouse'
+  # processing-plant: Industry euphemisms for slaughterhouse. 'Slaughterhouse' is the accurate term. (Suppressed in clearly non-animal contexts like data or chemical processing.)
+  'packing plants': 'slaughterhouse'
+  # processing-plant: Industry euphemisms for slaughterhouse. 'Slaughterhouse' is the accurate term. (Suppressed in clearly non-animal contexts like data or chemical processing.)
   'processing plant': 'slaughterhouse'
-  # processing-plant: Industry euphemism for a facility that kills animals. 'Slaughterhouse' is the accurate term.
-  'processing plants': 'slaughterhouse'
-  # processing-plant: Industry euphemism for a facility that kills animals. 'Slaughterhouse' is the accurate term.
+  # processing-plant: Industry euphemisms for slaughterhouse. 'Slaughterhouse' is the accurate term. (Suppressed in clearly non-animal contexts like data or chemical processing.)
   'processing facility': 'slaughterhouse'
-  # processing-plant: Industry euphemism for a facility that kills animals. 'Slaughterhouse' is the accurate term.
-  'processing facilities': 'slaughterhouse'
-  # farrowing-crate: Industry euphemism for a metal cage that confines a pig during and after giving birth. 'Birthing cage' describes the reality.
+  # farrowing-crate: Industry euphemism for the metal cage confining a sow during birth and nursing. 'Birthing cage' is accurate.
   'farrowing crate': 'birthing cage'
-  # farrowing-crate: Industry euphemism for a metal cage that confines a pig during and after giving birth. 'Birthing cage' describes the reality.
+  # farrowing-crate: Industry euphemism for the metal cage confining a sow during birth and nursing. 'Birthing cage' is accurate.
   'farrowing crates': 'birthing cage'
-  # battery-cage: Industry euphemism for wire enclosures giving each hen less floor space than a sheet of paper. 'Small wire cage' or 'confined cage' is more accurate.
+  # farrowing-crate: Industry euphemism for the metal cage confining a sow during birth and nursing. 'Birthing cage' is accurate.
+  'farrowing stall': 'birthing cage'
+  # farrowing-crate: Industry euphemism for the metal cage confining a sow during birth and nursing. 'Birthing cage' is accurate.
+  'farrowing stalls': 'birthing cage'
+  # battery-cage: Industry euphemism for wire enclosures that give each hen less floor space than a sheet of paper. 'Small wire cage' describes what it is.
   'battery cage': 'small wire cage'
-  # battery-cage: Industry euphemism for wire enclosures giving each hen less floor space than a sheet of paper. 'Small wire cage' or 'confined cage' is more accurate.
+  # battery-cage: Industry euphemism for wire enclosures that give each hen less floor space than a sheet of paper. 'Small wire cage' describes what it is.
   'battery cages': 'small wire cage'
-  # spent-hen: Frames a living hen as a depleted resource. These hens are typically killed when egg production drops below commercial thresholds. 'Discarded hen' describes the reality.
-  'spent hen': 'discarded hen'
-  # spent-hen: Frames a living hen as a depleted resource. These hens are typically killed when egg production drops below commercial thresholds. 'Discarded hen' describes the reality.
-  'spent hens': 'discarded hen'
-  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
+  # battery-cage: Industry euphemism for wire enclosures that give each hen less floor space than a sheet of paper. 'Small wire cage' describes what it is.
+  'battery-cage': 'small wire cage'
+  # battery-cage: Industry euphemism for wire enclosures that give each hen less floor space than a sheet of paper. 'Small wire cage' describes what it is.
+  'battery-caged': 'small wire cage'
+  # spent-hen: 'Spent' frames the hen as a depleted resource. Naming what actually happens — she is killed when her egg production falls — is more accurate.
+  'spent hen': 'hen killed after egg production declines'
+  # spent-hen: 'Spent' frames the hen as a depleted resource. Naming what actually happens — she is killed when her egg production falls — is more accurate.
+  'spent hens': 'hen killed after egg production declines'
+  # humane-slaughter: Industry oxymoron — a killing cannot be 'humane' to the one being killed. Drop the modifier and use 'slaughter' or 'killing.'
   'humane slaughter': 'slaughter'
-  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
+  # humane-slaughter: Industry oxymoron — a killing cannot be 'humane' to the one being killed. Drop the modifier and use 'slaughter' or 'killing.'
   'humanely slaughter': 'slaughter'
-  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
-  'humane slaughtered': 'slaughter'
-  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
+  # humane-slaughter: Industry oxymoron — a killing cannot be 'humane' to the one being killed. Drop the modifier and use 'slaughter' or 'killing.'
   'humanely slaughtered': 'slaughter'
-  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
+  # humane-slaughter: Industry oxymoron — a killing cannot be 'humane' to the one being killed. Drop the modifier and use 'slaughter' or 'killing.'
   'humane killing': 'slaughter'
-  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
-  'humanely killing': 'slaughter'
-  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
-  'humane killed': 'slaughter'
-  # humane-slaughter: An industry oxymoron. 'Humane' sanitizes the act; the standards still permit bolt guns, electrocution, and gas chambers. Just say 'slaughter' or 'killing'.
-  'humanely killed': 'slaughter'
-  # broiler: Industry term that defines a living chicken entirely by its commercial purpose. 'Chicken raised for meat' or 'meat chicken' preserves the individual.
-  'broiler': 'chicken raised for meat'
-  # broiler: Industry term that defines a living chicken entirely by its commercial purpose. 'Chicken raised for meat' or 'meat chicken' preserves the individual.
+  # humane-slaughter: Industry oxymoron — a killing cannot be 'humane' to the one being killed. Drop the modifier and use 'slaughter' or 'killing.'
+  'humane death': 'slaughter'
+  # broiler-chicken: Industry term that defines a chicken by its commercial purpose. 'Chicken raised for meat' is the human-readable version. (The kitchen appliance is not flagged.)
+  'broiler chicken': 'chicken raised for meat'
+  # broiler-chicken: Industry term that defines a chicken by its commercial purpose. 'Chicken raised for meat' is the human-readable version. (The kitchen appliance is not flagged.)
+  'broiler chickens': 'chicken raised for meat'
+  # broiler-chicken: Industry term that defines a chicken by its commercial purpose. 'Chicken raised for meat' is the human-readable version. (The kitchen appliance is not flagged.)
+  'broiler hen': 'chicken raised for meat'
+  # broiler-chicken: Industry term that defines a chicken by its commercial purpose. 'Chicken raised for meat' is the human-readable version. (The kitchen appliance is not flagged.)
+  'broiler hens': 'chicken raised for meat'
+  # broiler-chicken: Industry term that defines a chicken by its commercial purpose. 'Chicken raised for meat' is the human-readable version. (The kitchen appliance is not flagged.)
   'broilers': 'chicken raised for meat'
-  # veal: Industry euphemism for the flesh of male dairy calves, typically killed within weeks of birth. 'Calf flesh' makes the species and age visible.
+  # cattle-vs-pets: Infrastructure metaphor that Google's own style guide flags for removal as 'figurative language that relates to the slaughter of animals.' 'Ephemeral vs. persistent' or 'disposable vs. unique' captures the same architectural concept.
+  'cattle not pets': 'ephemeral vs. persistent'
+  # cattle-vs-pets: Infrastructure metaphor that Google's own style guide flags for removal as 'figurative language that relates to the slaughter of animals.' 'Ephemeral vs. persistent' or 'disposable vs. unique' captures the same architectural concept.
+  'cattle vs pets': 'ephemeral vs. persistent'
+  # cattle-vs-pets: Infrastructure metaphor that Google's own style guide flags for removal as 'figurative language that relates to the slaughter of animals.' 'Ephemeral vs. persistent' or 'disposable vs. unique' captures the same architectural concept.
+  'cattle vs. pets': 'ephemeral vs. persistent'
+  # cattle-vs-pets: Infrastructure metaphor that Google's own style guide flags for removal as 'figurative language that relates to the slaughter of animals.' 'Ephemeral vs. persistent' or 'disposable vs. unique' captures the same architectural concept.
+  'cattle versus pets': 'ephemeral vs. persistent'
+  # cattle-vs-pets: Infrastructure metaphor that Google's own style guide flags for removal as 'figurative language that relates to the slaughter of animals.' 'Ephemeral vs. persistent' or 'disposable vs. unique' captures the same architectural concept.
+  'cattle, not pets': 'ephemeral vs. persistent'
+  # cattle-vs-pets: Infrastructure metaphor that Google's own style guide flags for removal as 'figurative language that relates to the slaughter of animals.' 'Ephemeral vs. persistent' or 'disposable vs. unique' captures the same architectural concept.
+  'pets not cattle': 'ephemeral vs. persistent'
+  # cash-cow: Treats a cow as a thing to be extracted from for profit. 'Moneymaker' or 'profit center' carries the same meaning.
+  'cash cow': 'moneymaker'
+  # cash-cow: Treats a cow as a thing to be extracted from for profit. 'Moneymaker' or 'profit center' carries the same meaning.
+  'cash cows': 'moneymaker'
+  # put-out-to-pasture: Refers to the farm practice of disposing of animals once they're no longer productive. 'Retire,' 'phase out,' or 'sunset' is clearer and carries no harm.
+  'put out to pasture': 'retire'
+  # put-out-to-pasture: Refers to the farm practice of disposing of animals once they're no longer productive. 'Retire,' 'phase out,' or 'sunset' is clearer and carries no harm.
+  'putting out to pasture': 'retire'
+  # put-out-to-pasture: Refers to the farm practice of disposing of animals once they're no longer productive. 'Retire,' 'phase out,' or 'sunset' is clearer and carries no harm.
+  'put him out to pasture': 'retire'
+  # put-out-to-pasture: Refers to the farm practice of disposing of animals once they're no longer productive. 'Retire,' 'phase out,' or 'sunset' is clearer and carries no harm.
+  'put her out to pasture': 'retire'
+  # put-out-to-pasture: Refers to the farm practice of disposing of animals once they're no longer productive. 'Retire,' 'phase out,' or 'sunset' is clearer and carries no harm.
+  'put them out to pasture': 'retire'
+  # put-out-to-pasture: Refers to the farm practice of disposing of animals once they're no longer productive. 'Retire,' 'phase out,' or 'sunset' is clearer and carries no harm.
+  'puts out to pasture': 'retire'
+  # veal: 'Veal' softens 'slaughtered-calf flesh' via a Norman-French borrowing. In advocacy or industry-critical writing, 'calf flesh' names what it is. (Suppressed in recipes and cooking contexts.)
   'veal': 'calf flesh'
+  # veal: 'Veal' softens 'slaughtered-calf flesh' via a Norman-French borrowing. In advocacy or industry-critical writing, 'calf flesh' names what it is. (Suppressed in recipes and cooking contexts.)
+  'veal calf': 'calf flesh'
+  # veal: 'Veal' softens 'slaughtered-calf flesh' via a Norman-French borrowing. In advocacy or industry-critical writing, 'calf flesh' names what it is. (Suppressed in recipes and cooking contexts.)
+  'veal calves': 'calf flesh'
   # debeaking: Industry euphemism for slicing or burning off hens' beaks, typically without anesthesia. 'Beak amputation' names what actually happens.
   'debeaking': 'beak amputation'
   # debeaking: Industry euphemism for slicing or burning off hens' beaks, typically without anesthesia. 'Beak amputation' names what actually happens.
@@ -167,6 +221,10 @@ swap:
   'cattle call': 'open call'
   # cattle-call: Likens human applicants to livestock being herded. 'Open call' or 'mass audition' carries the same meaning without the framing.
   'cattle calls': 'open call'
+  # pet-project: Carries over the property framing of 'pet' (something owned) to the project. 'Side project' or 'passion project' captures the same idea without the ownership framing.
+  'pet project': 'side project'
+  # pet-project: Carries over the property framing of 'pet' (something owned) to the project. 'Side project' or 'passion project' captures the same idea without the ownership framing.
+  'pet projects': 'side project'
   # humanely-raised: USDA-unregulated marketing label — companies define their own standards, and the actual conditions often differ little from factory farming. Describe the actual conditions where possible.
   'humanely raised': 'factory-farmed'
   # humanely-raised: USDA-unregulated marketing label — companies define their own standards, and the actual conditions often differ little from factory farming. Describe the actual conditions where possible.
