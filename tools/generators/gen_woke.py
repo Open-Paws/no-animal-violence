@@ -37,8 +37,7 @@ def generate(rules: list[Rule], output_path: Path) -> None:
                 "categories": [rule.category],
             },
         }
-        if rule.note:
-            entry["note"] = rule.note
+        entry["reason"] = rule.reason
         rules_list.append(entry)
     header = "# AUTO-GENERATED from rules.yaml. Do not edit directly.\n"
     header += "# Run tools/generate_all.py to regenerate.\n"

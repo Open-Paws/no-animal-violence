@@ -25,14 +25,21 @@ function loadRules() {
 	return data.rules;
 }
 
+function escJsString(s) {
+	return s.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n");
+}
+
 function buildPatternEntries(rules) {
 	return rules.map((r) => {
 		const wb = r.word_boundary !== false;
 		const raw = wb ? `\\b${r.regex}\\b` : r.regex;
 		const patternForLiteral = raw.replace(/\//g, "\\/");
-		const phrase = r.terms[0].replace(/\\/g, "\\\\").replace(/"/g, '\\"');
-		const alt = r.alternatives[0].replace(/\\/g, "\\\\").replace(/"/g, '\\"');
-		return `\t{ pattern: /${patternForLiteral}/gi, phrase: "${phrase}", alt: "${alt}" },`;
+		const phrase = escJsString(r.terms[0]);
+		const alt = escJsString(r.alternatives[0]);
+		const altsList = r.alternatives.map((a) => `"${a}"`).join(" or ");
+		const altsEsc = escJsString(altsList);
+		const reason = escJsString(r.reason || "");
+		return `\t{ pattern: /${patternForLiteral}/gi, phrase: "${phrase}", alt: "${alt}", alternatives: "${altsEsc}", reason: "${reason}" },`;
 	}).join("\n");
 }
 
@@ -41,7 +48,7 @@ function buildPatternEntries(rules) {
 const STATIC_BOILERPLATE_LINES = [
 	"",
 	"function checkText(context, node, text, offsetCalculator) {",
-	"\tfor (const { pattern, phrase, alt } of PATTERNS) {",
+	"\tfor (const { pattern, phrase, alt, alternatives, reason } of PATTERNS) {",
 	"\t\tpattern.lastIndex = 0;",
 	"\t\tlet match;",
 	"\t\twhile ((match = pattern.exec(text)) !== null) {",
@@ -52,7 +59,8 @@ const STATIC_BOILERPLATE_LINES = [
 	'\t\t\t\tmessageId: "avoidViolentAnimalLanguage",',
 	"\t\t\t\tdata: {",
 	"\t\t\t\t\tphrase: match[0],",
-	"\t\t\t\t\talternatives: alt,",
+	"\t\t\t\t\talternatives: alternatives || alt,",
+	"\t\t\t\t\treason: reason || \"\",",
 	"\t\t\t\t},",
 	"\t\t\t});",
 	"\t\t}",
@@ -69,7 +77,7 @@ const STATIC_BOILERPLATE_LINES = [
 	'\t\t\turl: "https://github.com/Open-Paws/eslint-plugin-no-animal-violence#no-violent-language",',
 	"\t\t},",
 	"\t\tmessages: {",
-	'\t\t\tavoidViolentAnimalLanguage: \'Avoid "{{phrase}}". Consider: {{alternatives}}\',',
+	'\t\t\tavoidViolentAnimalLanguage: \'Avoid "{{phrase}}". {{reason}} Consider: {{alternatives}}\',',
 	"\t\t},",
 	"\t\tschema: [],",
 	"\t},",

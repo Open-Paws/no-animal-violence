@@ -2,132 +2,850 @@
 # Source: https://doi.org/10.1007/s43681-023-00380-w
 
 - type: basic
-  note: Industry commodity framing. Defines sentient beings by their commercial function.
-    'Farmed animals' is factually equivalent and does not erase the subject.
+  note: Commodity framing that groups sentient beings as 'stock.' 'Farmed animals'
+    keeps the meaning without the commodity framing.
   considerate:
     farmed animals: a
-    animals raised for food: a
   inconsiderate:
     livestock: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry commodity framing. Abstracts individual birds into a bulk commodity
-    term. 'Farmed birds' or the specific species name is more precise.
+  note: Commodity framing for farmed birds. 'Farmed birds' or the specific species
+    keeps the meaning without the commodity framing.
   considerate:
     farmed birds: a
-    chickens: a
     chickens and turkeys: a
   inconsiderate:
     poultry: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism. A metal enclosure so small a pregnant sow cannot turn
-    around for her entire 3.5-month pregnancy. 'Pregnancy cage' describes what it
-    actually is.
+  note: Industry euphemism for a metal enclosure so small a pregnant sow cannot turn
+    around for her entire 3.5-month pregnancy. 'Pregnancy cage' is accurate.
   considerate:
     pregnancy cage: a
-    pregnancy cages: a
   inconsiderate:
     gestation crate: industry-euphemism
     gestation crates: industry-euphemism
+    gestation stall: industry-euphemism
+    gestation stalls: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism. Used to describe killing entire flocks or herds. Suppress
-    in database or population statistics contexts where 'depopulation' means removing
-    data rows.
+  note: Industry euphemism for killing entire flocks or herds at once. 'Mass killing'
+    is the accurate term. (Suppressed in database or population-statistics contexts
+    where the word refers to removing records.)
   considerate:
     mass killing: a
     killed en masse: a
-    killing en masse: a
   inconsiderate:
     depopulation: industry-euphemism
     depopulated: industry-euphemism
     depopulating: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism. When referring to facilities that kill animals, 'slaughterhouse'
-    is the accurate term.
+  note: Industry euphemisms for slaughterhouse. 'Slaughterhouse' is the accurate term.
+    (Suppressed in clearly non-animal contexts like data or chemical processing.)
   considerate:
     slaughterhouse: a
-    slaughterhouses: a
   inconsiderate:
+    meat plant: industry-euphemism
+    meat plants: industry-euphemism
+    meat packing plant: industry-euphemism
+    meat-packing plant: industry-euphemism
+    meatpacking plant: industry-euphemism
+    packing plant: industry-euphemism
+    packing plants: industry-euphemism
     processing plant: industry-euphemism
-    processing plants: industry-euphemism
     processing facility: industry-euphemism
-    processing facilities: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism. A metal cage that confines a sow during and after birth,
-    preventing her from turning around or reaching her piglets. 'Birthing cage' describes
-    the reality.
+  note: Industry euphemism for the metal cage confining a sow during birth and nursing.
+    'Birthing cage' is accurate.
   considerate:
     birthing cage: a
-    birthing cages: a
   inconsiderate:
     farrowing crate: industry-euphemism
     farrowing crates: industry-euphemism
+    farrowing stall: industry-euphemism
+    farrowing stalls: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism. Wire enclosures giving each hen less floor space than
-    a sheet of paper. The word 'battery' obscures that this is a tiny cage stacked
-    in rows of thousands.
+  note: Industry euphemism for wire enclosures that give each hen less floor space
+    than a sheet of paper. 'Small wire cage' describes what it is.
   considerate:
     small wire cage: a
-    small wire cages: a
     confined cage: a
-    confined cages: a
   inconsiderate:
     battery cage: industry-euphemism
     battery cages: industry-euphemism
+    battery-cage: industry-euphemism
+    battery-caged: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism. 'Spent' frames a living hen as a depleted resource. These
-    hens are typically killed at 18 months when egg production drops below commercial
-    thresholds.
+  note: '''Spent'' frames the hen as a depleted resource. Naming what actually happens
+    — she is killed when her egg production falls — is more accurate.'
   considerate:
-    discarded hen: a
-    discarded hens: a
     hen killed after egg production declines: a
   inconsiderate:
     spent hen: industry-euphemism
     spent hens: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry oxymoron. The adjective 'humane' sanitizes the act. USDA 'humane
-    slaughter' standards permit bolt guns, electrocution, and gas chambers.
+  note: Industry oxymoron — a killing cannot be 'humane' to the one being killed.
+    Drop the modifier and use 'slaughter' or 'killing.'
   considerate:
     slaughter: a
-    slaughtered: a
     killing: a
-    killed: a
   inconsiderate:
     humane slaughter: industry-euphemism
     humanely slaughter: industry-euphemism
-    humane slaughtered: industry-euphemism
     humanely slaughtered: industry-euphemism
     humane killing: industry-euphemism
-    humanely killing: industry-euphemism
-    humane killed: industry-euphemism
-    humanely killed: industry-euphemism
+    humane death: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry commodity term that defines a living chicken entirely by its commercial
-    purpose.
+  note: Industry term that defines a chicken by its commercial purpose. 'Chicken raised
+    for meat' is the human-readable version. (The kitchen appliance is not flagged.)
   considerate:
     chicken raised for meat: a
-    chickens raised for meat: a
-    meat chicken: a
-    meat chickens: a
   inconsiderate:
-    broiler: industry-euphemism
+    broiler chicken: industry-euphemism
+    broiler chickens: industry-euphemism
+    broiler hen: industry-euphemism
+    broiler hens: industry-euphemism
     broilers: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Industry euphemism for the flesh of male dairy calves, typically killed within
-    weeks of birth. Obscures both the species and the age of the individual.
+  note: Infrastructure metaphor that Google's own style guide flags for removal as
+    'figurative language that relates to the slaughter of animals.' 'Ephemeral vs.
+    persistent' or 'disposable vs. unique' captures the same architectural concept.
+  considerate:
+    ephemeral vs. persistent: a
+    disposable vs. unique: a
+    numbered vs. named: a
+  inconsiderate:
+    cattle not pets: industry-euphemism
+    cattle vs pets: industry-euphemism
+    cattle vs. pets: industry-euphemism
+    cattle versus pets: industry-euphemism
+    cattle, not pets: industry-euphemism
+    pets not cattle: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Treats a cow as a thing to be extracted from for profit. 'Moneymaker' or 'profit
+    center' carries the same meaning.
+  considerate:
+    moneymaker: a
+    profit center: a
+    reliable revenue source: a
+  inconsiderate:
+    cash cow: industry-euphemism
+    cash cows: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Refers to the farm practice of disposing of animals once they're no longer
+    productive. 'Retire,' 'phase out,' or 'sunset' is clearer and carries no harm.
+  considerate:
+    retire: a
+    phase out: a
+    sunset: a
+  inconsiderate:
+    put out to pasture: industry-euphemism
+    putting out to pasture: industry-euphemism
+    put him out to pasture: industry-euphemism
+    put her out to pasture: industry-euphemism
+    put them out to pasture: industry-euphemism
+    puts out to pasture: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: '''Veal'' softens ''slaughtered-calf flesh'' via a Norman-French borrowing.
+    In advocacy or industry-critical writing, ''calf flesh'' names what it is. (Suppressed
+    in recipes and cooking contexts.)'
   considerate:
     calf flesh: a
-    flesh from calves: a
+    calf meat: a
   inconsiderate:
     veal: industry-euphemism
+    veal calf: industry-euphemism
+    veal calves: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry euphemism for slicing or burning off hens' beaks, typically without
+    anesthesia. 'Beak amputation' names what actually happens.
+  considerate:
+    beak amputation: a
+    beak mutilation: a
+  inconsiderate:
+    debeaking: industry-euphemism
+    debeaked: industry-euphemism
+    beak trimming: industry-euphemism
+    beak trim: industry-euphemism
+    beak conditioning: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry term for removing cattle horns, typically without anesthesia. 'Horn
+    amputation' is accurate.
+  considerate:
+    horn amputation: a
+    horn removal: a
+  inconsiderate:
+    dehorning: industry-euphemism
+    dehorned: industry-euphemism
+    disbudding: industry-euphemism
+    disbudded: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Amputating pigs', sheep's, or dogs' tails. 'Tail amputation' is the accurate
+    term.
+  considerate:
+    tail amputation: a
+  inconsiderate:
+    tail docking: industry-euphemism
+    tail-docking: industry-euphemism
+    tail docked: industry-euphemism
+    docked tail: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry identification practice of cutting notches in animals' ears. 'Ear
+    mutilation' names what it is.
+  considerate:
+    ear mutilation: a
+  inconsiderate:
+    ear notching: industry-euphemism
+    ear-notching: industry-euphemism
+    ear notched: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry term for killing entire flocks by cutting off airflow — the animals
+    die from suffocation and heat. 'Mass killing by suffocation' is the accurate term.
+    (Suppressed in HVAC contexts.)
+  considerate:
+    mass killing by suffocation: a
+    heat-and-suffocation killing: a
+  inconsiderate:
+    ventilation shutdown: industry-euphemism
+    VSD+: industry-euphemism
+    VSD plus: industry-euphemism
+    ventilation shutdown plus: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry euphemism for killing day-old male chicks by grinding them alive.
+    Say what the process is. (Bare 'maceration' in culinary or chemistry contexts
+    is not flagged.)
+  considerate:
+    grinding newborn chicks alive: a
+    chick grinding: a
+  inconsiderate:
+    maceration of chicks: industry-euphemism
+    chick maceration: industry-euphemism
+    macerated chicks: industry-euphemism
+    macerating chicks: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: French-derived euphemism for slaughterhouse. 'Slaughterhouse' is the accurate
+    English term.
+  considerate:
+    slaughterhouse: a
+  inconsiderate:
+    abattoir: industry-euphemism
+    abattoirs: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Facility that processes animal bodies — roadkill, downed animals, slaughter
+    byproducts — into meal, fat, and tallow. Naming it accurately makes the supply
+    chain visible. (Only the full compound 'rendering plant' / 'rendering facility'
+    is flagged; bare 'rendering' for graphics or UI is not.)
+  considerate:
+    animal-body processing plant: a
+    carcass-processing facility: a
+  inconsiderate:
+    rendering plant: industry-euphemism
+    rendering plants: industry-euphemism
+    rendering facility: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Euphemism for pre-slaughter holding pens. 'Slaughterhouse pens' describes
+    what the facility actually is.
+  considerate:
+    slaughterhouse pens: a
+    live-animal market: a
+  inconsiderate:
+    stockyard: industry-euphemism
+    stockyards: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Defines a hen by her egg-laying function. When sex and species are relevant,
+    'hen' is sufficient.
+  considerate:
+    hen: a
+  inconsiderate:
+    laying hen: industry-euphemism
+    laying hens: industry-euphemism
+    layer hen: industry-euphemism
+    layer hens: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Defines an animal by the product humans extract from them. The species name
+    alone is sufficient unless the use is actively relevant.
+  considerate:
+    cow: a
+    the species name alone: a
+  inconsiderate:
+    dairy cow: industry-euphemism
+    dairy cows: industry-euphemism
+    dairy cattle: industry-euphemism
+    beef cattle: industry-euphemism
+    beef cow: industry-euphemism
+    beef cows: industry-euphemism
+    meat bird: industry-euphemism
+    meat birds: industry-euphemism
+    meat rabbit: industry-euphemism
+    meat rabbits: industry-euphemism
+    meat goat: industry-euphemism
+    meat goats: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Defines a female animal by her reproductive function. Name the individual
+    directly where possible.
+  considerate:
+    pregnant pig: a
+    nursing mother pig: a
+  inconsiderate:
+    brood sow: industry-euphemism
+    brood sows: industry-euphemism
+    breeding stock: industry-euphemism
+    breeding pair: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Likens human applicants to livestock being herded. 'Open call' or 'mass audition'
+    carries the same meaning without the framing.
+  considerate:
+    open call: a
+    mass audition: a
+  inconsiderate:
+    cattle call: industry-euphemism
+    cattle calls: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Carries over the property framing of 'pet' (something owned) to the project.
+    'Side project' or 'passion project' captures the same idea without the ownership
+    framing.
+  considerate:
+    side project: a
+    passion project: a
+  inconsiderate:
+    pet project: industry-euphemism
+    pet projects: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: USDA-unregulated marketing label — companies define their own standards, and
+    the actual conditions often differ little from factory farming. Describe the actual
+    conditions where possible.
+  considerate:
+    factory-farmed: a
+    raised in [specific conditions]: a
+  inconsiderate:
+    humanely raised: industry-euphemism
+    humanely produced: industry-euphemism
+    humanely farmed: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: USDA requires only 'access to outdoors' — often a small door to a small porch
+    that most birds never use. The label does not guarantee meaningful outdoor life.
+  considerate:
+    minimally accessible outdoor pen: a
+    outdoor access (USDA minimum): a
+  inconsiderate:
+    free-range: industry-euphemism
+    free range: industry-euphemism
+    free-roaming: industry-euphemism
+    free roaming: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Not USDA-regulated; the meaning depends on whichever certifier the producer
+    chooses. Name the certifier and the actual conditions where possible.
+  considerate:
+    raised on pasture (certifier-dependent): a
+  inconsiderate:
+    pasture-raised: industry-euphemism
+    pasture raised: industry-euphemism
+    pastured: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Describes the cattle's feed, not their welfare. Slaughter, transport, and
+    mother-calf separation happen the same way. The USDA dropped its 'grass-fed' definition
+    in 2016; current usage is producer-defined.
+  considerate:
+    grass-fed (USDA definition dropped 2016): a
+    forage-finished: a
+  inconsiderate:
+    grass-fed: industry-euphemism
+    grass fed: industry-euphemism
+    grass-finished: industry-euphemism
+    grass finished: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Meaningless for meat birds — broiler chickens and turkeys are almost never
+    caged in industrial production. The label implies a welfare improvement that doesn't
+    exist. (Cage-free for eggs IS a meaningful distinction; that usage is not flagged.)
+  considerate:
+    crowded indoor housing: a
+    barn-raised: a
+  inconsiderate:
+    cage-free chicken: industry-euphemism
+    cage free chicken: industry-euphemism
+    cage-free turkey: industry-euphemism
+    cage free turkey: industry-euphemism
+    cage-free meat: industry-euphemism
+    cage free meat: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Third-party welfare certifications with widely varying standards — some are
+    meaningful (Animal Welfare Approved), others are marketing (American Humane Certified).
+    Name the specific standard if relevant.
+  considerate:
+    name the certifier and standard: a
+  inconsiderate:
+    Certified Humane: industry-euphemism
+    Animal Welfare Approved: industry-euphemism
+    Global Animal Partnership: industry-euphemism
+    American Humane Certified: industry-euphemism
+    One Health Certified: industry-euphemism
+    GAP certified: industry-euphemism
+    GAP Step: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Marketing language without a standard definition when applied to animal products.
+    'Ethically sourced' meat has no USDA definition. Describe the actual practices
+    instead. (The phrase applied to coffee, chocolate, or textiles is not flagged.)
+  considerate:
+    describe the actual farm practices: a
+  inconsiderate:
+    ethically sourced meat: industry-euphemism
+    ethically sourced dairy: industry-euphemism
+    ethically sourced eggs: industry-euphemism
+    responsibly sourced meat: industry-euphemism
+    responsibly sourced dairy: industry-euphemism
+    happy meat: industry-euphemism
+    happy cow: industry-euphemism
+    happy cows: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Addresses specific bycatch concerns but not fish suffering. Fish feel pain,
+    suffocate on deck, or are crushed in nets regardless of how the boat avoids catching
+    dolphins or catches fish one at a time.
+  considerate:
+    name the specific fishing method and bycatch statistics: a
+  inconsiderate:
+    dolphin-safe: industry-euphemism
+    dolphin safe: industry-euphemism
+    line-caught: industry-euphemism
+    line caught: industry-euphemism
+    pole-and-line caught: industry-euphemism
+    pole-caught: industry-euphemism
+    sustainably caught: industry-euphemism
+    sustainable seafood: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: French for 'fat liver'; obscures that the product comes from force-feeding
+    ducks or geese until their livers enlarge to ten times normal size. Name the process.
+  considerate:
+    force-fed duck liver: a
+    force-fed goose liver: a
+  inconsiderate:
+    foie gras: industry-euphemism
+    foie-gras: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Marketing-constructed word (coined in the 1920s) to make goat meat palatable
+    to Anglophone consumers. 'Goat flesh' or 'goat meat' is accurate.
+  considerate:
+    goat flesh: a
+    goat meat: a
+  inconsiderate:
+    chevon: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Opaque culinary term for calf or lamb thymus or pancreas. Naming the organ
+    is clearer. (Suppressed in recipe/cooking contexts.)
+  considerate:
+    calf thymus: a
+    calf pancreas: a
+    lamb thymus: a
+  inconsiderate:
+    sweetbread: industry-euphemism
+    sweetbreads: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: '''Mutton'' obscures the species. ''Sheep flesh'' names it. (Suppressed in
+    recipe contexts.)'
+  considerate:
+    sheep flesh: a
+    sheep meat: a
+  inconsiderate:
+    mutton: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: '''Venison'' obscures the species. ''Deer flesh'' names it. (Suppressed in
+    recipe or hunting-regulation contexts.)'
+  considerate:
+    deer flesh: a
+    deer meat: a
+  inconsiderate:
+    venison: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Marketing term for young pigeon raised for slaughter. 'Pigeon flesh' names
+    what it is. (Suppressed in recipe contexts.)
+  considerate:
+    pigeon flesh: a
+    young pigeon meat: a
+  inconsiderate:
+    squab: industry-euphemism
+    squabs: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: '''Spare'' frames body parts as disposable/extra. ''Pig ribs'' is accurate.
+    (Suppressed in recipe/BBQ contexts.)'
+  considerate:
+    pig ribs: a
+  inconsiderate:
+    spare ribs: industry-euphemism
+    spareribs: industry-euphemism
+    spare-ribs: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: '''Leather'' obscures that the material is the skin of a killed cow (or pig,
+    sheep, etc.). In advocacy or supply-chain writing, naming it is clearer. Suppressed
+    in fashion/product contexts where the industry term is expected.'
+  considerate:
+    cow skin: a
+    animal skin: a
+    vegan leather: a
+    synthetic leather: a
+    plant leather: a
+  inconsiderate:
+    leather: industry-euphemism
+    genuine leather: industry-euphemism
+    real leather: industry-euphemism
+    top-grain leather: industry-euphemism
+    full-grain leather: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: '''Wool'' obscures that the fiber is sheep hair, usually from sheep bred for
+    extreme coat yields (mulesing, shearing injury, eventual slaughter). Advocacy
+    writing names it directly. Suppressed in textile/fashion contexts.'
+  considerate:
+    sheep hair: a
+    synthetic fiber: a
+    plant fiber: a
+  inconsiderate:
+    wool: industry-euphemism
+    merino wool: industry-euphemism
+    lambswool: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Down is plucked from ducks and geese, often while alive and distressed. 'Plant-based
+    insulation' or 'synthetic fill' describes the alternative. Bare 'down' (direction)
+    is NOT flagged — only product compounds.
+  considerate:
+    plant-based insulation: a
+    synthetic fill: a
+    recycled fill: a
+  inconsiderate:
+    down feathers: industry-euphemism
+    goose down: industry-euphemism
+    duck down: industry-euphemism
+    down jacket: industry-euphemism
+    down comforter: industry-euphemism
+    down pillow: industry-euphemism
+    down filling: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Luxury-marketing names that obscure the animal source. Cashmere and mohair
+    come from goats; angora comes from rabbits (who are often plucked live and injured).
+    Naming the species is clearer in advocacy writing.
+  considerate:
+    goat hair: a
+    rabbit hair: a
+    recycled fiber: a
+    synthetic alternative: a
+  inconsiderate:
+    cashmere: industry-euphemism
+    mohair: industry-euphemism
+    angora: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Silk production typically requires boiling silkworms alive inside their cocoons
+    to prevent the thread from breaking. Peace silk, plant silk, and synthetics avoid
+    this. Suppressed in textile/fashion contexts.
+  considerate:
+    plant silk: a
+    peace silk: a
+    synthetic silk: a
+    recycled fiber: a
+  inconsiderate:
+    silk: industry-euphemism
+    pure silk: industry-euphemism
+    mulberry silk: industry-euphemism
+    raw silk: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Bee products are extracted through industrial beekeeping, which involves queen-clipping,
+    smoke stressing, and often the destruction of hives. Plant-based waxes (candelilla,
+    carnauba, soy) serve most of the same purposes.
+  considerate:
+    plant alternative: a
+    candelilla wax: a
+    carnauba wax: a
+    soy wax: a
+  inconsiderate:
+    royal jelly: industry-euphemism
+    beeswax: industry-euphemism
+    propolis: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: '''Downed'' uses passive voice to elide why the animal is on the ground —
+    untreated injury or illness in transport or on the farm. ''Too sick to walk''
+    names the condition.'
+  considerate:
+    animal too sick or injured to walk: a
+    collapsed animal: a
+  inconsiderate:
+    downed animal: industry-euphemism
+    downed animals: industry-euphemism
+    downed cow: industry-euphemism
+    downed cows: industry-euphemism
+    downer animal: industry-euphemism
+    downer cow: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry-standard procedure involving restraint and reproductive invasion.
+    'Forced impregnation' is the accurate term when the animal cannot consent. (The
+    bare abbreviation 'AI' is not flagged — too much overlap with artificial intelligence.
+    The rule fires only on the specific animal-ag compounds.)
+  considerate:
+    forced impregnation: a
+  inconsiderate:
+    artificial insemination: industry-euphemism
+    forced insemination: industry-euphemism
+    AI in cattle: industry-euphemism
+    AI in cows: industry-euphemism
+    AI in dairy: industry-euphemism
+    AI in pigs: industry-euphemism
+    AI in sheep: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry verb that erases the individual animal giving birth. 'Giving birth'
+    is the plain-language version. (The compound 'farrowing crate' is flagged by its
+    own rule.)
+  considerate:
+    giving birth (for pigs): a
+    piglet-birthing: a
+  inconsiderate:
+    farrowing: industry-euphemism
+    farrowed: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry term for loading animals onto ships or trucks for days-to-weeks journeys
+    to overseas slaughter. 'Transport to slaughter' names the destination.
+  considerate:
+    transport to slaughter: a
+    export for slaughter: a
+  inconsiderate:
+    live export: industry-euphemism
+    live exports: industry-euphemism
+    live exporting: industry-euphemism
+    live transport: industry-euphemism
+    live shipment: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Each term names the product rather than the species it comes from. Naming
+    the species (e.g. 'pig-flesh industry') makes the supply chain visible. Low priority
+    — use in advocacy writing, not general documentation.
+  considerate:
+    pig-flesh industry: a
+    cow-flesh industry: a
+    cow-milk industry: a
+    chicken-flesh industry: a
+  inconsiderate:
+    pork industry: industry-euphemism
+    beef industry: industry-euphemism
+    dairy industry: industry-euphemism
+    poultry industry: industry-euphemism
+    veal industry: industry-euphemism
+    egg industry: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Frames a killed animal as an achievement to be displayed. 'Killing for display'
+    or 'recreational killing' names the activity.
+  considerate:
+    killing for display: a
+    recreational killing: a
+  inconsiderate:
+    trophy hunting: industry-euphemism
+    trophy hunter: industry-euphemism
+    trophy hunters: industry-euphemism
+    trophy hunt: industry-euphemism
+    trophy kill: industry-euphemism
+    trophy kills: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: '''Big game'' frames large wild animals as sport objects existing for human
+    recreation. ''Large-animal hunter'' names it; better still, name the species (elephant,
+    lion, rhino).'
+  considerate:
+    large-animal hunter: a
+    elephant/lion/rhino hunter: a
+  inconsiderate:
+    big-game hunter: industry-euphemism
+    big game hunter: industry-euphemism
+    big-game hunting: industry-euphemism
+    big game hunting: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: '''Sport'' frames killing fish as leisure. In contexts critical of the activity,
+    ''recreational killing of fish'' is accurate. (In neutral angling-industry writing,
+    the scanner adds noise; tune the context or disable in those files.)'
+  considerate:
+    recreational fishing (if literal): a
+    recreational killing of fish: a
+  inconsiderate:
+    sport fishing: industry-euphemism
+    sportfishing: industry-euphemism
+    recreational fishing: industry-euphemism
+    game fishing: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Frames hook injury, exhaustion, and stress as harmless. Studies show significant
+    post-release mortality, especially for species caught from deep water. 'Capture
+    and release' is more neutral.
+  considerate:
+    capture and release: a
+    captured and released (with injury): a
+  inconsiderate:
+    catch and release: industry-euphemism
+    catch-and-release: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: '''Humane'' sanitizes the practice. Say whether it''s lethal or non-lethal
+    directly — ''non-lethal trap'' is clearer and testable.'
+  considerate:
+    non-lethal trap: a
+    non-lethal removal: a
+    live-catch trap: a
+  inconsiderate:
+    humane trap: industry-euphemism
+    humane traps: industry-euphemism
+    humane removal: industry-euphemism
+    humane control: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Bureaucratic language for killing programs. 'Killing program' says it plainly.
+  considerate:
+    killing program: a
+    culling program: a
+  inconsiderate:
+    lethal removal: industry-euphemism
+    lethal control: industry-euphemism
+    lethal management: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: '''Farm'' or ''ranch'' evokes pastoral imagery; these are intensive confinement
+    facilities where animals live in wire cages before being gassed or electrocuted.
+    Name them directly.'
+  considerate:
+    mink confinement facility: a
+    fox confinement facility: a
+    fur-industry facility: a
+  inconsiderate:
+    fur farm: industry-euphemism
+    fur farms: industry-euphemism
+    fur ranch: industry-euphemism
+    fur ranches: industry-euphemism
+    mink farm: industry-euphemism
+    mink farms: industry-euphemism
+    mink ranch: industry-euphemism
+    mink ranches: industry-euphemism
+    fox farm: industry-euphemism
+    fox farms: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Defines wild animals by a human use. Naming the species (foxes, minks, coyotes,
+    bobcats, chinchillas) is clearer.
+  considerate:
+    named species: a
+    fur-industry species: a
+  inconsiderate:
+    fur-bearing animal: industry-euphemism
+    fur bearing animal: industry-euphemism
+    fur-bearing animals: industry-euphemism
+    fur bearing animals: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Neutralizes the massive incidental killing of non-target marine species —
+    hundreds of thousands of dolphins, sea turtles, seabirds, and sharks each year.
+    'Incidental killing' names it.
+  considerate:
+    incidental killing: a
+    non-target marine deaths: a
+  inconsiderate:
+    bycatch: industry-euphemism
+    by-catch: industry-euphemism
+    by catch: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Commodity framing of marine life as a renewable resource. 'Fish populations'
+    is neutral and accurate.
+  considerate:
+    fish populations: a
+    wild fish numbers: a
+  inconsiderate:
+    fish stocks: industry-euphemism
+    fishery stocks: industry-euphemism
+    fish stock: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Neutral-sounding framing for intensive fish confinement and slaughter. In
+    advocacy writing, 'industrial fish farming' is more accurate.
+  considerate:
+    industrial fish farming: a
+    intensive fish confinement: a
+  inconsiderate:
+    aquaculture: industry-euphemism
+    fish farming: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Property framing — 'owner' treats sentient beings as possessions. 'Guardian'
+    preserves the legal and caregiving relationship without the property connotation.
+    Used in legal reform jurisdictions (e.g. Boulder CO, West Hollywood) since the
+    early 2000s.
+  considerate:
+    pet guardian: a
+    dog guardian: a
+    cat guardian: a
+    human companion: a
+  inconsiderate:
+    pet owner: industry-euphemism
+    pet owners: industry-euphemism
+    dog owner: industry-euphemism
+    dog owners: industry-euphemism
+    cat owner: industry-euphemism
+    cat owners: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Property framing applied to companion animals. 'Live with a dog' or 'share
+    a home with a cat' captures the relationship without the ownership frame.
+  considerate:
+    live with a companion animal: a
+    share a home with: a
+    care for a: a
+  inconsiderate:
+    own a pet: industry-euphemism
+    owns a pet: industry-euphemism
+    owning a pet: industry-euphemism
+    owned a pet: industry-euphemism
+    own a dog: industry-euphemism
+    owns a dog: industry-euphemism
+    own a cat: industry-euphemism
+    owns a cat: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w

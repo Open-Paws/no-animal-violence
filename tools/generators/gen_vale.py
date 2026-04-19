@@ -26,33 +26,46 @@ AUTOGEN_HEADER = "# AUTO-GENERATED from Open-Paws/no-animal-violence. Do not edi
 REFERENCE_URL = "https://doi.org/10.1007/s43681-023-00380-w"
 
 
-def _build_swap(rules: list[Rule]) -> dict[str, str]:
-    """Build a flat swap map: each term -> first alternative."""
-    swap: dict[str, str] = {}
+def _build_term_index(rules: list[Rule]) -> list[tuple[str, str, str, str]]:
+    """Return (term, alternative, rule_name, reason) for each term, preserving rule order."""
+    index: list[tuple[str, str, str, str]] = []
+    seen: set[str] = set()
     for rule in rules:
         for term in rule.terms:
-            if term in swap:
+            if term in seen:
                 print(f"Warning: duplicate term '{term}' in rule '{rule.name}', overwriting")
-            swap[term] = rule.primary_alt
-    return swap
+            seen.add(term)
+            index.append((term, rule.primary_alt, rule.name, rule.reason))
+    return index
 
 
 def _write_vale_file(rules: list[Rule], output_path: Path, level: str = "warning") -> None:
-    """Write a Vale substitution YAML file."""
+    """Write a Vale substitution YAML file.
+
+    Per-rule reasons are emitted as YAML comments above each swap entry so they
+    remain visible to anyone reading the file; Vale itself only supports a single
+    shared message template for substitution rules.
+    """
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    swap = _build_swap(rules)
+    index = _build_term_index(rules)
+    message = (
+        "Consider using '%s' instead of '%s'. "
+        "This phrase normalizes violence toward animals (see rule comment for why)."
+    )
     lines = [
         AUTOGEN_HEADER,
         "extends: substitution\n",
-        "message: \"Consider using '%s' instead of '%s'. This phrase normalizes violence toward animals.\"\n",
+        f'message: "{message}"\n',
         f"link: {REFERENCE_URL}\n",
         f"level: {level}\n",
         "ignorecase: true\n",
         "swap:\n",
     ]
-    for term, alt in swap.items():
+    for term, alt, rule_name, reason in index:
         term_escaped = term.replace("'", "''")
         alt_escaped = alt.replace("'", "''")
+        reason_clean = reason.replace("\n", " ").strip()
+        lines.append(f"  # {rule_name}: {reason_clean}\n")
         lines.append(f"  '{term_escaped}': '{alt_escaped}'\n")
     output_path.write_text("".join(lines), encoding="utf-8")
 

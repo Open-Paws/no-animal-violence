@@ -359,6 +359,17 @@ def run_check(repo_dir: Path, repos_dir: Path) -> DriftReport:
     canonical = load_canonical(repo_dir)
     report = DriftReport(canonical_count=len(canonical))
 
+    # Validate canonical: every rule must have a non-empty user-facing reason.
+    for rule in canonical:
+        reason = getattr(rule, "reason", "") or ""
+        if not reason.strip():
+            report.findings.append(DriftFinding(
+                downstream="canonical",
+                rule_name=rule.name,
+                kind="missing",
+                detail="Rule is missing a non-empty 'reason' field in rules.yaml",
+            ))
+
     # ESLint
     report.findings.extend(check_eslint(canonical, repos_dir))
     eslint_file = repos_dir / "eslint-plugin-no-animal-violence" / "lib" / "rules" / "no-violent-language.js"

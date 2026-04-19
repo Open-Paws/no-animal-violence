@@ -17,7 +17,10 @@ OUTPUT_PATH = (
 )
 
 STATIC_FOOTER = r'''
-COMPILED = [(re.compile(pattern, re.IGNORECASE), alt) for pattern, alt in PATTERNS]
+COMPILED = [
+    (re.compile(p["regex"], re.IGNORECASE), p["alternative"], p["reason"])
+    for p in PATTERNS
+]
 
 
 def check_file(filepath):
@@ -26,10 +29,10 @@ def check_file(filepath):
     try:
         with open(filepath, "r", encoding="utf-8", errors="replace") as f:
             for line_num, line in enumerate(f, start=1):
-                for regex, alternative in COMPILED:
+                for regex, alternative, reason in COMPILED:
                     for match in regex.finditer(line):
                         findings.append(
-                            (filepath, line_num, match.group(), alternative)
+                            (filepath, line_num, match.group(), alternative, reason)
                         )
     except (OSError, IOError):
         pass
@@ -48,10 +51,11 @@ def main():
 
     if all_findings:
         print("Animal violence language detected:\n")
-        for filepath, line_num, matched, alternative in all_findings:
+        for filepath, line_num, matched, alternative, reason in all_findings:
             print(f"  {filepath}:{line_num}")
             print(f'    Found:   "{matched}"')
-            print(f'    Suggest: "{alternative}"\n')
+            print(f'    Suggest: "{alternative}"')
+            print(f"    Why:     {reason}\n")
         print(
             f"{len(all_findings)} instance(s) found. "
             "Consider using the suggested alternatives."
@@ -66,17 +70,29 @@ if __name__ == "__main__":
 '''
 
 
+def _py_string_literal(s: str) -> str:
+    """Emit a Python double-quoted string literal from an arbitrary string."""
+    escaped = s.replace("\\", "\\\\").replace('"', '\\"').replace("\n", "\\n")
+    return f'"{escaped}"'
+
+
 def generate(rules: list[Rule], output_path: Path) -> None:
     """Write the pre-commit hook Python file."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     pattern_lines = []
     for rule in rules:
-        escaped_regex = rule.regex.replace('"', '\\"')
+        regex_src = rule.regex
         if rule.word_boundary:
-            escaped_regex = f'\\b(?:{escaped_regex})\\b'
-        escaped_alt = rule.primary_alt.replace('"', '\\"')
-        pattern_lines.append(f'    (r"{escaped_regex}", "{escaped_alt}"),')
+            regex_src = f'\\b(?:{regex_src})\\b'
+        # r"" string literal: just escape embedded double-quotes
+        regex_literal = f'r"{regex_src.replace(chr(34), chr(92) + chr(34))}"'
+        alt_literal = _py_string_literal(rule.primary_alt)
+        reason_literal = _py_string_literal(rule.reason)
+        pattern_lines.append(
+            f'    {{"regex": {regex_literal}, "alternative": {alt_literal}, '
+            f'"reason": {reason_literal}}},'
+        )
 
 
     patterns_block = "\n".join(pattern_lines)

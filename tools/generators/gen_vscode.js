@@ -37,7 +37,10 @@ function buildPatternEntries(rules) {
 		const patternForLiteral = pattern.replace(/\//g, "\\/");
 		const phrase = escapeStringLiteral(r.terms[0]);
 		const suggest = escapeStringLiteral(r.alternatives[0]);
-		return `\t\t{\n\t\t\tpattern: /${patternForLiteral}/gi,\n\t\t\tphrase: "${phrase}",\n\t\t\tsuggest: "${suggest}",\n\t\t},`;
+		const altsList = r.alternatives.map((a) => `"${a}"`).join(" or ");
+		const alternatives = escapeStringLiteral(altsList);
+		const reason = escapeStringLiteral(r.reason || "");
+		return `\t\t{\n\t\t\tpattern: /${patternForLiteral}/gi,\n\t\t\tphrase: "${phrase}",\n\t\t\tsuggest: "${suggest}",\n\t\t\talternatives: "${alternatives}",\n\t\t\treason: "${reason}",\n\t\t},`;
 	}).join("\n");
 }
 
@@ -62,16 +65,18 @@ function activate(context) {
 		const diagnostics = [];
 		const text = document.getText();
 
-		for (const { pattern, phrase, suggest } of PATTERNS) {
+		for (const { pattern, phrase, suggest, alternatives, reason } of PATTERNS) {
 			pattern.lastIndex = 0;
 			let match;
 			while ((match = pattern.exec(text)) !== null) {
 				const startPos = document.positionAt(match.index);
 				const endPos = document.positionAt(match.index + match[0].length);
 				const range = new vscode.Range(startPos, endPos);
+				const altsLabel = alternatives || \`"\${suggest}"\`;
+				const why = reason ? \` \${reason}\` : "";
 				const diagnostic = new vscode.Diagnostic(
 					range,
-					\`Avoid "\${phrase}". Consider: "\${suggest}"\`,
+					\`Avoid "\${phrase}".\${why} Consider: \${altsLabel}\`,
 					vscode.DiagnosticSeverity.Warning,
 				);
 				diagnostic.source = "no-animal-violence";

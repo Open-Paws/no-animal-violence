@@ -2,7 +2,9 @@
 # Source: https://doi.org/10.1007/s43681-023-00380-w
 
 - type: basic
-  note: Violent animal idiom with universally clearer alternatives
+  note: This phrase frames killing animals as a routine way to solve a problem. Plain
+    alternatives like 'accomplish two things at once' carry the same meaning without
+    invoking harm.
   considerate:
     accomplish two things at once: a
     solve two problems with one action: a
@@ -13,7 +15,8 @@
     killed two birds with one stone: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Violent animal idiom — alternatives are more direct
+  note: This phrase uses an image of striking an animal's body as a metaphor for wasted
+    effort. 'Belabor the point' is clearer and skips the imagery.
   considerate:
     belabor the point: a
     go over old ground: a
@@ -23,18 +26,21 @@
     beating a dead horse: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Violent animal idiom — alternatives are shorter and clearer
+  note: Cat skinning as a metaphor for having options. 'Multiple approaches available'
+    or 'more than one way to peel an orange' carries the same meaning.
   considerate:
-    more than one way to solve this: a
+    more than one way to peel an orange: a
     multiple approaches available: a
-    several ways to accomplish this: a
+    several ways to do this: a
   inconsiderate:
     more than one way to skin a cat: animal-violence
-    many ways to skin a cat: animal-violence
-    other ways to skin a cat: animal-violence
+    another way to skin a cat: animal-violence
+    different ways to skin a cat: animal-violence
+    several ways to skin a cat: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal idiom — alternatives are more precise
+  note: Traced to fraudulent livestock markets and implies trapping animals. 'Reveal
+    the secret' says the same thing more directly.
   considerate:
     reveal the secret: a
     disclose prematurely: a
@@ -44,7 +50,8 @@
     letting the cat out of the bag: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal idiom — alternatives communicate the idea more directly
+  note: References worms packaged as live bait to catch and kill fish. 'Open a difficult
+    topic' or 'uncover hidden problems' is more precise.
   considerate:
     create a complicated situation: a
     uncover hidden problems: a
@@ -55,7 +62,8 @@
     opened a can of worms: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal idiom — alternatives are more universally understood
+  note: Casts pursuing a living bird as a pointless annoyance. 'Futile search' or
+    'fool's errand' says the same thing without the hunting framing.
   considerate:
     futile search: a
     pointless pursuit: a
@@ -64,16 +72,20 @@
     wild goose chase: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Violent animal idiom with shorter alternatives
+  note: Mass-killing imagery used to mean 'easy.' 'Trivially easy' or 'a sure thing'
+    says the same thing without it.
   considerate:
     trivially easy: a
-    like taking candy from a baby: a
-    effortless: a
+    a sure thing: a
+    no challenge at all: a
   inconsiderate:
+    shooting fish in a barrel: animal-violence
+    shoot fish in a barrel: animal-violence
     like shooting fish in a barrel: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Violent animal idiom — same as 'beat a dead horse'
+  note: Describes whipping an animal's corpse — the same image as 'beat a dead horse'.
+    'Belabor the point' is a direct replacement.
   considerate:
     belabor the point: a
     waste effort on a settled matter: a
@@ -83,17 +95,18 @@
     flogging a dead horse: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal idiom — alternatives are more professional
+  note: Fish-as-food commodification for 'more important things.' 'More important
+    matters' says the same thing.
   considerate:
     more important matters to address: a
-    higher priorities: a
-    bigger issues at hand: a
+    bigger fish to free: a
   inconsiderate:
-    there are bigger fish to fry: animal-violence
+    bigger fish to fry: animal-violence
+    other fish to fry: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal-as-experiment metaphor — alternatives are more precise in technical
-    contexts
+  note: Refers to using guinea pigs as expendable test subjects in harmful experiments.
+    'Test subject' or 'early adopter' is more precise in technical contexts.
   considerate:
     test subject: a
     first to try: a
@@ -102,33 +115,8 @@
     guinea pig: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal idiom — alternatives are more direct
-  considerate:
-    wait a moment: a
-    slow down: a
-    be patient: a
-  inconsiderate:
-    hold your horses: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Well-understood idiom — flag for awareness only
-  considerate:
-    the obvious issue: a
-    the unaddressed problem: a
-  inconsiderate:
-    the elephant in the room: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Animal idiom — alternatives are clearer for international audiences
-  considerate:
-    directly from the source: a
-    firsthand: a
-    from the authority: a
-  inconsiderate:
-    straight from the horse's mouth: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Animal slaughter idiom — alternatives are equally expressive
+  note: Describes slaughtered pig flesh as the fruit of success. 'Bring home the results'
+    or 'earn a living' carries the same meaning.
   considerate:
     bring home the results: a
     earn a living: a
@@ -140,36 +128,43 @@
     brings home the bacon: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Bullfighting idiom — alternatives convey the same assertiveness
+  note: Bullfighting/rodeo imagery. 'Tackle the problem directly' or 'face it head-on'
+    is cleaner.
   considerate:
-    face the challenge head-on: a
     tackle the problem directly: a
-    seize the opportunity: a
+    face it head-on: a
+    confront the issue: a
   inconsiderate:
     take the bull by the horns: animal-violence
-    taking the bull by the horns: animal-violence
     took the bull by the horns: animal-violence
+    taking the bull by the horns: animal-violence
+    takes the bull by the horns: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Violent animal idiom referencing slaughter — alternatives are more descriptive
+  note: Direct slaughter imagery. 'Without resistance' or 'unknowingly walking into
+    danger' captures the same meaning.
   considerate:
     without resistance: a
-    blindly following: a
     unknowingly walking into danger: a
+    defenseless: a
   inconsiderate:
+    lambs to the slaughter: animal-violence
+    lamb to the slaughter: animal-violence
     like lambs to the slaughter: animal-violence
+    like a lamb to the slaughter: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Violent animal idiom — alternatives are shorter and clearer
+  note: Violent animal imagery for 'cramped.' 'Extremely tight space' says it directly.
   considerate:
-    very cramped: a
     extremely tight space: a
-    barely any room: a
+    very cramped: a
   inconsiderate:
     no room to swing a cat: animal-violence
+    not enough room to swing a cat: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal-origin idiom — flag for awareness only
+  note: Originates from dead, smoked fish reportedly used to train hunting dogs. 'Distraction'
+    or 'false lead' communicates the idea directly.
   considerate:
     distraction: a
     false lead: a
@@ -178,7 +173,8 @@
     red herring: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Directly references killing a cat
+  note: A direct reference to killing a cat, used as a cautionary phrase. 'Curiosity
+    backfired' or 'being nosy caused trouble' says the same thing.
   considerate:
     curiosity backfired: a
     being nosy caused trouble: a
@@ -187,36 +183,53 @@
     curiosity killed the cat: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Graphic slaughter imagery — decapitating a chicken
+  note: Graphic slaughter imagery used to describe panic. 'In a panic' or 'like your
+    hair is on fire' captures the same thing.
   considerate:
+    like your hair is on fire: a
     in a panic: a
-    running around chaotically: a
-    in complete disarray: a
+    frantic and aimless: a
   inconsiderate:
     like a chicken with its head cut off: animal-violence
+    like a chicken with their head cut off: animal-violence
+    running around like a chicken with its head cut off: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References killing and cooking a goose
+  note: Killing-and-cooking imagery used to mean someone is in trouble. 'You're in
+    trouble' says it directly.
   considerate:
     you're in trouble: a
-    your fate is sealed: a
-    it's over for you: a
+    you're done for: a
+    you're dead in the water: a
   inconsiderate:
     your goose is cooked: animal-violence
+    their goose is cooked: animal-violence
+    his goose is cooked: animal-violence
+    her goose is cooked: animal-violence
+    my goose is cooked: animal-violence
+    our goose is cooked: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References feeding a person to wolves
+  note: Frames a person as prey. 'Abandon to criticism' or 'leave exposed' carries
+    the same meaning without the imagery.
   considerate:
     abandon to criticism: a
-    leave to face hostility alone: a
     sacrifice someone: a
+    leave exposed: a
   inconsiderate:
     throw someone to the wolves: animal-violence
-    throwing someone to the wolves: animal-violence
-    threw someone to the wolves: animal-violence
+    thrown to the wolves: animal-violence
+    throwing to the wolves: animal-violence
+    threw to the wolves: animal-violence
+    throw them to the wolves: animal-violence
+    throw him to the wolves: animal-violence
+    throw her to the wolves: animal-violence
+    throw us to the wolves: animal-violence
+    throw me to the wolves: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References hooking fish — fishing kills fish
+  note: References the equipment used to hook and kill fish. 'Completely' or 'without
+    question' conveys total buy-in without the fishing imagery.
   considerate:
     completely: a
     without question: a
@@ -225,35 +238,45 @@
     hook, line, and sinker: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References wing-clipping — physical mutilation done to farmed birds
+  note: Wing-clipping is a real physical mutilation done to captive birds. 'Restrict
+    freedom' or 'limit options' says the same thing directly.
   considerate:
-    restrict someone's freedom: a
-    limit someone's options: a
-    hold someone back: a
+    restrict freedom: a
+    limit options: a
+    hold back: a
   inconsiderate:
     clip someone's wings: animal-violence
-    clipping someone's wings: animal-violence
-    clipped someone's wings: animal-violence
+    clip their wings: animal-violence
+    clip his wings: animal-violence
+    clip her wings: animal-violence
+    clipped wings: animal-violence
+    clipping wings: animal-violence
+    clips wings: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References overloading a pack animal until injury
+  note: Overloading a pack animal until its back breaks. 'Tipping point' or 'breaking
+    point' carries the same meaning.
   considerate:
-    the tipping point: a
-    the breaking point: a
-    the final provocation: a
+    tipping point: a
+    breaking point: a
+    final blow: a
   inconsiderate:
-    the straw that broke the camel's back: animal-violence
+    straw that broke the camel's back: animal-violence
+    last straw: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References trapping and catching wild birds
+  note: References trapping wild birds. 'A sure thing beats a possibility' carries
+    the same meaning.
   considerate:
     a sure thing beats a possibility: a
-    certainty over speculation: a
+    a guaranteed outcome is worth more: a
   inconsiderate:
-    a bird in the hand is worth two in the bush: animal-violence
+    a bird in the hand: animal-violence
+    bird in the hand is worth: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References eating a killed bird as punishment
+  note: References eating a killed bird as humiliating punishment. 'Admit being wrong'
+    or 'swallow one's pride' says the same thing directly.
   considerate:
     admit being wrong: a
     swallow one's pride: a
@@ -263,18 +286,20 @@
     eating crow: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References animal fighting
+  note: Animal-fighting imagery. 'Constantly argue' or 'clash frequently' says it
+    directly.
   considerate:
     constantly argue: a
     clash frequently: a
-    have constant conflict: a
   inconsiderate:
     fight like cats and dogs: animal-violence
+    fights like cats and dogs: animal-violence
     fighting like cats and dogs: animal-violence
     fought like cats and dogs: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References baiting hooks to catch and kill fish
+  note: References baiting hooks and traps to catch and kill animals. 'Fall for it'
+    or 'be deceived' is more direct.
   considerate:
     fall for it: a
     be lured in: a
@@ -285,16 +310,19 @@
     took the bait: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References farming chickens as commodity and property
+  note: Commodity framing of chickens as a yield to be counted. 'Don't assume success
+    prematurely' says it directly.
   considerate:
     don't assume success prematurely: a
-    wait for confirmed results: a
-    don't get ahead of yourself: a
+    don't celebrate too early: a
   inconsiderate:
-    don't count your chickens before they hatch: animal-violence
+    don't count your chickens: animal-violence
+    counting your chickens: animal-violence
+    count your chickens before: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal-as-coward insult in comments
+  note: Uses a chicken as an insult for cowardice. 'Don't hesitate' or 'be brave'
+    is direct and doesn't rely on a demeaning stereotype.
   considerate:
     don't hesitate: a
     be brave: a
@@ -303,34 +331,8 @@
     don't be a chicken: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal-as-insult for resource consumption
-  considerate:
-    resource-intensive: a
-    bloated: a
-    heavy consumer: a
-  inconsiderate:
-    pig: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Not directly animal-related but reinforces animal industry terminology
-  considerate:
-    undisciplined coding: a
-    ad-hoc development: a
-    code without process: a
-  inconsiderate:
-    cowboy coding: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Animal-as-insult for programmers — dehumanizing and unprofessional
-  considerate:
-    developer: a
-    programmer: a
-    engineer: a
-  inconsiderate:
-    code monkey: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: From badger-baiting — a blood sport where dogs attack captive badgers
+  note: Comes from badger-baiting, a blood sport where dogs were set on captive badgers.
+    'Pester' or 'pressure' carries the same meaning without the origin.
   considerate:
     pester: a
     pressure: a
@@ -339,7 +341,8 @@
     badger someone: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: From using ferrets to hunt rabbits out of burrows
+  note: Refers to the historical use of ferrets to flush rabbits out of burrows to
+    be killed. 'Uncover' or 'dig up' works just as well.
   considerate:
     uncover: a
     discover: a
@@ -348,24 +351,9 @@
     ferret out: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Infrastructure metaphor — alternatives are technically more precise
-  considerate:
-    ephemeral vs. persistent: a
-    disposable vs. unique: a
-    numbered vs. named: a
-  inconsiderate:
-    cattle vs. pets: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Common idiom — flag for awareness only
-  considerate:
-    side project: a
-    passion project: a
-  inconsiderate:
-    pet project: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Animal metaphor — alternatives are more technical
+  note: Refers to canaries historically placed in coal mines to die first as a warning
+    to miners. 'Early warning signal' or 'sentinel' conveys the meaning without the
+    harm.
   considerate:
     early warning signal: a
     leading indicator: a
@@ -374,38 +362,19 @@
     canary in a coal mine: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Common tech term — flag for awareness only
-  considerate:
-    self-hosting: a
-    eating your own cooking: a
-    using internally: a
-  inconsiderate:
-    dogfooding: animal-violence
-    dogfood: animal-violence
-    eating your own dogfood: animal-violence
-    eat your own dogfood: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Animal metaphor — alternatives are more descriptive
-  considerate:
-    coordinating independent contributors: a
-    managing a distributed effort: a
-    organizing chaos: a
-  inconsiderate:
-    herding cats: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Animal metaphor — alternatives are more precise
+  note: Frames speculative inquiry as fishing — the metaphor softens the catch. 'Exploratory
+    investigation' is clearer, especially in legal writing.
   considerate:
     exploratory investigation: a
-    unfocused search: a
     speculative inquiry: a
+    unfocused search: a
   inconsiderate:
-    go on a fishing expedition: animal-violence
+    fishing expedition: animal-violence
+    fishing expeditions: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Animal objectification with cultural insensitivity — trivializes Hindu beliefs
-    while treating cattle as objects
+  note: Treats cattle as objects in an 'untouchable' metaphor while also trivializing
+    Hindu beliefs. 'Unquestioned belief' or 'protected assumption' avoids both issues.
   considerate:
     unquestioned belief: a
     untouchable topic: a
@@ -415,7 +384,8 @@
     sacred cows: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Originates from ritual sacrifice of goats — alternatives are more precise
+  note: Originates from the ritual sacrifice of goats to carry away blame. 'Blame
+    target' or 'wrongly blamed' is more precise.
   considerate:
     blame target: a
     fall person: a
@@ -426,16 +396,8 @@
     scapegoating: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Derogatory animal metaphor for futility — alternatives are more descriptive
-  considerate:
-    daily grind: a
-    competitive treadmill: a
-    endless hustle: a
-  inconsiderate:
-    rat race: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Financial/tech term depicting animal death — alternatives are more professional
+  note: A financial term built on the image of a dead cat. 'Temporary rebound' or
+    'false recovery' is more professional and avoids the image.
   considerate:
     temporary rebound: a
     false recovery: a
@@ -444,7 +406,8 @@
     dead cat bounce: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Characterizes animals as violent — alternatives convey meaning more precisely
+  note: Frames dogs as inherently violent toward each other as a model for competition.
+    'Ruthlessly competitive' or 'cutthroat' conveys the meaning without the stereotype.
   considerate:
     ruthlessly competitive: a
     cutthroat: a
@@ -454,8 +417,8 @@
     dog eat dog: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References a game based on hitting animals — alternatives describe the pattern
-    more precisely
+  note: References a game built around repeatedly striking animals as they pop up.
+    'Recurring problem' or 'endless loop' describes the pattern more precisely.
   considerate:
     recurring problem: a
     endless loop: a
@@ -465,17 +428,8 @@
     whack a mole: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Commodifies cows — treats living beings as profit generators
-  considerate:
-    profit center: a
-    reliable revenue source: a
-    money maker: a
-  inconsiderate:
-    cash cow: animal-violence
-    cash cows: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: References ritual slaughter of lambs
+  note: References the ritual slaughter of lambs. 'Expendable person' or 'someone
+    sacrificed for others' communicates the metaphor directly.
   considerate:
     expendable person: a
     person set up to fail: a
@@ -485,7 +439,8 @@
     sacrificial lambs: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References a duck in the open, easy to shoot — hunting imagery
+  note: Hunting imagery — a duck in the open, easy to shoot. 'Easy target' or 'vulnerable
+    target' says the same thing.
   considerate:
     easy target: a
     vulnerable target: a
@@ -495,7 +450,8 @@
     sitting ducks: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References hunting season — the legal period for killing animals
+  note: Refers to the legal hunting period when killing animals is permitted. 'Free-for-all'
+    or 'no holds barred' conveys the meaning without the hunting framing.
   considerate:
     free-for-all: a
     unrestricted criticism: a
@@ -506,16 +462,8 @@
     opened season: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: References disposing of farm animals when no longer productive
-  considerate:
-    retire: a
-    phase out: a
-    sunset: a
-  inconsiderate:
-    put out to pasture: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: References a duck that has been shot and killed — hunting
+  note: Hunting imagery — a duck that has been shot and killed. 'Lost cause' or 'doomed
+    effort' is just as expressive.
   considerate:
     lost cause: a
     doomed effort: a
@@ -525,48 +473,8 @@
     dead ducks: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Process language — in POSIX context this is standard, in docs alternatives
-    may be clearer
-  considerate:
-    terminate the process: a
-    stop the process: a
-    end the process: a
-  inconsiderate:
-    kill process: animal-violence
-    killing process: animal-violence
-    killed process: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Process language — alternatives are equally clear
-  considerate:
-    stop the server: a
-    shut down the server: a
-    terminate the server: a
-  inconsiderate:
-    kill the server: animal-violence
-    killing the server: animal-violence
-    killed the server: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Violent metaphor in technical context — alternatives are more professional
-  considerate:
-    delete completely: a
-    wipe clean: a
-    remove entirely: a
-  inconsiderate:
-    nuke: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Standard technical term — flag for awareness only in non-technical contexts
-  considerate:
-    cancel: a
-    stop: a
-    halt: a
-  inconsiderate:
-    abort: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Euphemism for mass killing of animals — used in wildlife management and farming
+  note: Euphemism used in wildlife management and farming for mass killing. 'Remove',
+    'prune', 'trim', or 'filter out' is accurate in technical contexts.
   considerate:
     remove: a
     prune: a
@@ -576,36 +484,8 @@
     cull: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w
 - type: basic
-  note: Actively being replaced across the industry — follows existing inclusive naming
-    initiatives
-  considerate:
-    primary/replica: a
-    leader/follower: a
-    controller/worker: a
-  inconsiderate:
-    master/slave: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Actively being replaced — Google, Twitter, IETF have adopted alternatives
-  considerate:
-    allowlist/denylist: a
-    permit list/block list: a
-    inclusion list/exclusion list: a
-  inconsiderate:
-    whitelist/blacklist: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: Historically exclusionary origin — alternatives are equally clear
-  considerate:
-    legacy: a
-    exempt: a
-    pre-existing: a
-  inconsiderate:
-    grandfathered: animal-violence
-  source: https://doi.org/10.1007/s43681-023-00380-w
-- type: basic
-  note: References a bird unable to fly due to injury. 'Outgoing' or 'transitional'
-    are more precise in political and tech contexts.
+  note: Combines an ableist adjective with a reference to a bird unable to fly due
+    to injury. 'Outgoing', 'transitional', or 'ineffective' is more precise.
   considerate:
     outgoing: a
     transitional: a
@@ -613,4 +493,632 @@
   inconsiderate:
     lame duck: animal-violence
     lame-duck: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Human-as-prey imagery. 'Sacrifice' or 'leave exposed' captures the same meaning.
+  considerate:
+    sacrifice: a
+    leave exposed: a
+    abandon to attack: a
+  inconsiderate:
+    feed to the lions: animal-violence
+    fed to the lions: animal-violence
+    feeding to the lions: animal-violence
+    feed to the sharks: animal-violence
+    fed to the sharks: animal-violence
+    feeding to the sharks: animal-violence
+    feed to the dogs: animal-violence
+    fed to the dogs: animal-violence
+    feeding to the dogs: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Direct slaughter imagery. 'Defenseless' or 'walking into disaster' captures
+    the same meaning.
+  considerate:
+    defenseless: a
+    walking into disaster: a
+  inconsiderate:
+    like a pig to slaughter: animal-violence
+    pigs to slaughter: animal-violence
+    like pigs to slaughter: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: One-sided-slaughter imagery for an easy win. 'Walkover' or 'trivially easy
+    win' carries the same meaning.
+  considerate:
+    trivially easy win: a
+    no-contest situation: a
+    walkover: a
+  inconsiderate:
+    turkey shoot: animal-violence
+    turkey-shoot: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Frames predation as an inevitable natural order. 'Conflict of interest' or
+    'wrong person in charge' is the actual point being made.
+  considerate:
+    conflict of interest: a
+    the wrong person in charge: a
+  inconsiderate:
+    fox guarding the henhouse: animal-violence
+    fox in the henhouse: animal-violence
+    foxes guarding the henhouse: animal-violence
+    fox guarding the hen house: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Bull-as-clumsy-brute stereotype — actually originates from a cartoon, not
+    reality. 'Clumsy disruption' or 'careless and destructive' is more accurate.
+  considerate:
+    tornado in a glass factory: a
+    clumsy disruption: a
+    careless and destructive: a
+  inconsiderate:
+    bull in a china shop: animal-violence
+    like a bull in a china shop: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Mouse-killing device as innovation metaphor. 'Invent something better' or
+    'build a better mouse pad' captures the idea.
+  considerate:
+    build a better mouse pad: a
+    invent something better: a
+  inconsiderate:
+    build a better mousetrap: animal-violence
+    better mousetrap: animal-violence
+    builds a better mousetrap: animal-violence
+    building a better mousetrap: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Accurately describes industrial fishing and canning — the 'imagery' is the
+    reality. 'Tightly crowded' or 'packed in like pickles' works without invoking
+    it.
+  considerate:
+    packed in like pickles: a
+    tightly crowded: a
+    crammed together: a
+  inconsiderate:
+    packed in like sardines: animal-violence
+    packed like sardines: animal-violence
+    squeezed in like sardines: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Wool (sheep exploitation) as a deception metaphor. 'Deceive' or 'mislead'
+    is direct and clearer.
+  considerate:
+    deceive: a
+    mislead: a
+    pull the polyester over your eyes: a
+  inconsiderate:
+    pull the wool over: animal-violence
+    pulled the wool over: animal-violence
+    pulling the wool over: animal-violence
+    pulls the wool over: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Frames pigs as ugly objects. 'Superficially improve' or 'disguise the flaw'
+    is the actual meaning.
+  considerate:
+    superficially improve: a
+    disguise the flaw: a
+    dress up a bad product: a
+  inconsiderate:
+    lipstick on a pig: animal-violence
+    put lipstick on a pig: animal-violence
+    putting lipstick on a pig: animal-violence
+    puts lipstick on a pig: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Pig body parts framed as worthless. 'Transform something unpromising' carries
+    the same meaning.
+  considerate:
+    diamond bracelet out of a lump of coal: a
+    transform something unpromising: a
+  inconsiderate:
+    silk purse out of a sow's ear: animal-violence
+    silk purse from a sow's ear: animal-violence
+    make a silk purse out of a sow's ear: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Commodifies sheep coat color as a family-shame metaphor, with racial baggage.
+    'Outlier' or 'odd one out' works.
+  considerate:
+    outlier: a
+    misfit: a
+    odd one out: a
+  inconsiderate:
+    black sheep: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Wolves-as-deceivers trope. 'Hidden threat' or 'deceiver in disguise' carries
+    the same meaning.
+  considerate:
+    deceiver in disguise: a
+    hidden threat: a
+    threat wearing a friendly face: a
+  inconsiderate:
+    wolf in sheep's clothing: animal-violence
+    wolves in sheep's clothing: animal-violence
+    wolf in sheeps clothing: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Chicken-as-coward framing. 'Back out' or 'lose nerve' carries the same meaning.
+  considerate:
+    back out: a
+    lose nerve: a
+    get cold feet: a
+  inconsiderate:
+    chicken out: animal-violence
+    chickened out: animal-violence
+    chickening out: animal-violence
+    chickens out: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Shark-predation imagery used for human behavior. 'Chaotic rush' or 'scramble
+    to exploit' carries the same meaning.
+  considerate:
+    chaotic rush: a
+    scramble to exploit: a
+    uncontrolled grab: a
+  inconsiderate:
+    feeding frenzy: animal-violence
+    feeding frenzies: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Shark-predation imagery. 'Signs of weakness' or 'vulnerability visible' carries
+    the same meaning.
+  considerate:
+    signs of weakness: a
+    vulnerability visible: a
+    sensing a kill: a
+  inconsiderate:
+    blood in the water: animal-violence
+    smell blood in the water: animal-violence
+    smells blood in the water: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Species defamation — the 'circling vulture' framing is factually wrong (vultures
+    are ecological cleaners, not predators) and has driven real persecution; vulture
+    populations are crashing globally. 'Waiting to exploit' carries the same meaning.
+  considerate:
+    waiting to exploit: a
+    hovering opportunistically: a
+    waiting for weakness: a
+  inconsiderate:
+    circling like vultures: animal-violence
+    circle like vultures: animal-violence
+    circling vultures: animal-violence
+    vultures circling: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: References the farm practice of dunking broody hens in water to break their
+    nesting instinct. 'Furious' or 'livid' says it directly.
+  considerate:
+    furious: a
+    livid: a
+    seething: a
+  inconsiderate:
+    madder than a wet hen: animal-violence
+    mad as a wet hen: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Frames programmers as trained animals, and compounds with the long history
+    of 'monkey' used as a racial slur. 'Developer' or 'engineer' is the accurate term.
+  considerate:
+    developer: a
+    programmer: a
+    engineer: a
+  inconsiderate:
+    code monkey: animal-violence
+    code monkeys: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Builds on the pig-as-greedy stereotype (pigs are actually selective eaters).
+    'Resource-intensive' or 'monopolizes' is more accurate and avoids the framing.
+  considerate:
+    resource-intensive: a
+    heavy consumer: a
+    monopolizes: a
+    dominates: a
+  inconsiderate:
+    memory hog: animal-violence
+    CPU hog: animal-violence
+    bandwidth hog: animal-violence
+    resource hog: animal-violence
+    disk hog: animal-violence
+    space hog: animal-violence
+    hogging memory: animal-violence
+    hogging CPU: animal-violence
+    hogging bandwidth: animal-violence
+    hogging resources: animal-violence
+    hogging the: animal-violence
+    hogs the: animal-violence
+    hog the spotlight: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Pig-as-stubborn stereotype (pigs are intelligent, not stubborn). 'Obstinate'
+    or 'unreasonable' says it directly.
+  considerate:
+    obstinate: a
+    inflexible: a
+    unreasonable: a
+  inconsiderate:
+    pigheaded: animal-violence
+    pig-headed: animal-violence
+    pigheadedness: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Pig-as-glutton stereotype (actually wrong — pigs are selective eaters in natural
+    conditions). 'Overeat' or 'gorge' says the same thing.
+  considerate:
+    overeat: a
+    gorge: a
+    eat voraciously: a
+  inconsiderate:
+    eat like a pig: animal-violence
+    eats like a pig: animal-violence
+    eating like a pig: animal-violence
+    ate like a pig: animal-violence
+    pig out: animal-violence
+    pigged out: animal-violence
+    pigging out: animal-violence
+    pigs out: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Female-dog insult that compounds misogyny with species defamation. A specific
+    descriptor is clearer and doesn't land on anyone's mother or on dogs.
+  considerate:
+    specific descriptor: a
+  inconsiderate:
+    son of a bitch: animal-violence
+    sons of bitches: animal-violence
+    son-of-a-bitch: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Coined term meaning 'sheep-people' — dehumanizes the target while defaming
+    sheep (who are actually complex social animals). 'Conformists' or 'uncritical
+    crowd' carries the same meaning.
+  considerate:
+    conformists: a
+    unquestioning followers: a
+    uncritical crowd: a
+  inconsiderate:
+    sheeple: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Species-as-predator trope applied to exploitative humans, which misrepresents
+    sharks and provides a convenient framing for financial harm. 'Predatory lender'
+    or 'hustler' is direct and more accurate.
+  considerate:
+    predatory lender: a
+    hustler: a
+    card hustler: a
+  inconsiderate:
+    loan shark: animal-violence
+    loan sharks: animal-violence
+    loan-shark: animal-violence
+    card shark: animal-violence
+    card sharks: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Species defamation that drives real-world vulture persecution — global vulture
+    populations are crashing largely from this kind of cultural framing. 'Predatory
+    investor' names the behavior without defaming an ecologically critical species.
+  considerate:
+    predatory investor: a
+    scavenger capitalist: a
+    distressed-debt investor: a
+  inconsiderate:
+    vulture capitalist: animal-violence
+    vulture capitalists: animal-violence
+    vulture capitalism: animal-violence
+    vulture fund: animal-violence
+    vulture funds: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Species-as-deceitful trope. 'Evasive language' or 'slippery phrasing' is more
+    direct. (Wikipedia's Manual of Style uses 'weasel words' as an internal term of
+    art; that context is suppressed.)
+  considerate:
+    evasive language: a
+    evade: a
+    slippery phrasing: a
+  inconsiderate:
+    weasel words: animal-violence
+    weasel word: animal-violence
+    weasel out: animal-violence
+    weaseled out: animal-violence
+    weaseling out: animal-violence
+    weasels out: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Species-as-parasite trope. 'Freeload' or 'mooch' is direct. (Bare 'leech'
+    in medical contexts — leeches are still used in some surgeries — is not flagged.)
+  considerate:
+    freeload: a
+    mooch: a
+    exploit: a
+    parasitic: a
+  inconsiderate:
+    leech off: animal-violence
+    leeching off: animal-violence
+    leeched off: animal-violence
+    leeches off: animal-violence
+    bloodsucker: animal-violence
+    bloodsuckers: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Primate-as-foolish stereotype with a long racial history. 'Mischief' or 'fool
+    around' is direct and doesn't carry the baggage.
+  considerate:
+    mischief: a
+    fool around: a
+    tamper with: a
+    make a fool of: a
+  inconsiderate:
+    monkey business: animal-violence
+    monkey around: animal-violence
+    monkeys around: animal-violence
+    monkeying around: animal-violence
+    monkeyed around: animal-violence
+    make a monkey of: animal-violence
+    made a monkey of: animal-violence
+    making a monkey of: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Direct reference to circus-animal exploitation. 'Not my problem' carries the
+    same meaning.
+  considerate:
+    not my problem: a
+    not my concern: a
+    not my mess to clean up: a
+  inconsiderate:
+    not my circus, not my monkeys: animal-violence
+    not my circus not my monkeys: animal-violence
+    not my monkeys: animal-violence
+    not my circus: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Bird-as-stupid stereotype (corvids and parrots rank among the most cognitively
+    sophisticated non-human animals). 'Forgetful' or 'absent-minded' is more accurate.
+  considerate:
+    forgetful: a
+    absent-minded: a
+    scatter-brained: a
+  inconsiderate:
+    bird brain: animal-violence
+    bird-brain: animal-violence
+    birdbrain: animal-violence
+    bird brained: animal-violence
+    bird-brained: animal-violence
+    birdbrained: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Culling euphemism that softens 'kill off selected animals.' 'Kill off' says
+    it directly.
+  considerate:
+    reduce numbers by killing: a
+    kill off: a
+  inconsiderate:
+    thin the herd: animal-violence
+    thinning the herd: animal-violence
+    thinned the herd: animal-violence
+    thin out the herd: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Rooted in Aesop's fable, the phrase reinforces the wolf-as-menace framing
+    that has driven centuries of wolf persecution. 'Raise false alarms' captures the
+    meaning.
+  considerate:
+    raise false alarms: a
+    create alert fatigue: a
+    sound unjustified alerts: a
+  inconsiderate:
+    cry wolf: animal-violence
+    cried wolf: animal-violence
+    crying wolf: animal-violence
+    cries wolf: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Derived from the actual behavior of hens in confinement, where crowding causes
+    injurious pecking. 'Hierarchy' or 'chain of command' captures the same idea.
+  considerate:
+    hierarchy: a
+    chain of command: a
+    ranking: a
+  inconsiderate:
+    pecking order: animal-violence
+    pecking orders: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Predator-prey torture metaphor — the game is about prolonging the suffering.
+    'Drawn-out pursuit' captures the meaning.
+  considerate:
+    drawn-out pursuit: a
+    back-and-forth chase: a
+    evasive pursuit: a
+  inconsiderate:
+    play cat and mouse: animal-violence
+    playing cat and mouse: animal-violence
+    played cat and mouse: animal-violence
+    cat and mouse game: animal-violence
+    game of cat and mouse: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Predation imagery — a dead canary is the joke's punchline. 'Smug with secret
+    knowledge' captures it.
+  considerate:
+    smug with secret knowledge: a
+    self-satisfied grin: a
+  inconsiderate:
+    cat that swallowed the canary: animal-violence
+    cat who swallowed the canary: animal-violence
+    cat that ate the canary: animal-violence
+    cat who ate the canary: animal-violence
+    canary-eating grin: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: References the metal 'bit' forced into a horse's mouth; the phrase describes
+    the horse's attempt to relieve it. 'Eager to start' says the same thing.
+  considerate:
+    eager to start: a
+    impatient to begin: a
+    raring to go: a
+  inconsiderate:
+    chomping at the bit: animal-violence
+    champing at the bit: animal-violence
+    chomps at the bit: animal-violence
+    champs at the bit: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Whip-violence imagery from animal training. 'Get organized' or 'restore order'
+    is direct. (Political 'whip' and culinary 'whip' — different usage — are suppressed.)
+  considerate:
+    get organized: a
+    demand discipline: a
+    restore order: a
+  inconsiderate:
+    whip into shape: animal-violence
+    whipped into shape: animal-violence
+    whipping into shape: animal-violence
+    whips into shape: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Whaling (whale slaughter) as metaphor for repeated hitting. 'Pummel' or 'hammer'
+    is direct.
+  considerate:
+    pummel: a
+    beat up: a
+    hammer: a
+  inconsiderate:
+    whale on: animal-violence
+    whaling on: animal-violence
+    whaled on: animal-violence
+    whales on: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Fishing imagery. 'Decide' or 'commit or move on' is direct.
+  considerate:
+    decide: a
+    commit or move on: a
+  inconsiderate:
+    fish or cut bait: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Stage magic often uses live rabbits kept in distressing conditions. 'Magically
+    solve' or 'produce unexpectedly' carries the meaning without referencing the practice.
+  considerate:
+    pull a coin out of an ear: a
+    magically solve: a
+    produce unexpectedly: a
+  inconsiderate:
+    pull a rabbit out of a hat: animal-violence
+    pulled a rabbit out of a hat: animal-violence
+    pulling a rabbit out of a hat: animal-violence
+    pulls a rabbit out of a hat: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Commodifies eggs as fragile objects; erases the laying-hen origin. 'Walking
+    on thin ice' carries the same meaning.
+  considerate:
+    walking on thin ice: a
+    treading carefully: a
+    being extra cautious: a
+  inconsiderate:
+    walking on eggshells: animal-violence
+    walk on eggshells: animal-violence
+    walks on eggshells: animal-violence
+    walked on eggshells: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Horse-killing idiom. 'End the suffering' carries the same meaning without
+    the imagery.
+  considerate:
+    end the suffering: a
+    end it mercifully: a
+    conclude a painful situation: a
+  inconsiderate:
+    put a horse out of its misery: animal-violence
+    put the horse out of its misery: animal-violence
+    put it out of its misery: animal-violence
+    put out of its misery: animal-violence
+    put out of their misery: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Biblical animal-sacrifice imagery (Luke 15 — the Prodigal Son). 'Celebrate
+    grandly' or 'roll out the red carpet' carries the same meaning.
+  considerate:
+    celebrate grandly: a
+    roll out the red carpet: a
+    prepare a feast: a
+  inconsiderate:
+    kill the fatted calf: animal-violence
+    killing the fatted calf: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Based on a Disney hoax — the 1958 'White Wilderness' staged lemmings being
+    driven off a cliff. Lemmings don't mass-suicide. The metaphor defames the species
+    and misleads the reader.
+  considerate:
+    herd-following investor: a
+    unquestioning crowd: a
+    uncritical followers: a
+  inconsiderate:
+    acting like lemmings: animal-violence
+    lemming investor: animal-violence
+    lemming investors: animal-violence
+    lemming behavior: animal-violence
+    like lemmings: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Degrading insect insult. Most uses in documentation are quoting dialogue or
+    user-generated content; otherwise, use a specific descriptor.
+  considerate:
+    specific descriptor: a
+  inconsiderate:
+    you maggot: animal-violence
+    little maggot: animal-violence
+    filthy maggot: animal-violence
+    dirty maggot: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Pig-as-degraded pejorative. Naming the actual trait (greedy, exploitative,
+    corrupt) is clearer. (Bare 'swine' in medical contexts like 'swine flu' is not
+    flagged.)
+  considerate:
+    specific descriptor: a
+  inconsiderate:
+    filthy swine: animal-violence
+    dirty swine: animal-violence
+    you swine: animal-violence
+    capitalist swine: animal-violence
+    fascist swine: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Gendered insult — almost exclusively applied to women arguing, framing them
+    as cats fighting. 'Heated argument' or 'altercation' is neutral.
+  considerate:
+    heated argument: a
+    altercation: a
+    confrontation: a
+  inconsiderate:
+    cat fight: animal-violence
+    catfight: animal-violence
+    cat-fight: animal-violence
+    cat fights: animal-violence
+    catfights: animal-violence
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: False dichotomy — humans ARE animals. The phrasing reproduces the speciesist
+    framing animal-liberation writing opposes. 'Humans and other animals' preserves
+    the meaning accurately.
+  considerate:
+    humans and non-human animals: a
+    humans and other animals: a
+    people and other animals: a
+  inconsiderate:
+    humans and animals: animal-violence
+    animals and humans: animal-violence
+    people and animals: animal-violence
+    animals and people: animal-violence
+    man and beast: animal-violence
   source: https://doi.org/10.1007/s43681-023-00380-w

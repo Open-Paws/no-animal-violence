@@ -39,7 +39,7 @@ def _write_alex_file(rules: list[Rule], output_path: Path, category: str) -> Non
     for rule in rules:
         entries.append({
             "type": "basic",
-            "note": rule.note,
+            "note": rule.reason,
             "considerate": {alt: "a" for alt in rule.alternatives},
             "inconsiderate": {term: category for term in rule.terms},
             "source": REFERENCE_URL,

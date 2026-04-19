@@ -48,7 +48,10 @@ def generate_generic(rules: list[Rule], output_path: Path) -> None:
     for rule in rules:
         alts = _alts_str(rule)
         autofix = _autofix_note(rule)
-        msg = f'Animal violence language: "{rule.primary_term}". Consider: {alts}{autofix}'
+        msg = (
+            f'Animal violence language: "{rule.primary_term}". {rule.reason} '
+            f"Consider: {alts}{autofix}"
+        )
         pattern = f'\\b(?:{rule.regex})\\b' if rule.word_boundary else rule.regex
         lines.append(f"- id: animal-violence.{rule.name}\n")
         lines.append(f"  pattern-regex: '{_safe_yaml_single_quoted(pattern)}'\n")
@@ -60,6 +63,7 @@ def generate_generic(rules: list[Rule], output_path: Path) -> None:
         lines.append("    category: inclusive-language\n")
         lines.append(f"    subcategory: {rule.category}\n")
         lines.append(f"    alternative: '{_safe_yaml_single_quoted(rule.primary_alt)}'\n")
+        lines.append(f"    reason: '{_safe_yaml_single_quoted(rule.reason)}'\n")
         lines.append("    references:\n")
         lines.append(f"    - {REFERENCE_URL}\n")
     output_path.write_text("".join(lines), encoding="utf-8")
@@ -85,7 +89,7 @@ def _generate_lang_file(
         autofix = _autofix_note(rule)
         msg = (
             f'Animal violence language in string: "{rule.primary_term}". '
-            f"Consider: {alts}{autofix}"
+            f"{rule.reason} Consider: {alts}{autofix}"
         )
         bounded = f'\\b(?:{rule.regex})\\b' if rule.word_boundary else rule.regex
         lines.append(f"- id: {rule_id_prefix}.{rule.name}\n")
@@ -102,6 +106,7 @@ def _generate_lang_file(
         lines.append("    category: inclusive-language\n")
         lines.append(f"    subcategory: {rule.category}\n")
         lines.append(f"    alternative: '{_safe_yaml_single_quoted(rule.primary_alt)}'\n")
+        lines.append(f"    reason: '{_safe_yaml_single_quoted(rule.reason)}'\n")
         if rule.severity in ("error", "warning"):
             lines.append("  fix-regex:\n")
             lines.append(f"    regex: '{_safe_yaml_single_quoted(bounded)}'\n")
