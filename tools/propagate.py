@@ -7,8 +7,10 @@ Environment variables required:
   SHORT_SHA      Short SHA for branch names
   DRY_RUN        'true' to skip push and PR creation
 """
+import json
 import os
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
@@ -107,6 +109,33 @@ def run(cmd, **kwargs):
     return subprocess.run(cmd, check=True, capture_output=True, text=True, **kwargs)
 
 
+def close_superseded_prs(repo: str, new_branch: str, canonical_sha: str, gh_env: dict) -> None:
+    """Close any open automated-sync PRs that are not the current sync branch."""
+    try:
+        result = subprocess.run(
+            ["gh", "pr", "list",
+             "--repo", repo,
+             "--label", "automated-sync",
+             "--state", "open",
+             "--json", "number,headRefName"],
+            capture_output=True, text=True, env=gh_env, check=True,
+        )
+        prs = json.loads(result.stdout or "[]")
+        for pr in prs:
+            if pr["headRefName"] == new_branch:
+                continue
+            subprocess.run(
+                ["gh", "pr", "close", str(pr["number"]),
+                 "--repo", repo,
+                 "--comment",
+                 f"Superseded by {new_branch} (canonical {canonical_sha[:12]})."
+                 " All changes from this PR are included in the newer sync."],
+                env=gh_env, capture_output=True,
+            )
+    except (subprocess.CalledProcessError, json.JSONDecodeError) as exc:
+        print(f"Warning: could not close superseded PRs in {repo}: {exc}", file=sys.stderr, flush=True)
+
+
 def propagate_repo(config: dict, sync_branch: str, canonical_sha: str, dry_run: bool) -> dict:
     repo = config["repo"]
     base_branch = config["branch"]
@@ -141,6 +170,8 @@ def propagate_repo(config: dict, sync_branch: str, canonical_sha: str, dry_run: 
                 result["status"] = "dry_run"
                 return result
 
+            gh_env = {**os.environ, "GH_TOKEN": token}
+
             run(["git", "checkout", "-b", sync_branch], cwd=tmpdir)
             run(["git", "config", "user.email", "sync-bot@openpaws.ai"], cwd=tmpdir)
             run(["git", "config", "user.name", "Open Paws Sync Bot"], cwd=tmpdir)
@@ -152,7 +183,6 @@ def propagate_repo(config: dict, sync_branch: str, canonical_sha: str, dry_run: 
             run(["git", "commit", "-m", commit_msg], cwd=tmpdir)
             run(["git", "push", "origin", sync_branch], cwd=tmpdir)
 
-            gh_env = {**os.environ, "GH_TOKEN": token}
             run(
                 ["gh", "label", "create", "automated-sync",
                  "--repo", repo,
@@ -183,6 +213,7 @@ def propagate_repo(config: dict, sync_branch: str, canonical_sha: str, dry_run: 
             )
             result["pr_url"] = pr_result.stdout.strip()
             result["status"] = "pr_opened"
+            close_superseded_prs(repo, sync_branch, canonical_sha, gh_env)
 
         except subprocess.CalledProcessError as exc:
             result["status"] = "error"
