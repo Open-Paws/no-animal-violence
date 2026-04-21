@@ -72,7 +72,7 @@ export default async function noAnimalViolence(options: NoAnimalViolenceOptions 
         report(
           \`**\${file}**: Found "\${pattern.phrase}". \${pattern.reason} \` +
           \`Consider: \${pattern.alternatives.map(a => \`"\${a}"\`).join(" or ")}. \` +
-          \`[Why?](https://doi.org/10.1007/s43681-023-00380-w)\`
+          \`See https://github.com/Open-Paws/no-animal-violence for details.\`
         );
         pattern.regex.lastIndex = 0;
       }

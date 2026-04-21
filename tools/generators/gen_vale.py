@@ -23,7 +23,6 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 BUILD_DIR = REPO_ROOT / "build" / "vale-no-animal-violence" / "NoAnimalViolence"
 
 AUTOGEN_HEADER = "# AUTO-GENERATED from Open-Paws/no-animal-violence. Do not edit directly.\n"
-REFERENCE_URL = "https://doi.org/10.1007/s43681-023-00380-w"
 
 
 def _build_term_index(rules: list[Rule]) -> list[tuple[str, str, str, str]]:
@@ -56,7 +55,6 @@ def _write_vale_file(rules: list[Rule], output_path: Path, level: str = "warning
         AUTOGEN_HEADER,
         "extends: substitution\n",
         f'message: "{message}"\n',
-        f"link: {REFERENCE_URL}\n",
         f"level: {level}\n",
         "ignorecase: true\n",
         "swap:\n",
