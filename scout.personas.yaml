@@ -1,0 +1,169 @@
+version: "1"
+interaction: library  # static YAML rule files + Python generation/validation scripts; no standalone CLI binary
+
+# Canonical pattern dictionary (65+ rules) for detecting speciesist language in code, docs, and config.
+# rules.yaml is the single source of truth; downstream formats (woke, alex, vale, semgrep) are generated from it.
+
+personas:
+  - id: first-time-integrator
+    name: Developer Integrating the Rules for the First Time
+    description: >
+      A developer at an Open Paws partner org who wants to add speciesist-language
+      detection to their project. They clone this repo, understand the file layout,
+      run the consistency checker to verify the working state, then wire one of the
+      generated formats (woke, semgrep, or Vale) into their own project.
+    environment:
+      runtime: python@3.11
+      os: any
+    flows:
+      - id: clone-and-verify
+        name: Clone repo and verify generated files are in sync
+        steps:
+          - run: git clone https://github.com/Open-Paws/no-animal-violence.git && cd no-animal-violence
+          - run: pip install pyyaml
+          - run: python tools/check_consistency.py
+          - run: >
+              # Reference a generated format in your own project — e.g. for woke:
+              woke --config path/to/no-animal-violence/woke/.woke.yaml .
+        expected_outcome: >
+          check_consistency.py exits 0 with no drift errors.
+          woke reports any matching phrases found in the target project.
+    assertions:
+      succeeds:
+        - check_consistency.py exits 0 when all generated files are in sync with rules.yaml
+        - woke scanner accepts woke/.woke.yaml without parse errors
+      fails_gracefully:
+        - check_consistency.py exits non-zero and prints a diff when a generated file is out of sync
+      output_contains:
+        - '"All checks passed" or equivalent success line from check_consistency.py'
+
+  - id: clean-content-check
+    name: Developer Checking Clean Content (No Violations Expected)
+    description: >
+      A developer who has integrated the rules (via woke or semgrep) and is
+      running them against a file they believe contains no speciesist language.
+      They expect zero findings and a clean exit code so their CI gate passes.
+    environment:
+      runtime: python@3.11
+      os: any
+    flows:
+      - id: scan-clean-file
+        name: Scan a file known to contain no speciesist language
+        steps:
+          - run: >
+              printf 'def process_data(items):\n    """Accomplish two things at once."""\n    return [item.strip() for item in items]\n' > clean_sample.py
+          - run: woke --config woke/.woke.yaml clean_sample.py
+          - run: semgrep --config semgrep-no-animal-violence.yaml clean_sample.py
+        expected_outcome: >
+          Both scanners exit 0 with no findings reported for clean_sample.py.
+    assertions:
+      succeeds:
+        - woke exits 0 with no violation lines when the input file is free of speciesist patterns
+        - semgrep exits 0 with 0 findings when the input file is free of speciesist patterns
+      fails_gracefully:
+        - scanner prints a clear "no findings" or empty result rather than an ambiguous non-zero exit
+      output_contains:
+        - zero violation lines in woke output
+        - '"0 findings" in semgrep output'
+
+  - id: violations-detected
+    name: Developer Checking Content With 5+ Known Speciesist Idioms
+    description: >
+      A developer testing that the rules actually catch violations. They run both
+      woke and semgrep against a file seeded with known speciesist phrases and
+      verify every one is flagged with a file location, the matched term, and at
+      least one alternative suggestion.
+    environment:
+      runtime: python@3.11
+      os: any
+    flows:
+      - id: scan-dirty-file
+        name: Scan a file containing known speciesist phrases
+        steps:
+          - run: |
+              cat > violations_sample.py << 'EOF'
+              # This file is a test fixture — do not use in production.
+              # kill two birds with one stone
+              # beat a dead horse
+              # more than one way to skin a cat
+              # shooting fish in a barrel
+              # guinea pig
+              # flog a dead horse
+              EOF
+          - run: woke --config woke/.woke.yaml violations_sample.py
+          - run: semgrep --config semgrep-no-animal-violence.yaml violations_sample.py
+        expected_outcome: >
+          Both scanners report at least 5 findings (one per seeded phrase), each
+          with file path, line number, matched term, severity, and at least one
+          suggested alternative. Scanners exit non-zero (findings present).
+    assertions:
+      succeeds:
+        - kill-two-birds-with-one-stone rule fires on line containing that phrase
+        - beat-a-dead-horse rule fires on line containing that phrase
+        - skin-a-cat rule fires on line containing that phrase
+        - shooting-fish-in-a-barrel rule fires on line containing that phrase
+        - guinea-pig rule fires on line containing that phrase
+        - flog-a-dead-horse rule fires on line containing that phrase
+        - each finding includes at least one suggested alternative drawn from rules.yaml
+        - severity levels match rules.yaml (error for violence idioms, info for softer patterns)
+      fails_gracefully:
+        - scanner reports all violations independently rather than stopping at the first match
+      output_contains:
+        - file path and line number for each violation
+        - matched speciesist term or rule name
+        - at least one alternative suggestion per finding
+        - severity level (error / warning / info)
+
+  - id: ci-pipeline
+    name: CI Pipeline Scanning a Changed File on Pull Request
+    description: >
+      A GitHub Actions workflow running the no-animal-violence checks as a CI gate
+      on every pull request. The pipeline checks out the repo, scans changed files,
+      and fails the build if any speciesist language is found. Uses the GitHub
+      Action adapter as the primary mechanism; woke and semgrep are direct
+      fallbacks. Also runs check_consistency.py to guard against generated-file
+      drift from rules.yaml.
+    environment:
+      runtime: python@3.11
+      os: ubuntu-latest
+    flows:
+      - id: github-action-gate
+        name: Run no-animal-violence-action on pull request via GitHub Actions workflow
+        steps:
+          - run: |
+              # Workflow definition — add to .github/workflows/inclusive-language.yml
+              # name: Inclusive Language
+              # on: [pull_request]
+              # jobs:
+              #   scan:
+              #     runs-on: ubuntu-latest
+              #     steps:
+              #       - uses: actions/checkout@v4
+              #       - uses: Open-Paws/no-animal-violence-action@v1
+              echo "GitHub Actions workflow described above"
+          - run: git diff --name-only HEAD~1 HEAD | xargs woke --config woke/.woke.yaml
+          - run: git diff --name-only HEAD~1 HEAD | xargs semgrep --config semgrep-no-animal-violence.yaml
+        expected_outcome: >
+          Pipeline exits non-zero and annotates the PR diff with inline violation
+          comments when speciesist language is present. Exits 0 with a passing
+          check when changed files are clean.
+      - id: consistency-check-in-ci
+        name: Run check_consistency.py to guard against generated-file drift
+        steps:
+          - run: pip install pyyaml
+          - run: python tools/check_consistency.py
+        expected_outcome: >
+          CI fails with a clear error message if any generated file (woke/.woke.yaml,
+          alex/*.yml, vale/Speciesism/*.yml) has drifted from rules.yaml.
+    assertions:
+      succeeds:
+        - CI gate exits 0 and marks the check green when no violations are found in changed files
+        - check_consistency.py exits 0 confirming generated files are in sync with rules.yaml
+      fails_gracefully:
+        - CI gate exits non-zero with inline PR annotations when violations are found
+        - check_consistency.py exits non-zero with a human-readable diff showing which generated file is out of sync
+      output_contains:
+        - rule name (e.g. kill-two-birds-with-one-stone) for each violation
+        - file path and line number
+        - suggested alternative drawn from rules.yaml alternatives list
+        - severity level (error / warning / info)
