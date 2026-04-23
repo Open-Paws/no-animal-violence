@@ -2748,3 +2748,42 @@ rules:
     regex: "own(s|ing|ed)?\\s+a\\s+(pet|dog|cat|rabbit|bird)"
     context_suppressions: []
 
+  - name: aquaculture-humane-harvest
+    terms:
+      - humane harvest
+      - responsible harvest
+    alternatives:
+      - mass killing of fish
+    severity: warning
+    category: industry-euphemism
+    reason: "Aquaculture euphemism for mass killing of farmed fish or shrimp. Names the reality."
+    word_boundary: false
+    regex: "(humane|responsible)\\s+harvest"
+    context_suppressions: []
+
+  - name: fish-stunning
+    terms:
+      - humane stunning
+      - electrical stunning
+      - percussive stunning
+    alternatives:
+      - stunning prior to slaughter
+    severity: warning
+    category: industry-euphemism
+    reason: "Fish 'stunning' methods in aquaculture are often ineffective, leading to prolonged suffering before death."
+    word_boundary: false
+    regex: "(humane|electrical|percussive)\\s+stunning"
+    context_suppressions: []
+
+  - name: live-chilling
+    terms:
+      - live chilling
+      - ice slurry
+    alternatives:
+      - suffocation in ice water
+    severity: warning
+    category: industry-euphemism
+    reason: "Common fish killing method where live fish are placed in ice water to suffocate slowly."
+    word_boundary: false
+    regex: "live\\s+chilling|ice\\s+slurry"
+    context_suppressions: []
