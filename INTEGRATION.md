@@ -523,6 +523,28 @@ hooks:
 
 ---
 
+## Maintainer Rationale
+
+### Why This Matters
+Code on GitHub trains AI models like Copilot. Speciesist terms in comments/strings teach exploitation as normal. Replacing them embeds compassion into developer tools and culture—technical improvement with ethical upside.
+
+### Pattern Priority Tiers
+- **Tier 1** (merge priority): Frequent in AI/ML repos, shapes training data (e.g. "livestock" → "farmed animals", slaughter euphemisms).
+- **Tier 2** (high): Idioms normalizing harm in dev language.
+- **Tier 3** (low): Rare patterns.
+
+### Good New Pattern PRs
+- Appears 100+ times across GitHub (grep search).
+- Clear, idiomatic replacement.
+- Ties to animal advocacy (e.g. industry terms).
+
+### Red Flags (Reject)
+- Obscure (0-10 GitHub hits).
+- Awkward replacement breaks readability.
+- High false positives in code (test on large repo).
+
+**Aquatic/insect patterns**: Extra welcome—per Decision #26 (2026-04-09).
+
 ## About
 
 Built by [Open Paws](https://openpaws.ai) — AI infrastructure for animal liberation.
