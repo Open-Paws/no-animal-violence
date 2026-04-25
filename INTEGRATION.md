@@ -528,3 +528,25 @@ hooks:
 Built by [Open Paws](https://openpaws.ai) — AI infrastructure for animal liberation.
 
 Rule definitions live in this repo. Tool wrappers live in their respective repos (linked above). The canonical source of all detected phrases is `woke/.woke.yaml`.
+
+
+## Maintainer Rationale
+
+Speciesist language in codebases subtly normalizes animal exploitation, shaping developer norms and polluting the vast datasets that train AI models. This suite targets high-frequency patterns that appear in real repositories, replacing terms like "livestock" with "farmed animals" or "slaughter" euphemisms with direct welfare language—technical meaning intact, framing shifted. The goal is cleaner training data and cultural momentum toward liberation, one codebase at a time.
+
+### Pattern Priority Tiers
+- **Tier 1 (highest priority)**: Ubiquity in ML/AI codebases; direct training data impact (e.g., "kill/fork/exec" → "terminate/branch/spawn", "master/slave" → "primary/replica").
+- **Tier 2 (high priority)**: Everyday idioms that normalize harm (e.g., "cull the herd" → "filter the list", "canary deployment" → "pilot deployment").
+- **Tier 3 (nice-to-have)**: Infrequent or niche patterns.
+
+### What Makes a Good New Pattern PR
+- Demonstrable frequency: GitHub code search shows 100+ matches across repos.
+- Precise replacement: Clear, idiomatic alternative (no awkward verbosity).
+- Strategic relevance: Advances welfare framing (e.g., industry euphemisms).
+
+### Red Flags for Rejection
+- Too obscure: <10 real-world matches, not worth maintenance.
+- Awkward fix: Replacement changes semantics or readability.
+- False-positive magnet: Matches legit technical terms (e.g., POSIX APIs).
+
+**Note**: Aquatic welfare (fish/shrimp farming) and insect welfare patterns are priority categories—extra welcoming per Decision #26 (2026-04-09). Proposals here get fast-tracked.
