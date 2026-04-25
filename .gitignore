@@ -12,3 +12,7 @@ build/
 .pytest_cache/
 dist/
 *.egg-info/
+
+# Claude Code agent state — never commit
+.claude/agent-memory/
+.claude/worktrees/
