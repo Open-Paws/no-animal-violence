@@ -2608,3 +2608,64 @@ rules:
     - industry-euphemism
   reason: Property framing applied to companion animals. 'Live with a dog' or 'share
     a home with a cat' captures the relationship without the ownership frame.
+- name: aquaculture-harvest
+  terms:
+  - fish harvest
+  - harvesting fish
+  - shrimp harvest
+  - harvesting shrimp
+  - salmon harvest
+  - tilapia harvest
+  alternatives:
+  - fish slaughter
+  - shrimp slaughter
+  - salmon slaughter
+  severity: warning
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+  reason: Aquaculture euphemism for killing/slaughtering farmed fish/shrimp. 'Harvest'
+    obscures the mass killing at the end of the grow-out phase.
+- name: stocking-density
+  terms:
+  - stocking density
+  - stocking densities
+  alternatives:
+  - crowding density
+  - confinement density
+  severity: warning
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+  reason: Industry term for extreme overcrowding in aquaculture tanks/ponds/net pens,
+    where fish are packed at densities causing stress, disease, and cannibalism.
+- name: harvest-size
+  terms:
+  - harvest size
+  - market size
+  - slaughter weight
+  alternatives:
+  - slaughter size
+  - killing weight
+  severity: info
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+  reason: Euphemism for the size/weight at which farmed fish/shrimp are killed ('harvested').
+- name: grow-out-phase
+  terms:
+  - grow-out pond
+  - grow-out tank
+  - grow-out phase
+  alternatives:
+  - fattening pond
+  - fattening tank
+  severity: info
+  options:
+    word_boundary: false
+    categories:
+    - industry-euphemism
+  reason: Final fattening phase before slaughter in aquaculture.

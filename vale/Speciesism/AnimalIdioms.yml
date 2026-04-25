@@ -1,7 +1,6 @@
 # AUTO-GENERATED from Open-Paws/no-animal-violence. Do not edit directly.
 extends: substitution
 message: "Consider using '%s' instead of '%s'. This phrase normalizes violence toward animals (see rule comment for why)."
-link: https://doi.org/10.1007/s43681-023-00380-w
 level: warning
 ignorecase: true
 swap:
