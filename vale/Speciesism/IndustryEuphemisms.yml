@@ -1,7 +1,6 @@
 # AUTO-GENERATED from Open-Paws/no-animal-violence. Do not edit directly.
 extends: substitution
 message: "Consider using '%s' instead of '%s'. This phrase normalizes violence toward animals (see rule comment for why)."
-link: https://doi.org/10.1007/s43681-023-00380-w
 level: warning
 ignorecase: true
 swap:
@@ -555,3 +554,31 @@ swap:
   'own a cat': 'live with a companion animal'
   # own-a-pet: Property framing applied to companion animals. 'Live with a dog' or 'share a home with a cat' captures the relationship without the ownership frame.
   'owns a cat': 'live with a companion animal'
+  # aquaculture-harvest: Aquaculture euphemism for killing/slaughtering farmed fish/shrimp. 'Harvest' obscures the mass killing at the end of the grow-out phase.
+  'fish harvest': 'fish slaughter'
+  # aquaculture-harvest: Aquaculture euphemism for killing/slaughtering farmed fish/shrimp. 'Harvest' obscures the mass killing at the end of the grow-out phase.
+  'harvesting fish': 'fish slaughter'
+  # aquaculture-harvest: Aquaculture euphemism for killing/slaughtering farmed fish/shrimp. 'Harvest' obscures the mass killing at the end of the grow-out phase.
+  'shrimp harvest': 'fish slaughter'
+  # aquaculture-harvest: Aquaculture euphemism for killing/slaughtering farmed fish/shrimp. 'Harvest' obscures the mass killing at the end of the grow-out phase.
+  'harvesting shrimp': 'fish slaughter'
+  # aquaculture-harvest: Aquaculture euphemism for killing/slaughtering farmed fish/shrimp. 'Harvest' obscures the mass killing at the end of the grow-out phase.
+  'salmon harvest': 'fish slaughter'
+  # aquaculture-harvest: Aquaculture euphemism for killing/slaughtering farmed fish/shrimp. 'Harvest' obscures the mass killing at the end of the grow-out phase.
+  'tilapia harvest': 'fish slaughter'
+  # stocking-density: Industry term for extreme overcrowding in aquaculture tanks/ponds/net pens, where fish are packed at densities causing stress, disease, and cannibalism.
+  'stocking density': 'crowding density'
+  # stocking-density: Industry term for extreme overcrowding in aquaculture tanks/ponds/net pens, where fish are packed at densities causing stress, disease, and cannibalism.
+  'stocking densities': 'crowding density'
+  # harvest-size: Euphemism for the size/weight at which farmed fish/shrimp are killed ('harvested').
+  'harvest size': 'slaughter size'
+  # harvest-size: Euphemism for the size/weight at which farmed fish/shrimp are killed ('harvested').
+  'market size': 'slaughter size'
+  # harvest-size: Euphemism for the size/weight at which farmed fish/shrimp are killed ('harvested').
+  'slaughter weight': 'slaughter size'
+  # grow-out-phase: Final fattening phase before slaughter in aquaculture.
+  'grow-out pond': 'fattening pond'
+  # grow-out-phase: Final fattening phase before slaughter in aquaculture.
+  'grow-out tank': 'fattening pond'
+  # grow-out-phase: Final fattening phase before slaughter in aquaculture.
+  'grow-out phase': 'fattening pond'

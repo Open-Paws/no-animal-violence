@@ -849,3 +849,48 @@
     own a cat: industry-euphemism
     owns a cat: industry-euphemism
   source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Aquaculture euphemism for killing/slaughtering farmed fish/shrimp. 'Harvest'
+    obscures the mass killing at the end of the grow-out phase.
+  considerate:
+    fish slaughter: a
+    shrimp slaughter: a
+    salmon slaughter: a
+  inconsiderate:
+    fish harvest: industry-euphemism
+    harvesting fish: industry-euphemism
+    shrimp harvest: industry-euphemism
+    harvesting shrimp: industry-euphemism
+    salmon harvest: industry-euphemism
+    tilapia harvest: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Industry term for extreme overcrowding in aquaculture tanks/ponds/net pens,
+    where fish are packed at densities causing stress, disease, and cannibalism.
+  considerate:
+    crowding density: a
+    confinement density: a
+  inconsiderate:
+    stocking density: industry-euphemism
+    stocking densities: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Euphemism for the size/weight at which farmed fish/shrimp are killed ('harvested').
+  considerate:
+    slaughter size: a
+    killing weight: a
+  inconsiderate:
+    harvest size: industry-euphemism
+    market size: industry-euphemism
+    slaughter weight: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w
+- type: basic
+  note: Final fattening phase before slaughter in aquaculture.
+  considerate:
+    fattening pond: a
+    fattening tank: a
+  inconsiderate:
+    grow-out pond: industry-euphemism
+    grow-out tank: industry-euphemism
+    grow-out phase: industry-euphemism
+  source: https://doi.org/10.1007/s43681-023-00380-w

@@ -2748,3 +2748,65 @@ rules:
     regex: "own(s|ing|ed)?\\s+a\\s+(pet|dog|cat|rabbit|bird)"
     context_suppressions: []
 
+  - name: aquaculture-harvest
+    terms:
+      - fish harvest
+      - harvesting fish
+      - shrimp harvest
+      - harvesting shrimp
+      - salmon harvest
+      - tilapia harvest
+    alternatives:
+      - fish slaughter
+      - shrimp slaughter
+      - salmon slaughter
+    severity: warning
+    category: industry-euphemism
+    reason: "Aquaculture euphemism for killing/slaughtering farmed fish/shrimp. 'Harvest' obscures the mass killing at the end of the grow-out phase."
+    word_boundary: false
+    regex: "(fish|shrimp|salmon|tilapia)\\s+harvest(ing)?"
+    context_suppressions: []
+
+  - name: stocking-density
+    terms:
+      - stocking density
+      - stocking densities
+    alternatives:
+      - crowding density
+      - confinement density
+    severity: warning
+    category: industry-euphemism
+    reason: "Industry term for extreme overcrowding in aquaculture tanks/ponds/net pens, where fish are packed at densities causing stress, disease, and cannibalism."
+    word_boundary: false
+    regex: "stocking\\s+density(ies)?"
+    context_suppressions: []
+
+  - name: harvest-size
+    terms:
+      - harvest size
+      - market size
+      - slaughter weight
+    alternatives:
+      - slaughter size
+      - killing weight
+    severity: info
+    category: industry-euphemism
+    reason: "Euphemism for the size/weight at which farmed fish/shrimp are killed ('harvested')."
+    word_boundary: false
+    regex: "(harvest|market)\\s+size|slaughter\\s+weight"
+    context_suppressions: []
+
+  - name: grow-out-phase
+    terms:
+      - grow-out pond
+      - grow-out tank
+      - grow-out phase
+    alternatives:
+      - fattening pond
+      - fattening tank
+    severity: info
+    category: industry-euphemism
+    reason: "Final fattening phase before slaughter in aquaculture."
+    word_boundary: false
+    regex: "grow-out\\s+(pond|tank|phase)"
+    context_suppressions: []
