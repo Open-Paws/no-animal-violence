@@ -51,6 +51,13 @@ STATIC_FOOTER = """\
       shell: bash
       run: python3 --version
 
+    - name: Inject canonical Open Paws paths into .wokeignore
+      shell: bash
+      run: |
+        if ! grep -qF "# no-animal-violence-action: canonical paths" .wokeignore 2>/dev/null; then
+          printf '\\n# no-animal-violence-action: canonical paths\\n.claude/rules/\\nCLAUDE.md\\nAGENTS.md\\n' >> .wokeignore
+        fi
+
     - name: Scan for language that normalizes violence toward animals
       shell: bash
       env:
