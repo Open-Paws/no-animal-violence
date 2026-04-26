@@ -52,6 +52,14 @@ runs:
 STATIC_FOOTER = """\
         RULES
 
+    - name: Inject canonical Open Paws paths into .wokeignore
+      shell: bash
+      run: |
+        if ! grep -qF "# no-animal-violence-action: canonical paths" .wokeignore 2>/dev/null; then
+          printf '\\n# no-animal-violence-action: canonical paths\\n' >> .wokeignore
+          printf '.claude/rules/\\nCLAUDE.md\\nAGENTS.md\\n' >> .wokeignore
+        fi
+
     - name: Run animal violence language scan
       shell: bash
       run: |

@@ -273,3 +273,66 @@ def test_danger_word_boundary(tmp_path):
     # word_boundary:false — no \b prefix
     assert r'"curiosity\\s+killed\\s+the\\s+cat"' in output
     assert r'"\\bcuriosity' not in output
+
+
+def test_gen_action_allowlist_injection(tmp_path):
+    """gen_action injects a .wokeignore block that allowlists canonical AI config paths.
+
+    The STATIC_FOOTER must contain a guarded append block that writes
+    .claude/rules/, CLAUDE.md, and AGENTS.md to .wokeignore so woke does not
+    flag speciesist-language rule definitions in those files. The injection is
+    idempotent (guarded by grep -qF on the marker line).
+
+    This test is RED until STAGE 7 adds the injection block to STATIC_FOOTER.
+    """
+    from gen_action import generate
+
+    rules = load_rules(FIXTURES / "rules_mini.yaml")
+    output_path = tmp_path / "action.yml"
+    generate(rules, output_path)
+    content = output_path.read_text()
+
+    # Structural guard: injection must not break the YAML schema
+    data = yaml.safe_load(content)
+    assert "runs" in data, "action.yml top-level 'runs' key missing — YAML structure broken"
+    assert "steps" in data["runs"], "action.yml runs.steps missing — YAML structure broken"
+
+    # Idempotency marker must be present
+    marker = "# no-animal-violence-action: canonical paths"
+    assert marker in content, (
+        f"Allowlist injection marker {marker!r} not found in generated action.yml"
+    )
+
+    # Each canonical path must appear AFTER the marker (not before, not absent)
+    marker_idx = content.index(marker)
+    for path in (".claude/rules/", "CLAUDE.md", "AGENTS.md"):
+        path_idx = content.find(path, marker_idx)
+        assert path_idx != -1, (
+            f"Canonical path {path!r} not found after allowlist marker in action.yml"
+        )
+
+
+def test_gen_action_woke_command_present(tmp_path):
+    """gen_action output contains the woke --exit-1-on-failure invocation.
+
+    Regression guard: if STATIC_FOOTER loses the woke invocation, this fails.
+    This test is GREEN against the current codebase — it guards against future
+    regression where the footer is refactored and the woke call is accidentally
+    dropped.
+    """
+    from gen_action import generate
+
+    rules = load_rules(FIXTURES / "rules_mini.yaml")
+    output_path = tmp_path / "action.yml"
+    generate(rules, output_path)
+    content = output_path.read_text()
+
+    # Structural guard: output must be valid action YAML
+    data = yaml.safe_load(content)
+    assert "runs" in data, "action.yml top-level 'runs' key missing — YAML structure broken"
+
+    # The woke invocation must be present
+    assert "woke --exit-1-on-failure" in content, (
+        "woke --exit-1-on-failure not found in generated action.yml — "
+        "STATIC_FOOTER may have lost the woke invocation"
+    )
