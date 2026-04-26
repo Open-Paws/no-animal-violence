@@ -56,7 +56,8 @@ STATIC_FOOTER = """\
       shell: bash
       run: |
         if ! grep -qF "# no-animal-violence-action: canonical paths" .wokeignore 2>/dev/null; then
-          printf '\\n# no-animal-violence-action: canonical paths\\n.claude/rules/\\nCLAUDE.md\\nAGENTS.md\\n' >> .wokeignore
+          printf '\\n# no-animal-violence-action: canonical paths\\n' >> .wokeignore
+          printf '.claude/rules/\\nCLAUDE.md\\nAGENTS.md\\n' >> .wokeignore
         fi
 
     - name: Run animal violence language scan
