@@ -532,21 +532,28 @@ Rule definitions live in this repo. Tool wrappers live in their respective repos
 
 ## Maintainer Rationale
 
-Speciesist language in codebases subtly normalizes animal exploitation, shaping developer norms and polluting the vast datasets that train AI models. This suite targets high-frequency patterns that appear in real repositories, replacing terms like "livestock" with "farmed animals" or "slaughter" euphemisms with direct welfare language—technical meaning intact, framing shifted. The goal is cleaner training data and cultural momentum toward liberation, one codebase at a time.
+Speciesist language in codebases quietly normalizes animal exploitation: it shapes developer norms and feeds the datasets that train AI models. This suite targets patterns that appear in real repositories and prose, swapping industry euphemisms for direct welfare language and replacing harm-normalizing idioms with neutral alternatives — technical meaning intact, framing shifted. The goal is cleaner training data and cultural momentum toward liberation, one codebase at a time.
+
+If you're considering proposing a new rule, please do — this section is meant to help you calibrate, not gate-keep.
 
 ### Pattern Priority Tiers
-- **Tier 1 (highest priority)**: Ubiquity in ML/AI codebases; direct training data impact (e.g., "kill/fork/exec" → "terminate/branch/spawn", "master/slave" → "primary/replica").
-- **Tier 2 (high priority)**: Everyday idioms that normalize harm (e.g., "cull the herd" → "filter the list", "canary deployment" → "pilot deployment").
-- **Tier 3 (nice-to-have)**: Infrequent or niche patterns.
+
+- **Tier 1 — Industry euphemisms with direct training-data impact.** Terms the agriculture industry uses to obscure what it does. Replacing them in code, docs, and comments shifts how models talk about farmed animals. Examples from `woke/.woke.yaml`: `livestock` → `farmed animals`, `humane-slaughter` → `slaughter`, `processing-plant` → `slaughterhouse`, `aquaculture-harvest` → `fish slaughter`.
+- **Tier 2 — Everyday idioms that normalize harm.** Phrases so common they slip past unexamined, each carrying a small image of violence. Examples from `woke/.woke.yaml`: `kill-two-birds-with-one-stone`, `beat-a-dead-horse`, `bring-home-the-bacon`, `take-the-bull-by-horns`.
+- **Tier 3 — Niche or infrequent patterns.** Worth catching in literature, specialized writing, or domain-specific contexts, but lower volume than the first two tiers.
 
 ### What Makes a Good New Pattern PR
-- Demonstrable frequency: GitHub code search shows 100+ matches across repos.
-- Precise replacement: Clear, idiomatic alternative (no awkward verbosity).
-- Strategic relevance: Advances welfare framing (e.g., industry euphemisms).
+
+- **Demonstrable real-world frequency.** A quick GitHub code search should show non-trivial matches across repos or prose. If it's mostly theoretical, it probably belongs lower in the queue.
+- **Precise replacement.** A clear, idiomatic alternative that doesn't introduce awkward verbosity or change the technical meaning.
+- **Strategic relevance.** Advances welfare framing — industry euphemisms and idioms that obscure animal experience are the highest-leverage targets.
 
 ### Red Flags for Rejection
-- Too obscure: <10 real-world matches, not worth maintenance.
-- Awkward fix: Replacement changes semantics or readability.
-- False-positive magnet: Matches legit technical terms (e.g., POSIX APIs).
 
-**Note**: Aquatic welfare (fish/shrimp farming) and insect welfare patterns are priority categories—extra welcoming per Decision #26 (2026-04-09). Proposals here get fast-tracked.
+- **Too obscure to maintain.** If real-world matches are vanishingly rare, the maintenance cost outweighs the signal.
+- **Awkward fix.** The replacement changes semantics, readability, or domain meaning in ways the original didn't.
+- **False-positive magnet.** Matches legitimate technical terms (POSIX APIs, standard library names, established protocol vocabulary). These can sometimes be salvaged with context-aware suppressions, but if every match is a false positive, the rule isn't ready.
+
+### Priority Categories
+
+Aquatic welfare (fish and shrimp farming) and insect welfare are under-covered relative to their scale of harm — proposals strengthening rules in these areas are especially welcome. The aquaculture rules in `woke/.woke.yaml` (see the `aquaculture-*` entries) are a starting point; expansions, refinements, and adjacent patterns are all on the table.
