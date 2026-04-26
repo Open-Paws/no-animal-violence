@@ -209,7 +209,6 @@ def test_vale_embeds_reason_as_comment(tmp_path):
 
 def test_loader_rejects_missing_reason(tmp_path):
     """loader.load_rules must fail loudly when a rule is missing its reason."""
-    import pytest
     from loader import load_rules
     bad = tmp_path / "bad.yaml"
     bad.write_text(
