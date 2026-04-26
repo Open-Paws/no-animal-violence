@@ -10,3 +10,7 @@ tools/test_check_consistency.py
 tools/generators/tests/
 .claude/rules/advocacy-domain.md
 INTEGRATION.md
+# Self-referential: scout personas illustrate prohibited patterns in YAML comments
+scout.personas.yaml
+# Self-referential: AGENTS.md describes the alex industry-euphemisms package and references flagged terms
+AGENTS.md
