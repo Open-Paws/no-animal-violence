@@ -34,4 +34,4 @@ jobs:
       - name: Install dependencies
         run: pip install pytest pyyaml
       - name: Run tests
-        run: pytest tools/test_check_consistency.py -v
+        run: pytest tools/test_check_consistency.py tools/test_codeql_fleet_consistency.py -v
