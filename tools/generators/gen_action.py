@@ -52,14 +52,6 @@ runs:
 STATIC_FOOTER = """\
         RULES
 
-    - name: Inject canonical Open Paws paths into .wokeignore
-      shell: bash
-      run: |
-        if ! grep -qF "# no-animal-violence-action: canonical paths" .wokeignore 2>/dev/null; then
-          printf '\\n# no-animal-violence-action: canonical paths\\n' >> .wokeignore
-          printf '.claude/rules/\\nCLAUDE.md\\nAGENTS.md\\n' >> .wokeignore
-        fi
-
     - name: Run animal violence language scan
       shell: bash
       run: |
@@ -68,9 +60,30 @@ STATIC_FOOTER = """\
           ${{ inputs.paths }}
 """
 
+# Canonical Open Paws paths emitted as woke `ignore_files` patterns (gitignore
+# syntax). These files exist by design across every Open Paws repo and contain
+# domain terms (personas, rule descriptions) that the scanner would otherwise
+# flag on every PR. Inlining them here is plan v2 for #65 — the previous
+# .wokeignore mutation step never propagated to the deployed action.yml.
+CANONICAL_IGNORE_FILES = [
+    "**/*personas.yaml",
+    "scout.personas.yaml",
+    "AGENTS.md",
+    "CLAUDE.md",
+    ".claude/rules/",
+]
+
 
 def _build_woke_yaml(rules: list[Rule], indent: int = 8) -> str:
-    """Render rules in woke YAML format, indented for heredoc embedding."""
+    """Render rules in woke YAML format, indented for heredoc embedding.
+
+    Emits two top-level keys:
+      - `ignore_files`: list of gitignore-style patterns telling woke to skip
+        the canonical Open Paws files (personas fixtures, AGENTS.md, CLAUDE.md,
+        .claude/rules/) at scan time. Per woke pkg/config/config.go this maps
+        to `IgnoreFiles []string` — must be a list, never a single string.
+      - `rules`: the rule entries woke matches against.
+    """
     pad = " " * indent
     rules_list = []
     for rule in rules:
@@ -87,7 +100,10 @@ def _build_woke_yaml(rules: list[Rule], indent: int = 8) -> str:
         entry["reason"] = rule.reason
         rules_list.append(entry)
     dumped = yaml.safe_dump(
-        {"rules": rules_list},
+        {
+            "ignore_files": list(CANONICAL_IGNORE_FILES),
+            "rules": rules_list,
+        },
         default_flow_style=False,
         sort_keys=False,
         allow_unicode=True,
