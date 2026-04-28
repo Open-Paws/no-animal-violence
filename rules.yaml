@@ -2778,7 +2778,7 @@ rules:
     category: industry-euphemism
     reason: "Industry term for extreme overcrowding in aquaculture tanks/ponds/net pens, where fish are packed at densities causing stress, disease, and cannibalism."
     word_boundary: false
-    regex: "stocking\\s+density(ies)?"
+    regex: "\\bstocking\\s+densit(?:y|ies)\\b"
     context_suppressions: []
 
   - name: harvest-size
@@ -2793,7 +2793,7 @@ rules:
     category: industry-euphemism
     reason: "Euphemism for the size/weight at which farmed fish/shrimp are killed ('harvested')."
     word_boundary: false
-    regex: "(harvest|market)\\s+size|slaughter\\s+weight"
+    regex: "\\b(?:fish|shrimp|salmon|tilapia)\\s+(?:harvest|market)\\s+size\\b|\\bslaughter\\s+weight\\b|\\bharvest\\s+size\\b"
     context_suppressions: []
 
   - name: grow-out-phase
