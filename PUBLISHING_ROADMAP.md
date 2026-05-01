@@ -5,7 +5,7 @@ This document tracks the 9-phase roadmap to bring the NAV ecosystem to a publish
 ## Current state (as of 2026-05-01)
 
 - Canonical `rules.yaml`: **162 rules**
-- Most downstream repos: **158 rules** (4 aquaculture rules added in #63 not yet propagated due to blocked sync PRs)
+- Most downstream repos: **158 rules** (4 fish farming rules added in #63 not yet propagated due to blocked sync PRs)
 - `no-animal-violence-action`: **162 rules** (sync PR #39 merged 2026-04-26)
 
 ## Dependency graph
@@ -45,10 +45,10 @@ Phase 3b-c (re-run nav-check, merge other sync PRs in parallel)  [Sam action]
 **Owner: Gary (complete)**  
 PR: [#71](https://github.com/Open-Paws/no-animal-violence/pull/71) — open, all CI green
 
-Two regex bugs in the aquaculture rules added by #63, both surfaced by CodeRabbit on active sync PRs:
+Two regex bugs in the fish farming rules added by #63, both surfaced by CodeRabbit on active sync PRs:
 
-- **`stocking-density`**: `stocking\s+density(ies)?` never matched "stocking densities". Fixed to `\bstocking\s+densit(?:y|ies)\b`.
-- **`harvest-size`**: `(harvest|market)\s+size|slaughter\s+weight` fired on any "market size" context (false positives in business writing). Fixed to scope `market size` to aquaculture context via species qualifier.
+- **`stocking-density`**: old pattern `stocking\s+density(ies)?` never matched the plural form. Fixed to `\bstocking\s+densit(?:y|ies)\b`.
+- **`harvest-size`**: old pattern was too broad — matched in business writing unrelated to intensive fish farming. Fixed to scope the false-positive case to fish species context via species qualifier.
 
 ### Phase 2 — Re-run propagation from updated canonical
 
@@ -68,7 +68,7 @@ The `no-animal-violence-action` repo must merge first — every other consumer's
 - **3a.** Merge `no-animal-violence-action` sync PR first
 - **3b.** Re-run `nav-check` on the remaining sync PRs (or rebase to pick up the new action.yml)
 - **3c.** Merge consumer sync PRs (can be parallel): `eslint-plugin`, `vscode`, `semgrep`, `pre-commit`, `danger`, `vale`
-- **3d.** For Vale: sanity-check the ~79 rules about to be removed (currently deployed Vale file predates the canonical refactor and shares only 9 rule names). File follow-up issues for any worth porting back to canonical before merging.
+- **3d.** For Vale: run a coherence check on the ~79 rules about to be removed (currently deployed Vale file predates the canonical refactor and shares only 9 rule names). File follow-up issues for any worth porting back to canonical before merging.
 
 ### Phase 4 — Bring reviewdog up to date
 
@@ -123,7 +123,7 @@ After Phases 6 + 7 are complete:
 2. `git tag v0.1.0 && git push origin v0.1.0` on `vscode-no-animal-violence` — publish workflow fires automatically
 3. Verify: `npm view eslint-plugin-no-animal-violence` shows v0.1.0
 4. Verify: Marketplace listing visible at marketplace.visualstudio.com search "animal violence"
-5. Smoke test: `npm install eslint-plugin-no-animal-violence` in a fresh project, confirm a flagged phrase (e.g. `stocking density`) is detected correctly
+5. Smoke test: `npm install eslint-plugin-no-animal-violence` in a fresh project, confirm a flagged phrase is detected correctly (e.g. the `stocking-density` rule fires on the documented phrase)
 
 ### Phase 9 — Long-term hardening (post-launch, backlog)
 
