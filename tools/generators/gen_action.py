@@ -66,11 +66,10 @@ STATIC_FOOTER = """\
 # flag on every PR. Inlining them here is plan v2 for #65 — the previous
 # .wokeignore mutation step never propagated to the deployed action.yml.
 CANONICAL_IGNORE_FILES = [
-    "**/*personas.yaml",
     "scout.personas.yaml",
     "AGENTS.md",
     "CLAUDE.md",
-    ".claude/rules/",
+    "**/.claude/rules/",
 ]
 
 

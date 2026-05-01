@@ -280,7 +280,7 @@ CANONICAL_IGNORE_PATHS = [
     "scout.personas.yaml",
     "AGENTS.md",
     "CLAUDE.md",
-    ".claude/rules/",
+    "**/.claude/rules/",
 ]
 
 
@@ -526,6 +526,122 @@ def test_gen_action_woke_ignore_patterns_match_fixture_files(tmp_path):
             f"emitted ignore_files patterns {ignore_patterns!r} unexpectedly "
             f"match {path!r} — over-broad ignore would silence real findings"
         )
+
+
+def test_negative_evil_personas_yaml():
+    """evil.personas.yaml must NOT match ignore_files — the over-broad glob must be gone.
+
+    Encodes the rule: only the exact canonical fixture file scout.personas.yaml is
+    skipped, not arbitrary *personas.yaml files that should be scanned.
+
+    Mutation resistance: reinstating **/*personas.yaml causes this to fail because
+    evil.personas.yaml would then match the glob and be silently skipped by woke.
+    """
+    pathspec = pytest.importorskip("pathspec")  # noqa: F841
+    import pathspec as _pathspec
+    from gen_action import _build_woke_yaml
+    from loader import load_rules
+
+    rules = load_rules(FIXTURES / "rules_mini.yaml")
+    parsed = yaml.safe_load(_build_woke_yaml(rules, indent=0))
+    ignore_patterns = parsed.get("ignore_files", [])
+    spec = _pathspec.PathSpec.from_lines(
+        _pathspec.patterns.GitWildMatchPattern,
+        ignore_patterns,
+    )
+
+    assert not spec.match_file("evil.personas.yaml"), (
+        f"evil.personas.yaml unexpectedly matched ignore_files {ignore_patterns!r} — "
+        "**/*personas.yaml over-broad glob must be removed; only scout.personas.yaml "
+        "should be skipped"
+    )
+
+
+def test_negative_src_payment_personas_yaml():
+    """src/payment.personas.yaml must NOT match ignore_files.
+
+    Encodes the rule: the over-broad glob must not silently skip arbitrary personas
+    files at deeper path depths.
+
+    Mutation resistance: reinstating **/*personas.yaml causes this to fail because
+    src/payment.personas.yaml would match at depth.
+    """
+    pathspec = pytest.importorskip("pathspec")  # noqa: F841
+    import pathspec as _pathspec
+    from gen_action import _build_woke_yaml
+    from loader import load_rules
+
+    rules = load_rules(FIXTURES / "rules_mini.yaml")
+    parsed = yaml.safe_load(_build_woke_yaml(rules, indent=0))
+    ignore_patterns = parsed.get("ignore_files", [])
+    spec = _pathspec.PathSpec.from_lines(
+        _pathspec.patterns.GitWildMatchPattern,
+        ignore_patterns,
+    )
+
+    assert not spec.match_file("src/payment.personas.yaml"), (
+        f"src/payment.personas.yaml unexpectedly matched ignore_files {ignore_patterns!r} — "
+        "**/*personas.yaml over-broad glob must be removed"
+    )
+
+
+def test_negative_lib_internal_personas_yaml():
+    """lib/internal-personas.yaml must NOT match ignore_files.
+
+    Encodes the rule: the *personas substring variant (not suffix) must not match.
+    internal-personas.yaml contains 'personas' as a substring, not as the
+    *personas.yaml suffix pattern — verifies the glob doesn't expand further.
+
+    Mutation resistance: any glob broader than the bare scout.personas.yaml entry
+    (e.g. *personas.yaml, **/*personas*, *-personas.yaml) would cause this to fail.
+    """
+    pathspec = pytest.importorskip("pathspec")  # noqa: F841
+    import pathspec as _pathspec
+    from gen_action import _build_woke_yaml
+    from loader import load_rules
+
+    rules = load_rules(FIXTURES / "rules_mini.yaml")
+    parsed = yaml.safe_load(_build_woke_yaml(rules, indent=0))
+    ignore_patterns = parsed.get("ignore_files", [])
+    spec = _pathspec.PathSpec.from_lines(
+        _pathspec.patterns.GitWildMatchPattern,
+        ignore_patterns,
+    )
+
+    assert not spec.match_file("lib/internal-personas.yaml"), (
+        f"lib/internal-personas.yaml unexpectedly matched ignore_files {ignore_patterns!r} — "
+        "only the exact bare name scout.personas.yaml should be skipped"
+    )
+
+
+def test_positive_nested_claude_rules():
+    """src/.claude/rules/internal.md MUST match ignore_files — nested rules dirs must be covered.
+
+    Encodes the rule: **/.claude/rules/ (with **/ prefix) must match .claude/rules/
+    directories at any depth, not just root-level.
+
+    Mutation resistance: dropping the **/ prefix (reverting to .claude/rules/) causes
+    this to fail because src/.claude/rules/internal.md would no longer match the
+    root-constrained pattern.
+    """
+    pathspec = pytest.importorskip("pathspec")  # noqa: F841
+    import pathspec as _pathspec
+    from gen_action import _build_woke_yaml
+    from loader import load_rules
+
+    rules = load_rules(FIXTURES / "rules_mini.yaml")
+    parsed = yaml.safe_load(_build_woke_yaml(rules, indent=0))
+    ignore_patterns = parsed.get("ignore_files", [])
+    spec = _pathspec.PathSpec.from_lines(
+        _pathspec.patterns.GitWildMatchPattern,
+        ignore_patterns,
+    )
+
+    assert spec.match_file("src/.claude/rules/internal.md"), (
+        f"src/.claude/rules/internal.md did not match ignore_files {ignore_patterns!r} — "
+        "**/.claude/rules/ pattern (with **/ prefix) must match nested rules directories; "
+        "the bare .claude/rules/ pattern only matches at root level"
+    )
 
 
 def test_gen_action_static_footer_drops_wokeignore_injection_step(tmp_path):
