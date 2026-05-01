@@ -8,8 +8,6 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-import yaml
-
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from loader import Rule, canonical_rules_path, load_rules  # noqa: E402
 
@@ -30,6 +28,14 @@ inputs:
     description: 'Paths to scan (space-separated)'
     required: false
     default: '.'
+  severity:
+    description: 'Minimum severity that fails CI: error | warning | info'
+    required: false
+    default: 'warning'
+  fail-on-findings:
+    description: 'Fail the workflow when patterns are found. Set false for gradual adoption.'
+    required: false
+    default: 'true'
   github-token:
     description: 'GitHub token for PR annotations'
     required: false
@@ -38,83 +44,27 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Install woke
-      shell: bash
-      run: |
-        curl -sSfL https://git.io/getwoke | bash -s -- -b /usr/local/bin
-
-    - name: Create animal violence language rules
-      shell: bash
-      run: |
-        cat > /tmp/.woke.yaml << 'RULES'
 """
 
 STATIC_FOOTER = """\
-        RULES
-
-    - name: Run animal violence language scan
+    - name: Verify Python 3
       shell: bash
-      run: |
-        woke --exit-1-on-failure \\
-          --config /tmp/.woke.yaml \\
-          ${{ inputs.paths }}
+      run: python3 --version
+
+    - name: Scan for language that normalizes violence toward animals
+      shell: bash
+      env:
+        INPUT_PATHS: ${{ inputs.paths }}
+        INPUT_SEVERITY: ${{ inputs.severity }}
+        INPUT_FAIL_ON_FINDINGS: ${{ inputs.fail-on-findings }}
+      run: python3 "$GITHUB_ACTION_PATH/scan.py"
 """
-
-# Canonical Open Paws paths emitted as woke `ignore_files` patterns (gitignore
-# syntax). These files exist by design across every Open Paws repo and contain
-# domain terms (personas, rule descriptions) that the scanner would otherwise
-# flag on every PR. Inlining them here is plan v2 for #65 — the previous
-# .wokeignore mutation step never propagated to the deployed action.yml.
-CANONICAL_IGNORE_FILES = [
-    "scout.personas.yaml",
-    "AGENTS.md",
-    "CLAUDE.md",
-    "**/.claude/rules/",
-]
-
-
-def _build_woke_yaml(rules: list[Rule], indent: int = 8) -> str:
-    """Render rules in woke YAML format, indented for heredoc embedding.
-
-    Emits two top-level keys:
-      - `ignore_files`: list of gitignore-style patterns telling woke to skip
-        the canonical Open Paws files (personas fixtures, AGENTS.md, CLAUDE.md,
-        .claude/rules/) at scan time. Per woke pkg/config/config.go this maps
-        to `IgnoreFiles []string` — must be a list, never a single string.
-      - `rules`: the rule entries woke matches against.
-    """
-    pad = " " * indent
-    rules_list = []
-    for rule in rules:
-        entry: dict = {
-            "name": rule.name,
-            "terms": rule.terms,
-            "alternatives": rule.alternatives,
-            "severity": rule.severity,
-            "options": {
-                "word_boundary": rule.word_boundary,
-                "categories": [rule.category],
-            },
-        }
-        entry["reason"] = rule.reason
-        rules_list.append(entry)
-    dumped = yaml.safe_dump(
-        {
-            "ignore_files": list(CANONICAL_IGNORE_FILES),
-            "rules": rules_list,
-        },
-        default_flow_style=False,
-        sort_keys=False,
-        allow_unicode=True,
-    )
-    return "\n".join(pad + line for line in dumped.splitlines())
 
 
 def generate(rules: list[Rule], output_path: Path) -> None:
     """Write the action.yml file."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    woke_content = _build_woke_yaml(rules)
-    content = STATIC_HEADER + woke_content + "\n" + STATIC_FOOTER
+    content = STATIC_HEADER + STATIC_FOOTER
     output_path.write_text(content, encoding="utf-8")
 
 

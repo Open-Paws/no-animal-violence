@@ -209,7 +209,6 @@ def test_vale_embeds_reason_as_comment(tmp_path):
 
 def test_loader_rejects_missing_reason(tmp_path):
     """loader.load_rules must fail loudly when a rule is missing its reason."""
-    import pytest
     from loader import load_rules
     bad = tmp_path / "bad.yaml"
     bad.write_text(
@@ -276,441 +275,83 @@ def test_danger_word_boundary(tmp_path):
     assert r'"\\bcuriosity' not in output
 
 
-CANONICAL_IGNORE_PATHS = [
-    "scout.personas.yaml",
-    "AGENTS.md",
-    "CLAUDE.md",
-    "**/.claude/rules/",
-]
+def test_gen_action_has_fail_on_findings_input(tmp_path):
+    """action.yml declares severity and fail-on-findings inputs with correct defaults.
 
+    Contract test: consumers of the GitHub Action must be able to pass --severity and
+    --fail-on-findings flags. If either input disappears or its default changes, downstream
+    workflows break silently. This test also guards existing inputs (paths, github-token)
+    so the implementer cannot accidentally drop backward-compatible defaults.
 
-def _extract_woke_yaml_body(action_yml_text: str) -> dict:
-    """Parse the embedded /tmp/.woke.yaml HEREDOC body out of a generated action.yml.
-
-    The action.yml ships a composite step that writes /tmp/.woke.yaml via a
-    bash heredoc:
-
-        cat > /tmp/.woke.yaml << 'RULES'
-        <yaml body, 8-space indented>
-        RULES
-
-    This helper extracts the body between the heredoc opener and the RULES
-    sentinel, dedents the 8-space indent woke needs, and parses the result as
-    YAML so tests can assert against the actual schema woke will see at runtime.
-    Returns the parsed dict.
-    """
-    opener = "cat > /tmp/.woke.yaml << 'RULES'"
-    assert opener in action_yml_text, (
-        f"action.yml has no {opener!r} heredoc opener — generator structure changed"
-    )
-    after_opener = action_yml_text.split(opener, 1)[1]
-    # The closing sentinel "RULES" sits on its own line, indented to match the
-    # cat invocation. Match it as the first line that is exactly whitespace + RULES.
-    body_lines: list[str] = []
-    for line in after_opener.splitlines()[1:]:
-        if line.strip() == "RULES":
-            break
-        body_lines.append(line)
-    else:  # pragma: no cover - defensive
-        raise AssertionError("RULES heredoc terminator not found after opener")
-    # Dedent: the body is indented 8 spaces inside the composite step's run: |.
-    # Use a permissive dedent so tests survive whitespace re-jiggering as long
-    # as every body line shares a common leading indent.
-    indent = min(
-        (len(line) - len(line.lstrip(" ")) for line in body_lines if line.strip()),
-        default=0,
-    )
-    dedented = "\n".join(line[indent:] for line in body_lines)
-    parsed = yaml.safe_load(dedented)
-    assert isinstance(parsed, dict), (
-        f"woke YAML body did not parse as a mapping (got {type(parsed).__name__})"
-    )
-    return parsed
-
-
-def test_build_woke_yaml_emits_ignore_files_as_list_of_strings():
-    """_build_woke_yaml emits an `ignore_files` key whose value is a list of strings.
-
-    Per woke source (pkg/config/config.go), `IgnoreFiles []string` is a list of
-    inline gitignore-style PATTERNS — not a pointer to a .wokeignore file. The
-    schema is `[]string`. A single-string value would silently fail at runtime
-    (woke would treat it as one literal pattern), so this test asserts both
-    presence and the list-of-strings shape.
-
-    Mutation resistance:
-      - Mutate `ignore_files: [...]` → omit key → fails on key check.
-      - Mutate `ignore_files: [...]` → `ignore_files: ".wokeignore"` (the
-        v1-plan bug) → fails on `isinstance(value, list)`.
-      - Mutate any list element to non-string → fails on per-element type.
-    """
-    from gen_action import _build_woke_yaml
-
-    rules = load_rules(FIXTURES / "rules_mini.yaml")
-    rendered = _build_woke_yaml(rules, indent=0)
-    parsed = yaml.safe_load(rendered)
-
-    assert isinstance(parsed, dict), (
-        f"_build_woke_yaml output did not parse as a mapping "
-        f"(got {type(parsed).__name__})"
-    )
-    assert "ignore_files" in parsed, (
-        "_build_woke_yaml output missing top-level 'ignore_files' key — "
-        "woke will not skip canonical Open Paws paths"
-    )
-    ignore_files = parsed["ignore_files"]
-    assert isinstance(ignore_files, list), (
-        f"'ignore_files' must be a list (woke schema is []string), got "
-        f"{type(ignore_files).__name__}: {ignore_files!r}"
-    )
-    assert len(ignore_files) >= 1, "'ignore_files' must not be empty"
-    for entry in ignore_files:
-        assert isinstance(entry, str), (
-            f"every 'ignore_files' entry must be a string, got "
-            f"{type(entry).__name__}: {entry!r}"
-        )
-
-    # Rules key must still be present alongside ignore_files (not replaced).
-    assert "rules" in parsed, (
-        "_build_woke_yaml dropped the 'rules' key when adding ignore_files — "
-        "woke would have nothing to scan for"
-    )
-    assert isinstance(parsed["rules"], list) and len(parsed["rules"]) >= 1, (
-        "'rules' key must remain a non-empty list"
-    )
-
-
-def test_build_woke_yaml_ignore_files_contains_canonical_paths():
-    """_build_woke_yaml's `ignore_files` list contains every canonical path.
-
-    Mutation resistance: dropping any one of the canonical paths flips this
-    assertion. Substring matching is rejected — exact equality on the entry
-    string catches drift like `scout.personas.yml` (wrong extension) or
-    `.claude/rules` (missing trailing slash, which changes gitignore semantics).
-    """
-    from gen_action import _build_woke_yaml
-
-    rules = load_rules(FIXTURES / "rules_mini.yaml")
-    parsed = yaml.safe_load(_build_woke_yaml(rules, indent=0))
-    ignore_files = parsed["ignore_files"]
-
-    for canonical in CANONICAL_IGNORE_PATHS:
-        assert canonical in ignore_files, (
-            f"canonical Open Paws path {canonical!r} missing from "
-            f"_build_woke_yaml ignore_files list (got {ignore_files!r})"
-        )
-
-
-def test_gen_action_woke_config_has_ignore_files(tmp_path):
-    """Generated action.yml's embedded woke YAML carries ignore_files inline.
-
-    End-to-end: generate the full action.yml, extract the /tmp/.woke.yaml
-    HEREDOC body, parse it, and assert it has `ignore_files` shaped as a list
-    of strings containing the canonical paths. This is the contract test —
-    `_build_woke_yaml` is internal, but the embedded heredoc body is the
-    runtime contract with woke 0.19.0.
-
-    Mutation resistance via YAML parse, not substring match.
+    Mutations that must break this test:
+    - Removing severity from STATIC_HEADER → severity assertion fails
+    - Removing fail-on-findings from STATIC_HEADER → fail-on-findings assertion fails
+    - Changing paths default from '.' → compat assertion fails
+    - Changing fail-on-findings default from 'true' → YAML-parsed default assertion fails
     """
     from gen_action import generate
-
     rules = load_rules(FIXTURES / "rules_mini.yaml")
     output_path = tmp_path / "action.yml"
     generate(rules, output_path)
-    content = output_path.read_text()
+    text = output_path.read_text()
 
-    # Outer action.yml schema must still parse.
-    outer = yaml.safe_load(content)
-    assert "runs" in outer and "steps" in outer["runs"], (
-        "action.yml outer YAML structure broken"
+    # Fast substring guards — fail early with a clear message before YAML parse
+    assert "fail-on-findings:" in text, "fail-on-findings input missing from action.yml"
+    assert "severity:" in text, "severity input missing from action.yml"
+
+    # YAML-parse for precise default values — substring alone can't catch wrong defaults
+    data = yaml.safe_load(text)
+    inputs = data["inputs"]
+
+    assert inputs["fail-on-findings"]["default"] == "true", (
+        "fail-on-findings default must be 'true' (string) so consumers can rely on fail-by-default behaviour"
+    )
+    assert inputs["severity"]["default"] == "warning", (
+        "severity default must be 'warning' to match scan.py's own default"
     )
 
-    woke_config = _extract_woke_yaml_body(content)
-    assert "ignore_files" in woke_config, (
-        "embedded /tmp/.woke.yaml heredoc body missing 'ignore_files' — "
-        "woke will not skip fixture files at runtime"
+    # Backward-compat guard: existing inputs must survive the refactor
+    assert inputs["paths"]["default"] == ".", (
+        "paths default must remain '.' — existing consumer workflows rely on it"
     )
-    ignore_files = woke_config["ignore_files"]
-    assert isinstance(ignore_files, list), (
-        f"embedded woke ignore_files must be a list, got {type(ignore_files).__name__}"
+    assert inputs["github-token"]["default"] == "${{ github.token }}", (
+        "github-token default must remain '${{ github.token }}' — breaks PR annotation without it"
     )
-    for canonical in CANONICAL_IGNORE_PATHS:
-        assert canonical in ignore_files, (
-            f"canonical path {canonical!r} missing from embedded woke "
-            f"ignore_files list (got {ignore_files!r})"
-        )
 
 
-def test_gen_action_woke_config_includes_scout_personas_yaml(tmp_path):
-    """Regression test for #65: scout.personas.yaml MUST be in ignore_files.
+def test_gen_action_invokes_scan_py(tmp_path):
+    """action.yml runs scan.py and does NOT invoke woke directly.
 
-    The bug in #65 is specifically that `scout.personas.yaml` (a fixture file
-    full of personas with phrases like 'guinea pig' on purpose, to exercise
-    the rules) was being scanned by woke and flagged on every PR. The fix is
-    that scout.personas.yaml ends up in the woke config's ignore_files list.
+    Regression test: the old STATIC_FOOTER wired up three woke steps (install, HEREDOC,
+    run). After the refactor the footer must wire scan.py instead. If a future edit
+    accidentally reverts to the woke structure, this test catches it.
 
-    This test fails specifically if a future refactor drops scout.personas.yaml
-    from the canonical paths list — even if the other three paths remain.
+    Mutations that must break this test:
+    - Reverting STATIC_FOOTER to woke steps → woke assertion fails AND scan.py assertion fails
+    - Removing scan.py reference → scan.py assertion fails
+    - Re-adding woke --exit-1-on-failure → negative woke assertion fails
     """
     from gen_action import generate
-
     rules = load_rules(FIXTURES / "rules_mini.yaml")
     output_path = tmp_path / "action.yml"
     generate(rules, output_path)
+    text = output_path.read_text()
 
-    woke_config = _extract_woke_yaml_body(output_path.read_text())
-    ignore_files = woke_config.get("ignore_files", [])
-    assert "scout.personas.yaml" in ignore_files, (
-        "scout.personas.yaml is the #65 regression case — it MUST appear in "
-        f"the woke config ignore_files list. Got: {ignore_files!r}"
+    # Positive: scan.py must be invoked
+    assert "scan.py" in text, "scan.py not found in action.yml — footer was not updated"
+
+    # Negative: the woke CLI invocation must be gone
+    assert "woke --exit-1-on-failure" not in text, (
+        "woke --exit-1-on-failure still present — old footer was not replaced"
     )
 
+    # YAML-parse as defensive guard: confirm the file is valid YAML before structural walk
+    data = yaml.safe_load(text)
 
-def test_gen_action_woke_ignore_patterns_match_fixture_files(tmp_path):
-    """Integration test: emitted ignore_files patterns actually skip fixture files.
-
-    Simulates woke's runtime matching by feeding the generator's ignore_files
-    list into a gitignore-pattern matcher (the same algorithm woke uses via
-    go-git/go-git's gitignore parser, but in Python via `pathspec`). Builds a
-    fixture repo with scout.personas.yaml plus a non-fixture file, and asserts
-    that the patterns skip the fixture and do NOT skip the regular file.
-
-    This catches the failure mode where ignore_files contains the right path
-    strings but in a syntax that doesn't actually match (e.g. missing leading
-    slash, wrong glob form, trailing-slash semantics drift).
-
-    Mutation resistance: drop scout.personas.yaml from canonical paths -> the
-    fixture file is no longer matched -> test fails. Replace bare filenames
-    with absolute-only patterns -> bare files at deeper paths stop matching
-    -> test fails on the nested case.
-    """
-    pathspec = pytest.importorskip("pathspec")  # noqa: F841
-
-    from gen_action import _build_woke_yaml
-
-    rules = load_rules(FIXTURES / "rules_mini.yaml")
-    parsed = yaml.safe_load(_build_woke_yaml(rules, indent=0))
-    ignore_patterns = parsed.get("ignore_files", [])
-    assert isinstance(ignore_patterns, list) and ignore_patterns, (
-        "ignore_files must be a non-empty list to test runtime matching"
-    )
-
-    import pathspec as _pathspec
-    spec = _pathspec.PathSpec.from_lines(
-        _pathspec.patterns.GitWildMatchPattern,
-        ignore_patterns,
-    )
-
-    # Files that MUST match (be skipped by woke at runtime).
-    must_match = [
-        "scout.personas.yaml",          # at root — primary #65 case
-        "AGENTS.md",
-        "CLAUDE.md",
-        ".claude/rules/some-rule.md",   # under canonical rules dir
-        "subdir/scout.personas.yaml",   # bare-filename gitignore matches at any depth
-    ]
-    for path in must_match:
-        assert spec.match_file(path), (
-            f"emitted ignore_files patterns {ignore_patterns!r} do not match "
-            f"{path!r} — woke would scan it at runtime and #65 reproduces"
-        )
-
-    # Files that MUST NOT match (regular code/docs that should still be scanned).
-    must_not_match = [
-        "src/main.py",
-        "README.md",
-        "docs/index.md",
-        "tools/generators/gen_action.py",
-    ]
-    for path in must_not_match:
-        assert not spec.match_file(path), (
-            f"emitted ignore_files patterns {ignore_patterns!r} unexpectedly "
-            f"match {path!r} — over-broad ignore would silence real findings"
-        )
-
-
-def test_negative_evil_personas_yaml():
-    """evil.personas.yaml must NOT match ignore_files — the over-broad glob must be gone.
-
-    Encodes the rule: only the exact canonical fixture file scout.personas.yaml is
-    skipped, not arbitrary *personas.yaml files that should be scanned.
-
-    Mutation resistance: reinstating **/*personas.yaml causes this to fail because
-    evil.personas.yaml would then match the glob and be silently skipped by woke.
-    """
-    pathspec = pytest.importorskip("pathspec")  # noqa: F841
-    import pathspec as _pathspec
-    from gen_action import _build_woke_yaml
-    from loader import load_rules
-
-    rules = load_rules(FIXTURES / "rules_mini.yaml")
-    parsed = yaml.safe_load(_build_woke_yaml(rules, indent=0))
-    ignore_patterns = parsed.get("ignore_files", [])
-    spec = _pathspec.PathSpec.from_lines(
-        _pathspec.patterns.GitWildMatchPattern,
-        ignore_patterns,
-    )
-
-    assert not spec.match_file("evil.personas.yaml"), (
-        f"evil.personas.yaml unexpectedly matched ignore_files {ignore_patterns!r} — "
-        "**/*personas.yaml over-broad glob must be removed; only scout.personas.yaml "
-        "should be skipped"
-    )
-
-
-def test_negative_src_payment_personas_yaml():
-    """src/payment.personas.yaml must NOT match ignore_files.
-
-    Encodes the rule: the over-broad glob must not silently skip arbitrary personas
-    files at deeper path depths.
-
-    Mutation resistance: reinstating **/*personas.yaml causes this to fail because
-    src/payment.personas.yaml would match at depth.
-    """
-    pathspec = pytest.importorskip("pathspec")  # noqa: F841
-    import pathspec as _pathspec
-    from gen_action import _build_woke_yaml
-    from loader import load_rules
-
-    rules = load_rules(FIXTURES / "rules_mini.yaml")
-    parsed = yaml.safe_load(_build_woke_yaml(rules, indent=0))
-    ignore_patterns = parsed.get("ignore_files", [])
-    spec = _pathspec.PathSpec.from_lines(
-        _pathspec.patterns.GitWildMatchPattern,
-        ignore_patterns,
-    )
-
-    assert not spec.match_file("src/payment.personas.yaml"), (
-        f"src/payment.personas.yaml unexpectedly matched ignore_files {ignore_patterns!r} — "
-        "**/*personas.yaml over-broad glob must be removed"
-    )
-
-
-def test_negative_lib_internal_personas_yaml():
-    """lib/internal-personas.yaml must NOT match ignore_files.
-
-    Encodes the rule: the *personas substring variant (not suffix) must not match.
-    internal-personas.yaml contains 'personas' as a substring, not as the
-    *personas.yaml suffix pattern — verifies the glob doesn't expand further.
-
-    Mutation resistance: any glob broader than the bare scout.personas.yaml entry
-    (e.g. *personas.yaml, **/*personas*, *-personas.yaml) would cause this to fail.
-    """
-    pathspec = pytest.importorskip("pathspec")  # noqa: F841
-    import pathspec as _pathspec
-    from gen_action import _build_woke_yaml
-    from loader import load_rules
-
-    rules = load_rules(FIXTURES / "rules_mini.yaml")
-    parsed = yaml.safe_load(_build_woke_yaml(rules, indent=0))
-    ignore_patterns = parsed.get("ignore_files", [])
-    spec = _pathspec.PathSpec.from_lines(
-        _pathspec.patterns.GitWildMatchPattern,
-        ignore_patterns,
-    )
-
-    assert not spec.match_file("lib/internal-personas.yaml"), (
-        f"lib/internal-personas.yaml unexpectedly matched ignore_files {ignore_patterns!r} — "
-        "only the exact bare name scout.personas.yaml should be skipped"
-    )
-
-
-def test_positive_nested_claude_rules():
-    """src/.claude/rules/internal.md MUST match ignore_files — nested rules dirs must be covered.
-
-    Encodes the rule: **/.claude/rules/ (with **/ prefix) must match .claude/rules/
-    directories at any depth, not just root-level.
-
-    Mutation resistance: dropping the **/ prefix (reverting to .claude/rules/) causes
-    this to fail because src/.claude/rules/internal.md would no longer match the
-    root-constrained pattern.
-    """
-    pathspec = pytest.importorskip("pathspec")  # noqa: F841
-    import pathspec as _pathspec
-    from gen_action import _build_woke_yaml
-    from loader import load_rules
-
-    rules = load_rules(FIXTURES / "rules_mini.yaml")
-    parsed = yaml.safe_load(_build_woke_yaml(rules, indent=0))
-    ignore_patterns = parsed.get("ignore_files", [])
-    spec = _pathspec.PathSpec.from_lines(
-        _pathspec.patterns.GitWildMatchPattern,
-        ignore_patterns,
-    )
-
-    assert spec.match_file("src/.claude/rules/internal.md"), (
-        f"src/.claude/rules/internal.md did not match ignore_files {ignore_patterns!r} — "
-        "**/.claude/rules/ pattern (with **/ prefix) must match nested rules directories; "
-        "the bare .claude/rules/ pattern only matches at root level"
-    )
-
-
-def test_gen_action_static_footer_drops_wokeignore_injection_step(tmp_path):
-    """Plan v2 drops the never-propagated `.wokeignore` injection step.
-
-    Path A inlines the canonical paths into the woke YAML config's
-    `ignore_files:` key. The shell step that mutated consumer `.wokeignore`
-    files (a) never propagated to the deployed action.yml, and (b) is
-    redundant under Path A. Plan v2 explicitly removes it.
-
-    This test asserts the artifacts of that step are gone from the generated
-    action.yml. It fails on the current codebase (the step is still there)
-    and goes green when STAGE 7 deletes the step from STATIC_FOOTER.
-
-    Mutation resistance: any of the three step artifacts (step name, sentinel
-    comment, append-to-.wokeignore command) coming back trips the test.
-    """
-    from gen_action import generate
-
-    rules = load_rules(FIXTURES / "rules_mini.yaml")
-    output_path = tmp_path / "action.yml"
-    generate(rules, output_path)
-    content = output_path.read_text()
-
-    # Outer schema still valid (the deletion mustn't break the action).
-    data = yaml.safe_load(content)
-    assert "runs" in data and "steps" in data["runs"], (
-        "action.yml outer YAML structure broken after STATIC_FOOTER edit"
-    )
-
-    forbidden_artifacts = [
-        # The composite-step name.
-        "Inject canonical Open Paws paths into .wokeignore",
-        # The idempotency sentinel comment line.
-        "# no-animal-violence-action: canonical paths",
-        # The mutation command — appending to consumer .wokeignore.
-        ">> .wokeignore",
-    ]
-    for artifact in forbidden_artifacts:
-        assert artifact not in content, (
-            f"STATIC_FOOTER still contains {artifact!r} — plan v2 removes the "
-            "wokeignore-injection step entirely (canonical paths now live in "
-            "the woke YAML ignore_files key, not in consumer .wokeignore)"
-        )
-
-
-
-
-def test_gen_action_woke_command_present(tmp_path):
-    """gen_action output contains the woke --exit-1-on-failure invocation.
-
-    Regression guard: if STATIC_FOOTER loses the woke invocation, this fails.
-    This test is GREEN against the current codebase — it guards against future
-    regression where the footer is refactored and the woke call is accidentally
-    dropped.
-    """
-    from gen_action import generate
-
-    rules = load_rules(FIXTURES / "rules_mini.yaml")
-    output_path = tmp_path / "action.yml"
-    generate(rules, output_path)
-    content = output_path.read_text()
-
-    # Structural guard: output must be valid action YAML
-    data = yaml.safe_load(content)
-    assert "runs" in data, "action.yml top-level 'runs' key missing — YAML structure broken"
-
-    # The woke invocation must be present
-    assert "woke --exit-1-on-failure" in content, (
-        "woke --exit-1-on-failure not found in generated action.yml — "
-        "STATIC_FOOTER may have lost the woke invocation"
+    # Structural: walk steps and assert at least one step's run field invokes scan.py
+    steps = data["runs"]["steps"]
+    scan_steps = [s for s in steps if "run" in s and "scan.py" in s["run"]]
+    assert scan_steps, (
+        "No step with 'scan.py' in its run field found in runs.steps — "
+        "the scan.py invocation must be a composite step, not buried in a shell variable"
     )
