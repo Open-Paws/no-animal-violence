@@ -5,7 +5,7 @@ This document tracks the 9-phase roadmap to bring the NAV ecosystem to a publish
 ## Current state (as of 2026-05-01)
 
 - Canonical `rules.yaml`: **162 rules**
-- Most downstream repos: **158 rules** (4 fish farming rules added in #63 not yet propagated due to blocked sync PRs)
+- Most downstream repos: **158 rules** (4 industrial fish confinement rules added in #63 not yet propagated due to blocked sync PRs)
 - `no-animal-violence-action`: **162 rules** (sync PR #39 merged 2026-04-26)
 
 ## Dependency graph
@@ -45,10 +45,10 @@ Phase 3b-c (re-run nav-check, merge other sync PRs in parallel)  [Sam action]
 **Owner: Gary (complete)**  
 PR: [#71](https://github.com/Open-Paws/no-animal-violence/pull/71) — open, all CI green
 
-Two regex bugs in the fish farming rules added by #63, both surfaced by CodeRabbit on active sync PRs:
+Two regex bugs in the industrial fish confinement rules added by #63, both surfaced by CodeRabbit on active sync PRs:
 
 - **`stocking-density`**: old pattern `stocking\s+density(ies)?` never matched the plural form. Fixed to `\bstocking\s+densit(?:y|ies)\b`.
-- **`harvest-size`**: old pattern was too broad — matched in business writing unrelated to intensive fish farming. Fixed to scope the false-positive case to fish species context via species qualifier.
+- **`harvest-size`**: old pattern was too broad — matched in business writing unrelated to intensive fish confinement operations. Fixed to scope the false-positive case to fish species context via species qualifier.
 
 ### Phase 2 — Re-run propagation from updated canonical
 
