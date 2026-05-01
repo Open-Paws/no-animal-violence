@@ -123,7 +123,7 @@ After Phases 6 + 7 are complete:
 2. `git tag v0.1.0 && git push origin v0.1.0` on `vscode-no-animal-violence` — publish workflow fires automatically
 3. Verify: `npm view eslint-plugin-no-animal-violence` shows v0.1.0
 4. Verify: Marketplace listing visible at marketplace.visualstudio.com search "animal violence"
-5. Smoke test: `npm install eslint-plugin-no-animal-violence` in a fresh project, confirm `kill two birds with one stone` is flagged
+5. Smoke test: `npm install eslint-plugin-no-animal-violence` in a fresh project, confirm a flagged phrase (e.g. `stocking density`) is detected correctly
 
 ### Phase 9 — Long-term hardening (post-launch, backlog)
 
