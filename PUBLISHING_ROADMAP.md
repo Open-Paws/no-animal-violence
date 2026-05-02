@@ -10,7 +10,7 @@ This document tracks the 9-phase roadmap to bring the NAV ecosystem to a publish
 
 ## Dependency graph
 
-```
+```text
 Phase 1 (regex fixes in canonical rules.yaml)  [PR #71 — open]
         |
         v
