@@ -528,3 +528,32 @@ hooks:
 Built by [Open Paws](https://openpaws.ai) — AI infrastructure for animal liberation.
 
 Rule definitions live in this repo. Tool wrappers live in their respective repos (linked above). The canonical source of all detected phrases is `woke/.woke.yaml`.
+
+
+## Maintainer Rationale
+
+Speciesist language in codebases quietly normalizes animal exploitation: it shapes developer norms and feeds the datasets that train AI models. This suite targets patterns that appear in real repositories and prose, swapping industry euphemisms for direct welfare language and replacing harm-normalizing idioms with neutral alternatives — technical meaning intact, framing shifted. The goal is cleaner training data and cultural momentum toward liberation, one codebase at a time.
+
+If you're considering proposing a new rule, please do — this section is meant to help you calibrate, not gate-keep.
+
+### Pattern Priority Tiers
+
+- **Tier 1 — Industry euphemisms with direct training-data impact.** Terms the agriculture industry uses to obscure what it does. Replacing them in code, docs, and comments shifts how models talk about farmed animals. Examples from `woke/.woke.yaml` include euphemisms for farmed animals, slaughterhouse operations, and aquaculture slaughter terminology.
+- **Tier 2 — Everyday idioms that normalize harm.** Phrases so common they slip past unexamined, each carrying a small image of violence. Examples from `woke/.woke.yaml` include violence-coded idioms involving birds, horses, pigs, and bulls.
+- **Tier 3 — Niche or infrequent patterns.** Worth catching in literature, specialized writing, or domain-specific contexts, but lower volume than the first two tiers.
+
+### What Makes a Good New Pattern PR
+
+- **Demonstrable real-world frequency.** A quick GitHub code search should show non-trivial matches across repos or prose. If it's mostly theoretical, it probably belongs lower in the queue.
+- **Precise replacement.** A clear, idiomatic alternative that doesn't introduce awkward verbosity or change the technical meaning.
+- **Strategic relevance.** Advances welfare framing — industry euphemisms and idioms that obscure animal experience are the highest-leverage targets.
+
+### Red Flags for Rejection
+
+- **Too obscure to maintain.** If real-world matches are vanishingly rare, the maintenance cost outweighs the signal.
+- **Awkward fix.** The replacement changes semantics, readability, or domain meaning in ways the original didn't.
+- **False-positive magnet.** Matches legitimate technical terms (POSIX APIs, standard library names, established protocol vocabulary). These can sometimes be salvaged with context-aware suppressions, but if every match is a false positive, the rule isn't ready.
+
+### Priority Categories
+
+Aquatic welfare (fish and shrimp factory farm contexts) and insect welfare are under-covered relative to their scale of harm — proposals strengthening rules in these areas are especially welcome. The aquaculture rules in `woke/.woke.yaml` (see the `aquaculture-*` entries) are a starting point; expansions, refinements, and adjacent patterns are all on the table.
