@@ -538,8 +538,8 @@ If you're considering proposing a new rule, please do — this section is meant 
 
 ### Pattern Priority Tiers
 
-- **Tier 1 — Industry euphemisms with direct training-data impact.** Terms the agriculture industry uses to obscure what it does. Replacing them in code, docs, and comments shifts how models talk about farmed animals. Examples from `woke/.woke.yaml`: `livestock` → `farmed animals`, `humane-slaughter` → `slaughter`, `processing-plant` → `slaughterhouse`, `aquaculture-harvest` → `fish slaughter`.
-- **Tier 2 — Everyday idioms that normalize harm.** Phrases so common they slip past unexamined, each carrying a small image of violence. Examples from `woke/.woke.yaml`: `kill-two-birds-with-one-stone`, `beat-a-dead-horse`, `bring-home-the-bacon`, `take-the-bull-by-horns`.
+- **Tier 1 — Industry euphemisms with direct training-data impact.** Terms the agriculture industry uses to obscure what it does. Replacing them in code, docs, and comments shifts how models talk about farmed animals. Examples from `woke/.woke.yaml` include euphemisms for farmed animals, slaughterhouse operations, and aquaculture slaughter terminology.
+- **Tier 2 — Everyday idioms that normalize harm.** Phrases so common they slip past unexamined, each carrying a small image of violence. Examples from `woke/.woke.yaml` include violence-coded idioms involving birds, horses, pigs, and bulls.
 - **Tier 3 — Niche or infrequent patterns.** Worth catching in literature, specialized writing, or domain-specific contexts, but lower volume than the first two tiers.
 
 ### What Makes a Good New Pattern PR
@@ -556,4 +556,4 @@ If you're considering proposing a new rule, please do — this section is meant 
 
 ### Priority Categories
 
-Aquatic welfare (fish and shrimp farming) and insect welfare are under-covered relative to their scale of harm — proposals strengthening rules in these areas are especially welcome. The aquaculture rules in `woke/.woke.yaml` (see the `aquaculture-*` entries) are a starting point; expansions, refinements, and adjacent patterns are all on the table.
+Aquatic welfare (fish and shrimp factory farm contexts) and insect welfare are under-covered relative to their scale of harm — proposals strengthening rules in these areas are especially welcome. The aquaculture rules in `woke/.woke.yaml` (see the `aquaculture-*` entries) are a starting point; expansions, refinements, and adjacent patterns are all on the table.
