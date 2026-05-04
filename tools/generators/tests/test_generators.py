@@ -392,3 +392,8 @@ def test_gen_action_allowlist_injection(tmp_path):
         assert path_idx != -1, (
             f"Canonical path {path!r} not found after allowlist marker in action.yml"
         )
+
+    # Idempotency guard command must be present in the generated output
+    assert 'grep -qF "# no-animal-violence-action: canonical paths" .wokeignore' in content, (
+        "Idempotency guard command missing from generated action.yml"
+    )
