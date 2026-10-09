@@ -3,14 +3,14 @@
 
 Output: build/reviewdog-no-animal-violence/action.yml
 
-The reviewdog action has no phrase list — it delegates to the pre-commit checker.
-This generator writes the file deterministically.
+The reviewdog action has no phrase list — it runs the stdlib-only scan.py that is
+bundled in the Open-Paws/reviewdog-no-animal-violence repo (output is already in
+reviewdog's "file:line: message" format). This generator writes the file
+deterministically.
 """
 from __future__ import annotations
 
-import re
 import sys
-from collections.abc import Iterable
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -38,7 +38,7 @@ inputs:
     required: false
     default: 'warning'
   reporter:
-    description: 'Reporter for reviewdog (github-pr-check, github-pr-review, github-check)'
+    description: 'Reporter for reviewdog (github-pr-check, github-pr-review, github-check, github-pr-annotations, local)'
     required: false
     default: 'github-pr-review'
   filter_mode:
@@ -49,70 +49,50 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - uses: reviewdog/action-setup@v1
+    # Pinned to a commit SHA so a moved tag cannot change what runs.
+    - uses: reviewdog/action-setup@d8a7baabd7f3e8544ee4dbde3ee41d0011c3a93f # v1.5.0
 
-    - name: Install no-animal-violence checker
+    # Inputs are passed through env vars (never interpolated into the script)
+    # and checked against an allowlist, to prevent shell injection.
+    - name: Validate inputs
       shell: bash
-      run: pip install https://github.com/Open-Paws/no-animal-violence-pre-commit/archive/refs/tags/v0.2.0.tar.gz
+      env:
+        NAV_REPORTER: ${{ inputs.reporter }}
+        NAV_LEVEL: ${{ inputs.level }}
+        NAV_FILTER_MODE: ${{ inputs.filter_mode }}
+      run: |
+        case "$NAV_REPORTER" in
+          github-pr-check|github-pr-review|github-check|github-pr-annotations|local) ;;
+          *) echo "::error::Invalid reporter input"; exit 1 ;;
+        esac
+        case "$NAV_LEVEL" in
+          info|warning|error) ;;
+          *) echo "::error::Invalid level input"; exit 1 ;;
+        esac
+        case "$NAV_FILTER_MODE" in
+          added|diff_context|file|nofilter) ;;
+          *) echo "::error::Invalid filter_mode input"; exit 1 ;;
+        esac
 
+    # Uses the stdlib-only scanner bundled with this action (scan.py), so no
+    # third-party package is downloaded at run time.
     - name: Run no-animal-violence check with reviewdog
       shell: bash
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ inputs.github_token }}
+        NAV_ACTION_PATH: ${{ github.action_path }}
+        NAV_REPORTER: ${{ inputs.reporter }}
+        NAV_LEVEL: ${{ inputs.level }}
+        NAV_FILTER_MODE: ${{ inputs.filter_mode }}
       run: |
-        find . -type f \\
-          \\( -name "*.py" -o -name "*.js" -o -name "*.ts" -o -name "*.md" \\
-             -o -name "*.txt" -o -name "*.rst" -o -name "*.yaml" -o -name "*.yml" \\
-             -o -name "*.go" -o -name "*.rs" -o -name "*.java" -o -name "*.rb" \\) \\
-          -not -path "./.git/*" \\
-          -not -path "./node_modules/*" \\
-          -not -path "./vendor/*" \\
-          -exec no-animal-violence-check {} + 2>&1 \\
-          | python3 -c "
-        import sys, re
-        file_re = re.compile(r'^\\s{2}(\\S.*):(\\d+)$')
-        found_re = re.compile(r'^\\s{4}Found:\\s+\\\"(.+)\\\"$')
-        cur_loc = None
-        for line in sys.stdin:
-            line = line.rstrip()
-            m = file_re.match(line)
-            if m:
-                cur_loc = (m.group(1), m.group(2))
-                continue
-            m = found_re.match(line)
-            if m and cur_loc:
-                print(f'{cur_loc[0]}:{cur_loc[1]}: {m.group(1)}')
-                cur_loc = None
-        " \\
+        python3 "$NAV_ACTION_PATH/scan.py" \\
+          | sed 's|^\\./||' \\
           | reviewdog -efm="%f:%l: %m" \\
               -name="no-animal-violence" \\
-              -reporter=${{ inputs.reporter }} \\
-              -level=${{ inputs.level }} \\
-              -filter-mode=${{ inputs.filter_mode }}
+              -reporter="$NAV_REPORTER" \\
+              -level="$NAV_LEVEL" \\
+              -filter-mode="$NAV_FILTER_MODE"
 """
-
-
-def reformat_nav_output(lines: Iterable[str]) -> list[str]:
-    """Convert multi-line no-animal-violence-check output to file:line: message lines.
-
-    The pre-commit checker outputs multi-line blocks; reviewdog's -efm="%f:%l: %m"
-    expects single-line entries. This function performs that conversion.
-    """
-    file_re = re.compile(r"^\s{2}(\S.*):(\d+)$")
-    found_re = re.compile(r'^\s{4}Found:\s+"(.+)"$')
-    out: list[str] = []
-    cur_loc: tuple[str, str] | None = None
-    for line in lines:
-        line = line.rstrip()
-        m = file_re.match(line)
-        if m:
-            cur_loc = (m.group(1), m.group(2))
-            continue
-        m = found_re.match(line)
-        if m and cur_loc:
-            out.append(f"{cur_loc[0]}:{cur_loc[1]}: {m.group(1)}")
-            cur_loc = None
-    return out
 
 
 def main() -> int:
