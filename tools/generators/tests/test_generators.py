@@ -130,33 +130,40 @@ def test_vscode_word_boundary_emission():
     assert re.search(r"/\\b[^/]+\\b/gi", output), "No /\\b...\\b/gi pattern found — word boundaries missing"
 
 
-def test_reviewdog_output_reformatter():
-    """reformat_nav_output converts multi-line scanner output to file:line: message.
+def _reviewdog_action():
+    import yaml
+    from gen_reviewdog import CONTENT
+    return CONTENT, yaml.safe_load(CONTENT)
 
-    Regression test for the reviewdog -efm format mismatch: the pre-commit checker
-    outputs multi-line blocks but reviewdog -efm="%f:%l: %m" expects single-line
-    entries. The reformatter must extract file, line, and found phrase.
+
+def test_reviewdog_action_no_input_interpolation_in_run():
+    """No ${{ ... }} expression may appear inside a run: script (shell injection).
+
+    Inputs must reach the shell only through env: variables.
     """
-    from gen_reviewdog import reformat_nav_output
-    sample = [
-        "Animal violence language detected:\n",
-        "\n",
-        "  path/to/file.py:5\n",
-        '    Found:   "guinea pig"\n',
-        '    Suggest: "test subject"\n',
-        "\n",
-        "  another/file.md:12\n",
-        '    Found:   "livestock"\n',
-        '    Suggest: "farmed animals"\n',
-        "\n",
-        "2 instance(s) found.\n",
-    ]
-    result = reformat_nav_output(sample)
-    assert result == [
-        "path/to/file.py:5: guinea pig",
-        "another/file.md:12: livestock",
-    ]
+    _, data = _reviewdog_action()
+    for step in data["runs"]["steps"]:
+        if "run" in step:
+            assert "${{" not in step["run"], f"expression interpolated in run of step {step.get('name')}"
 
+
+def test_reviewdog_action_validates_inputs():
+    """reporter, level and filter_mode are checked against an allowlist."""
+    _, data = _reviewdog_action()
+    runs = "\n".join(s.get("run", "") for s in data["runs"]["steps"])
+    for var in ("NAV_REPORTER", "NAV_LEVEL", "NAV_FILTER_MODE"):
+        assert f'case "${var}" in' in runs, f"{var} not validated"
+
+
+def test_reviewdog_action_supply_chain_pinned():
+    """Third-party actions are SHA-pinned and nothing is pip-installed at run time."""
+    content, data = _reviewdog_action()
+    for step in data["runs"]["steps"]:
+        if "uses" in step:
+            ref = step["uses"].split("@", 1)[1]
+            assert re.fullmatch(r"[0-9a-f]{40}", ref), f"{step['uses']} not pinned to a commit SHA"
+    assert "pip install" not in content
+    assert "scan.py" in content
 
 def test_pre_commit_word_boundary(tmp_path):
     """gen_pre_commit wraps word_boundary:true patterns with \\b and leaves false ones bare."""
